@@ -5,12 +5,13 @@
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-  <footer>
+<footer>
     <div class="text-center">
-      <p>PetCity.vn - Hệ thống Siêu thị đồ thú cưng hàng đầu VN</p>
-      <p>Re-developed by Thien Phuc - FPT University</p>
+        <p>PetCity.vn - Hệ thống Siêu thị đồ thú cưng hàng đầu VN</p>
+        <p>Re-developed by Thien Phuc - FPT University</p>
     </div>
-  </footer>
+</footer>
+<script src="/PetCity/js/public-page/show-snackbar.js"></script>
 </body>
 
 </html>

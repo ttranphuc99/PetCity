@@ -6,5 +6,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="header.jsp" %>
+<div id="snackbar"><s:property value="%{mess}"/></div>
 <div>hello</div>
 <%@include file="footer.jsp" %>

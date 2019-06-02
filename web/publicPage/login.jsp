@@ -1,47 +1,47 @@
+<%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="../css/public-page/login.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/login.css">
+        <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/snackbar.css">
+        <link rel="stylesheet" type="text/css" href="/PetCity/css/bootstrap/bootstrap.min.css">
+        <script src="/PetCity/js/bootstrap/jquery-1.9.1.min.js"></script>
+        <script src="/PetCity/js/bootstrap/popper.min.js"></script>
+        <script src="/PetCity/js/bootstrap/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="wrap-login">
+            <div class="wrap-form">
+                <div class="label my-3">Log In</div>
+                <div id="snackbar"><s:property value="%{errorMess}"/></div>
+                <s:form action="/login" method="POST" theme="simple">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <s:textfield cssClass="form-control" id="username" name="username" requiredPosition="true"/>
+                    </div>
 
-  <link rel="stylesheet" type="text/css" href="../css/bootstrap/bootstrap.min.css">
-  <script src="../js/bootstrap/jquery-1.9.1.min.js"></script>
-  </script>
-  <script src="../js/bootstrap/popper.min.js"></script>
-  </script>
-  <script src="../js/bootstrap/bootstrap.min.js"></script>
-  </script>
-</head>
-<body>
-  <div class="wrap-login">
-    <div class="wrap-form">
-      <div class="label my-3">Log In</div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <s:password cssClass="form-control" id="password" name="password" label="Password:" requiredPosition="true"/>
+                    </div>
 
-      <form action="">
-        <div class="form-group">
-          <label for="txtUsername">Username:</label>
-          <input type="text" class="form-control" id="txtUsername" name="txtUsername" required>
+                    <div class="form-group text-center py-3">
+                        <s:submit cssClass="btn btn-success w-50 font-label" name="action" value="Login"/>
+                    </div>
+
+                    <div class="text-center">
+                        <a href="/PetCity/publicPage/signup.jsp" class="nav-link">Don't have an account? Register</a>
+                        <a href="/PetCity/publicPage/index.jsp" class="nav-link">Back to Home</a>
+                    </div>
+                </s:form>
+            </div>
         </div>
-
-        <div class="form-group">
-          <label for="txtPassword">Password:</label>
-          <input type="password" class="form-control" id="txtPassword" name="txtPassword" required>
-        </div>
-
-        <div class="form-group text-center py-3">
-          <input type="submit" class="btn btn-success w-50 font-label" name="action" value="Login">
-        </div>
-
-        <div class="text-center">
-          <a href="signup.jsp" class="nav-link">Don't have an account? Register</a>
-        </div>
-      </form>
-    </div>
-  </div>
-</body>
+        <script src="/PetCity/js/public-page/show-snackbar.js"></script>
+    </body>
 
 </html>
