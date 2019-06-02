@@ -1,0 +1,54 @@
+.img-cart {
+  width: 30px;
+  height: 20.7px;
+}
+
+.icon-quantity {
+  background-color: red;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  position: relative;
+  left: 41%;
+  transition-duration: .25s;
+}
+
+.wrap-cart {
+  text-align: center;
+}
+
+.wrap-cart:hover .icon-quantity {
+  background-color: #574240;
+}
+
+nav {
+  height: 35px;
+  border-top: solid 1px #ececec;
+  border-bottom: solid 1px #ececec;
+  display: flex !important;
+}
+
+.nav-link {
+  padding: 0 !important;
+  color: red;
+  font-weight: bold;
+  transition-duration: .25s;
+}
+
+.nav-link:hover {
+  color: #6DB3DD !important;
+}
+
+footer {
+  height: 200px;
+  border-top: solid 1px #ececec;
+  padding-top: 65px;
+  color: #281714;
+  font-weight: bold;
+  font-size: 18px;
+}

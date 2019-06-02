@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+
+.wrap-signup {
+  background-image: url("../../img/header-footer/dog-background-hd-1.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.wrap-form {
+  width: 30%;
+  margin-left: 10%;
+}
+
+.label {
+  text-align: center;
+  font-size: 45px;
+  font-family: 'Lobster', cursive;
+}
+
+label, .font-label {
+  font-family: 'Lobster', cursive;
+  font-size: 20px !important;
+}
