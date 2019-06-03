@@ -19,5 +19,20 @@
             <result name="success" type="chain">login</result>
             <result name="fail">publicPage/signup.jsp</result>
         </action>
+        
+        <action name="adminViewProfile" class="phuctt.actions.AdminViewProfileAction">
+            <result name="success">admin/edit-profile.jsp</result>
+            <result name="fail" type="chain">logout</result>
+        </action>
+        
+        <action name="adminEditProfile" class="phuctt.actions.AdminEditProfileAction">
+            <result name="success" type="chain">adminViewProfile</result>
+            <result name="fail">admin/home.jsp</result>
+        </action>
+        
+        <action name="changePassword" class="phuctt.actions.ChangePasswordAction">
+            <result name="success">admin/home.jsp</result>
+            <result name="fail">admin/change-password.jsp</result>
+        </action>
     </package>
 </struts>

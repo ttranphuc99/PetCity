@@ -1,0 +1,21 @@
+.main-content {
+    margin: 30px;
+    background-color: #E6F4F1;
+    box-shadow: 0px 2px 17px #aaaaaa;
+    border-radius: 5px;
+    padding: 30px 50px;
+}
+
+.title {
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-check label {
+    font-weight: unset;
+}

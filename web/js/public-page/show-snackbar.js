@@ -1,9 +1,6 @@
 window.onload = function () {
-    var element = document.getElementById("snackbar");
-    if (element != null) {
-        var check = element.innerHTML == "";
-        if (!check)
-            showSnackbar();
+    if ($("#snackbar").text().trim()) {
+        showSnackbar();
     }
 }
 
