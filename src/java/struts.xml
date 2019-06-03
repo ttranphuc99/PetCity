@@ -14,5 +14,10 @@
         <action name="logout" class="phuctt.actions.LogoutAction">
             <result name="success">publicPage/index.jsp</result>
         </action>
+        
+        <action name="signup" class="phuctt.actions.SignUpAction">
+            <result name="success" type="chain">login</result>
+            <result name="fail">publicPage/signup.jsp</result>
+        </action>
     </package>
 </struts>

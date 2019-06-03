@@ -7,7 +7,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Document</title>
+        <title>Pet City</title>
         <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/header-footer.css">
         <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/snackbar.css">
         <link rel="stylesheet" type="text/css" href="/PetCity/css/bootstrap/bootstrap.min.css">

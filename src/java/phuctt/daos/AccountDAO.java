@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import phuctt.dbs.DBConnection;
+import phuctt.dtos.AccountDTO;
 
 /**
  *
@@ -47,5 +48,26 @@ public class AccountDAO implements Serializable {
             closeConnection();
         }
         return result;
+    }
+    
+    public boolean signUp(AccountDTO dto) throws SQLException, ClassNotFoundException {
+        boolean check = false;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "INSERT INTO Account(username, password, fullname, isDelete, gender, role) VALUES(?,?,?,?,?,?)";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, dto.getUsername());
+            ps.setString(2, dto.getPassword());
+            ps.setString(3, dto.getFullname());
+            ps.setBoolean(4, dto.isDelete());
+            ps.setBoolean(5, dto.isGender());
+            ps.setString(6, dto.getRole());
+            
+            check = ps.executeUpdate() > 0;
+        } finally {
+            closeConnection();
+        }
+        return check;
     }
 }

@@ -5,9 +5,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Document</title>
+        <title>Pet City - Sign Up</title>
 
         <link rel="stylesheet" href="/PetCity/css/public-page/signup.css">
+        <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/snackbar.css">
         <link rel="stylesheet" type="text/css" href="/PetCity/css/bootstrap/bootstrap.min.css">
         <script src="/PetCity/js/bootstrap/jquery-1.9.1.min.js"></script>
         <script src="/PetCity/js/bootstrap/popper.min.js"></script>
@@ -19,35 +20,35 @@
             <div class="wrap-form">
                 <div class="label my-3">Sign Up</div>
 
-                <form action="">
+                <form action="/PetCity/signup" method="POST">
                     <div class="form-group">
                         <label for="txtUsername">Username:</label>
-                        <input type="text" class="form-control" id="txtUsername" name="txtUsername" required>
+                        <input type="text" class="form-control" id="txtUsername" name="username" required>
                     </div>
 
                     <div class="form-group">
                         <label for="txtPassword">Password:</label>
-                        <input type="password" class="form-control" id="txtPassword" name="txtPassword" required>
+                        <input type="password" class="form-control" id="txtPassword" name="password" required>
                     </div>
 
                     <div class="form-group">
                         <label for="txtConfirm">Confirm Password:</label>
-                        <input type="password" class="form-control" id="txtConfirm" name="txtConfirm" required>
+                        <input type="password" class="form-control" id="txtConfirm" name="confirm" required>
                     </div>
 
                     <div class="form-group">
                         <label for="txtFullname">Fullname:</label>
-                        <input type="text" class="form-control" id="txtFullname" name="txtFullname" required>
+                        <input type="text" class="form-control" id="txtFullname" name="fullname" required>
                     </div>
 
                     <label>Gender:</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="rdGender" id="rdMale" value="Male" required>
+                        <input class="form-check-input" type="radio" name="gender" id="rdMale" value="Male" required>
                         <label class="form-check-label" for="rdMale">Male</label>
                     </div>
 
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="rdGender" id="rdFemale" value="Female" required>
+                        <input class="form-check-input" type="radio" name="gender" id="rdFemale" value="Female" required>
                         <label class="form-check-label" for="rdFemale">Female</label>
                     </div>
 
@@ -61,6 +62,7 @@
                 </form>
             </div>
         </div>
+        <script src="/PetCity/js/public-page/show-snackbar.js"></script>
     </body>
 
 </html>

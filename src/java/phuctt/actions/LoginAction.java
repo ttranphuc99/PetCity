@@ -24,7 +24,7 @@ public class LoginAction {
     public LoginAction() {
     }
 
-    public String execute() throws Exception {
+    public String execute() {
         String label = FAIL;
         try {
             AccountDAO dao = new AccountDAO();

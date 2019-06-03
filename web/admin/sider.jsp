@@ -1,3 +1,6 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="/struts-tags" prefix="s" %>
+
 <!DOCTYPE html>
 <html>
 
@@ -6,9 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Collapsible sidebar using Bootstrap 4</title>
+    <title>Pet City - Admin Page</title>
     <link rel="stylesheet" type="text/css" href="/PetCity/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="/PetCity/css/admin-page/sider.css">
+    <link rel="stylesheet" href="/PetCity/css/public-page/snackbar.css">
     <script src="/PetCity/js/bootstrap/jquery-1.9.1.min.js"></script>
     <script src="/PetCity/js/bootstrap/popper.min.js"></script>
     <script src="/PetCity/js/bootstrap/bootstrap.min.js"></script>
@@ -19,7 +23,8 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Bootstrap Sidebar</h3>
+                <h5>Welcome, <s:property value="%{#session.FULLNAME}"/></h5>
+                <a href="/PetCity/logout" class="btn btn-danger" role="button">Logout</a>
             </div>
 
             <ul class="list-unstyled components">
@@ -67,9 +72,3 @@
 
         <!-- Page Content  -->
         <div id="content">
-            Hello
-        </div>
-    </div>
-</body>
-
-</html>
