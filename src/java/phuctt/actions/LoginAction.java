@@ -18,7 +18,7 @@ public class LoginAction {
     private String username, password;
     private String errorMess, mess;
     private static final String ADMIN = "admin";
-    private static final String USER = "user";
+    private static final String MEMBER = "member";
     private static final String FAIL = "fail";
 
     public LoginAction() {
@@ -37,9 +37,9 @@ public class LoginAction {
                 if (result[0].equals("admin")) {
                     session.put("ROLE", result[0]);
                     label = ADMIN;
-                } else if (result[0].equals("user")) {
-                    session.put("ROLE", "user");
-                    label = USER;
+                } else if (result[0].equals("member")) {
+                    session.put("ROLE", "member");
+                    label = MEMBER;
                 } else {
                     session.clear();
                     errorMess = "Your account is not support!";

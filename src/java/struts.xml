@@ -8,7 +8,7 @@
         <action name="login" class="phuctt.actions.LoginAction">
             <result name="fail">publicPage/login.jsp</result>
             <result name="admin">admin/home.jsp</result>
-            <result name="user">publicPage/index.jsp</result>
+            <result name="member">publicPage/index.jsp</result>
         </action>
         
         <action name="logout" class="phuctt.actions.LogoutAction">
