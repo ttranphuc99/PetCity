@@ -53,7 +53,7 @@
                                 <a href="#">View list admin</a>
                             </li>
                             <li>
-                                <a href="#">Add new admin</a>
+                                <a href="/PetCity/admin/add-admin.jsp">Add new admin</a>
                             </li>
                         </ul>
                     </li>

@@ -34,5 +34,10 @@
             <result name="success">admin/home.jsp</result>
             <result name="fail">admin/change-password.jsp</result>
         </action>
+        
+        <action name="addAdmin" class="phuctt.actions.AddAdminAction">
+            <result name="success">admin/home.jsp</result>
+            <result name="fail">admin/change-password.jsp</result>
+        </action>
     </package>
 </struts>
