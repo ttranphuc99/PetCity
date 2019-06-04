@@ -19,3 +19,8 @@ label {
 .form-check label {
     font-weight: unset;
 }
+
+textarea {
+    height: 100px !important;
+    resize: none !important;
+}

@@ -64,7 +64,7 @@
                                 <a href="#">View list accessory</a>
                             </li>
                             <li>
-                                <a href="#">Add new accessory</a>
+                                <a href="/PetCity/admin/add-accessory.jsp">Add new accessory</a>
                             </li>
                         </ul>
                     </li>

@@ -9,7 +9,7 @@
 <div id="snackbar">
     <s:property value="%{mess}" />
 </div>
-<div class="title">Add a admin</div>
+<div class="title mb-4">Add a admin</div>
 
 <div class="container-fluid">
     <form action="/PetCity/addAdmin" method="POST">
