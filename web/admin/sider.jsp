@@ -64,7 +64,7 @@
                                 <a href="#">View list accessory</a>
                             </li>
                             <li>
-                                <a href="/PetCity/loadCategoryType?">Add new accessory</a>
+                                <a href="/PetCity/loadCategoryType?location=accessory">Add new accessory</a>
                             </li>
                         </ul>
                     </li>
@@ -75,7 +75,18 @@
                                 <a href="#">View list service</a>
                             </li>
                             <li>
-                                <a href="#">Add new service</a>
+                                <a href="/PetCity/loadCategoryType?location=service">Add new service</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#manage-staff" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage Staff</a>
+                        <ul class="collapse list-unstyled" id="manage-staff">
+                            <li>
+                                <a href="#">View list staff</a>
+                            </li>
+                            <li>
+                                <a href="/PetCity/admin/add-staff.jsp">Add new staff</a>
                             </li>
                         </ul>
                     </li>

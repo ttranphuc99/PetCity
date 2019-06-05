@@ -19,24 +19,20 @@ public class LoadCategoryTypeAction {
     private List<CategoryDTO> listCategory;
     private List<TypeDTO> listType;
     private String mess;
-    
-    private static final String SUCCESS = "success";
-    private static final String FAIL = "fail";
+    private String location;
     
     public LoadCategoryTypeAction() {
     }
     
     public String execute() {
-        String label = FAIL;
+        String label = "fail";
         try {
             CategoryDAO cateDao = new CategoryDAO();
             listCategory = cateDao.searchByLikeName("");
             
             TypeDAO typeDao = new TypeDAO();
             listType = typeDao.searchByLikeName("");
-            label = SUCCESS;
-            System.out.println("category " + listCategory);
-            System.out.println("type " + listType);
+            label = location;
         } catch (Exception e) {
             mess = "Error DB";
             e.printStackTrace();
@@ -66,6 +62,14 @@ public class LoadCategoryTypeAction {
 
     public void setMess(String mess) {
         this.mess = mess;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     

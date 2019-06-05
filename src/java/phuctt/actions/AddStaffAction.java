@@ -7,39 +7,33 @@ package phuctt.actions;
 
 import java.io.File;
 import org.apache.commons.io.FileUtils;
-import phuctt.daos.AccessoryDAO;
-import phuctt.dtos.AccessoryDTO;
-import phuctt.dtos.CategoryDTO;
-import phuctt.dtos.TypeDTO;
+import phuctt.daos.StaffDAO;
+import phuctt.dtos.StaffDTO;
 
 /**
  *
  * @author Thien Phuc
  */
-public class AddAccessoryAction {
-
-    private String name, brand, price, quantity, category, type, description, mess;
+public class AddStaffAction {
+    private String name, gender, available, mess;
     private File image;
     private String imageContentType, imageFileName;
-
+    
     private static final String SUCCESS = "success";
     private static final String FAIL = "fail";
-
-    public AddAccessoryAction() {
+    public AddStaffAction() {
     }
-
+    
     public String execute() {
         String label = FAIL;
         try {
-            AccessoryDAO dao = new AccessoryDAO();
-
-            CategoryDTO categoryDto = new CategoryDTO(Integer.parseInt(category), "");
-            TypeDTO typeDto = new TypeDTO(Integer.parseInt(type), "");
-            AccessoryDTO dto = new AccessoryDTO(name, brand, description, "sample", Float.parseFloat(price), categoryDto, Integer.parseInt(quantity), typeDto);
-
-            long id = dao.add(dto);
+            StaffDAO dao = new StaffDAO();
+            
+            StaffDTO dto = new StaffDTO(name, available != null, gender.equalsIgnoreCase("male"));
+            int id = dao.add(dto);
+            
             if (id != -1) {
-                String destLocation = "D:/file/accessory";
+                String destLocation = "D:/file/staff";
                 String fileExtend = imageFileName.split("\\.")[imageFileName.split("\\.").length - 1];
                 System.out.println("extend: " + fileExtend);
                 
@@ -50,8 +44,6 @@ public class AddAccessoryAction {
                 
                 mess = "Insert successfully";
                 label = SUCCESS;
-            } else {
-                mess = "Insert fail";
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,52 +59,20 @@ public class AddAccessoryAction {
         this.name = name;
     }
 
-    public String getBrand() {
-        return brand;
+    public String getGender() {
+        return gender;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public String getPrice() {
-        return price;
+    public String getAvailable() {
+        return available;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public String getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAvailable(String available) {
+        this.available = available;
     }
 
     public File getImage() {
@@ -146,5 +106,5 @@ public class AddAccessoryAction {
     public void setMess(String mess) {
         this.mess = mess;
     }
-
+    
 }

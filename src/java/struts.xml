@@ -41,7 +41,13 @@
         </action>
         
         <action name="loadCategoryType" class="phuctt.actions.LoadCategoryTypeAction">
-            <result name="success">admin/add-accessory.jsp</result>
+            <result name="accessory">admin/add-accessory.jsp</result>
+            <result name="service" type="chain">loadStaff</result>
+            <result name="fail">admin/home.jsp</result>
+        </action>
+        
+        <action name="loadStaff" class="phuctt.actions.LoadStaffAction">
+            <result name="service">admin/add-service.jsp</result>
             <result name="fail">admin/home.jsp</result>
         </action>
         
@@ -53,6 +59,26 @@
             <interceptor-ref name="basicStack"></interceptor-ref>
             <result name="success">admin/home.jsp</result>
             <result name="fail" type="chain">loadCategoryType</result>
+        </action>
+        
+        <action name="addStaff" class="phuctt.actions.AddStaffAction">
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">2102840</param>
+                <param name="allowedTypes">image/png,image/jpeg,image/jpg</param>
+            </interceptor-ref>
+            <interceptor-ref name="basicStack"></interceptor-ref>
+            <result name="success">admin/home.jsp</result>
+            <result name="fail">admin/add-staff.jsp</result>
+        </action>
+        
+        <action name="addService" class="phuctt.actions.AddServiceAction">
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">2102840</param>
+                <param name="allowedTypes">image/png,image/jpeg,image/jpg</param>
+            </interceptor-ref>
+            <interceptor-ref name="basicStack"></interceptor-ref>
+            <result name="success">admin/home.jsp</result>
+            <result name="fail">admin/add-service.jsp</result>
         </action>
     </package>
 </struts>
