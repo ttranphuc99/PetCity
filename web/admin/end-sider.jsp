@@ -1,3 +1,6 @@
+                <div id="snackbar">
+                    <s:property value="%{mess}" />
+                </div>
             </div>
         </div>
     </div>

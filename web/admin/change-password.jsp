@@ -5,9 +5,6 @@
 --%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@include file="sider.jsp" %>
-<div id="snackbar">
-    <s:property value="%{mess}" />
-</div>
 <div class="title">Change password</div>
 
 <div class="container-fluid">

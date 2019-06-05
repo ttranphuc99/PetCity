@@ -9,7 +9,7 @@
 <div class="title mb-4">Add new accessory</div>
 
 <div class="container-fluid">
-    <form action="" method="POST">
+    <form action="addAccessory" method="POST" enctype="multipart/form-data">
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
@@ -30,7 +30,7 @@
             <div class="col-6">
                 <div class="form-group">
                     <label for="accPrice">Price:</label>
-                    <input type="number" id="accPrice" name="price" class="form-control" required>
+                    <input type="number" step="0.01" id="accPrice" name="price" class="form-control" required>
                 </div>
             </div>
 
@@ -46,9 +46,9 @@
             <div class="col-6">
                 <div class="form-group">
                     <label>Category:</label>
-                    <select class="custom-select">
+                    <select name="category" class="custom-select">
                         <s:iterator value="listCategory">
-                            <option name="category" value='<s:property value="%{id}"/>'>
+                            <option value='<s:property value="%{id}"/>'>
                                 <s:property value="%{name}"/>
                             </option>
                         </s:iterator>
@@ -59,9 +59,9 @@
             <div class="col-6">
                 <div class="form-group">
                     <label>For type:</label>
-                    <select class="custom-select">
+                    <select name="type" class="custom-select">
                         <s:iterator value="listType">
-                            <option name="type" value='<s:property value="%{id}" />'>
+                            <option value='<s:property value="%{id}" />'>
                                 <s:property value="%{name}"/>
                             </option>
                         </s:iterator>
@@ -83,7 +83,7 @@
             <div class="col-12">
                 <div class="form-group">
                     <label class="control-label">Image:</label>
-                    <input type="file" class="filestyle" data-icon="false">
+                    <input type="file" name="image" class="filestyle" data-icon="false">
                 </div>
             </div>
         </div>

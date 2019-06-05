@@ -6,9 +6,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="sider.jsp" %>
-<div id="snackbar">
-    <s:property value="%{mess}" />
-</div>
 <div class="title mb-4">Add a admin</div>
 
 <div class="container-fluid">

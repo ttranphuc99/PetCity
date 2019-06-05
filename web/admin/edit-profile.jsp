@@ -5,9 +5,6 @@
 --%>
 
 <%@include file="sider.jsp" %>
-<div id="snackbar">
-    <s:property value="%{mess}" />
-</div>
 <div class="title">Edit profile</div>
 
 <div class="container-fluid">

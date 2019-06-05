@@ -44,5 +44,15 @@
             <result name="success">admin/add-accessory.jsp</result>
             <result name="fail">admin/home.jsp</result>
         </action>
+        
+        <action name="addAccessory" class="phuctt.actions.AddAccessoryAction">
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">2102840</param>
+                <param name="allowedTypes">image/png,image/jpeg,image/jpg</param>
+            </interceptor-ref>
+            <interceptor-ref name="basicStack"></interceptor-ref>
+            <result name="success">admin/home.jsp</result>
+            <result name="fail" type="chain">loadCategoryType</result>
+        </action>
     </package>
 </struts>
