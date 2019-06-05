@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="sider.jsp" %>
-<div class="title">Add new accessory</div>
+<div class="title mb-4">Add new accessory</div>
 
 <div class="container-fluid">
     <form action="" method="POST">
@@ -30,14 +30,14 @@
             <div class="col-6">
                 <div class="form-group">
                     <label for="accPrice">Price:</label>
-                    <input type="text" id="accPrice" name="price" class="form-control" required>
+                    <input type="number" id="accPrice" name="price" class="form-control" required>
                 </div>
             </div>
 
             <div class="col-6">
                 <div class="form-group">
                     <label for="accQuantity">Quantity:</label>
-                    <input type="text" id="accQuantity" name="quantity" class="form-control" required>
+                    <input type="number" id="accQuantity" name="quantity" class="form-control" required>
                 </div>
             </div>
         </div>
@@ -47,9 +47,11 @@
                 <div class="form-group">
                     <label>Category:</label>
                     <select class="custom-select">
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <s:iterator value="listCategory">
+                            <option name="category" value='<s:property value="%{id}"/>'>
+                                <s:property value="%{name}"/>
+                            </option>
+                        </s:iterator>
                     </select>
                 </div>
             </div>
@@ -58,9 +60,11 @@
                 <div class="form-group">
                     <label>For type:</label>
                     <select class="custom-select">
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <s:iterator value="listType">
+                            <option name="type" value='<s:property value="%{id}" />'>
+                                <s:property value="%{name}"/>
+                            </option>
+                        </s:iterator>
                     </select>
                 </div>
             </div>

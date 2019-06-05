@@ -39,5 +39,10 @@
             <result name="success">admin/home.jsp</result>
             <result name="fail">admin/change-password.jsp</result>
         </action>
+        
+        <action name="loadCategoryType" class="phuctt.actions.LoadCategoryTypeAction">
+            <result name="success">admin/add-accessory.jsp</result>
+            <result name="fail">admin/home.jsp</result>
+        </action>
     </package>
 </struts>
