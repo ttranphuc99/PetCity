@@ -19,7 +19,7 @@
             <div class="wrap-form">
                 <div class="label my-3">Log In</div>
                 <div id="snackbar"><s:property value="%{errorMess}"/></div>
-                <s:form action="/login" method="POST" theme="simple">
+                <form action="/PetCity/login" method="POST">
                     <div class="form-group">
                         <label for="username">Username:</label>
                         <input type="text" name="username" id="username" class="form-control" required>
@@ -38,7 +38,7 @@
                         <a href="/PetCity/publicPage/signup.jsp" class="nav-link">Don't have an account? Register</a>
                         <a href="/PetCity/publicPage/index.jsp" class="nav-link">Back to Home</a>
                     </div>
-                </s:form>
+                </form>
             </div>
         </div>
         <script src="/PetCity/js/public-page/show-snackbar.js"></script>
