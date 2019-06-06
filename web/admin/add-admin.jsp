@@ -5,29 +5,35 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="/struts-tags" prefix="s" %>
 <%@include file="sider.jsp" %>
 <div class="title mb-4">Add a admin</div>
+<div id="snackbar"><s:property value="%{mess}"/></div>
 
 <div class="container-fluid">
     <form action="/PetCity/addAdmin" method="POST">
         <div class="form-group">
             <label for="username">Username:</label>
-            <input type="text" name="username" id="username" class="form-control" required>
+            <input type="text" name="username" id="username" class="form-control" value="<s:property value='%{username}'/>"
+                   required minlength="8" maxlength="20">
         </div>
 
         <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" name="password" id="password" class="form-control" required>
+            <input type="password" name="password" id="password" class="form-control" 
+                   required minlength="6" maxlength="20">
         </div>
 
         <div class="form-group">
             <label for="conPassword">Confirm Password:</label>
-            <input type="password" name="conPassword" id="conPassword" class="form-control" required>
+            <input type="password" name="conPassword" id="conPassword" class="form-control" minlength="6" maxlength="20"
+                   required oninput="checkMatchConfirmPass('conPassword', 'password')">
         </div>
 
         <div class="form-group">
             <label for="fullname">Fullname:</label>
-            <input type="text" name="fullname" id="fullname" class="form-control" required>
+            <input type="text" name="fullname" id="fullname" class="form-control" value="<s:property value='%{fullname}'/>"
+                   required maxlength="50">
         </div>
 
         <label>Gender:</label>
@@ -45,5 +51,6 @@
             <input type="submit" class="btn btn-success w-25 font-label" name="action" value="Add admin">
         </div>
     </form>
+    <script src="/PetCity/js/public-page/validate-signup.js"></script>
 </div>
 <%@include file="end-sider.jsp" %>

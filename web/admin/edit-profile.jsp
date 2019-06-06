@@ -16,7 +16,8 @@
 
         <div class="form-group">
             <label for="fullname">Fullname:</label>
-            <input type="text" id="fullname" class="form-control" name="fullname" value="<s:property value='%{dto.fullname}'/>" >
+            <input type="text" id="fullname" class="form-control" name="fullname" required maxlength="50"
+                   value="<s:property value='%{dto.fullname}'/>" >
         </div>
 
         <label>Gender:</label>

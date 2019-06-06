@@ -22,16 +22,16 @@
                 <s:form action="/login" method="POST" theme="simple">
                     <div class="form-group">
                         <label for="username">Username:</label>
-                        <s:textfield cssClass="form-control" id="username" name="username" requiredPosition="true"/>
+                        <input type="text" name="username" id="username" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label for="password">Password:</label>
-                        <s:password cssClass="form-control" id="password" name="password" label="Password:" requiredPosition="true"/>
+                        <input type="password" name="password" id="password" class="form-control" required>
                     </div>
 
                     <div class="form-group text-center py-3">
-                        <s:submit cssClass="btn btn-success w-50 font-label" name="action" value="Login"/>
+                        <input type="submit" name="action" value="Login" class="btn btn-success w-50 font-label">
                     </div>
 
                     <div class="text-center">

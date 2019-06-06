@@ -13,25 +13,37 @@ import phuctt.dtos.AccountDTO;
  * @author Thien Phuc
  */
 public class SignUpAction {
+
     private String username, password, confirm, fullname, gender;
     private String mess;
     private static final String SUCCESS = "success";
     private static final String FAIL = "fail";
+
     public SignUpAction() {
     }
-    
+
     public String execute() throws Exception {
         String label = FAIL;
         try {
-            AccountDAO dao = new AccountDAO();
-            AccountDTO dto = new AccountDTO(username, password, fullname, "member", gender.equalsIgnoreCase("male"));
-            
-            if (dao.signUp(dto)) {
-                label = SUCCESS;
-            } else {
-                mess = "Sign Up Failed!";
+            boolean isValid = true;
+            if (!confirm.equals(password)) {
+                isValid = false;
+                mess = "Confirm password is not matching";
+            }
+
+            if (isValid) {
+
+                AccountDAO dao = new AccountDAO();
+                AccountDTO dto = new AccountDTO(username, password, fullname, "member", gender.equalsIgnoreCase("male"));
+
+                if (dao.signUp(dto)) {
+                    label = SUCCESS;
+                } else {
+                    mess = "Sign Up Failed!";
+                }
             }
         } catch (Exception e) {
+            e.printStackTrace();
             if (e.getMessage().contains("duplicate")) {
                 mess = "Username is existed!";
             } else {
@@ -79,6 +91,14 @@ public class SignUpAction {
 
     public void setMess(String mess) {
         this.mess = mess;
+    }
+
+    public String getConfirm() {
+        return confirm;
+    }
+
+    public void setConfirm(String confirm) {
+        this.confirm = confirm;
     }
     
 }

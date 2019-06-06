@@ -13,24 +13,35 @@ import phuctt.dtos.AccountDTO;
  * @author Thien Phuc
  */
 public class AddAdminAction {
+
     private String username, password, conPassword, fullname, gender, mess;
-    
+
     private static final String SUCCESS = "success";
     private static final String FAIL = "fail";
+
     public AddAdminAction() {
     }
-    
+
     public String execute() throws Exception {
         String label = FAIL;
         try {
-            AccountDTO dto = new AccountDTO(username, password, fullname, "admin", gender.equalsIgnoreCase("male"));
-            AccountDAO dao = new AccountDAO();
-            
-            if (dao.signUp(dto)) {
-                mess = "Add new admin successfully";
-                label = SUCCESS;
-            } else {
-                mess = "Add new admin failed!";
+            boolean isValid = true;
+
+            if (!password.equals(conPassword)) {
+                isValid = false;
+                mess = "Confirm password is not matching!";
+            }
+
+            if (isValid) {
+                AccountDTO dto = new AccountDTO(username, password, fullname, "admin", gender.equalsIgnoreCase("male"));
+                AccountDAO dao = new AccountDAO();
+
+                if (dao.signUp(dto)) {
+                    mess = "Add new admin successfully";
+                    label = SUCCESS;
+                } else {
+                    mess = "Add new admin failed!";
+                }
             }
         } catch (Exception e) {
             if (e.getMessage().contains("duplicate")) {
@@ -89,5 +100,5 @@ public class AddAdminAction {
     public void setMess(String mess) {
         this.mess = mess;
     }
-    
+
 }

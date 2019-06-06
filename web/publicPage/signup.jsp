@@ -1,3 +1,5 @@
+
+<%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,26 +21,29 @@
         <div class="wrap-signup">
             <div class="wrap-form">
                 <div class="label my-3">Sign Up</div>
+                <div id="snackbar"><s:property value="%{mess}"/></div>
 
                 <form action="/PetCity/signup" method="POST">
                     <div class="form-group">
                         <label for="txtUsername">Username:</label>
-                        <input type="text" class="form-control" id="txtUsername" name="username" required>
+                        <input type="text" class="form-control" id="txtUsername" name="username" value='<s:property value="%{username}"/>'
+                               required minlength="8" maxlength="20">
                     </div>
 
                     <div class="form-group">
                         <label for="txtPassword">Password:</label>
-                        <input type="password" class="form-control" id="txtPassword" name="password" required>
+                        <input type="password" class="form-control" id="txtPassword" name="password" required minlength="6" maxlength="20">
                     </div>
 
                     <div class="form-group">
                         <label for="txtConfirm">Confirm Password:</label>
-                        <input type="password" class="form-control" id="txtConfirm" name="confirm" required>
+                        <input type="password" class="form-control" id="txtConfirm" name="confirm" required minlength="6" maxlength="20" oninput="checkMatchConfirmPass('txtConfirm', 'txtPassword')">
                     </div>
 
                     <div class="form-group">
                         <label for="txtFullname">Fullname:</label>
-                        <input type="text" class="form-control" id="txtFullname" name="fullname" required>
+                        <input type="text" class="form-control" id="txtFullname" name="fullname" value='<s:property value="%{fullname}"/>'
+                               required maxlength="50">
                     </div>
 
                     <label>Gender:</label>
@@ -63,6 +68,7 @@
             </div>
         </div>
         <script src="/PetCity/js/public-page/show-snackbar.js"></script>
+        <script src="/PetCity/js/public-page/validate-signup.js"></script>
     </body>
 
 </html>

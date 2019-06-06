@@ -10,19 +10,19 @@
 <div class="title mb-4">Add new service</div>
 
 <div class="container-fluid">
-    <form action="/PetCity/addService" method="POST" enctype="multipart/form-data">
+    <form action="/PetCity/addService" method="POST" enctype="multipart/form-data" onsubmit="return validate();">
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
                     <label for="accName">Service Name:</label>
-                    <input type="text" id="accName" name="name" class="form-control" required>
+                    <input type="text" id="accName" name="name" class="form-control" required maxlength="50">
                 </div>
             </div>
 
             <div class="col-6">
                 <div class="form-group">
                     <label for="accPrice">Price:</label>
-                    <input type="number" step="0.01" id="accPrice" name="price" class="form-control" required>
+                    <input type="number" step="0.01" id="accPrice" name="price" class="form-control" min="0" required>
                 </div>
             </div>
         </div>
@@ -57,8 +57,8 @@
         <div class="row">
             <div class="col-12">
                 <div class="form-group">
-                    <label for="accDes">Description:</label>
-                    <textarea class="form-control" id="accDes" name="description" required></textarea>
+                    <label for="description">Description:</label>
+                    <textarea class="form-control" id="description" name="description" required></textarea>
                 </div>
             </div>
         </div>
@@ -67,7 +67,7 @@
             <div class="col-12">
                 <div class="form-group">
                     <label class="control-label">Image:</label>
-                    <input type="file" name="image" class="filestyle" data-icon="false">
+                    <input type="file" name="image" id="image" class="filestyle" data-icon="false" required>
                 </div>
             </div>
         </div>
@@ -96,5 +96,6 @@
             <input type="submit" class="btn btn-success w-25 font-label" name="action" value="Add">
         </div>
     </form>
+    <script src="/PetCity/js/admin-page/validate-add-form.js"></script>
 </div>
 <%@include file="end-sider.jsp" %>

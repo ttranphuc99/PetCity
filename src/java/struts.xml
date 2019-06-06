@@ -37,7 +37,7 @@
         
         <action name="addAdmin" class="phuctt.actions.AddAdminAction">
             <result name="success">admin/home.jsp</result>
-            <result name="fail">admin/change-password.jsp</result>
+            <result name="fail">admin/add-admin.jsp</result>
         </action>
         
         <action name="loadCategoryType" class="phuctt.actions.LoadCategoryTypeAction">
