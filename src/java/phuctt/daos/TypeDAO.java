@@ -60,4 +60,27 @@ public class TypeDAO implements Serializable {
             return result;
         }
     }
+    
+    public TypeDTO findByID(int id) throws SQLException, ClassNotFoundException {
+        TypeDTO dto = null;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "SELECT name FROM Type WHERE typeID = ? AND isDelete = ?";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.setBoolean(2, false);
+            
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                String name = rs.getString("name");
+                dto = new TypeDTO(id, name);
+            }
+        } finally {
+            closeConnection();
+        }
+        return dto;
+    }
 }

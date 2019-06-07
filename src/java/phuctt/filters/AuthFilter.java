@@ -47,20 +47,33 @@ public class AuthFilter implements Filter {
 
         admin = new ArrayList<>();
         admin.add("addAccessory");
+        admin.add("addAccessory.action");
         admin.add("addAdmin");
+        admin.add("addAdmin.action");
         admin.add("addService");
+        admin.add("addService.action");
         admin.add("addStaff");
+        admin.add("addStaff.action");
         admin.add("changePassword");
+        admin.add("changePassword.action");
         admin.add("adminEditProfile");
+        admin.add("adminEditProfile.action");
         admin.add("adminViewProfile");
+        admin.add("adminViewProfile.action");
         admin.add("loadCategoryType");
         admin.add("loadCategoryType.action");
         admin.add("loadStaff");
+        admin.add("loadStaff.action");
         admin.add("logout");
+        admin.add("logout.action");
+        admin.add("adminViewListAccessory");
+        admin.add("adminViewListAccessory.action");
 
         member = new ArrayList<>();
         member.add("logout");
+        member.add("logout.action");
         member.add("login");
+        member.add("login.action");
         member.add("");
         member.add("''");
     }
@@ -136,7 +149,7 @@ public class AuthFilter implements Filter {
 
         String uri = req.getRequestURI();
 
-        if (uri.contains("/css/") || uri.contains("/js/") || uri.contains("/img/")) {
+        if (uri.contains("/css/") || uri.contains("/js/") || uri.contains("/img/") || uri.contains("/images/")) {
             chain.doFilter(request, response);
         } else {
             int index = uri.lastIndexOf("/");

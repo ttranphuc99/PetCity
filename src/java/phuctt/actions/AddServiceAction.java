@@ -50,7 +50,6 @@ public class AddServiceAction {
             if (id != -1) {
                 String destLocation = "D:/file/service";
                 String fileExtend = imageFileName.split("\\.")[imageFileName.split("\\.").length - 1];
-                System.out.println("extend: " + fileExtend);
                 
                 File f = new File(destLocation, id +"."+ fileExtend);
                 FileUtils.copyFile(image, f);
@@ -73,6 +72,7 @@ public class AddServiceAction {
                 mess = "Insert fail";
             }
         } catch (Exception e) {
+            mess = "Error";
             e.printStackTrace();
         }
         return label;

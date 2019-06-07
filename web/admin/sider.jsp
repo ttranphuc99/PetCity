@@ -61,7 +61,7 @@
                         <a href="#manage-accessory" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage Accessory</a>
                         <ul class="collapse list-unstyled" id="manage-accessory">
                             <li>
-                                <a href="#">View list accessory</a>
+                                <a href="/PetCity/adminViewListAccessory?page=1">View list accessory</a>
                             </li>
                             <li>
                                 <a href="/PetCity/loadCategoryType?locationPlace=accessory">Add new accessory</a>

@@ -8,6 +8,7 @@
 <%@include file="sider.jsp" %>
 <link rel="stylesheet" href="/PetCity/css/admin-page/add-service.css">
 <div class="title mb-4">Add new service</div>
+<div id="snackbar"><s:property value="%{mess}"/></div>
 
 <div class="container-fluid">
     <form action="/PetCity/addService" method="POST" enctype="multipart/form-data" onsubmit="return validate();">

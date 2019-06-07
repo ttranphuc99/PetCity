@@ -15,7 +15,7 @@ import phuctt.dtos.StaffDTO;
  */
 public class LoadStaffAction {
     private List<StaffDTO> listStaff;
-    private String location, mess;
+    private String locationPlace, mess;
     
     public LoadStaffAction() {
     }
@@ -27,7 +27,7 @@ public class LoadStaffAction {
             StaffDAO dao = new StaffDAO();
             listStaff = dao.searchByLikeName("");
             System.out.println(listStaff);
-            label = location;
+            label = locationPlace;
         } catch (Exception e) {
             mess = "Error DB";
             e.printStackTrace();
@@ -43,12 +43,12 @@ public class LoadStaffAction {
         this.listStaff = listStaff;
     }
 
-    public String getLocation() {
-        return location;
+    public String getLocationPlace() {
+        return locationPlace;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocationPlace(String locationPlace) {
+        this.locationPlace = locationPlace;
     }
 
     public String getMess() {

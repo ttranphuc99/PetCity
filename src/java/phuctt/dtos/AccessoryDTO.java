@@ -34,6 +34,18 @@ public class AccessoryDTO implements Serializable {
         this.type = type;
     }
 
+    public AccessoryDTO(long id, String name, String image, float price, CategoryDTO category, int quantity, TypeDTO type) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+        this.price = price;
+        this.category = category;
+        this.quantity = quantity;
+        this.type = type;
+    }
+    
+    
+
     public long getId() {
         return id;
     }

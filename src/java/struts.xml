@@ -82,7 +82,15 @@
             </interceptor-ref>
             <interceptor-ref name="basicStack"></interceptor-ref>
             <result name="success">admin/home.jsp</result>
-            <result name="fail">admin/add-service.jsp</result>
+            <result name="fail" type="redirectAction">
+                <param name="actionName">loadCategoryType</param>
+                <param name="locationPlace">service</param>
+                <param name="mess">${mess}</param>
+            </result>
+        </action>
+        
+        <action name="adminViewListAccessory" class="phuctt.actions.AdminViewListAccessoryAction">
+            <result name="success">admin/view-list-accessory.jsp</result>
         </action>
     </package>
 </struts>

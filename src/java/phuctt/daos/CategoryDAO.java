@@ -60,4 +60,27 @@ public class CategoryDAO implements Serializable {
         }
         return result;
     }
+    
+    public CategoryDTO findByID(int id) throws SQLException, ClassNotFoundException {
+        CategoryDTO dto = null;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "SELECT name FROM Category WHERE categoryID = ? AND isDelete = ?";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.setBoolean(2, false);
+            
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                String name = rs.getString("name");
+                dto = new CategoryDTO(id, name);
+            }
+        } finally {
+            closeConnection();
+        }
+        return dto;
+    }
 }
