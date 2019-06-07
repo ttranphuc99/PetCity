@@ -159,6 +159,4 @@ public class AddServiceAction {
     public void setImageFileName(String imageFileName) {
         this.imageFileName = imageFileName;
     }
-    
-    
 }

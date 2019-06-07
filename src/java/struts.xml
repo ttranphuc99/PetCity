@@ -58,7 +58,11 @@
             </interceptor-ref>
             <interceptor-ref name="basicStack"></interceptor-ref>
             <result name="success">admin/home.jsp</result>
-            <result name="fail" type="chain">loadCategoryType</result>
+            <result name="fail" type="redirectAction">
+                <param name="actionName">loadCategoryType</param>
+                <param name="locationPlace">accessory</param>
+                <param name="mess">${mess}</param>
+            </result>
         </action>
         
         <action name="addStaff" class="phuctt.actions.AddStaffAction">

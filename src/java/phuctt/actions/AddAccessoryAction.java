@@ -32,7 +32,6 @@ public class AddAccessoryAction {
         String label = FAIL;
         try {
             AccessoryDAO dao = new AccessoryDAO();
-
             CategoryDTO categoryDto = new CategoryDTO(Integer.parseInt(category), "");
             TypeDTO typeDto = new TypeDTO(Integer.parseInt(type), "");
             AccessoryDTO dto = new AccessoryDTO(name, brand, description, "sample", Float.parseFloat(price), categoryDto, Integer.parseInt(quantity), typeDto);
@@ -42,20 +41,26 @@ public class AddAccessoryAction {
                 String destLocation = "D:/file/accessory";
                 String fileExtend = imageFileName.split("\\.")[imageFileName.split("\\.").length - 1];
                 System.out.println("extend: " + fileExtend);
-                
-                File f = new File(destLocation, id +"."+ fileExtend);
+
+                File f = new File(destLocation, id + "." + fileExtend);
                 FileUtils.copyFile(image, f);
-                
-                dao.updateImage(id, id +"."+ fileExtend);
-                
+
+                dao.updateImage(id, id + "." + fileExtend);
+
                 mess = "Insert successfully";
                 label = SUCCESS;
             } else {
                 mess = "Insert fail";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            if (e.getMessage().contains("duplicate")) {
+                mess = "Duplicate ID!";
+            } else {
+                mess = "Error";
+                e.printStackTrace();
+            }
         }
+        System.out.println("label " + label);
         return label;
     }
 
@@ -146,5 +151,4 @@ public class AddAccessoryAction {
     public void setMess(String mess) {
         this.mess = mess;
     }
-
 }

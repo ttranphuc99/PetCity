@@ -19,7 +19,7 @@ public class LoadCategoryTypeAction {
     private List<CategoryDTO> listCategory;
     private List<TypeDTO> listType;
     private String mess;
-    private String location;
+    private String locationPlace;
     
     public LoadCategoryTypeAction() {
     }
@@ -32,7 +32,7 @@ public class LoadCategoryTypeAction {
             
             TypeDAO typeDao = new TypeDAO();
             listType = typeDao.searchByLikeName("");
-            label = location;
+            label = locationPlace;
         } catch (Exception e) {
             mess = "Error DB";
             e.printStackTrace();
@@ -64,14 +64,11 @@ public class LoadCategoryTypeAction {
         this.mess = mess;
     }
 
-    public String getLocation() {
-        return location;
+    public String getLocationPlace() {
+        return locationPlace;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocationPlace(String locationPlace) {
+        this.locationPlace = locationPlace;
     }
-
-    
-    
 }

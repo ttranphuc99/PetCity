@@ -64,7 +64,7 @@
                                 <a href="#">View list accessory</a>
                             </li>
                             <li>
-                                <a href="/PetCity/loadCategoryType?location=accessory">Add new accessory</a>
+                                <a href="/PetCity/loadCategoryType?locationPlace=accessory">Add new accessory</a>
                             </li>
                         </ul>
                     </li>
@@ -75,7 +75,7 @@
                                 <a href="#">View list service</a>
                             </li>
                             <li>
-                                <a href="/PetCity/loadCategoryType?location=service">Add new service</a>
+                                <a href="/PetCity/loadCategoryType?locationPlace=service">Add new service</a>
                             </li>
                         </ul>
                     </li>

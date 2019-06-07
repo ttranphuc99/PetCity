@@ -52,7 +52,9 @@ public class AuthFilter implements Filter {
         admin.add("addStaff");
         admin.add("changePassword");
         admin.add("adminEditProfile");
+        admin.add("adminViewProfile");
         admin.add("loadCategoryType");
+        admin.add("loadCategoryType.action");
         admin.add("loadStaff");
         admin.add("logout");
 
@@ -141,8 +143,7 @@ public class AuthFilter implements Filter {
             String resource = uri.substring(index + 1);
             System.out.println("uri: " + uri);
             System.out.println("resource: " + resource);
-            System.out.println(member.contains(resource));
-            System.out.println(uri.contains("member"));
+            System.out.println(admin.contains(resource));
 
             HttpSession session = req.getSession(false);
 
