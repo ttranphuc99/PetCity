@@ -6,7 +6,10 @@
 package phuctt.actions;
 
 import java.io.File;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.FileUtils;
+import org.apache.struts2.interceptor.ServletRequestAware;
 import phuctt.daos.StaffDAO;
 import phuctt.dtos.StaffDTO;
 
@@ -14,10 +17,11 @@ import phuctt.dtos.StaffDTO;
  *
  * @author Thien Phuc
  */
-public class AddStaffAction {
+public class AddStaffAction implements ServletRequestAware {
     private String name, gender, available, mess;
     private File image;
     private String imageContentType, imageFileName;
+    private HttpServletRequest request;
     
     private static final String SUCCESS = "success";
     private static final String FAIL = "fail";
@@ -35,9 +39,14 @@ public class AddStaffAction {
             if (id != -1) {
                 String destLocation = "D:/file/staff";
                 String fileExtend = imageFileName.split("\\.")[imageFileName.split("\\.").length - 1];
-                System.out.println("extend: " + fileExtend);
                 
                 File f = new File(destLocation, id +"."+ fileExtend);
+                FileUtils.copyFile(image, f);
+                
+                ServletContext sc = request.getSession().getServletContext();
+                String dir = sc.getRealPath("") + "img\\file\\staff";
+                
+                f = new File(dir, id + "." + fileExtend);
                 FileUtils.copyFile(image, f);
                 
                 dao.updateImage(id, id +"."+ fileExtend);
@@ -105,6 +114,11 @@ public class AddStaffAction {
 
     public void setMess(String mess) {
         this.mess = mess;
+    }
+
+    @Override
+    public void setServletRequest(HttpServletRequest hsr) {
+        request = hsr;
     }
     
 }

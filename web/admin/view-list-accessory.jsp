@@ -29,7 +29,7 @@
                 <td><s:property value="%{id}"/></td>
                 <td><s:property value="%{name}"/></td>
                 <td><s:property value="%{category.name}"/></td>
-                <td><img class="img-accessory" src='/PetCity/images/accessory/<s:property value="%{image}"/>'></td>
+                <td><img class="img-accessory" src='/PetCity/img/file/accessory/<s:property value="%{image}"/>'></td>
                 <td><s:property value="%{type.name}"/></td>
                 <td><s:property value="%{quantity}"/></td>
                 <td><s:property value="%{price}"/></td>

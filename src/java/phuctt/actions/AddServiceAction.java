@@ -7,7 +7,10 @@ package phuctt.actions;
 
 import java.io.File;
 import java.util.List;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.FileUtils;
+import org.apache.struts2.interceptor.ServletRequestAware;
 import phuctt.daos.ServiceDAO;
 import phuctt.daos.ServiceStaffDAO;
 import phuctt.dtos.ServiceDTO;
@@ -18,11 +21,12 @@ import phuctt.dtos.TypeDTO;
  *
  * @author Thien Phuc
  */
-public class AddServiceAction {
+public class AddServiceAction implements ServletRequestAware {
     private String name, price, type, duration, description, mess;
     private List<String> staff;
     private File image;
     private String imageContentType, imageFileName;
+    private HttpServletRequest request;
     
     private static final String SUCCESS = "success";
     private static final String FAIL = "fail";
@@ -52,6 +56,12 @@ public class AddServiceAction {
                 String fileExtend = imageFileName.split("\\.")[imageFileName.split("\\.").length - 1];
                 
                 File f = new File(destLocation, id +"."+ fileExtend);
+                FileUtils.copyFile(image, f);
+                
+                ServletContext sc = request.getSession().getServletContext();
+                String dir = sc.getRealPath("") + "img\\file\\service";
+                
+                f = new File(dir, id + "." + fileExtend);
                 FileUtils.copyFile(image, f);
                 
                 dao.updateImage(id, id +"."+ fileExtend);
@@ -158,5 +168,10 @@ public class AddServiceAction {
 
     public void setImageFileName(String imageFileName) {
         this.imageFileName = imageFileName;
+    }
+
+    @Override
+    public void setServletRequest(HttpServletRequest hsr) {
+        request = hsr;
     }
 }

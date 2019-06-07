@@ -44,6 +44,9 @@ public class AuthFilter implements Filter {
         guest.add("");
         guest.add("signup");
         guest.add("signup.action");
+        guest.add("welcome");
+        guest.add("welcome.action");
+        
 
         admin = new ArrayList<>();
         admin.add("addAccessory");

@@ -6,5 +6,5 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    response.sendRedirect("publicPage/index.jsp");
+    response.sendRedirect("welcome");
 %>

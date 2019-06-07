@@ -6,7 +6,10 @@
 package phuctt.actions;
 
 import java.io.File;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.FileUtils;
+import org.apache.struts2.interceptor.ServletRequestAware;
 import phuctt.daos.AccessoryDAO;
 import phuctt.dtos.AccessoryDTO;
 import phuctt.dtos.CategoryDTO;
@@ -16,8 +19,8 @@ import phuctt.dtos.TypeDTO;
  *
  * @author Thien Phuc
  */
-public class AddAccessoryAction {
-
+public class AddAccessoryAction implements ServletRequestAware {
+    private HttpServletRequest request;
     private String name, brand, price, quantity, category, type, description, mess;
     private File image;
     private String imageContentType, imageFileName;
@@ -40,9 +43,13 @@ public class AddAccessoryAction {
             if (id != -1) {
                 String destLocation = "D:/file/accessory";
                 String fileExtend = imageFileName.split("\\.")[imageFileName.split("\\.").length - 1];
-                System.out.println("extend: " + fileExtend);
-
+                
+                ServletContext sc = request.getSession().getServletContext();
+                String dir = sc.getRealPath("") + "img\\file\\accessory";
                 File f = new File(destLocation, id + "." + fileExtend);
+                FileUtils.copyFile(image, f);
+                
+                f = new File(dir, id + "." + fileExtend);
                 FileUtils.copyFile(image, f);
 
                 dao.updateImage(id, id + "." + fileExtend);
@@ -150,5 +157,10 @@ public class AddAccessoryAction {
 
     public void setMess(String mess) {
         this.mess = mess;
+    }
+
+    @Override
+    public void setServletRequest(HttpServletRequest hsr) {
+        request = hsr;
     }
 }

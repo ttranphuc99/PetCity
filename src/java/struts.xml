@@ -92,5 +92,9 @@
         <action name="adminViewListAccessory" class="phuctt.actions.AdminViewListAccessoryAction">
             <result name="success">admin/view-list-accessory.jsp</result>
         </action>
+        
+        <action name="welcome" class="phuctt.actions.WelcomeAction">
+            <result name="success">publicPage/index.jsp</result>
+        </action>
     </package>
 </struts>
