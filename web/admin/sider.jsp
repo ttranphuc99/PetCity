@@ -47,7 +47,7 @@
                         <a href="#manage-user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage User</a>
                         <ul class="collapse list-unstyled" id="manage-user">
                             <li>
-                                <a href="#">View list user</a>
+                                <a href="/PetCity/adminViewListUser?page=1">View list member</a>
                             </li>
                             <li>
                                 <a href="#">View list admin</a>

@@ -159,8 +159,7 @@ public class AccessoryDAO implements Serializable {
             conn = DBConnection.getConnection();
             
             String sql = "SELECT count(accessoryID) as num FROM Accessory "
-                    + "WHERE name LIKE ? AND categoryID = ? AND forType = ? AND isDelete = ? "
-                    + "GROUP BY (accessoryID)";
+                    + "WHERE name LIKE ? AND categoryID = ? AND forType = ? AND isDelete = ?";
             
             ps = conn.prepareStatement(sql);
             ps.setString(1, "%" +name+ "%");

@@ -32,12 +32,11 @@
 
 <div class="container-fluid">
     <form action="adminViewListAccessory" method="POST">
-        <input type="hidden" name="page" value="1" />
         <div class="row">
             <div class="col-4">
                 <div class="form-group">
                     <label for="searchName">Search name:</label>
-                    <input type="text" id="accName" name="searchName" class="form-control"
+                    <input type="text" id="searchName" name="searchName" class="form-control"
                         value='<s:property value="%{searchName}"/>' maxlength="100">
                 </div>
             </div>

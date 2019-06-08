@@ -1,0 +1,29 @@
+.col-id {
+    width: 20%;
+}
+
+.col-name {
+    width: 15%;
+}
+
+.col-add {
+    width: 25%;
+}
+
+.col-phone {
+    width: 10%;
+}
+
+.col-gender {
+    width: 10%;
+}
+
+.col-status {
+    width: 10%;
+}
+
+.table td {
+    padding: 15px;
+    align-items: center;
+}
+

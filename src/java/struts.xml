@@ -110,5 +110,17 @@
         <action name="deleteAccessory" class="phuctt.actions.DeleteAccessoryAction">
             <result name="success" type="chain">adminViewListAccessory</result>
         </action>
+        
+        <action name="adminViewListUser" class="phuctt.actions.AdminViewListUserAction">
+            <result name="success">admin/view-list-user.jsp</result>
+        </action>
+        
+        <action name="banUser" class="phuctt.actions.BanUserAction">
+            <result name="success" type="chain">adminViewListUser</result>
+        </action>
+        
+        <action name="activeUser" class="phuctt.actions.ActiveUserAction">
+            <result name="success" type="chain">adminViewListUser</result>
+        </action>
     </package>
 </struts>

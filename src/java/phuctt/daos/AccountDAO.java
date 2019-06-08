@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import phuctt.dbs.DBConnection;
 import phuctt.dtos.AccountDTO;
 
@@ -125,6 +127,104 @@ public class AccountDAO implements Serializable {
             String sql = "UPDATE Account SET password = ? WHERE username = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, newPassword);
+            ps.setString(2, username);
+            
+            check = ps.executeUpdate() > 0;
+        } finally {
+            closeConnection();
+        }
+        return check;
+    }
+    
+    public int searchByLikeNamePhone(String name, String phone, String role) throws SQLException, ClassNotFoundException {
+        int num = 0;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "SELECT count(username) as num FROM Account "
+                    + "WHERE fullname LIKE ? AND phone LIKE ? AND role = ?";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, "%" +name+ "%");
+            ps.setString(2, "%" + phone);
+            ps.setString(3, role);
+            
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                num = rs.getInt("num");
+            }
+        } finally {
+            closeConnection();
+        }
+        return num;
+    }
+    
+    public List<AccountDTO> searchByLikeNamePhone(String name, String phone, String role, int page) throws SQLException, ClassNotFoundException {
+        List<AccountDTO> result = null;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "SELECT username, fullname, address, phone, gender, isDelete FROM Account "
+                    + "WHERE fullname LIKE ? AND phone LIKE ? AND role = ? "
+                    + "ORDER BY username OFFSET " +((page-1)*10)+ " ROWS FETCH NEXT 10 ROWS ONLY";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, "%" +name+ "%");
+            ps.setString(2, "%" + phone);
+            ps.setString(3, role);
+            
+            rs = ps.executeQuery();
+            
+            String username, fullname, address, phoneRe;
+            boolean gender, isDelete;
+            AccountDTO dto;
+            result = new ArrayList<>();
+            
+            while (rs.next()) {
+                username = rs.getString("username");
+                fullname = rs.getString("fullname");
+                address = rs.getString("address");
+                phoneRe = rs.getString("phone");
+                gender = rs.getBoolean("gender");
+                isDelete = rs.getBoolean("isDelete");
+                
+                dto = new AccountDTO(username, "", fullname, address, phoneRe, "", isDelete, gender);
+                result.add(dto);
+            }
+        } finally {
+            closeConnection();
+        }
+        return result;
+    }
+    
+    public boolean delete(String username) throws ClassNotFoundException, SQLException {
+        boolean check = false;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "UPDATE Account SET isDelete = ? WHERE username = ?";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setBoolean(1, true);
+            ps.setString(2, username);
+            
+            check = ps.executeUpdate() > 0;
+        } finally {
+            closeConnection();
+        }
+        return check;
+    }
+    
+    public boolean active(String username) throws ClassNotFoundException, SQLException {
+        boolean check = false;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "UPDATE Account SET isDelete = ? WHERE username = ?";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setBoolean(1, false);
             ps.setString(2, username);
             
             check = ps.executeUpdate() > 0;

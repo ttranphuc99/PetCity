@@ -5,27 +5,27 @@
  */
 package phuctt.actions;
 
-import phuctt.daos.AccessoryDAO;
+import phuctt.daos.AccountDAO;
 
 /**
  *
  * @author Thien Phuc
  */
-public class DeleteAccessoryAction {
-    private long id;
-    private String mess;
+public class ActiveUserAction {
+    private String id, mess;
     
-    public DeleteAccessoryAction() {
+    public ActiveUserAction() {
     }
     
     public String execute() {
         String label = "success";
         try {
-            AccessoryDAO dao = new AccessoryDAO();
-            if (dao.delete(id)) {
-                mess = "Delete " +id+ " successfully";
+            AccountDAO dao = new AccountDAO();
+            
+            if (dao.active(id)) {
+                mess = "Active user " +id+ " successfully";
             } else {
-                mess = "delete fail";
+                mess = "Active failed";
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -33,12 +33,12 @@ public class DeleteAccessoryAction {
         }
         return label;
     }
-
-    public long getId() {
+    
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -49,6 +49,4 @@ public class DeleteAccessoryAction {
     public void setMess(String mess) {
         this.mess = mess;
     }
-    
-    
 }
