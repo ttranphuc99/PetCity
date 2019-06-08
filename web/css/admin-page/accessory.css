@@ -1,3 +1,16 @@
 .img-accessory {
     width: 100px;
 }
+
+.table {
+    background-color: white !important;
+}
+
+.table td {
+    padding: 15px;
+    align-items: center;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #FEFEDF;
+}

@@ -113,7 +113,7 @@ public class AccessoryDAO implements Serializable {
             
             String sql = "SELECT accessoryID, name, image, quantity, price FROM Accessory "
                     + "WHERE name LIKE ? AND categoryID = ? AND typeID = ? AND isDelete = ? "
-                    + "ORDER BY accessoryID OFFSET " +((page-1)*10)+ " ROWS FETCH NEXT 10 ROWS ONLY";
+                    + "ORDER BY accessoryID OFFSET " +((page-1)*5)+ " ROWS FETCH NEXT 5 ROWS ONLY";
             
             ps = conn.prepareStatement(sql);
             ps.setString(1, "%" +searchName+ "%");
@@ -181,7 +181,7 @@ public class AccessoryDAO implements Serializable {
             
             String sql = "SELECT accessoryID, name, image, forType, quantity, price FROM Accessory "
                     + "WHERE name LIKE ? AND categoryID = ? AND isDelete = ? "
-                    + "ORDER BY accessoryID OFFSET " +((page-1)*10)+ " ROWS FETCH NEXT 10 ROWS ONLY";
+                    + "ORDER BY accessoryID OFFSET " +((page-1)*5)+ " ROWS FETCH NEXT 5 ROWS ONLY";
             
             ps = conn.prepareStatement(sql);
             ps.setString(1, "%" +searchName+ "%");
@@ -248,7 +248,7 @@ public class AccessoryDAO implements Serializable {
             
             String sql = "SELECT accessoryID, name, image, categoryID, quantity, price FROM Accessory "
                     + "WHERE name LIKE ? AND typeID = ? AND isDelete = ? "
-                    + "ORDER BY accessoryID OFFSET " +((page-1)*10)+ " ROWS FETCH NEXT 10 ROWS ONLY";
+                    + "ORDER BY accessoryID OFFSET " +((page-1)*5)+ " ROWS FETCH NEXT 5 ROWS ONLY";
             
             ps = conn.prepareStatement(sql);
             ps.setString(1, "%" +searchName+ "%");
@@ -314,7 +314,7 @@ public class AccessoryDAO implements Serializable {
             
             String sql = "SELECT accessoryID, name, image, categoryID, forType, quantity, price FROM Accessory "
                     + "WHERE name LIKE ? AND isDelete = ? "
-                    + "ORDER BY accessoryID OFFSET " +((page-1)*10)+ " ROWS FETCH NEXT 10 ROWS ONLY";
+                    + "ORDER BY accessoryID OFFSET " +((page-1)*5)+ " ROWS FETCH NEXT 5 ROWS ONLY";
             
             ps = conn.prepareStatement(sql);
             ps.setString(1, "%" +searchName+ "%");

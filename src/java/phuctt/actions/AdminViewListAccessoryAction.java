@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import phuctt.daos.AccessoryDAO;
 import phuctt.dtos.AccessoryDTO;
+import phuctt.dtos.CategoryDTO;
+import phuctt.dtos.TypeDTO;
 
 /**
  *
@@ -16,33 +18,32 @@ import phuctt.dtos.AccessoryDTO;
  */
 public class AdminViewListAccessoryAction {
 
-    private String page, searchName, mess;
-    private String type, category;
+    private String searchName, mess;
+    private int page, type, category;
     private List<AccessoryDTO> listAccessory;
+    private List<CategoryDTO> listCategory;
+    private List<TypeDTO> listType;
+    private int numOfPage;
 
     public AdminViewListAccessoryAction() {
-        type = "-1";
-        category = "-1";
+        type = -1;
+        category = -1;
         searchName = "";
+        page = 1;
     }
 
     public String execute() {
         String label = "success";
         try {
-            int type = Integer.parseInt(this.type);
-            int category = Integer.parseInt(this.category);
-            int page = Integer.parseInt(this.page);
-            System.out.println("page " + page);
-            System.out.println("type " + type);
-            System.out.println("category " + category);
-
+            if (page < 1) page = 1;
             AccessoryDAO dao = new AccessoryDAO();
 
             if (type > 0 && category > 0) {
                 int recordCount = dao.search(searchName, category, type);
-
+                numOfPage = (int) Math.ceil(recordCount*1.0 / 5);
+                
                 if (recordCount > 0) {
-                    if (recordCount < (page - 1) * 10) {
+                    if (recordCount < (page - 1) * 5) {
                         page = 1;
                     }
                     listAccessory = dao.search(searchName, category, type, page);
@@ -51,9 +52,10 @@ public class AdminViewListAccessoryAction {
                 }
             } else if (type > 0) {
                 int recordCount = dao.searchNameType(searchName, type);
+                numOfPage = (int) Math.ceil(recordCount*1.0 / 5);
 
                 if (recordCount > 0) {
-                    if (recordCount < (page - 1) * 10) {
+                    if (recordCount < (page - 1) * 5) {
                         page = 1;
                     }
                     listAccessory = dao.searchNameType(searchName, type, page);
@@ -62,9 +64,10 @@ public class AdminViewListAccessoryAction {
                 }
             } else if (category > 0) {
                 int recordCount = dao.searchNameCate(searchName, category);
+                numOfPage = (int) Math.ceil(recordCount*1.0 / 5);
 
                 if (recordCount > 0) {
-                    if (recordCount < (page - 1) * 10) {
+                    if (recordCount < (page - 1) * 5) {
                         page = 1;
                     }
                     listAccessory = dao.searchNameCate(searchName, category, page);
@@ -73,12 +76,12 @@ public class AdminViewListAccessoryAction {
                 }
             } else {
                 int recordCount = dao.searchName(searchName);
-                System.out.println("count " + recordCount);
+                numOfPage = (int) Math.ceil(recordCount*1.0 / 5);
+                
                 if (recordCount > 0) {
-                    if (recordCount < (page - 1) * 10) {
+                    if (recordCount < (page - 1) * 5) {
                         page = 1;
                     }
-                    System.out.println("page2" + this.page);
                     listAccessory = dao.searchName(searchName, page);
                 } else {
                     listAccessory = new ArrayList<>();
@@ -91,12 +94,28 @@ public class AdminViewListAccessoryAction {
         return label;
     }
 
-    public String getPage() {
+    public int getPage() {
         return page;
     }
 
-    public void setPage(String page) {
+    public void setPage(int page) {
         this.page = page;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getCategory() {
+        return category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
     }
 
     public String getMess() {
@@ -123,20 +142,28 @@ public class AdminViewListAccessoryAction {
         this.searchName = searchName;
     }
 
-    public String getType() {
-        return type;
+    public int getNumOfPage() {
+        return numOfPage;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setNumOfPage(int numOfPage) {
+        this.numOfPage = numOfPage;
     }
 
-    public String getCategory() {
-        return category;
+    public List<CategoryDTO> getListCategory() {
+        return listCategory;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setListCategory(List<CategoryDTO> listCategory) {
+        this.listCategory = listCategory;
+    }
+
+    public List<TypeDTO> getListType() {
+        return listType;
+    }
+
+    public void setListType(List<TypeDTO> listType) {
+        this.listType = listType;
     }
 
 }
