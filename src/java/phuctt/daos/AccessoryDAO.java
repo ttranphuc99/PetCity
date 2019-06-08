@@ -136,6 +136,23 @@ public class AccessoryDAO implements Serializable {
         return dto;
     }
     
+    public boolean delete(long id) throws ClassNotFoundException, SQLException {
+        boolean check = false;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "UPDATE Accessory SET isDelete = ? WHERE accessoryID = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setBoolean(1, true);
+            ps.setLong(2, id);
+            
+            check = ps.executeUpdate() > 0;
+        } finally {
+            closeConnection();
+        }
+        return check;
+    }
+    
     public int search(String name, int categoryID, int typeID) throws SQLException, ClassNotFoundException {
         int num = 0;
         try {

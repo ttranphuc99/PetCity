@@ -10,15 +10,35 @@
 <link rel="stylesheet" href="/PetCity/css/admin-page/accessory.css">
 <div class="title mb-4">View list accessory</div>
 
-<div class="container-fluid">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Confirm</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a role="button" class="btn btn-danger" id="deleteBtnAction" href="javascript(0);">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="container-fluid">
     <form action="adminViewListAccessory" method="POST">
-        <input type="hidden" name="page" value="1"/>
+        <input type="hidden" name="page" value="1" />
         <div class="row">
             <div class="col-4">
                 <div class="form-group">
                     <label for="searchName">Search name:</label>
-                    <input type="text" id="accName" name="searchName" class="form-control" value='<s:property value="%{searchName}"/>' maxlength="100">
+                    <input type="text" id="accName" name="searchName" class="form-control"
+                        value='<s:property value="%{searchName}"/>' maxlength="100">
                 </div>
             </div>
 
@@ -57,7 +77,6 @@
             </div>
         </div>
     </form>
-
 </div>
 
 <s:if test="%{listAccessory.isEmpty}">
@@ -99,11 +118,15 @@
                         <s:property value="%{quantity}" />
                     </td>
                     <td class="align-middle text-center col-price">
-                        $<s:property value="%{price}" />
+                        $
+                        <s:property value="%{price}" />
                     </td>
                     <td class="align-middle text-center">
-                        <a class="btn btn-sm btn-outline-info my-1" href='/PetCity/adminViewDetailAccessory?id=<s:property value="%{id}"/>' role="button">Detail</a><br>
-                        <a class="btn btn-sm btn-outline-danger" href="#" role="button">Delete</a>
+                        <a class="btn btn-sm btn-outline-info my-1"
+                            href='/PetCity/adminViewDetailAccessory?id=<s:property value="%{id}"/>'
+                            role="button">Detail</a><br>
+                        <button class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal"
+                            onclick='deleteAccessory(<s:property value="%{id}"/>, "<s:property value="%{name}"/>")'>Delete</button>
                     </td>
                 </tr>
             </s:iterator>
@@ -113,10 +136,10 @@
         <ul class="pagination justify-content-end">
             <li class="page-item">
                 <s:url action="adminViewListAccessory" var="pageUrlFirst" escapeAmp="false">
-                    <s:param name="page" value="1"/>
-                    <s:param name="searchName" value="%{searchName}"/>
-                    <s:param name="type" value="%{type}"/>
-                    <s:param name="category" value="%{category}"/>
+                    <s:param name="page" value="1" />
+                    <s:param name="searchName" value="%{searchName}" />
+                    <s:param name="type" value="%{type}" />
+                    <s:param name="category" value="%{category}" />
                 </s:url>
                 <a class="page-link" href='<s:property value="#pageUrlFirst"/>'>First</a>
             </li>
@@ -145,5 +168,5 @@
         </ul>
     </nav>
 </s:else>
-
+<script src="/PetCity/js/admin-page/delete-action.js"></script>
 <%@include file="end-sider.jsp" %>

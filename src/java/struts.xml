@@ -106,5 +106,9 @@
             <result name="success" type="chain">adminViewListAccessory</result>
             <result name="fail" type="chain">adminViewListAccessory</result>
         </action>
+        
+        <action name="deleteAccessory" class="phuctt.actions.DeleteAccessoryAction">
+            <result name="success" type="chain">adminViewListAccessory</result>
+        </action>
     </package>
 </struts>
