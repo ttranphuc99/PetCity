@@ -12,13 +12,13 @@ import phuctt.daos.AccountDAO;
  * @author Thien Phuc
  */
 public class BanUserAction {
-    private String id, mess;
+    private String id, mess, role;
     
     public BanUserAction() {
     }
     
     public String execute() {
-        String label = "success";
+        String label = role;
         try {
             AccountDAO dao = new AccountDAO();
             
@@ -48,6 +48,14 @@ public class BanUserAction {
 
     public void setMess(String mess) {
         this.mess = mess;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
     
     

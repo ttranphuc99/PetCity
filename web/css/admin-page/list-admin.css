@@ -1,0 +1,16 @@
+.table td {
+    padding: 15px;
+    align-items: center;
+}
+
+.col-id {
+    width: 20%;
+}
+
+.col-name {
+    width: 25%;
+}
+
+.col-gender, .col-status {
+    width: 15%;
+}

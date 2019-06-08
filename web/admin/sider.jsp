@@ -50,7 +50,7 @@
                                 <a href="/PetCity/adminViewListUser?page=1">View list member</a>
                             </li>
                             <li>
-                                <a href="#">View list admin</a>
+                                <a href="/PetCity/adminViewListAdmin?page=1">View list admin</a>
                             </li>
                             <li>
                                 <a href="/PetCity/admin/add-admin.jsp">Add new admin</a>

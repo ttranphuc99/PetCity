@@ -7,12 +7,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  uri="/struts-tags" prefix="s" %>
 <%@include file="sider.jsp" %>
-<link rel="stylesheet" href="/PetCity/css/admin-page/member.css">
-<div class="title mb-4">View list member</div>
+<link rel="stylesheet" href="/PetCity/css/admin-page/list-admin.css">
+<div class="title mb-4">View list admin</div>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -31,21 +31,13 @@
 </div>
 
 <div class="container-fluid">
-    <form action="adminViewListUser" method="POST">
+    <form action="adminViewListAdmin" method="POST">
         <div class="row">
-            <div class="col-5">
+            <div class="col-10">
                 <div class="form-group">
                     <label for="searchName">Search name:</label>
                     <input type="text" id="searchName" name="fullname" class="form-control"
-                           value='<s:property value="%{fullname}"/>' maxlength="100">
-                </div>
-            </div>
-
-            <div class="col-5">
-                <div class="form-group">
-                    <label for="searchPhone">Search phone:</label>
-                    <input type="text" id="searchPhone" name="phone" class="form-control"
-                           value='<s:property value="%{phone}"/>' maxlength="100">
+                        value='<s:property value="%{fullname}"/>' maxlength="100">
                 </div>
             </div>
 
@@ -67,8 +59,6 @@
             <tr>
                 <th class="th-sm text-center col-id">Username</th>
                 <th class="th-sm text-center col-name">Fullname</th>
-                <th class="th-sm text-center col-add">Address</th>
-                <th class="th-sm text-center col-phone">Phone</th>
                 <th class="th-sm text-center col-gender">Gender</th>
                 <th class="th-sm text-center col-status">Status</th>
                 <th class="th-sm text-center">Action</th>
@@ -83,12 +73,6 @@
                     <td class="align-middle col-name">
                         <s:property value="%{fullname}" />
                     </td>
-                    <td class="align-middle text-center col-add">
-                        <s:property value="%{address}"/>
-                    </td>
-                    <td class="align-middle text-center col-phone">
-                        <s:property value="%{phone}" />
-                    </td>
                     <td class="align-middle text-center col-gender">
                         <s:if test="%{gender}">Male</s:if>
                         <s:else>Female</s:else>
@@ -98,18 +82,20 @@
                         <s:else><span class="badge badge-primary">Active</span></s:else>
                     </td>
                     <td class="align-middle text-center">
-                    <s:if test="%{delete}">
-                        <a href="activeUser?role=member&id=<s:property value="%{username}"/>" class="btn btn-sm btn-outline-primary" role="button">
-                            Active
-                        </a>
-                    </s:if>
-                    <s:else>
-                        <button class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal"
-                                    onclick='deleteUser("<s:property value="%{username}"/>", "<s:property value="%{fullname}"/>", "member")'>
-                            Ban
-                        </button>
-                    </s:else>
-                        
+                        <s:set var="curUsername" value="%{#session.USERNAME}"/>
+                        <s:if test="%{!username.equals(#curUsername)}">
+                            <s:if test="%{delete}">
+                                <a href="activeUser?role=admin&id=<s:property value="%{username}"/>" class="btn btn-sm btn-outline-primary" role="button">
+                                    Active
+                                </a>
+                            </s:if>
+                            <s:else>
+                                <button class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal"
+                                        onclick='deleteUser("<s:property value="%{username}"/>", "<s:property value="%{fullname}"/>", "admin")'>
+                                    Ban
+                                </button>
+                            </s:else>
+                        </s:if>
                     </td>
                 </tr>
             </s:iterator>

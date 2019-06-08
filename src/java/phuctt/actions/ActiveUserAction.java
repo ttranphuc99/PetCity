@@ -12,13 +12,13 @@ import phuctt.daos.AccountDAO;
  * @author Thien Phuc
  */
 public class ActiveUserAction {
-    private String id, mess;
+    private String id, mess, role;
     
     public ActiveUserAction() {
     }
     
     public String execute() {
-        String label = "success";
+        String label = role;
         try {
             AccountDAO dao = new AccountDAO();
             
@@ -49,4 +49,13 @@ public class ActiveUserAction {
     public void setMess(String mess) {
         this.mess = mess;
     }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+    
 }
