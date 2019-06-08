@@ -8,6 +8,8 @@ package phuctt.actions;
 import java.util.ArrayList;
 import java.util.List;
 import phuctt.daos.AccessoryDAO;
+import phuctt.daos.CategoryDAO;
+import phuctt.daos.TypeDAO;
 import phuctt.dtos.AccessoryDTO;
 import phuctt.dtos.CategoryDTO;
 import phuctt.dtos.TypeDTO;
@@ -35,6 +37,10 @@ public class AdminViewListAccessoryAction {
     public String execute() {
         String label = "success";
         try {
+            System.out.println("page " + page);
+            System.out.println("search " + searchName);
+            System.out.println("type " + type);
+            System.out.println("cate " + category);
             if (page < 1) page = 1;
             AccessoryDAO dao = new AccessoryDAO();
 
@@ -87,6 +93,12 @@ public class AdminViewListAccessoryAction {
                     listAccessory = new ArrayList<>();
                 }
             }
+            
+            CategoryDAO cateDao = new CategoryDAO();
+            listCategory = cateDao.searchByLikeName("");
+            
+            TypeDAO typeDao = new TypeDAO();
+            listType = typeDao.searchByLikeName("");
         } catch (Exception e) {
             e.printStackTrace();
             mess = "Error";

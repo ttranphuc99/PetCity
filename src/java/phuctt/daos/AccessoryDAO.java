@@ -86,7 +86,7 @@ public class AccessoryDAO implements Serializable {
             conn = DBConnection.getConnection();
             
             String sql = "SELECT count(accessoryID) as num FROM Accessory "
-                    + "WHERE name LIKE ? AND categoryID = ? AND typeID = ? AND isDelete = ? "
+                    + "WHERE name LIKE ? AND categoryID = ? AND forType = ? AND isDelete = ? "
                     + "GROUP BY (accessoryID)";
             
             ps = conn.prepareStatement(sql);
@@ -112,7 +112,7 @@ public class AccessoryDAO implements Serializable {
             conn = DBConnection.getConnection();
             
             String sql = "SELECT accessoryID, name, image, quantity, price FROM Accessory "
-                    + "WHERE name LIKE ? AND categoryID = ? AND typeID = ? AND isDelete = ? "
+                    + "WHERE name LIKE ? AND categoryID = ? AND forType = ? AND isDelete = ? "
                     + "ORDER BY accessoryID OFFSET " +((page-1)*5)+ " ROWS FETCH NEXT 5 ROWS ONLY";
             
             ps = conn.prepareStatement(sql);
@@ -223,7 +223,7 @@ public class AccessoryDAO implements Serializable {
             conn = DBConnection.getConnection();
             
             String sql = "SELECT count(accessoryID) as num FROM Accessory "
-                    + "WHERE name LIKE ? AND typeID = ? AND isDelete = ?";
+                    + "WHERE name LIKE ? AND forType = ? AND isDelete = ?";
             
             ps = conn.prepareStatement(sql);
             ps.setString(1, "%" +name+ "%");
@@ -247,7 +247,7 @@ public class AccessoryDAO implements Serializable {
             conn = DBConnection.getConnection();
             
             String sql = "SELECT accessoryID, name, image, categoryID, quantity, price FROM Accessory "
-                    + "WHERE name LIKE ? AND typeID = ? AND isDelete = ? "
+                    + "WHERE name LIKE ? AND forType = ? AND isDelete = ? "
                     + "ORDER BY accessoryID OFFSET " +((page-1)*5)+ " ROWS FETCH NEXT 5 ROWS ONLY";
             
             ps = conn.prepareStatement(sql);

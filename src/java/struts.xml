@@ -43,7 +43,6 @@
         <action name="loadCategoryType" class="phuctt.actions.LoadCategoryTypeAction">
             <result name="accessory">admin/add-accessory.jsp</result>
             <result name="service" type="chain">loadStaff</result>
-            <result name="listAccessory" type="chain">adminViewListAccessory</result>
             <result name="fail">admin/home.jsp</result>
         </action>
         

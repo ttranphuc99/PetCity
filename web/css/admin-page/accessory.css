@@ -14,3 +14,19 @@
 .table-striped tbody tr:nth-of-type(odd) {
     background-color: #FEFEDF;
 }
+
+.col-id {
+    width: 2%;
+}
+
+.col-name {
+    width: 30%;
+}
+
+.col-img {
+    width: 20%;
+}
+
+.col-cate, .col-type, .col-quan, .col-price {
+    width: 8%;
+}
