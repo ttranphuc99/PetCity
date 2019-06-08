@@ -80,6 +80,62 @@ public class AccessoryDAO implements Serializable {
         return check;
     }
     
+    public boolean update(AccessoryDTO dto) throws SQLException, ClassNotFoundException {
+        boolean check = false;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "UPDATE Accessory SET name = ?, brand = ?, price = ?,"
+                    + " description = ?, categoryID = ?, quantity = ?, forType = ? "
+                    + "WHERE accessoryID = ?";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, dto.getName());
+            ps.setString(2, dto.getBrand());
+            ps.setFloat(3, dto.getPrice());
+            ps.setString(4, dto.getDescription());
+            ps.setInt(5, dto.getCategory().getId());
+            ps.setInt(6, dto.getQuantity());
+            ps.setInt(7, dto.getType().getId());
+            ps.setLong(8, dto.getId());
+            
+            check = ps.executeUpdate() > 0;
+        } finally {
+            closeConnection();
+        }
+        return check;
+    }
+    
+    public AccessoryDTO findById(long id) throws SQLException, ClassNotFoundException {
+        AccessoryDTO dto = null;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "SELECT name, brand, price, description, categoryID, quantity, forType, image FROM Accessory WHERE accessoryID = ?";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setLong(1, id);
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                String name = rs.getString("name");
+                String brand = rs.getString("brand");
+                float price = rs.getFloat("price");
+                String description = rs.getString("description");
+                CategoryDTO category = (new CategoryDAO()).findByID(rs.getInt("categoryID"));
+                int quantity = rs.getInt("quantity");
+                TypeDTO type = (new TypeDAO()).findByID(rs.getInt("forType"));
+                String image = rs.getString("image");
+                
+                dto = new AccessoryDTO(name, brand, description, image, price, category, quantity, type);
+                dto.setId(id);
+            }
+        } finally {
+            closeConnection();
+        }
+        return dto;
+    }
+    
     public int search(String name, int categoryID, int typeID) throws SQLException, ClassNotFoundException {
         int num = 0;
         try {

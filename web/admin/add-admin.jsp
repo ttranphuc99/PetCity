@@ -8,7 +8,6 @@
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@include file="sider.jsp" %>
 <div class="title mb-4">Add a admin</div>
-<div id="snackbar"><s:property value="%{mess}"/></div>
 
 <div class="container-fluid">
     <form action="/PetCity/addAdmin" method="POST">

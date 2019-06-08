@@ -19,55 +19,66 @@ import phuctt.dtos.TypeDTO;
  *
  * @author Thien Phuc
  */
-public class AddAccessoryAction implements ServletRequestAware {
+public class UpdateAccessoryAction implements ServletRequestAware {
+
     private HttpServletRequest request;
-    private String name, brand, price, quantity, category, type, description, mess;
+    private long id;
+    private int category, type;
+    private String name, brand, price, quantity, description, mess;
     private File image;
     private String imageContentType, imageFileName;
 
     private static final String SUCCESS = "success";
     private static final String FAIL = "fail";
 
-    public AddAccessoryAction() {
+    public UpdateAccessoryAction() {
     }
 
-    public String execute() {
+    public String execute() throws Exception {
         String label = FAIL;
         try {
             AccessoryDAO dao = new AccessoryDAO();
-            CategoryDTO categoryDto = new CategoryDTO(Integer.parseInt(category), "");
-            TypeDTO typeDto = new TypeDTO(Integer.parseInt(type), "");
-            AccessoryDTO dto = new AccessoryDTO(name, brand, description, "", Float.parseFloat(price), categoryDto, Integer.parseInt(quantity), typeDto);
+            CategoryDTO categoryDto = new CategoryDTO(category, "");
+            TypeDTO typeDto = new TypeDTO(type, "");
+            AccessoryDTO dto = new AccessoryDTO(name, brand, description, "sample", Float.parseFloat(price), categoryDto, Integer.parseInt(quantity), typeDto);
+            dto.setId(id);
 
-            long id = dao.add(dto);
-            if (id != -1) {
-                String destLocation = "D:/file/accessory";
-                String fileExtend = imageFileName.split("\\.")[imageFileName.split("\\.").length - 1];
-                
-                ServletContext sc = request.getSession().getServletContext();
-                String dir = sc.getRealPath("") + "img\\file\\accessory";
-                File f = new File(destLocation, id + "." + fileExtend);
-                FileUtils.copyFile(image, f);
-                
-                f = new File(dir, id + "." + fileExtend);
-                FileUtils.copyFile(image, f);
+            if (dao.update(dto)) {
+                if (image != null) {
+                    String destLocation = "D:/file/accessory";
+                    String fileExtend = imageFileName.split("\\.")[imageFileName.split("\\.").length - 1];
 
-                dao.updateImage(id, id + "." + fileExtend);
+                    ServletContext sc = request.getSession().getServletContext();
+                    String dir = sc.getRealPath("") + "img\\file\\accessory";
+                    File f = new File(destLocation, id + "." + fileExtend);
+                    FileUtils.copyFile(image, f);
 
-                mess = "Insert successfully";
+                    f = new File(dir, id + "." + fileExtend);
+                    FileUtils.copyFile(image, f);
+                }
+                mess = "Update successfully";
                 label = SUCCESS;
             } else {
-                mess = "Insert fail";
+                mess = "Update fail";
             }
         } catch (Exception e) {
-            if (e.getMessage().contains("duplicate")) {
-                mess = "Duplicate ID!";
-            } else {
-                mess = "Error";
-                e.printStackTrace();
-            }
+            mess = "Error";
+            e.printStackTrace();
         }
         return label;
+    }
+
+    @Override
+    public void setServletRequest(HttpServletRequest hsr) {
+        request = hsr;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -102,19 +113,19 @@ public class AddAccessoryAction implements ServletRequestAware {
         this.quantity = quantity;
     }
 
-    public String getCategory() {
+    public int getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(int category) {
         this.category = category;
     }
 
-    public String getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(int type) {
         this.type = type;
     }
 
@@ -124,6 +135,14 @@ public class AddAccessoryAction implements ServletRequestAware {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getMess() {
+        return mess;
+    }
+
+    public void setMess(String mess) {
+        this.mess = mess;
     }
 
     public File getImage() {
@@ -150,16 +169,4 @@ public class AddAccessoryAction implements ServletRequestAware {
         this.imageFileName = imageFileName;
     }
 
-    public String getMess() {
-        return mess;
-    }
-
-    public void setMess(String mess) {
-        this.mess = mess;
-    }
-
-    @Override
-    public void setServletRequest(HttpServletRequest hsr) {
-        request = hsr;
-    }
 }

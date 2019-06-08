@@ -37,10 +37,6 @@ public class AdminViewListAccessoryAction {
     public String execute() {
         String label = "success";
         try {
-            System.out.println("page " + page);
-            System.out.println("search " + searchName);
-            System.out.println("type " + type);
-            System.out.println("cate " + category);
             if (page < 1) page = 1;
             AccessoryDAO dao = new AccessoryDAO();
 

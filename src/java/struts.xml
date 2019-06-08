@@ -96,5 +96,15 @@
         <action name="welcome" class="phuctt.actions.WelcomeAction">
             <result name="success">publicPage/index.jsp</result>
         </action>
+        
+        <action name="adminViewDetailAccessory" class="phuctt.actions.AdminViewDetailAccessoryAction">
+            <result name="success">admin/view-detail-accessory.jsp</result>
+            <result name="fail" type="chain">adminViewListAccessory</result>
+        </action>
+        
+        <action name="updateAccessory" class="phuctt.actions.UpdateAccessoryAction">
+            <result name="success" type="chain">adminViewListAccessory</result>
+            <result name="fail" type="chain">adminViewListAccessory</result>
+        </action>
     </package>
 </struts>

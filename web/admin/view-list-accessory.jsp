@@ -102,7 +102,7 @@
                         $<s:property value="%{price}" />
                     </td>
                     <td class="align-middle text-center">
-                        <a class="btn btn-sm btn-outline-info my-1" href="#" role="button">Detail</a><br>
+                        <a class="btn btn-sm btn-outline-info my-1" href='/PetCity/adminViewDetailAccessory?id=<s:property value="%{id}"/>' role="button">Detail</a><br>
                         <a class="btn btn-sm btn-outline-danger" href="#" role="button">Delete</a>
                     </td>
                 </tr>
