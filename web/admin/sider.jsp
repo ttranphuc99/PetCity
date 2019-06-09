@@ -83,7 +83,7 @@
                         <a href="#manage-staff" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage Staff</a>
                         <ul class="collapse list-unstyled" id="manage-staff">
                             <li>
-                                <a href="#">View list staff</a>
+                                <a href="/PetCity/adminViewListStaff?page=1">View list staff</a>
                             </li>
                             <li>
                                 <a href="/PetCity/admin/add-staff.jsp">Add new staff</a>

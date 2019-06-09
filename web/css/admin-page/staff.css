@@ -1,0 +1,28 @@
+.table td {
+    padding: 15px;
+    align-items: center;
+}
+
+.col-id {
+    width: 5%;
+}
+
+.col-name {
+    width: 30%;
+}
+
+.col-img {
+    width: 20%;
+}
+
+.col-img img {
+    max-width: 130px;
+}
+
+.col-gender {
+    width: 10%;
+}
+
+.col-status {
+    width: 15%;
+}

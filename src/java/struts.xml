@@ -104,7 +104,7 @@
         
         <action name="updateAccessory" class="phuctt.actions.UpdateAccessoryAction">
             <result name="success" type="chain">adminViewListAccessory</result>
-            <result name="fail" type="chain">adminViewListAccessory</result>
+            <result name="fail">admin/view-detail-accessory.jsp</result>
         </action>
         
         <action name="deleteAccessory" class="phuctt.actions.DeleteAccessoryAction">
@@ -127,6 +127,24 @@
         
         <action name="adminViewListAdmin" class="phuctt.actions.AdminViewListAdminAction">
             <result name="success">admin/view-list-admin.jsp</result>
+        </action>
+        
+        <action name="adminViewListStaff" class="phuctt.actions.AdminViewListStaffAction">
+            <result name="success">admin/view-list-staff.jsp</result>
+        </action>
+        
+        <action name="availableStaff" class="phuctt.actions.AvailableStaffAction">
+            <result name="success" type="chain">adminViewListStaff</result>
+        </action>
+        
+        <action name="adminViewDetailStaff" class="phuctt.actions.AdminViewDetailStaffAction">
+            <result name="success">admin/view-detail-staff.jsp</result>
+            <result name="fail" type="chain">adminViewListStaff</result>
+        </action>
+        
+        <action name="updateStaff" class="phuctt.actions.UpdateStaffAction">
+            <result name="success" type="chain">adminViewListStaff</result>
+            <result name="fail">admin/view-detail-staff.jsp</result>
         </action>
     </package>
 </struts>

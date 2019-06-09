@@ -7,41 +7,40 @@ package phuctt.actions;
 
 import java.util.ArrayList;
 import java.util.List;
-import phuctt.daos.AccountDAO;
-import phuctt.dtos.AccountDTO;
+import phuctt.daos.StaffDAO;
+import phuctt.dtos.StaffDTO;
 
 /**
  *
  * @author Thien Phuc
  */
-public class AdminViewListAdminAction {
-    private String fullname, mess;
+public class AdminViewListStaffAction {
+    private String name, mess;
     private int page, numOfPage;
-    private List<AccountDTO> listUser;
+    private List<StaffDTO> listStaff;
     
-    public AdminViewListAdminAction() {
-        fullname = "";
+    public AdminViewListStaffAction() {
+        name = "";
         page = 1;
     }
     
     public String execute() {
         String label = "success";
         try {
-            if (page < 1) {
-                page = 1;
-            }
-            AccountDAO dao = new AccountDAO();
-
-            int recordCount = dao.searchByLikeNamePhone(fullname, "", "admin");
-            numOfPage = (int) Math.ceil(recordCount * 1.0 / 10);
+            if (page < 1) page = 1;
+            
+            StaffDAO dao = new StaffDAO();
+            
+            int recordCount = dao.searchName(name);
+            numOfPage = (int) Math.ceil(recordCount * 1.0 / 5);
 
             if (recordCount > 0) {
-                if (recordCount < (page - 1) * 10) {
+                if (recordCount < (page - 1) * 5) {
                     page = 1;
                 }
-                listUser = dao.searchByLikeNamePhone(fullname, "", "admin", page);
+                listStaff = dao.searchName(name, page);
             } else {
-                listUser = new ArrayList<>();
+                listStaff = new ArrayList<>();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -50,12 +49,12 @@ public class AdminViewListAdminAction {
         return label;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getName() {
+        return name;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getMess() {
@@ -82,12 +81,12 @@ public class AdminViewListAdminAction {
         this.numOfPage = numOfPage;
     }
 
-    public List<AccountDTO> getListUser() {
-        return listUser;
+    public List<StaffDTO> getListStaff() {
+        return listStaff;
     }
 
-    public void setListUser(List<AccountDTO> listUser) {
-        this.listUser = listUser;
+    public void setListStaff(List<StaffDTO> listStaff) {
+        this.listStaff = listStaff;
     }
     
 }

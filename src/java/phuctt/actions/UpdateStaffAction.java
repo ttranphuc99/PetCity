@@ -10,64 +10,59 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.interceptor.ServletRequestAware;
-import phuctt.daos.AccessoryDAO;
-import phuctt.dtos.AccessoryDTO;
-import phuctt.dtos.CategoryDTO;
-import phuctt.dtos.TypeDTO;
+import phuctt.daos.StaffDAO;
+import phuctt.dtos.StaffDTO;
 
 /**
  *
  * @author Thien Phuc
  */
-public class UpdateAccessoryAction implements ServletRequestAware {
-
-    private HttpServletRequest request;
-    private long id;
-    private int category, type;
-    private String name, brand, price, quantity, description, mess, imgName;
+public class UpdateStaffAction implements ServletRequestAware {
+    private String name, gender, available, mess, imgName;
     private File image;
     private String imageContentType, imageFileName;
-    private AccessoryDTO dto;
-
+    private HttpServletRequest request;
+    private int id;
+    private StaffDTO dto;
+    
     private static final String SUCCESS = "success";
     private static final String FAIL = "fail";
-
-    public UpdateAccessoryAction() {
+    public UpdateStaffAction() {
     }
-
+    
     public String execute() throws Exception {
         String label = FAIL;
         try {
-            AccessoryDAO dao = new AccessoryDAO();
-            CategoryDTO categoryDto = new CategoryDTO(category, "");
-            TypeDTO typeDto = new TypeDTO(type, "");
-            dto = new AccessoryDTO(name, brand, description, "sample", Float.parseFloat(price), categoryDto, Integer.parseInt(quantity), typeDto);
+            StaffDAO dao = new StaffDAO();
+            dto = new StaffDTO(name, available != null, gender.equals("male"));
             dto.setId(id);
             dto.setImage(imgName);
-
+            System.out.println(id);
             if (dao.update(dto)) {
                 if (image != null) {
-                    String destLocation = "D:/file/accessory";
+                    String destLocation = "D:/file/staff";
                     String fileExtend = imageFileName.split("\\.")[imageFileName.split("\\.").length - 1];
 
-                    ServletContext sc = request.getSession().getServletContext();
-                    String dir = sc.getRealPath("") + "img\\file\\accessory";
-                    File f = new File(destLocation, id + "." + fileExtend);
+                    File f = new File(destLocation, id +"."+ fileExtend);
                     FileUtils.copyFile(image, f);
+
+                    ServletContext sc = request.getSession().getServletContext();
+                    String dir = sc.getRealPath("") + "img\\file\\staff";
 
                     f = new File(dir, id + "." + fileExtend);
                     FileUtils.copyFile(image, f);
                     
-                    dao.updateImage(id, id + "." + fileExtend);
+                    dao.updateImage(id, id +"."+ fileExtend);
                 }
-                mess = "Update successfully";
                 label = SUCCESS;
+                mess = "Update Staff ID: " +id+ " successfully";
             } else {
                 mess = "Update fail";
             }
+            
         } catch (Exception e) {
-            mess = "Error";
             e.printStackTrace();
+            mess = "error";
         }
         return label;
     }
@@ -77,14 +72,14 @@ public class UpdateAccessoryAction implements ServletRequestAware {
         request = hsr;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
-
+    
     public String getName() {
         return name;
     }
@@ -93,60 +88,20 @@ public class UpdateAccessoryAction implements ServletRequestAware {
         this.name = name;
     }
 
-    public String getBrand() {
-        return brand;
+    public String getGender() {
+        return gender;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public String getPrice() {
-        return price;
+    public String getAvailable() {
+        return available;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public String getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
-    }
-
-    public int getCategory() {
-        return category;
-    }
-
-    public void setCategory(int category) {
-        this.category = category;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getMess() {
-        return mess;
-    }
-
-    public void setMess(String mess) {
-        this.mess = mess;
+    public void setAvailable(String available) {
+        this.available = available;
     }
 
     public File getImage() {
@@ -173,11 +128,19 @@ public class UpdateAccessoryAction implements ServletRequestAware {
         this.imageFileName = imageFileName;
     }
 
-    public AccessoryDTO getDto() {
+    public String getMess() {
+        return mess;
+    }
+
+    public void setMess(String mess) {
+        this.mess = mess;
+    }
+
+    public StaffDTO getDto() {
         return dto;
     }
 
-    public void setDto(AccessoryDTO dto) {
+    public void setDto(StaffDTO dto) {
         this.dto = dto;
     }
 
@@ -188,5 +151,5 @@ public class UpdateAccessoryAction implements ServletRequestAware {
     public void setImgName(String imgName) {
         this.imgName = imgName;
     }
-
+    
 }

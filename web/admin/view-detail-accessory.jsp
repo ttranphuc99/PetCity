@@ -12,6 +12,7 @@
 <div class="container-fluid">
     <form action="/PetCity/updateAccessory" method="POST" enctype="multipart/form-data" onsubmit="return validate();">
         <input type="hidden" name="id" value='<s:property value="%{dto.id}"/>'/>
+        <input type="hidden" value="<s:property value="%{dto.image}"/>" name="imgName"/>
         <div class="row">
             <div class="col-6">
                 <div class="form-group">

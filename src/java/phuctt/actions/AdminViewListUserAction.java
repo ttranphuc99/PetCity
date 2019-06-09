@@ -35,7 +35,7 @@ public class AdminViewListUserAction {
             AccountDAO dao = new AccountDAO();
 
             int recordCount = dao.searchByLikeNamePhone(fullname, phone, "member");
-            page = (int) Math.ceil(recordCount * 1.0 / 10);
+            numOfPage = (int) Math.ceil(recordCount * 1.0 / 10);
 
             if (recordCount > 0) {
                 if (recordCount < (page - 1) * 10) {

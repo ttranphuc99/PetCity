@@ -139,7 +139,7 @@
             </s:iterator>
             <li class="page-item">
                 <s:url action="adminViewListUser" var="pageUrlFirst" escapeAmp="false">
-                    <s:param name="page" value="1" />
+                    <s:param name="page" value="%{numOfPage}" />
                     <s:param name="fullname" value="%{fullname}" />
                     <s:param name="phone" value="%{phone}" />
                 </s:url>
