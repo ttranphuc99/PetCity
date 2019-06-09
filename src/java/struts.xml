@@ -146,5 +146,9 @@
             <result name="success" type="chain">adminViewListStaff</result>
             <result name="fail">admin/view-detail-staff.jsp</result>
         </action>
+        
+        <action name="deleteStaff" class="phuctt.actions.DeleteStaffAction">
+            <result name="success" type="chain">adminViewListStaff</result>
+        </action>
     </package>
 </struts>

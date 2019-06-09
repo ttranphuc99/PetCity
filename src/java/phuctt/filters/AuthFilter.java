@@ -83,6 +83,8 @@ public class AuthFilter implements Filter {
         admin.add("availableStaff.action");
         admin.add("updateStaff");
         admin.add("updateStaff.action");
+        admin.add("deleteStaff");
+        admin.add("deleteStaff.action");
 
         member = new ArrayList<>();
         member.add("logout");

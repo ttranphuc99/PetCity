@@ -235,4 +235,21 @@ public class StaffDAO implements Serializable {
         }
         return check;
     }
+    
+    public boolean delete(int id) throws SQLException, ClassNotFoundException {
+        boolean check = false;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "UPDATE Staff SET isDelete = ? WHERE staffID = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setBoolean(1, true);
+            ps.setInt(2, id);
+            
+            check = ps.executeUpdate() > 0;
+        } finally {
+            closeConnection();
+        }
+        return check;
+    }
 }

@@ -103,7 +103,7 @@
                         <br>
                         <button class="btn btn-sm btn-outline-danger mt-2" data-toggle="modal"
                             data-target="#exampleModal"
-                            onclick='deleteStaff("<s:property value="%{username}"/>", "<s:property value="%{fullname}"/>", "member")'>
+                            onclick='deleteStaff(<s:property value="%{id}"/>, "<s:property value="%{name}"/>")'>
                             Delete
                         </button>
                     </td>
