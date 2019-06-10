@@ -150,5 +150,23 @@
         <action name="deleteStaff" class="phuctt.actions.DeleteStaffAction">
             <result name="success" type="chain">adminViewListStaff</result>
         </action>
+        
+        <action name="adminViewListService" class="phuctt.actions.AdminViewListServiceAction">
+            <result name="success">admin/view-list-service.jsp</result>
+        </action>
+        
+        <action name="deleteService" class="phuctt.actions.DeleteServiceAction">
+            <result name="success" type="chain">adminViewListService</result>
+        </action>
+        
+        <action name="adminViewDetailService" class="phuctt.actions.AdminViewDetailServiceAction">
+            <result name="success">admin/view-detail-service.jsp</result>
+            <result name="fail" type="chain">adminViewListService</result>
+        </action>
+        
+        <action name="updateService" class="phuctt.actions.UpdateServiceAction">
+            <result name="success" type="chain">adminViewListService</result>
+            <result name="fail">admin/view-detail-service.jsp</result>
+        </action>
     </package>
 </struts>

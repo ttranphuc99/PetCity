@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@include file="sider.jsp" %>
-<div class="title mb-4">Add new accessory</div>
+<div class="title mb-4">Accessory</div>
 
 <div class="container-fluid">
     <form action="/PetCity/updateAccessory" method="POST" enctype="multipart/form-data" onsubmit="return validate();">

@@ -72,7 +72,7 @@
                         <a href="#manage-service" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage Service</a>
                         <ul class="collapse list-unstyled" id="manage-service">
                             <li>
-                                <a href="#">View list service</a>
+                                <a href="/PetCity/adminViewListService?page=1">View list service</a>
                             </li>
                             <li>
                                 <a href="/PetCity/loadCategoryType?locationPlace=service">Add new service</a>

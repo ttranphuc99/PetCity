@@ -5,31 +5,31 @@
  */
 package phuctt.actions;
 
+import phuctt.daos.ServiceDAO;
 import phuctt.daos.ServiceStaffDAO;
-import phuctt.daos.StaffDAO;
 
 /**
  *
  * @author Thien Phuc
  */
-public class DeleteStaffAction {
+public class DeleteServiceAction {
     private int id;
     private String mess;
     
-    public DeleteStaffAction() {
+    public DeleteServiceAction() {
     }
     
     public String execute() {
         String label = "success";
         try {
-            StaffDAO dao = new StaffDAO();
+            ServiceDAO dao = new ServiceDAO();
             
             if (dao.delete(id)) {
                 ServiceStaffDAO dao2 = new ServiceStaffDAO();
-                dao2.deleteStaff(id);
-                mess = "Delete staff ID: " + id + " successfully";
+                dao2.deleteService(id);
+                mess = "Delete service id: " +id+ " successfully!";
             } else {
-                mess = " Delete fail";
+                mess = "Delete fail";
             }
         } catch (Exception e) {
             e.printStackTrace();

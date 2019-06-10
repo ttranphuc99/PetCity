@@ -13,6 +13,7 @@ import java.io.Serializable;
  */
 public class ServiceStaffDTO implements Serializable {
     private int staffID, serviceID;
+    private boolean delete;
 
     public ServiceStaffDTO() {
     }
@@ -37,6 +38,14 @@ public class ServiceStaffDTO implements Serializable {
     public void setServiceID(int serviceID) {
         this.serviceID = serviceID;
     }
+
+    public boolean isDelete() {
+        return delete;
+    }
+
+    public void setDelete(boolean delete) {
+        this.delete = delete;
+    }
     
-    
+     
 }

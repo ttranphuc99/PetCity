@@ -21,3 +21,11 @@ function deleteStaff(id, name) {
     var actionBtn = document.getElementById("deleteBtnAction");
     actionBtn.href = "/PetCity/deleteStaff?id=" + id;
 }
+
+function deleteService(id, name) {
+    var modal = document.getElementsByClassName("modal-body")[0];
+    modal.innerHTML = "Do you want to delete service ID: " + id + ", Name: " + name;
+
+    var actionBtn = document.getElementById("deleteBtnAction");
+    actionBtn.href = "/PetCity/deleteService?id=" + id;
+}

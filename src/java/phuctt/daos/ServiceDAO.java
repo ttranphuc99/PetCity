@@ -11,8 +11,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import phuctt.dbs.DBConnection;
 import phuctt.dtos.ServiceDTO;
+import phuctt.dtos.TypeDTO;
 
 /**
  *
@@ -72,5 +75,138 @@ public class ServiceDAO implements Serializable {
             closeConnection();
         }
         return check;
+    }
+    
+    public int searchName(String search) throws SQLException, ClassNotFoundException {
+        int num = 0;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "SELECT count(serviceID) as num FROM Service WHERE name LIKE ? AND isDelete = ?";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, "%" +search+ "%");
+            ps.setBoolean(2, false);
+            
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                num = rs.getInt("num");
+            }
+        } finally {
+            closeConnection();
+        }
+        return num;
+    }
+    
+    public List<ServiceDTO> searchName(String search, int page) throws SQLException, ClassNotFoundException {
+        List<ServiceDTO> result = null;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "SELECT serviceID, name, forType, duration, price, image FROM Service "
+                    + "WHERE name LIKE ? AND isDelete = ? "
+                    + "ORDER BY serviceID OFFSET " +((page-1) * 5)+ " ROWS FETCH NEXT 5 ROWS ONLY";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, "%" +search+ "%");
+            ps.setBoolean(2, false);
+            
+            rs = ps.executeQuery();
+            
+            int id, typeID;
+            String name, image;
+            float duration, price;
+            TypeDTO type = null;
+            ServiceDTO dto = null;
+            
+            result = new ArrayList<>();
+            
+            while (rs.next()) {
+                id = rs.getInt("serviceID");
+                name = rs.getString("name");
+                type = (new TypeDAO()).findByID(rs.getInt("forType"));
+                duration = rs.getFloat("duration");
+                price = rs.getFloat("price");
+                image = rs.getString("image");
+                
+                dto = new ServiceDTO(name, "", type, duration, price);
+                dto.setId(id);
+                dto.setImage(image);
+                
+                result.add(dto);
+            }
+        } finally {
+            closeConnection();
+        }
+        return result;
+    }
+    
+    public boolean delete(int id) throws SQLException, ClassNotFoundException {
+        boolean check = false;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "UPDATE Service SET isDelete = ? WHERE serviceID = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setBoolean(1, true);
+            ps.setInt(2, id);
+            
+            check = ps.executeUpdate() > 0;
+        } finally {
+            closeConnection();
+        }
+        return check;
+    }
+    
+    public boolean update(ServiceDTO dto) throws SQLException, ClassNotFoundException {
+        boolean check = false;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "UPDATE Service SET name = ?, forType = ?, duration = ?, price = ?, description = ? WHERE serviceID = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, dto.getName());
+            ps.setInt(2, dto.getType().getId());
+            ps.setFloat(3, dto.getDuration());
+            ps.setFloat(4, dto.getPrice());
+            ps.setString(5, dto.getDescription());
+            ps.setInt(6, dto.getId());
+            
+            check = ps.executeUpdate() > 0;
+        } finally {
+            closeConnection();
+        }
+        return check;
+    }
+    
+    public ServiceDTO findByID(int id) throws SQLException, ClassNotFoundException {
+        ServiceDTO dto = null;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "SELECT name, forType, duration, price, description, image FROM Service WHERE serviceID = ?";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                String name = rs.getString("name");
+                TypeDTO type = (new TypeDAO()).findByID(rs.getInt("forType"));
+                float duration = rs.getFloat("duration");
+                float price = rs.getFloat("price");
+                String description = rs.getString("description");
+                String image = rs.getString("image");
+                
+                dto = new ServiceDTO(name, description, type, duration, price);
+                dto.setImage(image);
+                dto.setId(id);
+            }
+        } finally {
+            closeConnection();
+        }
+        return dto;
     }
 }

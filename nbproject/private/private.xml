@@ -3,14 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/src/java/phuctt/actions/AddStaffAction.java</file>
-            <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/web/META-INF/context.xml</file>
-            <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/src/java/phuctt/actions/AddAccessoryAction.java</file>
-            <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/src/java/phuctt/actions/InitationAction.java</file>
-            <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/src/java/phuctt/actions/AddServiceAction.java</file>
-            <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/web/WEB-INF/web.xml</file>
-            <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/web/admin/view-list-accessory.jsp</file>
-            <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/src/java/phuctt/actions/WelcomeAction.java</file>
+            <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/src/java/phuctt/actions/DeleteStaffAction.java</file>
+            <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/src/java/phuctt/actions/DeleteAccessoryAction.java</file>
+            <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/web/admin/view-list-staff.jsp</file>
+            <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/src/java/phuctt/filters/AuthFilter.java</file>
+            <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/src/java/phuctt/daos/StaffDAO.java</file>
+            <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/src/java/struts.xml</file>
         </group>
     </open-files>
 </project-private>
