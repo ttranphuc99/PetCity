@@ -34,7 +34,7 @@ public class UpdateStaffAction implements ServletRequestAware {
         String label = FAIL;
         try {
             StaffDAO dao = new StaffDAO();
-            dto = new StaffDTO(name, available != null, gender.equals("male"));
+            dto = new StaffDTO(name, available != null, gender.equalsIgnoreCase("male"));
             dto.setId(id);
             dto.setImage(imgName);
             System.out.println(id);

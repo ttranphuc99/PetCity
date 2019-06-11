@@ -10,6 +10,7 @@ import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.FileUtils;
+import org.apache.struts2.interceptor.ServletRequestAware;
 import phuctt.daos.ServiceDAO;
 import phuctt.daos.ServiceStaffDAO;
 import phuctt.dtos.ServiceDTO;
@@ -20,7 +21,7 @@ import phuctt.dtos.TypeDTO;
  *
  * @author Thien Phuc
  */
-public class UpdateServiceAction {
+public class UpdateServiceAction implements ServletRequestAware {
 
     private String name, price, type, duration, description, mess;
     private List<String> staff;
@@ -171,20 +172,17 @@ public class UpdateServiceAction {
         this.imageFileName = imageFileName;
     }
 
-    public HttpServletRequest getRequest() {
-        return request;
-    }
-
-    public void setRequest(HttpServletRequest request) {
-        this.request = request;
-    }
-
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public void setServletRequest(HttpServletRequest hsr) {
+        this.request = hsr;
     }
 
 }
