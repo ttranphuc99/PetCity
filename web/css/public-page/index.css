@@ -22,6 +22,7 @@
 .wrap-accessories {
     width: 18%;
     height: 350px;
+    position: relative;
 }
 
 .wrap-accessory-img {
@@ -45,4 +46,29 @@
 .wrap-type-sider {
     position: sticky;
     top: 75px;
+}
+
+.accessory-price {
+    color: red;
+    font-weight: bold;
+}
+
+.wrap-btn-view-accessory {
+    position: absolute;
+    left: 20%;
+    bottom: 10px;
+}
+
+.accessory-name {
+    height: 50px;
+    overflow-y: hidden;
+    font-size: 16px;
+}
+
+.modal-footer {
+    justify-content: center !important;
+}
+
+.modal-dialog {
+    max-width: 50% !important;
 }
