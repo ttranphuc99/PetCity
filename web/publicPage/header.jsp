@@ -22,7 +22,7 @@
             <div class="row mx-5 my-4 text-center align-items-center">
                 <!-- logo -->
                 <div class="col-3">
-                    <a href="/PetCity"><img class="header-logo" src="/PetCity/img/header-footer/petcity.png"></a>                    
+                    <a href="/PetCity/"><img class="header-logo" src="/PetCity/img/header-footer/petcity.png"></a>                    
                 </div>
 
                 <!-- search -->

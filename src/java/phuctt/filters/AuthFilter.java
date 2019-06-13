@@ -93,8 +93,8 @@ public class AuthFilter implements Filter {
         member = new ArrayList<>();
         member.add("logout");
         member.add("logout.action");
-        member.add("login");
-        member.add("login.action");
+        member.add("welcome");
+        member.add("welcome.action");
         member.add("");
         member.add("''");
     }
