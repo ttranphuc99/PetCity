@@ -420,4 +420,47 @@ public class AccessoryDAO implements Serializable {
         }
         return result;
     }
+    
+    public List<AccessoryDTO> loadTopMostBuy(int top, int typeID, int categoryID) throws SQLException, ClassNotFoundException {
+        List<AccessoryDTO> result = null;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "SELECT TOP " +top+ " accessoryID, name, price, image FROM Accessory "
+                    + "WHERE forType = ? AND categoryID = ? AND isDelete = ? "
+                    + "ORDER BY accessoryID";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, typeID);
+            ps.setInt(2, categoryID);
+            ps.setBoolean(3, false);
+            
+            rs = ps.executeQuery();
+            
+            String name, image;
+            long id;
+            float price;
+            AccessoryDTO dto = null;
+            
+            result = new ArrayList<>();
+            
+            while (rs.next()) {
+                name = rs.getString("name");
+                image = rs.getString("image");
+                id = rs.getLong("accessoryID");
+                price = rs.getFloat("price");
+                
+                dto = new AccessoryDTO();
+                dto.setName(name);
+                dto.setImage(image);
+                dto.setId(id);
+                dto.setPrice(price);
+                
+                result.add(dto);
+            }
+        } finally {
+            closeConnection();
+        }
+        return result;
+    }
 }
