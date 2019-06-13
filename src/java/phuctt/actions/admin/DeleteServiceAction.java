@@ -6,7 +6,6 @@
 package phuctt.actions.admin;
 
 import phuctt.daos.ServiceDAO;
-import phuctt.daos.ServiceStaffDAO;
 
 /**
  *
@@ -25,8 +24,6 @@ public class DeleteServiceAction {
             ServiceDAO dao = new ServiceDAO();
             
             if (dao.delete(id)) {
-                ServiceStaffDAO dao2 = new ServiceStaffDAO();
-                dao2.deleteService(id);
                 mess = "Delete service id: " +id+ " successfully!";
             } else {
                 mess = "Delete fail";

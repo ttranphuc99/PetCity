@@ -6,15 +6,15 @@
 package phuctt.actions.admin;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import phuctt.daos.ServiceDAO;
-import phuctt.daos.ServiceStaffDAO;
 import phuctt.dtos.ServiceDTO;
-import phuctt.dtos.ServiceStaffDTO;
+import phuctt.dtos.StaffDTO;
 import phuctt.dtos.TypeDTO;
 
 /**
@@ -24,7 +24,7 @@ import phuctt.dtos.TypeDTO;
 public class UpdateServiceAction implements ServletRequestAware {
 
     private String name, price, type, duration, description, mess;
-    private List<String> staff;
+    private List<Integer> staff;
     private File image;
     private String imageContentType, imageFileName;
     private HttpServletRequest request;
@@ -48,10 +48,19 @@ public class UpdateServiceAction implements ServletRequestAware {
             dto.setDuration(Float.parseFloat(duration));
             dto.setType(typeDto);
             dto.setDescription(description);
+            
+            List<StaffDTO> listStaff = new ArrayList<>();
+            StaffDTO staffDTO = null;
+            for (int staffID : staff) {
+                staffDTO = new StaffDTO();
+                staffDTO.setId(staffID);
+                
+                listStaff.add(staffDTO);
+            }
 
             ServiceDAO dao = new ServiceDAO();
 
-            if (dao.update(dto)) {
+            if (dao.update(dto, listStaff)) {
                 if (image != null) {
                     String destLocation = "D:/file/service";
                     String fileExtend = imageFileName.split("\\.")[imageFileName.split("\\.").length - 1];
@@ -66,18 +75,6 @@ public class UpdateServiceAction implements ServletRequestAware {
                     FileUtils.copyFile(image, f);
 
                     dao.updateImage(id, id + "." + fileExtend);
-                }
-                
-                ServiceStaffDTO dto2;
-                ServiceStaffDAO dao2 = new ServiceStaffDAO();
-                dao2.deleteService(id);
-                
-                int staffID;
-
-                for (String str : staff) {
-                    staffID = Integer.parseInt(str);
-                    dto2 = new ServiceStaffDTO(staffID, id);
-                    dao2.add(dto2);
                 }
 
                 mess = "Update id: " +id+ " successfully";
@@ -140,11 +137,11 @@ public class UpdateServiceAction implements ServletRequestAware {
         this.mess = mess;
     }
 
-    public List<String> getStaff() {
+    public List<Integer> getStaff() {
         return staff;
     }
 
-    public void setStaff(List<String> staff) {
+    public void setStaff(List<Integer> staff) {
         this.staff = staff;
     }
 

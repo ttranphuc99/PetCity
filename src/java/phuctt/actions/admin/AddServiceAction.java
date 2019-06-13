@@ -6,15 +6,15 @@
 package phuctt.actions.admin;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import phuctt.daos.ServiceDAO;
-import phuctt.daos.ServiceStaffDAO;
 import phuctt.dtos.ServiceDTO;
-import phuctt.dtos.ServiceStaffDTO;
+import phuctt.dtos.StaffDTO;
 import phuctt.dtos.TypeDTO;
 
 /**
@@ -23,7 +23,7 @@ import phuctt.dtos.TypeDTO;
  */
 public class AddServiceAction implements ServletRequestAware {
     private String name, price, type, duration, description, mess;
-    private List<String> staff;
+    private List<Integer> staff;
     private File image;
     private String imageContentType, imageFileName;
     private HttpServletRequest request;
@@ -48,7 +48,16 @@ public class AddServiceAction implements ServletRequestAware {
             
             ServiceDAO dao = new ServiceDAO();
             
-            int id = dao.add(dto);
+            List<StaffDTO> listStaff = new ArrayList<>();
+            StaffDTO staffDTO = null;
+            for (int staffID : staff) {
+                staffDTO = new StaffDTO();
+                staffDTO.setId(staffID);
+                
+                listStaff.add(staffDTO);
+            }
+            
+            int id = dao.add(dto, listStaff);
             
             if (id != -1) {
                 String destLocation = "D:/file/service";
@@ -64,16 +73,6 @@ public class AddServiceAction implements ServletRequestAware {
                 FileUtils.copyFile(image, f);
                 
                 dao.updateImage(id, id +"."+ fileExtend);
-                
-                ServiceStaffDTO dto2;
-                ServiceStaffDAO dao2 = new ServiceStaffDAO();
-                int staffID;
-                
-                for (String str : staff) {
-                    staffID = Integer.parseInt(str);
-                    dto2 = new ServiceStaffDTO(staffID, id);
-                    dao2.add(dto2);
-                }
                 
                 mess = "Insert successfully";
                 label = SUCCESS;
@@ -135,16 +134,15 @@ public class AddServiceAction implements ServletRequestAware {
         this.mess = mess;
     }
 
-    public List<String> getStaff() {
+    public List<Integer> getStaff() {
         return staff;
     }
 
-    public void setStaff(List<String> staff) {
+    public void setStaff(List<Integer> staff) {
         this.staff = staff;
     }
 
     
-
     public File getImage() {
         return image;
     }

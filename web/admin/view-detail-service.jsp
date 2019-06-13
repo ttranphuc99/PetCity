@@ -64,9 +64,7 @@
             <div class="col-12">
                 <div class="form-group">
                     <label for="description">Description:</label>
-                    <textarea class="form-control" id="description" name="description" required>
-                    <s:property value="%{dto.description}"/>
-                    </textarea>
+                    <textarea class="form-control" id="description" name="description" required><s:property value="%{dto.description}"/></textarea>
                 </div>
             </div>
         </div>
@@ -111,7 +109,7 @@
         </div>
 
         <div class="form-group text-center py-3">
-            <input type="submit" class="btn btn-success w-25 font-label" name="action" value="Add">
+            <input type="submit" class="btn btn-success w-25 font-label" name="action" value="Update">
         </div>
     </form>
     <script src="/PetCity/js/admin-page/validate-add-form.js"></script>
