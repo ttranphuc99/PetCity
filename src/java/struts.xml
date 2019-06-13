@@ -5,53 +5,53 @@
 <struts>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default" namespace="/">
-        <action name="login" class="phuctt.actions.LoginAction">
+        <action name="login" class="phuctt.actions.guest.LoginAction">
             <result name="fail">publicPage/login.jsp</result>
             <result name="admin">admin/home.jsp</result>
-            <result name="member">publicPage/index.jsp</result>
+            <result name="member" type="chain">welcome</result>
         </action>
         
-        <action name="logout" class="phuctt.actions.LogoutAction">
-            <result name="success">publicPage/index.jsp</result>
+        <action name="logout" class="phuctt.actions.guest.LogoutAction">
+            <result name="success" type="chain">welcome</result>
         </action>
         
-        <action name="signup" class="phuctt.actions.SignUpAction">
+        <action name="signup" class="phuctt.actions.guest.SignUpAction">
             <result name="success" type="chain">login</result>
             <result name="fail">publicPage/signup.jsp</result>
         </action>
         
-        <action name="adminViewProfile" class="phuctt.actions.AdminViewProfileAction">
+        <action name="adminViewProfile" class="phuctt.actions.admin.AdminViewProfileAction">
             <result name="success">admin/edit-profile.jsp</result>
             <result name="fail" type="chain">logout</result>
         </action>
         
-        <action name="adminEditProfile" class="phuctt.actions.AdminEditProfileAction">
+        <action name="adminEditProfile" class="phuctt.actions.admin.AdminEditProfileAction">
             <result name="success" type="chain">adminViewProfile</result>
             <result name="fail">admin/home.jsp</result>
         </action>
         
-        <action name="changePassword" class="phuctt.actions.ChangePasswordAction">
+        <action name="changePassword" class="phuctt.actions.admin.ChangePasswordAction">
             <result name="success">admin/home.jsp</result>
             <result name="fail">admin/change-password.jsp</result>
         </action>
         
-        <action name="addAdmin" class="phuctt.actions.AddAdminAction">
+        <action name="addAdmin" class="phuctt.actions.admin.AddAdminAction">
             <result name="success" type="chain">adminViewListAdmin</result>
             <result name="fail">admin/add-admin.jsp</result>
         </action>
         
-        <action name="loadCategoryType" class="phuctt.actions.LoadCategoryTypeAction">
+        <action name="loadCategoryType" class="phuctt.actions.admin.LoadCategoryTypeAction">
             <result name="accessory">admin/add-accessory.jsp</result>
             <result name="service" type="chain">loadStaff</result>
             <result name="fail">admin/home.jsp</result>
         </action>
         
-        <action name="loadStaff" class="phuctt.actions.LoadStaffAction">
+        <action name="loadStaff" class="phuctt.actions.admin.LoadStaffAction">
             <result name="service">admin/add-service.jsp</result>
             <result name="fail">admin/home.jsp</result>
         </action>
         
-        <action name="addAccessory" class="phuctt.actions.AddAccessoryAction">
+        <action name="addAccessory" class="phuctt.actions.admin.AddAccessoryAction">
             <interceptor-ref name="fileUpload">
                 <param name="maximumSize">2102840</param>
                 <param name="allowedTypes">image/png,image/jpeg,image/jpg</param>
@@ -65,7 +65,7 @@
             </result>
         </action>
         
-        <action name="addStaff" class="phuctt.actions.AddStaffAction">
+        <action name="addStaff" class="phuctt.actions.admin.AddStaffAction">
             <interceptor-ref name="fileUpload">
                 <param name="maximumSize">2102840</param>
                 <param name="allowedTypes">image/png,image/jpeg,image/jpg</param>
@@ -75,7 +75,7 @@
             <result name="fail">admin/add-staff.jsp</result>
         </action>
         
-        <action name="addService" class="phuctt.actions.AddServiceAction">
+        <action name="addService" class="phuctt.actions.admin.AddServiceAction">
             <interceptor-ref name="fileUpload">
                 <param name="maximumSize">2102840</param>
                 <param name="allowedTypes">image/png,image/jpeg,image/jpg</param>
@@ -89,82 +89,82 @@
             </result>
         </action>
         
-        <action name="adminViewListAccessory" class="phuctt.actions.AdminViewListAccessoryAction">
+        <action name="adminViewListAccessory" class="phuctt.actions.admin.AdminViewListAccessoryAction">
             <result name="success">admin/view-list-accessory.jsp</result>
         </action>
         
-        <action name="welcome" class="phuctt.actions.WelcomeAction">
+        <action name="welcome" class="phuctt.actions.guest.WelcomeAction">
             <result name="success">publicPage/index.jsp</result>
         </action>
         
-        <action name="adminViewDetailAccessory" class="phuctt.actions.AdminViewDetailAccessoryAction">
+        <action name="adminViewDetailAccessory" class="phuctt.actions.admin.AdminViewDetailAccessoryAction">
             <result name="success">admin/view-detail-accessory.jsp</result>
             <result name="fail" type="chain">adminViewListAccessory</result>
         </action>
         
-        <action name="updateAccessory" class="phuctt.actions.UpdateAccessoryAction">
+        <action name="updateAccessory" class="phuctt.actions.admin.UpdateAccessoryAction">
             <result name="success" type="chain">adminViewListAccessory</result>
             <result name="fail">admin/view-detail-accessory.jsp</result>
         </action>
         
-        <action name="deleteAccessory" class="phuctt.actions.DeleteAccessoryAction">
+        <action name="deleteAccessory" class="phuctt.actions.admin.DeleteAccessoryAction">
             <result name="success" type="chain">adminViewListAccessory</result>
         </action>
         
-        <action name="adminViewListUser" class="phuctt.actions.AdminViewListUserAction">
+        <action name="adminViewListUser" class="phuctt.actions.admin.AdminViewListUserAction">
             <result name="success">admin/view-list-user.jsp</result>
         </action>
         
-        <action name="banUser" class="phuctt.actions.BanUserAction">
+        <action name="banUser" class="phuctt.actions.admin.BanUserAction">
             <result name="member" type="chain">adminViewListUser</result>
             <result name="admin" type="chain">adminViewListAdmin</result>
         </action>
         
-        <action name="activeUser" class="phuctt.actions.ActiveUserAction">
+        <action name="activeUser" class="phuctt.actions.admin.ActiveUserAction">
             <result name="member" type="chain">adminViewListUser</result>
             <result name="admin" type="chain">adminViewListAdmin</result>
         </action>
         
-        <action name="adminViewListAdmin" class="phuctt.actions.AdminViewListAdminAction">
+        <action name="adminViewListAdmin" class="phuctt.actions.admin.AdminViewListAdminAction">
             <result name="success">admin/view-list-admin.jsp</result>
         </action>
         
-        <action name="adminViewListStaff" class="phuctt.actions.AdminViewListStaffAction">
+        <action name="adminViewListStaff" class="phuctt.actions.admin.AdminViewListStaffAction">
             <result name="success">admin/view-list-staff.jsp</result>
         </action>
         
-        <action name="availableStaff" class="phuctt.actions.AvailableStaffAction">
+        <action name="availableStaff" class="phuctt.actions.admin.AvailableStaffAction">
             <result name="success" type="chain">adminViewListStaff</result>
         </action>
         
-        <action name="adminViewDetailStaff" class="phuctt.actions.AdminViewDetailStaffAction">
+        <action name="adminViewDetailStaff" class="phuctt.actions.admin.AdminViewDetailStaffAction">
             <result name="success">admin/view-detail-staff.jsp</result>
             <result name="fail" type="chain">adminViewListStaff</result>
         </action>
         
-        <action name="updateStaff" class="phuctt.actions.UpdateStaffAction">
+        <action name="updateStaff" class="phuctt.actions.admin.UpdateStaffAction">
             <result name="success" type="chain">adminViewListStaff</result>
             <result name="fail">admin/view-detail-staff.jsp</result>
         </action>
         
-        <action name="deleteStaff" class="phuctt.actions.DeleteStaffAction">
+        <action name="deleteStaff" class="phuctt.actions.admin.DeleteStaffAction">
             <result name="success" type="chain">adminViewListStaff</result>
         </action>
         
-        <action name="adminViewListService" class="phuctt.actions.AdminViewListServiceAction">
+        <action name="adminViewListService" class="phuctt.actions.admin.AdminViewListServiceAction">
             <result name="success">admin/view-list-service.jsp</result>
         </action>
         
-        <action name="deleteService" class="phuctt.actions.DeleteServiceAction">
+        <action name="deleteService" class="phuctt.actions.admin.DeleteServiceAction">
             <result name="success" type="chain">adminViewListService</result>
         </action>
         
-        <action name="adminViewDetailService" class="phuctt.actions.AdminViewDetailServiceAction">
+        <action name="adminViewDetailService" class="phuctt.actions.admin.AdminViewDetailServiceAction">
             <result name="success">admin/view-detail-service.jsp</result>
             <result name="fail" type="chain">adminViewListService</result>
         </action>
         
-        <action name="updateService" class="phuctt.actions.UpdateServiceAction">
+        <action name="updateService" class="phuctt.actions.admin.UpdateServiceAction">
             <result name="success" type="chain">adminViewListService</result>
             <result name="fail">admin/view-detail-service.jsp</result>
         </action>
