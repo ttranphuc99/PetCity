@@ -430,16 +430,38 @@
         <div class="container">
             <div class="row">
                 <div class="col-6">
-                    <img src="/PetCity/img/file/accessory/1.jpg" class="accessory-img">
+                    <img src="/PetCity/img/file/accessory/3.jpg" class="accessory-img" id="accessoryImg">
                 </div>
 
                 <div class="col-6">
                     <div class="row">
-                        <div class="modal-accessory-name">ABC</div>
+                        <label>Name</label>
+                        <div class="modal-accessory-name" id="accessoryName">ABC</div>
                     </div>
 
                     <div class="row">
-                        <div class="modal-accessory-price">$5.67</div>
+                        <label>Brand</label>
+                        <div class="modal-accessory-name" id="accessoryBrand">ABC</div>
+                    </div>
+
+                    <div class="row">
+                        <label>Category</label>
+                        <div class="modal-accessory-name" id="accessoryCategory">ABC</div>
+                    </div>
+
+                    <div class="row">
+                        <label>For Type</label>
+                        <div class="modal-accessory-name" id="accessoryType">ABC</div>
+                    </div>
+
+                    <div class="row">
+                        <label>Description</label>
+                        <div class="modal-accessory-name" id="accessoryDes">ABC</div>
+                    </div>
+
+                    <div class="row">
+                        <label>Price</label>
+                        <div class="modal-accessory-price" id="accessoryPrice">$5.67</div>
                     </div>
 
                     <div class="row">
@@ -450,9 +472,11 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Add to cart</button>
+        <button type="button" class="btn btn-primary" onclick="loadAccessory(1)">Add to cart</button>
       </div>
     </div>
   </div>
 </div>
+
+<script src="/PetCity/js/public-page/show-detail-acces.js"></script>
 <%@include file="footer.jsp" %>

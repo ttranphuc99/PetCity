@@ -4,7 +4,7 @@
 
 <struts>
     <!-- Configuration for the default package. -->
-    <package name="default" extends="struts-default" namespace="/">
+    <package name="default" extends="struts-default,json-default" namespace="/">
         <action name="login" class="phuctt.actions.guest.LoginAction">
             <result name="fail">publicPage/login.jsp</result>
             <result name="admin">admin/home.jsp</result>
@@ -167,6 +167,10 @@
         <action name="updateService" class="phuctt.actions.admin.UpdateServiceAction">
             <result name="success" type="chain">adminViewListService</result>
             <result name="fail">admin/view-detail-service.jsp</result>
+        </action>
+        
+        <action name="loadAccessoryDetail" class="phuctt.actions.guest.LoadAccessoryDetailAction">
+            <result type="json"/>
         </action>
     </package>
 </struts>

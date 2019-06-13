@@ -46,6 +46,8 @@ public class AuthFilter implements Filter {
         guest.add("signup.action");
         guest.add("welcome");
         guest.add("welcome.action");
+        guest.add("loadAccessoryDetail");
+        guest.add("loadAccessoryDetail.action");
         
 
         admin = new ArrayList<>();
@@ -95,6 +97,8 @@ public class AuthFilter implements Filter {
         member.add("logout.action");
         member.add("welcome");
         member.add("welcome.action");
+        guest.add("loadAccessoryDetail");
+        guest.add("loadAccessoryDetail.action");
         member.add("");
         member.add("''");
     }
