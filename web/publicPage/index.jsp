@@ -435,40 +435,54 @@
 
                 <div class="col-6">
                     <div class="row">
-                        <label class="row">Name</label>
-                        <div class="row modal-accessory-name" id="accessoryName">ABC</div>
+                        <div class="col-12">
+                            <label>Name</label>
+                            <div class="modal-accessory-name" id="accessoryName">ABC</div>
+                        </div>
                     </div>
 
                     <div class="row">
-                        <label>Brand</label>
-                        <div class="modal-accessory-name" id="accessoryBrand">ABC</div>
+                        <div class="col-12">
+                            <label>Brand</label>
+                            <div class="modal-accessory-name" id="accessoryBrand">ABC</div>    
+                        </div>
                     </div>
 
                     <div class="row">
-                        <label class="row">Category</label>
-                        <div class="row modal-accessory-name" id="accessoryCategory">ABC</div>
+                        <div class="col-12">
+                            <label>Category</label>
+                            <div class="modal-accessory-name" id="accessoryCategory">ABC</div>
+                        </div>
                     </div>
 
                     <div class="row">
-                        <label class="row">For Type</label><br>
-                        <div class="row modal-accessory-name" id="accessoryType">ABC</div>
+                        <div class="col-12">
+                            <label>For Type</label>
+                            <div class="modal-accessory-name" id="accessoryType">ABC</div>
+                        </div>
                     </div>
 
                     <div class="row">
-                        <label class="row">Price</label>
-                        <div class="row modal-accessory-price" id="accessoryPrice">$5.67</div>
+                        <div class="col-12">
+                            <label>Price</label>
+                            <div class="modal-accessory-price" id="accessoryPrice">$5.67</div>
+                        </div>
                     </div>
 
                     <div class="row">
-                        <div class="modal-accessory-quantity">100</div>
+                        <div class="col-12">
+                            <div class="modal-accessory-quantity">100</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
 
             <div class="row">
-                <label class="row">Description</label>
-                <div class="row modal-accessory-name" id="accessoryDes">ABC</div>
+                <div class="col-12">
+                    <label>Description</label>
+                    <div class="modal-accessory-name" id="accessoryDes">ABC</div>
+                </div>
             </div>
         </div>
       </div>
