@@ -72,3 +72,13 @@
 .modal-dialog {
     max-width: 50% !important;
 }
+
+.accessory-img-modal {
+    width: 100%;
+}
+
+label {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+}

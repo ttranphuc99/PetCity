@@ -51,7 +51,7 @@
                                     </div>
 
                                     <div class="wrap-btn-view-accessory text-center">
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">View detail <s:property value="%{id}"/></button>
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="loadAccessory(<s:property value="%{id}"/>)">View detail</button>
                                     </div>
                                 </div> 
                             </div>
@@ -81,7 +81,7 @@
                                     </div>
 
                                     <div class="wrap-btn-view-accessory text-center">
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">View detail <s:property value="%{id}"/></button>
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="loadAccessory(<s:property value="%{id}"/>)">View detail</button>
                                     </div>
                                 </div> 
                             </div>
@@ -111,7 +111,7 @@
                                     </div>
 
                                     <div class="wrap-btn-view-accessory text-center">
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">View detail <s:property value="%{id}"/></button>
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="loadAccessory(<s:property value="%{id}"/>)">View detail</button>
                                     </div>
                                 </div> 
                             </div>
@@ -141,7 +141,7 @@
                                     </div>
 
                                     <div class="wrap-btn-view-accessory text-center">
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">View detail <s:property value="%{id}"/></button>
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="loadAccessory(<s:property value="%{id}"/>)">View detail</button>
                                     </div>
                                 </div> 
                             </div>
@@ -186,7 +186,7 @@
                                     </div>
 
                                     <div class="wrap-btn-view-accessory text-center">
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">View detail <s:property value="%{id}"/></button>
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="loadAccessory(<s:property value="%{id}"/>)">View detail</button>
                                     </div>
                                 </div> 
                             </div>
@@ -216,7 +216,7 @@
                                     </div>
 
                                     <div class="wrap-btn-view-accessory text-center">
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">View detail <s:property value="%{id}"/></button>
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="loadAccessory(<s:property value="%{id}"/>)">View detail</button>
                                     </div>
                                 </div> 
                             </div>
@@ -246,7 +246,7 @@
                                     </div>
 
                                     <div class="wrap-btn-view-accessory text-center">
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">View detail <s:property value="%{id}"/></button>
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="loadAccessory(<s:property value="%{id}"/>)">View detail</button>
                                     </div>
                                 </div> 
                             </div>
@@ -321,7 +321,7 @@
                                     </div>
 
                                     <div class="wrap-btn-view-accessory text-center">
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">View detail <s:property value="%{id}"/></button>
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="loadAccessory(<s:property value="%{id}"/>)">View detail</button>
                                     </div>
                                 </div> 
                             </div>
@@ -351,7 +351,7 @@
                                     </div>
 
                                     <div class="wrap-btn-view-accessory text-center">
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">View detail <s:property value="%{id}"/></button>
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="loadAccessory(<s:property value="%{id}"/>)">View detail</button>
                                     </div>
                                 </div> 
                             </div>
@@ -381,7 +381,7 @@
                                     </div>
 
                                     <div class="wrap-btn-view-accessory text-center">
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">View detail <s:property value="%{id}"/></button>
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="loadAccessory(<s:property value="%{id}"/>)">View detail</button>
                                     </div>
                                 </div> 
                             </div>
@@ -411,7 +411,7 @@
                                     </div>
 
                                     <div class="wrap-btn-view-accessory text-center">
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">View detail <s:property value="%{id}"/></button>
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="loadAccessory(<s:property value="%{id}"/>)">View detail</button>
                                     </div>
                                 </div> 
                             </div>
@@ -429,14 +429,14 @@
       <div class="modal-body">
         <div class="container">
             <div class="row">
-                <div class="col-6">
-                    <img src="/PetCity/img/file/accessory/3.jpg" class="accessory-img" id="accessoryImg">
+                <div class="col-6  justify-content-center align-items-center">
+                    <img src="/PetCity/img/file/accessory/3.jpg" class="accessory-img-modal" id="accessoryImg">
                 </div>
 
                 <div class="col-6">
                     <div class="row">
-                        <label>Name</label>
-                        <div class="modal-accessory-name" id="accessoryName">ABC</div>
+                        <label class="row">Name</label>
+                        <div class="row modal-accessory-name" id="accessoryName">ABC</div>
                     </div>
 
                     <div class="row">
@@ -445,29 +445,30 @@
                     </div>
 
                     <div class="row">
-                        <label>Category</label>
-                        <div class="modal-accessory-name" id="accessoryCategory">ABC</div>
+                        <label class="row">Category</label>
+                        <div class="row modal-accessory-name" id="accessoryCategory">ABC</div>
                     </div>
 
                     <div class="row">
-                        <label>For Type</label>
-                        <div class="modal-accessory-name" id="accessoryType">ABC</div>
+                        <label class="row">For Type</label><br>
+                        <div class="row modal-accessory-name" id="accessoryType">ABC</div>
                     </div>
 
                     <div class="row">
-                        <label>Description</label>
-                        <div class="modal-accessory-name" id="accessoryDes">ABC</div>
-                    </div>
-
-                    <div class="row">
-                        <label>Price</label>
-                        <div class="modal-accessory-price" id="accessoryPrice">$5.67</div>
+                        <label class="row">Price</label>
+                        <div class="row modal-accessory-price" id="accessoryPrice">$5.67</div>
                     </div>
 
                     <div class="row">
                         <div class="modal-accessory-quantity">100</div>
                     </div>
                 </div>
+            </div>
+
+
+            <div class="row">
+                <label class="row">Description</label>
+                <div class="row modal-accessory-name" id="accessoryDes">ABC</div>
             </div>
         </div>
       </div>
