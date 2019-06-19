@@ -1,5 +1,5 @@
 .accessory-img {
-    height: 100%;
+    max-width: 100%;
 }
 
 .content {
@@ -81,4 +81,9 @@ label {
     display: block;
     font-size: 20px;
     font-weight: bold;
+}
+
+.modal-accessory-price {
+    font-weight: bold;
+    color: red;
 }

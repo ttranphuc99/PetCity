@@ -10,13 +10,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
         <title>Pet City - Admin Page</title>
-        <link rel="stylesheet" type="text/css" href="/PetCity/css/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/PetCity/css/bootstrap/bootstrap.css">
         <link rel="stylesheet" href="/PetCity/css/admin-page/sider.css">
         <link rel="stylesheet" href="/PetCity/css/admin-page/content.css">
         <link rel="stylesheet" href="/PetCity/css/public-page/snackbar.css">
         <script src="/PetCity/js/bootstrap/jquery-1.9.1.min.js"></script>
         <script src="/PetCity/js/bootstrap/popper.min.js"></script>
-        <script src="/PetCity/js/bootstrap/bootstrap.min.js"></script>
+        <script src="/PetCity/js/bootstrap/bootstrap.js"></script>
     </head>
 
     <body>

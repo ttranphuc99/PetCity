@@ -48,6 +48,8 @@ public class AuthFilter implements Filter {
         guest.add("welcome.action");
         guest.add("loadAccessoryDetail");
         guest.add("loadAccessoryDetail.action");
+        guest.add("addAccessoryToCart");
+        guest.add("addAccessoryToCart.action");
         
 
         admin = new ArrayList<>();
@@ -97,10 +99,12 @@ public class AuthFilter implements Filter {
         member.add("logout.action");
         member.add("welcome");
         member.add("welcome.action");
-        guest.add("loadAccessoryDetail");
-        guest.add("loadAccessoryDetail.action");
+        member.add("loadAccessoryDetail");
+        member.add("loadAccessoryDetail.action");
         member.add("");
         member.add("''");
+        member.add("addAccessoryToCart");
+        member.add("addAccessoryToCart.action");
     }
 
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)

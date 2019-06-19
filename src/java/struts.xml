@@ -172,5 +172,9 @@
         <action name="loadAccessoryDetail" class="phuctt.actions.guest.LoadAccessoryDetailAction">
             <result type="json"/>
         </action>
+        
+        <action name="addAccessoryToCart" class="phuctt.actions.guest.AddAccessoryToCartAction">
+            <result type="json"/>
+        </action>
     </package>
 </struts>

@@ -21,13 +21,15 @@ function showAccessory(jsonData) {
     var desEle = document.getElementById("accessoryDes");
     var priceEle = document.getElementById("accessoryPrice");
     var img = document.getElementById("accessoryImg");
+    var id = document.getElementById("accessoryDetailID");
 
     nameEle.innerHTML = obj.name;
     brandEle.innerHTML = obj.brand;
     cateEle.innerHTML = obj.category;
     typeEle.innerHTML = obj.type;
     desEle.innerHTML = obj.description;
-    priceEle.innerHTML = obj.price;
+    priceEle.innerHTML = "$ " + obj.price;
+    id.innerHTML = obj.id;
 
     img.src = "/PetCity/img/file/accessory/" + obj.image;
 }

@@ -276,7 +276,7 @@
                                     </div>
 
                                     <div class="wrap-btn-view-accessory text-center">
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">View detail <s:property value="%{id}"/></button>
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="loadAccessory(<s:property value="%{id}"/>)">View detail</button>
                                     </div>
                                 </div> 
                             </div>
@@ -428,8 +428,9 @@
     <div class="modal-content">
       <div class="modal-body">
         <div class="container">
+            <span style="display: none;" id="accessoryDetailID">-1</span>
             <div class="row">
-                <div class="col-6  justify-content-center align-items-center">
+                <div class="col-6 justify-content-center align-items-center">
                     <img src="/PetCity/img/file/accessory/3.jpg" class="accessory-img-modal" id="accessoryImg">
                 </div>
 
@@ -468,12 +469,6 @@
                             <div class="modal-accessory-price" id="accessoryPrice">$5.67</div>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="modal-accessory-quantity">100</div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -487,7 +482,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" onclick="loadAccessory(1)">Add to cart</button>
+        <button type="button" class="btn btn-primary" onclick="addAccessory()">Add to cart</button>
       </div>
     </div>
   </div>

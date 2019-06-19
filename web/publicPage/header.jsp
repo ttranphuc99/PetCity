@@ -10,11 +10,11 @@
         <title>Pet City</title>
         <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/header-footer.css">
         <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/snackbar.css">
-        <link rel="stylesheet" type="text/css" href="/PetCity/css/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/PetCity/css/bootstrap/bootstrap.css">
         <script src="/PetCity/js/bootstrap/jquery-1.9.1.min.js"></script>
         <script src="/PetCity/js/bootstrap/popper.min.js"></script>
-        <script src="/PetCity/js/bootstrap/bootstrap.min.js"></script>
-
+        <script src="/PetCity/js/bootstrap/bootstrap.js"></script>
+        <script src="/PetCity/js/public-page/add-accessory-to-cart.js"></script>
     </head>
 
     <body>
@@ -59,7 +59,7 @@
                             <a href="#" class="nav-link">
                                 <div class="row">
                                     <div class="col-12">
-                                        <div class="icon-quantity">0</div>
+                                        <div class="icon-quantity"><span id="quantityCart">0</span></div>
                                     </div>
                                 </div>
 

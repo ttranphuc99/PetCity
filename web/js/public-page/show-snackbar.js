@@ -2,6 +2,16 @@ window.onload = function () {
     if ($("#snackbar").text().trim()) {
         showSnackbar();
     }
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            responseAddAccessoryToCart(xhttp.responseText, false);
+        }
+    }
+
+    xhttp.open("GET", "http://localhost:8084/PetCity/addAccessoryToCart?id=-1", true);
+    xhttp.send();
 }
 
 function showSnackbar() {
