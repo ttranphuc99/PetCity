@@ -9,16 +9,16 @@
         <title>Pet City - Login</title>
         <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/login.css">
         <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/snackbar.css">
-        <link rel="stylesheet" type="text/css" href="/PetCity/css/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/PetCity/css/bootstrap/bootstrap.css">
         <script src="/PetCity/js/bootstrap/jquery-1.9.1.min.js"></script>
         <script src="/PetCity/js/bootstrap/popper.min.js"></script>
-        <script src="/PetCity/js/bootstrap/bootstrap.min.js"></script>
+        <script src="/PetCity/js/bootstrap/bootstrap.js"></script>
     </head>
     <body>
         <div class="wrap-login">
             <div class="wrap-form">
                 <div class="label my-3">Log In</div>
-                <div id="snackbar"><s:property value="%{errorMess}"/></div>
+                <div id="snackbar"><s:property value="%{mess}"/></div>
                 <form action="/PetCity/login" method="POST">
                     <div class="form-group">
                         <label for="username">Username:</label>
@@ -36,7 +36,7 @@
 
                     <div class="text-center">
                         <a href="/PetCity/publicPage/signup.jsp" class="nav-link">Don't have an account? Register</a>
-                        <a href="/PetCity/publicPage/index.jsp" class="nav-link">Back to Home</a>
+                        <a href="/PetCity/welcome" class="nav-link">Back to Home</a>
                     </div>
                 </form>
             </div>

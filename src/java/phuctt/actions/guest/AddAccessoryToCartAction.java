@@ -52,15 +52,27 @@ public class AddAccessoryToCartAction {
                     success = false;
                     mess = "Sorry. Not enough accessories in warehouse to buy.";
                 } else {
-                    AccessoryDTO item = new AccessoryDTO();
-                    item.setId(id);
-                    item.setPrice(dto.getPrice());
+                    AccessoryDTO item = cart.getItem(id);
+                    if (item == null) {
+                        dto.setBrand(null);
+                        cart.addToCart(dto);
 
-                    cart.addToCart(dto);
+                        success = true;
+                        mess = "Add to cart successfully";
+                    } else {
+                        cart.addToCart(dto);
+                        item = cart.getItem(id);
 
-                    item = cart.getItem(id);
-                    success = true;
-                    mess = "Add to cart successfully";
+                        if (curQuantity < item.getQuantity()) {
+                            success = false;
+                            mess = "Not enough accessories in warehouse to buy.";
+                            cart.update(id, curQuantity);
+                        } else {
+                            success = true;
+                            mess = "Add to cart successfully";
+                        }
+                    }
+
                 }
             }
             quantityInCart = cart.getTotalQuantity();

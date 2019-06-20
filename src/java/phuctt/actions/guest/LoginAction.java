@@ -16,7 +16,7 @@ import phuctt.daos.AccountDAO;
 public class LoginAction {
 
     private String username, password;
-    private String errorMess, mess;
+    private String mess;
     private static final String ADMIN = "admin";
     private static final String MEMBER = "member";
     private static final String FAIL = "fail";
@@ -42,11 +42,10 @@ public class LoginAction {
                     label = MEMBER;
                 } else {
                     session.clear();
-                    errorMess = "Your account is not support!";
-                    mess = "";
+                    mess = "Your account is not support!";
                 }
             } else {
-                errorMess = "Invalid username or password";
+                mess = "Invalid username or password";
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,14 +68,6 @@ public class LoginAction {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getErrorMess() {
-        return errorMess;
-    }
-
-    public void setErrorMess(String errorMess) {
-        this.errorMess = errorMess;
     }
 
     public String getMess() {

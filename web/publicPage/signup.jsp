@@ -11,10 +11,10 @@
 
         <link rel="stylesheet" href="/PetCity/css/public-page/signup.css">
         <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/snackbar.css">
-        <link rel="stylesheet" type="text/css" href="/PetCity/css/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/PetCity/css/bootstrap/bootstrap.css">
         <script src="/PetCity/js/bootstrap/jquery-1.9.1.min.js"></script>
         <script src="/PetCity/js/bootstrap/popper.min.js"></script>
-        <script src="/PetCity/js/bootstrap/bootstrap.min.js"></script>
+        <script src="/PetCity/js/bootstrap/bootstrap.js"></script>
     </head>
 
     <body>
@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="text-center">
-                        <a href="/PetCity/publicPage/index.jsp" class="nav-link">Back to Home</a>
+                        <a href="/PetCity/welcome" class="nav-link">Back to Home</a>
                     </div>
                 </form>
             </div>

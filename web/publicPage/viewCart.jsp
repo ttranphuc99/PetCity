@@ -29,34 +29,37 @@
                 <tbody>
                 <form action="/PetCity/updateAccessoryCart" method="POST">
                     <s:iterator status="st" value="%{#session.CART.list}">
-                    <tr>
-                        <td class="col-no text-center align-middle">
-                            <s:property value="%{#st.count}"/>
-                        </td>
-                        <td class="col-img text-center align-middle">
-                            <img class="img-accessory" src='/PetCity/img/file/accessory/<s:property value="%{image}"/>'>
-                        </td>
-                        <td class="col-name align-middle">
-                            <s:property value="%{name}" />
-                        </td>
-                        <td class="col-price text-center align-middle">
-                            $
-                            <s:property value="%{price}" />
-                        </td>
-                        <td class="col-quan text-center align-middle">
-                            <input type="hidden" name="id" value='<s:property value="%{id}"/>'>
-                            <input type="number" class="form-control text-center" name="quantity" min="1" max="50" step="1" value="<s:property value="%{quantity}" />">
-                        </td>
-                        <td class="col-sub-price text-center align-middle">
-                            $
-                            <s:property value="price*quantity" />
-                        </td>
-                        <td class="align-middle text-center">
-                            <a href="/PetCity/removeAccessoryCart?id=<s:property value="%{id}"/>" class="btn btn-sm btn-outline-info" role="button">
-                                Remove
-                            </a>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td class="col-no text-center align-middle">
+                                <s:property value="%{#st.count}"/>
+                            </td>
+                            <td class="col-img text-center align-middle">
+                                <img class="img-accessory" src='/PetCity/img/file/accessory/<s:property value="%{image}"/>'>
+                            </td>
+                            <td class="col-name align-middle">
+                                <s:property value="%{name}" />
+                            </td>
+                            <td class="col-price text-center align-middle">
+                                $
+                                <s:property value="%{price}" />
+                            </td>
+                            <td class="col-quan text-center align-middle">
+                                <input type="hidden" name="id" value='<s:property value="%{id}"/>'>
+                                <input type="number" class="form-control text-center" name="quantity" min="1" max="50" step="1" value="<s:property value="%{quantity}" />">
+                                <div class="error-quantity">
+                                    <s:property value="%{brand}"/>
+                                </div>
+                            </td>
+                            <td class="col-sub-price text-center align-middle">
+                                $
+                                <s:property value="price*quantity" />
+                            </td>
+                            <td class="align-middle text-center">
+                                <a href="/PetCity/removeAccessoryCart?id=<s:property value="%{id}"/>" class="btn btn-sm btn-outline-info" role="button">
+                                    Remove
+                                </a>
+                            </td>
+                        </tr>
                     </s:iterator>
                     <tr>
                         <td class="col-no"></td>
@@ -84,7 +87,13 @@
             </table>
         </div>
     </s:if>
+    <s:else>
+        <div class="text-center w-100 my-5 emptyCart">Empty cart</div>
+    </s:else>
 </s:if>
+<s:else>
+    <div class="text-center w-100 my-5 emptyCart">Empty cart</div>      
+</s:else>
 <script>
 </script>
 <%@include file="footer.jsp" %>

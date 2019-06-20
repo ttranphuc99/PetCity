@@ -183,6 +183,8 @@
         
         <action name="updateAccessoryCart" class="phuctt.actions.guest.UpdateAccessoryCartAction">
             <result name="success">publicPage/viewCart.jsp</result>
+            <result name="checkout">publicPage/viewCart.jsp</result>
+            <result name="login">publicPage/login.jsp</result>
         </action>
     </package>
 </struts>

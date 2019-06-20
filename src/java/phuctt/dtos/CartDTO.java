@@ -71,6 +71,12 @@ public class CartDTO implements Serializable {
         }
     }
     
+    public void setError(long id, String error) {
+        if (cart.containsKey(id)) {
+            cart.get(id).setBrand(error);
+        }
+    }
+    
     public boolean contain(long id) {
         return cart.containsKey(id);
     }
