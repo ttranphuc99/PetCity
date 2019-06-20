@@ -8,7 +8,7 @@
         <action name="login" class="phuctt.actions.guest.LoginAction">
             <result name="fail">publicPage/login.jsp</result>
             <result name="admin">admin/home.jsp</result>
-            <result name="member" type="chain">welcome</result>
+            <result name="member">member/sider.jsp</result>
         </action>
         
         <action name="logout" class="phuctt.actions.guest.LogoutAction">

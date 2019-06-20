@@ -46,7 +46,7 @@
                         <!-- login btn -->
                         <div class="col-8">
                             <s:if test="%{#session.USERNAME != null}">
-                                <a href="#" class="nav-link">Hello, <s:property value="%{#session.FULLNAME}"/></a>
+                                <a href="/PetCity/member/sider.jsp" class="nav-link">Hello, <s:property value="%{#session.FULLNAME}"/></a>
                                 <a href="/PetCity/logout" class="btn btn-danger" role="button">Logout</a>
                             </s:if>
                             <s:else>
