@@ -50,6 +50,12 @@ public class AuthFilter implements Filter {
         guest.add("loadAccessoryDetail.action");
         guest.add("addAccessoryToCart");
         guest.add("addAccessoryToCart.action");
+        guest.add("viewAccessoryCart");
+        guest.add("viewAccessoryCart.action");
+        guest.add("removeAccessoryCart");
+        guest.add("removeAccessoryCart.action");
+        guest.add("updateAccessoryCart");
+        guest.add("updateAccessoryCart.action");
         
 
         admin = new ArrayList<>();
@@ -105,6 +111,12 @@ public class AuthFilter implements Filter {
         member.add("''");
         member.add("addAccessoryToCart");
         member.add("addAccessoryToCart.action");
+        member.add("viewAccessoryCart");
+        member.add("viewAccessoryCart.action");
+        member.add("removeAccessoryCart");
+        member.add("removeAccessoryCart.action");
+        member.add("updateAccessoryCart");
+        member.add("updateAccessoryCart.action");
     }
 
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)

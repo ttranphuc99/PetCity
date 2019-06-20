@@ -57,16 +57,10 @@ public class AddAccessoryToCartAction {
                     item.setPrice(dto.getPrice());
 
                     cart.addToCart(dto);
-                    
+
                     item = cart.getItem(id);
-                    
-                    if (item.getQuantity() > 5) {
-                        success = false;
-                        mess = "Sorry. You can buy maximum 5 of one accessory.";
-                    } else {
-                        success = true;
-                        mess = "Add to cart successfully";
-                    }
+                    success = true;
+                    mess = "Add to cart successfully";
                 }
             }
             quantityInCart = cart.getTotalQuantity();

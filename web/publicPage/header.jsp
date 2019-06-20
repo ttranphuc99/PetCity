@@ -56,7 +56,7 @@
 
                         <!-- cart -->
                         <div class="col-4 wrap-cart">
-                            <a href="#" class="nav-link">
+                            <a href="/PetCity/publicPage/viewCart.jsp" class="nav-link">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="icon-quantity"><span id="quantityCart">0</span></div>

@@ -3,7 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/src/java/phuctt/dtos/CartDTO.java</file>
+            <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/src/java/phuctt/filters/AuthFilter.java</file>
             <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/web/publicPage/index.jsp</file>
+            <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/src/java/phuctt/actions/guest/LoadAccessoryDetailAction.java</file>
+            <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/src/java/phuctt/actions/guest/LoginAction.java</file>
+            <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/src/java/struts.xml</file>
+            <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/src/java/phuctt/actions/guest/AddAccessoryToCartAction.java</file>
+            <file>file:/E:/Ki4-Summer2019/PRJ321/Project_Present/PetCity/src/java/phuctt/actions/guest/LogoutAction.java</file>
         </group>
     </open-files>
 </project-private>

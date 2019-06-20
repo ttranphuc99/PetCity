@@ -6,7 +6,9 @@
 package phuctt.dtos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  *
@@ -18,6 +20,14 @@ public class CartDTO implements Serializable {
 
     public CartDTO() {
         cart = new HashMap<>();
+    }
+
+    public List<AccessoryDTO> getList() {
+        return new ArrayList<>(cart.values());
+    }
+    
+    public boolean isEmpty() {
+        return cart.isEmpty();
     }
 
     public String getUsername() {

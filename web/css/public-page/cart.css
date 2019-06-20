@@ -1,0 +1,19 @@
+.col-no {
+    width: 5%;
+}
+
+.col-img, .col-quan, .col-sub-price, .col-price {
+    width: 15%;
+}
+
+.col-name {
+    width: 20%;
+}
+
+.col-img img {
+    width: 100%;
+}
+
+.col-img, .col-quan, .col-sub-price, .col-price, .col-no, .col-name {
+    padding: 15px !important;
+}

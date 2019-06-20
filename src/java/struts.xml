@@ -176,5 +176,13 @@
         <action name="addAccessoryToCart" class="phuctt.actions.guest.AddAccessoryToCartAction">
             <result type="json"/>
         </action>
+        
+        <action name="removeAccessoryCart" class="phuctt.actions.guest.RemoveAccessoryCartAction">
+            <result name="success">publicPage/viewCart.jsp</result>
+        </action>
+        
+        <action name="updateAccessoryCart" class="phuctt.actions.guest.UpdateAccessoryCartAction">
+            <result name="success">publicPage/viewCart.jsp</result>
+        </action>
     </package>
 </struts>
