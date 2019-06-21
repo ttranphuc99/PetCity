@@ -8,3 +8,13 @@ function checkMatchConfirmPass(confirmID, passwordID) {
         confirm.setCustomValidity('');
     }
 }
+
+function checkPhone(id) {
+    var phone = document.getElementById(id);
+    console.log(phone.value);
+    if (phone.value.length > 10) {
+        phone.setCustomValidity('Phone is maximum length 10 number');
+    } else {
+        phone.setCustomValidity('');
+    }
+}

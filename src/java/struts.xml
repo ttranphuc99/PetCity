@@ -8,7 +8,7 @@
         <action name="login" class="phuctt.actions.guest.LoginAction">
             <result name="fail">publicPage/login.jsp</result>
             <result name="admin">admin/home.jsp</result>
-            <result name="member">member/sider.jsp</result>
+            <result name="member">loadProfile</result>
         </action>
         
         <action name="logout" class="phuctt.actions.guest.LogoutAction">
@@ -185,6 +185,19 @@
             <result name="success">publicPage/viewCart.jsp</result>
             <result name="checkout">publicPage/viewCart.jsp</result>
             <result name="login">publicPage/login.jsp</result>
+        </action>
+        
+        <action name="loadProfile" class="phuctt.actions.member.LoadProfileAction">
+            <result name="success">member/edit-profile.jsp</result>
+        </action>
+        
+        <action name="updateProfile" class="phuctt.actions.member.UpdateProfileAction">
+            <result name="success">member/edit-profile.jsp</result>
+        </action>
+        
+        <action name="memberChangePassword" class="phuctt.actions.member.MemberChangePasswordAction">
+            <result name="success">member/change-password.jsp</result>
+            <result name="fail">member/change-password.jsp</result>
         </action>
     </package>
 </struts>

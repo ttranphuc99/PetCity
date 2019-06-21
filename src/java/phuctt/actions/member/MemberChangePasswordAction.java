@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package phuctt.actions.admin;
+package phuctt.actions.member;
 
 import phuctt.daos.AccountDAO;
 
@@ -11,14 +11,14 @@ import phuctt.daos.AccountDAO;
  *
  * @author Thien Phuc
  */
-public class ChangePasswordAction {
+public class MemberChangePasswordAction {
     private String oldPassword, newPassword, conPassword, username;
     private String mess;
     
     private static final String SUCCESS = "success";
     private static final String FAIL = "fail";
     
-    public ChangePasswordAction() {
+    public MemberChangePasswordAction() {
     }
     
     public String execute() {

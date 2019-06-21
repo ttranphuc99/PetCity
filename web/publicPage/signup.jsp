@@ -32,7 +32,7 @@
 
                     <div class="form-group">
                         <label for="txtPassword">Password:</label>
-                        <input type="password" class="form-control" id="txtPassword" name="password" required minlength="6" maxlength="20">
+                        <input type="password" class="form-control" id="txtPassword" name="password" required minlength="6" maxlength="20"> 
                     </div>
 
                     <div class="form-group">

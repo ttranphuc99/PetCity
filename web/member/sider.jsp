@@ -17,57 +17,21 @@
                     <a href="#view-profile" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">View Profile</a>
                     <ul class="collapse list-unstyled" id="view-profile">
                         <li>
-                            <a href="/PetCity/adminViewProfile?username=<s:property value='%{#session.USERNAME}'/>" >Edit profile</a>
+                            <a href="/PetCity/loadProfile" >Edit profile</a>
                         </li>
                         <li>
-                            <a href="/PetCity/admin/change-password.jsp">Change password</a>
+                            <a href="/PetCity/member/change-password.jsp">Change password</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#manage-user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage User</a>
-                    <ul class="collapse list-unstyled" id="manage-user">
-                        <li>
-                            <a href="/PetCity/adminViewListUser?page=1">View list member</a>
-                        </li>
-                        <li>
-                            <a href="/PetCity/adminViewListAdmin?page=1">View list admin</a>
-                        </li>
-                        <li>
-                            <a href="/PetCity/admin/add-admin.jsp">Add new admin</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#manage-accessory" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage Accessory</a>
-                    <ul class="collapse list-unstyled" id="manage-accessory">
-                        <li>
-                            <a href="/PetCity/adminViewListAccessory?page=1">View list accessory</a>
-                        </li>
-                        <li>
-                            <a href="/PetCity/loadCategoryType?locationPlace=accessory">Add new accessory</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#manage-service" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage Service</a>
+                    <a href="#manage-service" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage Pet</a>
                     <ul class="collapse list-unstyled" id="manage-service">
                         <li>
-                            <a href="/PetCity/adminViewListService?page=1">View list service</a>
+                            <a href="/PetCity/adminViewListService?page=1">View list pet</a>
                         </li>
                         <li>
-                            <a href="/PetCity/loadCategoryType?locationPlace=service">Add new service</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#manage-staff" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage Staff</a>
-                    <ul class="collapse list-unstyled" id="manage-staff">
-                        <li>
-                            <a href="/PetCity/adminViewListStaff?page=1">View list staff</a>
-                        </li>
-                        <li>
-                            <a href="/PetCity/admin/add-staff.jsp">Add new staff</a>
+                            <a href="/PetCity/loadCategoryType?locationPlace=service">Add new pet</a>
                         </li>
                     </ul>
                 </li>
@@ -88,9 +52,4 @@
         <!-- Page Content  -->
         <div id="content">
             <div class="main-content">
-            </div>
-        </div>
-    </div>
-</div>
-
-<%@include file="/publicPage/footer.jsp" %>
+            

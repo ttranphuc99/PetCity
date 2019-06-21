@@ -1,14 +1,19 @@
 <%-- 
-    Document   : change-pasword
-    Created on : Jun 3, 2019, 10:15:03 PM
+    Document   : change-password
+    Created on : Jun 21, 2019, 5:44:12 PM
     Author     : Thien Phuc
 --%>
-<%@taglib uri="/struts-tags" prefix="s" %>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="sider.jsp" %>
+<link rel="stylesheet" href="/PetCity/css/member-page/edit-profile.css">
+<div id="snackbar">
+    <s:property value="%{mess}" />
+</div>
 <div class="title">Change password</div>
 
 <div class="container-fluid">
-    <form action="/PetCity/changePassword" method="POST">
+    <form action="/PetCity/memberChangePassword" method="POST">
         <input type="hidden" name="username" value="<s:property value="%{#session.USERNAME}"/>">
         
         <div class="form-group">
