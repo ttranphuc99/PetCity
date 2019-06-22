@@ -4,6 +4,9 @@
     Author     : Thien Phuc
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<div style="position: fixed; top: 70px; right: 10px; z-index: 1000" id="noti">
+
+</div>
 <footer>
     <div class="text-center">
         <p>PetCity.vn - Hệ thống Siêu thị đồ thú cưng hàng đầu VN</p>

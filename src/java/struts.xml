@@ -12,7 +12,10 @@
         </action>
         
         <action name="logout" class="phuctt.actions.guest.LogoutAction">
-            <result name="success" type="chain">welcome</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">welcome</param>
+                <param name="mess">${mess}</param>
+            </result>
         </action>
         
         <action name="signup" class="phuctt.actions.guest.SignUpAction">
@@ -184,7 +187,7 @@
         
         <action name="updateAccessoryCart" class="phuctt.actions.guest.UpdateAccessoryCartAction">
             <result name="success">publicPage/viewCart.jsp</result>
-            <result name="checkout">publicPage/viewCart.jsp</result>
+            <result name="checkout" type="chain">checkoutAccessory</result>
             <result name="login">publicPage/login.jsp</result>
         </action>
         
@@ -231,6 +234,14 @@
         <action name="updatePet" class="phuctt.actions.member.UpdatePetAction">
             <result name="success" type="chain">viewListPet</result>
             <result name="fail">member/view-pet-detail.jsp</result>
+        </action>
+        
+        <action name="checkoutAccessory" class="phuctt.actions.member.CheckoutAccessoryAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">welcome</param>
+                <param name="mess">${mess}</param>
+            </result>
+            <result name="fail">publicPage/viewCart.jsp</result>
         </action>
     </package>
 </struts>
