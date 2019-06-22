@@ -26,3 +26,9 @@
 .col-status {
     width: 15%;
 }
+
+.title {
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+}

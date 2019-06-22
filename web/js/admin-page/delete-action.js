@@ -29,3 +29,11 @@ function deleteService(id, name) {
     var actionBtn = document.getElementById("deleteBtnAction");
     actionBtn.href = "/PetCity/deleteService?id=" + id;
 }
+
+function deletePet(id, name) {
+    var modal = document.getElementsByClassName("modal-body")[0];
+    modal.innerHTML = "Do you want to delete Pet's name: " + name;
+
+    var actionBtn = document.getElementById("deleteBtnAction");
+    actionBtn.href = "/PetCity/deletePet?id=" + id;
+}

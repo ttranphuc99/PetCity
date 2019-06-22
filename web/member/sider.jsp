@@ -28,10 +28,10 @@
                     <a href="#manage-service" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage Pet</a>
                     <ul class="collapse list-unstyled" id="manage-service">
                         <li>
-                            <a href="/PetCity/adminViewListService?page=1">View list pet</a>
+                            <a href="/PetCity/viewListPet?page=1">View list pet</a>
                         </li>
                         <li>
-                            <a href="/PetCity/loadCategoryType?locationPlace=service">Add new pet</a>
+                            <a href="/PetCity/loadCategoryType?locationPlace=pet">Add new pet</a>
                         </li>
                     </ul>
                 </li>

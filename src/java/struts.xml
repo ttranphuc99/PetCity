@@ -8,7 +8,7 @@
         <action name="login" class="phuctt.actions.guest.LoginAction">
             <result name="fail">publicPage/login.jsp</result>
             <result name="admin">admin/home.jsp</result>
-            <result name="member">loadProfile</result>
+            <result name="member" type="chain">loadProfile</result>
         </action>
         
         <action name="logout" class="phuctt.actions.guest.LogoutAction">
@@ -43,6 +43,7 @@
         <action name="loadCategoryType" class="phuctt.actions.admin.LoadCategoryTypeAction">
             <result name="accessory">admin/add-accessory.jsp</result>
             <result name="service" type="chain">loadStaff</result>
+            <result name="pet">member/add-pet.jsp</result>
             <result name="fail">admin/home.jsp</result>
         </action>
         
@@ -198,6 +199,38 @@
         <action name="memberChangePassword" class="phuctt.actions.member.MemberChangePasswordAction">
             <result name="success">member/change-password.jsp</result>
             <result name="fail">member/change-password.jsp</result>
+        </action>
+        
+        <action name="addPet" class="phuctt.actions.member.AddPetAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">viewListPet</param>
+                <param name="mess">${mess}</param>
+                <param name="name">${name}</param>
+            </result>
+        </action>
+        
+        <action name="viewListPet" class="phuctt.actions.member.ViewListPetAction">
+            <result name="success">member/view-list-pet.jsp</result>
+        </action>
+        
+        <action name="deletePet" class="phuctt.actions.member.DeletePetAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">viewListPet</param>
+                <param name="mess">${mess}</param>
+            </result>
+        </action>
+        
+        <action name="viewPetDetail" class="phuctt.actions.member.ViewPetDetailAction">
+            <result name="success">member/view-pet-detail.jsp</result>
+            <result name="fail" type="redirectAction">
+                <param name="actionName">viewListPet</param>
+                <param name="mess">${mess}</param>
+            </result>
+        </action>
+        
+        <action name="updatePet" class="phuctt.actions.member.UpdatePetAction">
+            <result name="success" type="chain">viewListPet</result>
+            <result name="fail">member/view-pet-detail.jsp</result>
         </action>
     </package>
 </struts>

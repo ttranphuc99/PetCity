@@ -121,6 +121,18 @@ public class AuthFilter implements Filter {
         member.add("loadProfile.action");
         member.add("updateProfile");
         member.add("updateProfile.action");
+        member.add("loadCategoryType");
+        member.add("loadCategoryType.action");
+        member.add("addPet");
+        member.add("addPet.action");
+        member.add("viewListPet");
+        member.add("viewListPet.action");
+        member.add("deletePet");
+        member.add("deletePet.action");
+        member.add("viewPetDetail");
+        member.add("viewPetDetail.action");
+        member.add("updatePet");
+        member.add("updatePet.action");
     }
 
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
