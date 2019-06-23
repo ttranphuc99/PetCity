@@ -37,3 +37,11 @@ function deletePet(id, name) {
     var actionBtn = document.getElementById("deleteBtnAction");
     actionBtn.href = "/PetCity/deletePet?id=" + id;
 }
+
+function cancelInvoiceAccessory(id) {
+    var modal = document.getElementsByClassName("modal-body")[0];
+    modal.innerHTML = "Do you want to cancel Invoice ID: " + id;
+
+    var actionBtn = document.getElementById("deleteBtnAction");
+    actionBtn.href = "/PetCity/cancelInvoiceAccessory?id=" + id;
+}

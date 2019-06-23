@@ -12,7 +12,7 @@
 <div class="title mb-4">Accessory Invoices</div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -24,7 +24,7 @@
             <div class="modal-body"></div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <a role="button" class="btn btn-danger" id="deleteBtnAction" href="javascript(0);">Delete</a>
+                <a role="button" class="btn btn-danger" id="deleteBtnAction" href="javascript(0);">Cancel Invoice</a>
             </div>
         </div>
     </div>
@@ -61,7 +61,7 @@
                             <span class="badge badge-warning">Waiting</span>
                         </s:if>
                         <s:elseif test="%{status == 1}">
-                            <span class="badge badge-primary">Confirmed</span>
+                            <span class="badge badge-primary">Done</span>
                         </s:elseif>
                         <s:elseif test="%{status == -1}">
                             <span class="badge badge-danger">Canceled</span>
@@ -69,10 +69,12 @@
                     </td>
                     <td class="align-middle text-center">
                         <a class="btn btn-sm btn-outline-info my-1"
-                            href='/PetCity/viewPetDetail?id=<s:property value="%{id}"/>'
-                            role="button">Detail</a><br>
-                        <button class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal"
-                            onclick='deletePet(<s:property value="%{id}"/>, "<s:property value="%{name}"/>")'>Cancel</button>
+                           href='/PetCity/viewAccessoryCartDetail?invoiceID=<s:property value="%{id}" />'
+                           role="button">Detail</a><br>
+                        <s:if test="%{status == 0}">
+                            <button class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal"
+                                    onclick='cancelInvoiceAccessory(<s:property value="%{id}"/>)'>Cancel</button>
+                        </s:if>
                     </td>
                 </tr>
             </s:iterator>

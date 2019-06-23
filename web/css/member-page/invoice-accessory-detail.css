@@ -1,0 +1,35 @@
+.col-no {
+    width: 5%;
+}
+
+.col-img, .col-quan, .col-sub-price, .col-price {
+    width: 17.5%;
+}
+
+.col-name {
+    width: 25%;
+}
+
+.col-img img {
+    width: 100%;
+}
+
+.col-img, .col-quan, .col-sub-price, .col-price, .col-no, .col-name {
+    padding: 15px !important;
+}
+
+.emptyCart {
+    font-size: 25px;
+    color: red;
+    font-weight: bold;
+}
+
+.error-quantity {
+    font-size: 13px;
+    color: red;
+    font-weight: bold;
+}
+
+.totalPrice {
+    font-weight: bold;
+}

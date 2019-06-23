@@ -118,31 +118,31 @@ public class InvoiceAccessoryDAO implements Serializable {
                     + "WHERE I.buyerUsername = ? AND I.invoiceID = D.invoiceID\n"
                     + "GROUP BY I.invoiceID, createdTime, I.status\n"
                     + "ORDER BY I.invoiceID DESC OFFSET " + ((page - 1) * 5) + " ROWS FETCH NEXT 5 ROWS ONLY";
-            
+
             ps = conn.prepareStatement(sql);
             ps.setString(1, username);
-            
+
             rs = ps.executeQuery();
-            
+
             result = new ArrayList<>();
             InvoiceAccessoryDTO dto;
             long id;
             Timestamp createdTime;
             int status;
             float total;
-            
+
             while (rs.next()) {
                 id = rs.getLong("id");
                 createdTime = rs.getTimestamp("createdTime");
                 status = rs.getInt("stt");
                 total = rs.getFloat("total");
-                
+
                 dto = new InvoiceAccessoryDTO();
                 dto.setId(id);
                 dto.setCreatedTime(createdTime);
                 dto.setStatus(status);
                 dto.setTotal(total);
-                
+
                 result.add(dto);
             }
         } finally {
@@ -170,5 +170,139 @@ public class InvoiceAccessoryDAO implements Serializable {
             closeConnection();
         }
         return num;
+    }
+
+    public boolean belongTo(String username, long id) throws SQLException, ClassNotFoundException {
+        boolean check = false;
+        try {
+            conn = DBConnection.getConnection();
+
+            String sql = "SELECT createdTime FROM Invoice_Accessory WHERE buyerUsername = ? AND invoiceID = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setLong(2, id);
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                check = true;
+            }
+        } finally {
+            closeConnection();
+        }
+        return check;
+    }
+
+    public boolean cancelInvoice(long id) throws SQLException, ClassNotFoundException {
+        boolean check = false;
+        try {
+            conn = DBConnection.getConnection();
+
+            String sql = "SELECT status FROM Invoice_Accessory WHERE invoiceID = ?";
+
+            ps = conn.prepareStatement(sql);
+            ps.setLong(1, id);
+
+            int curStt = -1;
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                curStt = rs.getInt("status");
+            }
+
+            if (curStt != -1) {
+                conn.setAutoCommit(false);
+
+                sql = "UPDATE Invoice_Accessory SET status = ? WHERE invoiceID = ?";
+
+                ps = conn.prepareStatement(sql);
+                ps.setInt(1, -1);
+                ps.setLong(2, id);
+
+                check = ps.executeUpdate() > 0;
+
+                if (check) {
+                    List<Long> listAccessoryID = new ArrayList<>();
+                    sql = "SELECT accessoryID FROM Invoice_Accessory_Detail WHERE invoiceID = ?";
+
+                    ps = conn.prepareStatement(sql);
+                    ps.setLong(1, id);
+
+                    rs = ps.executeQuery();
+
+                    while (rs.next()) {
+                        listAccessoryID.add(rs.getLong("accessoryID"));
+                    }
+
+                    sql = "UPDATE Accessory\n"
+                            + "SET quantity = quantity + (\n"
+                            + "	SELECT quantity\n"
+                            + "	FROM Invoice_Accessory_Detail\n"
+                            + "	WHERE invoiceID = ? AND accessoryID = ?\n"
+                            + ")\n"
+                            + "WHERE accessoryID = ?";
+
+                    ps = conn.prepareStatement(sql);
+                    ps.setLong(1, id);
+
+                    for (Long accessoryID : listAccessoryID) {
+                        ps.setLong(2, accessoryID);
+                        ps.setLong(3, accessoryID);
+
+                        check = ps.executeUpdate() > 0;
+
+                        if (!check) {
+                            break;
+                        }
+                    }
+
+                    if (check) {
+                        conn.commit();
+                    }
+                }
+            }
+        } finally {
+            closeConnection();
+        }
+        return check;
+    }
+
+    public List<AccessoryDTO> getDetailInvoice(long id) throws SQLException, ClassNotFoundException {
+        List<AccessoryDTO> result = null;
+        try {
+            conn = DBConnection.getConnection();
+            String sql = "SELECT A.name as name, A.image as image, I.subPrice as price, I.quantity as quantity\n"
+                    + "FROM Accessory A, Invoice_Accessory_Detail I\n"
+                    + "WHERE I.invoiceID = ? AND A.accessoryID = I.accessoryID";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setLong(1, id);
+            rs = ps.executeQuery();
+            
+            AccessoryDTO dto;
+            String name, image;
+            int quantity;
+            float price;
+            result = new ArrayList<>();
+            
+            while (rs.next()) {
+                name = rs.getString("name");
+                image = rs.getString("image");
+                price = rs.getFloat("price");
+                quantity = rs.getInt("quantity");
+                
+                dto = new AccessoryDTO();
+                dto.setName(name);
+                dto.setImage(image);
+                dto.setPrice(price);
+                dto.setQuantity(quantity);
+                
+                result.add(dto);
+            }
+            
+        } finally {
+            closeConnection();
+        }
+        return result;
     }
 }

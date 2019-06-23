@@ -11,15 +11,15 @@ import java.io.Serializable;
  *
  * @author Thien Phuc
  */
-public class InvoiceAccessoryDetail implements Serializable {
+public class InvoiceAccessoryDetailDTO implements Serializable {
     private long accessoryID, invoiceID;
     private int quantity;
     private float subPrice;
 
-    public InvoiceAccessoryDetail() {
+    public InvoiceAccessoryDetailDTO() {
     }
 
-    public InvoiceAccessoryDetail(long accessoryID, long invoiceID, int quantity, float subPrice) {
+    public InvoiceAccessoryDetailDTO(long accessoryID, long invoiceID, int quantity, float subPrice) {
         this.accessoryID = accessoryID;
         this.invoiceID = invoiceID;
         this.quantity = quantity;
