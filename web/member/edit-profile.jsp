@@ -56,6 +56,5 @@
         </div>
     </form>
     <script src="/PetCity/js/public-page/validate-signup.js"></script>
-    <script src="/PetCity/js/public-page/show-detail-acces.js"></script>
 </div>
 <%@include file="end-sider.jsp" %>

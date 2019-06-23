@@ -241,7 +241,19 @@
                 <param name="actionName">welcome</param>
                 <param name="mess">${mess}</param>
             </result>
-            <result name="fail">publicPage/viewCart.jsp</result>
+            <result name="fail" type="redirectAction">
+                <param name="actionName">loadProfile</param>
+                <param name="mess">${mess}</param>
+            </result>
+            <result name="error">publicPage/viewCart.jsp</result>
+        </action>
+        
+        <action name="viewListAccessoryInvoice" class="phuctt.actions.member.ViewListAccessoryInvoiceAction">
+            <result name="fail" type="redirectAction">
+                <param name="actionName">welcome</param>
+                <param name="mess">${mess}</param>
+            </result>
+            <result name="member">member/view-list-accessory-invoice.jsp</result>
         </action>
     </package>
 </struts>

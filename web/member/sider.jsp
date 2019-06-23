@@ -39,7 +39,7 @@
                     <a href="#view-invoice" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">View Invoice</a>
                     <ul class="collapse list-unstyled" id="view-invoice">
                         <li>
-                            <a href="#">Accessory invoices</a>
+                            <a href="/PetCity/viewListAccessoryInvoice">Accessory invoices</a>
                         </li>
                         <li>
                             <a href="#">Service invoices</a>

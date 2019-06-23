@@ -16,6 +16,8 @@ public class InvoiceAccessoryDTO implements Serializable {
     private Timestamp createdTime;
     private String buyerUsername, adminConfirm;
     private int status;
+    private long id;
+    private float total;
 
     public InvoiceAccessoryDTO() {
     }
@@ -57,6 +59,22 @@ public class InvoiceAccessoryDTO implements Serializable {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
     }
     
     

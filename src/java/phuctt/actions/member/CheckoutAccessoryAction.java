@@ -27,12 +27,13 @@ public class CheckoutAccessoryAction {
     
     private static final String SUCCESS = "success";
     private static final String FAIL = "fail";
+    private static final String ERROR = "error";
     
     public CheckoutAccessoryAction() {
     }
     
     public String execute() {
-        String label = FAIL;
+        String label = ERROR;
         try {
             System.out.println(id);
             System.out.println(quantity);

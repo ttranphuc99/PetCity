@@ -99,6 +99,8 @@ public class AuthFilter implements Filter {
         admin.add("updateService.action");
         admin.add("deleteService");
         admin.add("deleteService.action");
+        admin.add("viewListAccessoryInvoice");
+        admin.add("viewListAccessoryInvoice.action");
 
         member = new ArrayList<>();
         member.add("logout");
@@ -133,6 +135,8 @@ public class AuthFilter implements Filter {
         member.add("viewPetDetail.action");
         member.add("updatePet");
         member.add("updatePet.action");
+        member.add("viewListAccessoryInvoice");
+        member.add("viewListAccessoryInvoice.action");
     }
 
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)

@@ -18,6 +18,7 @@ public class LoadProfileAction {
 
     private AccountDTO dto;
     private String username;
+    private String mess;
 
     public LoadProfileAction() {
 
@@ -52,4 +53,13 @@ public class LoadProfileAction {
         this.username = username;
     }
 
+    public String getMess() {
+        return mess;
+    }
+
+    public void setMess(String mess) {
+        this.mess = mess;
+    }
+
+    
 }
