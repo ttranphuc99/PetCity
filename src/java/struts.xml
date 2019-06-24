@@ -271,5 +271,16 @@
                 <param name="mess">${mess}</param>
             </result>
         </action>
+        
+        <action name="updateStatusAccessoryInvoice" class="phuctt.actions.admin.UpdateStatusAccessoryInvoiceAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">viewListAccessoryInvoice</param>
+                <param name="mess">${mess}</param>
+            </result>
+        </action>
+        
+        <action name="adminViewAccessoryInvoiceDetail" class="phuctt.actions.admin.AdminViewAccessoryInvoiceDetailAction">
+            <result name="success">admin/view-detail-accessory-invoice.jsp</result>
+        </action>
     </package>
 </struts>

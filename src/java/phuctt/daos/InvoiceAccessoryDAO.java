@@ -274,61 +274,61 @@ public class InvoiceAccessoryDAO implements Serializable {
             String sql = "SELECT A.name as name, A.image as image, I.subPrice as price, I.quantity as quantity\n"
                     + "FROM Accessory A, Invoice_Accessory_Detail I\n"
                     + "WHERE I.invoiceID = ? AND A.accessoryID = I.accessoryID";
-            
+
             ps = conn.prepareStatement(sql);
             ps.setLong(1, id);
             rs = ps.executeQuery();
-            
+
             AccessoryDTO dto;
             String name, image;
             int quantity;
             float price;
             result = new ArrayList<>();
-            
+
             while (rs.next()) {
                 name = rs.getString("name");
                 image = rs.getString("image");
                 price = rs.getFloat("price");
                 quantity = rs.getInt("quantity");
-                
+
                 dto = new AccessoryDTO();
                 dto.setName(name);
                 dto.setImage(image);
                 dto.setPrice(price);
                 dto.setQuantity(quantity);
-                
+
                 result.add(dto);
             }
-            
+
         } finally {
             closeConnection();
         }
         return result;
     }
-    
+
     public List<InvoiceAccessoryDTO> adminGetListInvoice(long page) throws SQLException, ClassNotFoundException {
         List<InvoiceAccessoryDTO> result = null;
         try {
             conn = DBConnection.getConnection();
-            
+
             String sql = "SELECT I.invoiceID as id, createdTime, I.status as stt, sum(D.quantity * D.subPrice) as total, buyerUsername, adminConfirm\n"
                     + "FROM Invoice_Accessory I, Invoice_Accessory_Detail D\n"
                     + "WHERE I.invoiceID = D.invoiceID\n"
                     + "GROUP BY I.invoiceID, createdTime, I.status, buyerUsername, adminConfirm\n"
                     + "ORDER BY I.invoiceID DESC OFFSET " + ((page - 1) * 5) + " ROWS FETCH NEXT 5 ROWS ONLY";
-            
+
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            
+
             long id;
             Timestamp createdTime;
             int status;
             float total;
             String buyerUsername, adminConfirm;
-            
+
             InvoiceAccessoryDTO dto;
             result = new ArrayList<>();
-            
+
             while (rs.next()) {
                 id = rs.getLong("id");
                 createdTime = rs.getTimestamp("createdTime");
@@ -336,7 +336,7 @@ public class InvoiceAccessoryDAO implements Serializable {
                 total = rs.getFloat("total");
                 buyerUsername = rs.getString("buyerUsername");
                 adminConfirm = rs.getString("adminConfirm");
-                
+
                 dto = new InvoiceAccessoryDTO(createdTime, buyerUsername, adminConfirm, status);
                 dto.setId(id);
                 dto.setTotal(total);
@@ -347,17 +347,17 @@ public class InvoiceAccessoryDAO implements Serializable {
         }
         return result;
     }
-    
+
     public long adminGetListInvoice() throws SQLException, ClassNotFoundException {
         long num = 0;
         try {
             conn = DBConnection.getConnection();
             String sql = "SELECT count(invoiceID) as num FROM Invoice_Accessory";
-            
+
             ps = conn.prepareStatement(sql);
-            
+
             rs = ps.executeQuery();
-            
+
             if (rs.next()) {
                 num = rs.getLong("num");
             }
@@ -365,5 +365,61 @@ public class InvoiceAccessoryDAO implements Serializable {
             closeConnection();
         }
         return num;
+    }
+
+    public boolean updateStatus(long id, int status, String username) throws SQLException, ClassNotFoundException {
+        boolean check = false;
+        try {
+            conn = DBConnection.getConnection();
+
+            if (status == -1) {
+                check = this.cancelInvoice(id);
+                if (check) {
+                    String sql = "UPDATE Invoice_Accessory SET adminConfirm = ? WHERE invoiceID = ?";
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1, username);
+                    ps.setLong(2, id);
+
+                    check = ps.executeUpdate() > 0;
+                }
+            } else {
+                conn.setAutoCommit(false);
+
+                String sql = "SELECT status FROM Invoice_Accessory WHERE invoiceID = ?";
+                ps = conn.prepareStatement(sql);
+                ps.setLong(1, id);
+                rs = ps.executeQuery();
+
+                int curStatus = 0;
+                if (rs.next()) {
+                    curStatus = rs.getInt("status");
+                }
+
+                if (curStatus == -1) {
+                    check = false;
+                } else {
+                    sql = "UPDATE Invoice_Accessory SET status = ? WHERE invoiceID = ?";
+                    ps = conn.prepareStatement(sql);
+                    ps.setInt(1, status);
+                    ps.setLong(2, id);
+
+                    check = ps.executeUpdate() > 0;
+
+                    if (check) {
+                        sql = "UPDATE Invoice_Accessory SET adminConfirm = ? WHERE invoiceID = ?";
+                        ps = conn.prepareStatement(sql);
+                        ps.setString(1, username);
+                        ps.setLong(2, id);
+
+                        check = ps.executeUpdate() > 0;
+                        
+                        if (check) conn.commit();
+                    }
+                }
+            }
+        } finally {
+            closeConnection();
+        }
+        return check;
     }
 }

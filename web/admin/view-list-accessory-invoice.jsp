@@ -52,7 +52,9 @@
             <s:iterator value="listAccessoryInvoice">
                 <tr>
                     <td class="align-middle text-center col-id">
-                        <s:property value="%{id}" />
+                        <a href="/PetCity/adminViewAccessoryInvoiceDetail?id=<s:property value="%{id}" />&status=<s:property value="%{status}" />&page=<s:property value="%{page}" />"" class="link">
+                            <s:property value="%{id}" />
+                        </a>
                     </td>
                     <td class="align-middle text-center col-buyer">
                         <s:property value="%{buyerUsername}" />
@@ -78,12 +80,18 @@
                         <s:property value="%{adminConfirm}" />
                     </td>
                     <td class="align-middle text-center">
-                        <a class="btn btn-sm btn-outline-info my-1"
-                           href='/PetCity/viewAccessoryCartDetail?invoiceID=<s:property value="%{id}" />'
-                           role="button"><i class="fas fa-check-square"></i></a>
-                        <s:if test="%{status == 0}">
-                            <button class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal"
-                                    onclick='cancelInvoiceAccessory(<s:property value="%{id}"/>)'>Cancel</button>
+                        <s:if test="%{status != -1}">
+                        <form method="POST" action="/PetCity/updateStatusAccessoryInvoice">
+                            <select name="status" class="custom-select" style="width: 50%">
+                                <option value="-1" <s:if test="%{status == -1}">selected</s:if>>Canceled</option>
+                                <option value="0" <s:if test="%{status == 0}">selected</s:if>>Waiting</option>
+                                <option value="1" <s:if test="%{status == 1}">selected</s:if>>Done</option>
+                            </select>
+                            <input type="hidden" name="id" value="<s:property value="%{id}" />"/>
+                            <input type="hidden" name="page" value="<s:property value="%{page}" />"/>
+                                
+                           <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fas fa-check"></i></button>   
+                        </form>
                         </s:if>
                     </td>
                 </tr>
@@ -117,6 +125,5 @@
         </ul>
     </nav>
 </s:else>
-<script src="/PetCity/js/admin-page/delete-action.js"></script>
 <script src="https://kit.fontawesome.com/37932e4a19.js"></script>
 <%@include file="end-sider.jsp" %>

@@ -101,6 +101,10 @@ public class AuthFilter implements Filter {
         admin.add("deleteService.action");
         admin.add("viewListAccessoryInvoice");
         admin.add("viewListAccessoryInvoice.action");
+        admin.add("updateStatusAccessoryInvoice");
+        admin.add("updateStatusAccessoryInvoice.action");
+        admin.add("adminViewAccessoryInvoiceDetail");
+        admin.add("adminViewAccessoryInvoiceDetail.action");
 
         member = new ArrayList<>();
         member.add("logout");
