@@ -4,7 +4,7 @@
             </div>
         </div>
     </div>
-    <script src="/PetCity/js/public-page/show-snackbar.js"></script>
+    <script src="/PetCity/js/admin-page/show-snackbar.js"></script>
 </body>
 
 </html>

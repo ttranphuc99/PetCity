@@ -254,6 +254,7 @@
                 <param name="mess">${mess}</param>
             </result>
             <result name="member">member/view-list-accessory-invoice.jsp</result>
+            <result name="admin">admin/view-list-accessory-invoice.jsp</result>
         </action>
         
         <action name="cancelInvoiceAccessory" class="phuctt.actions.member.CancelInvoiceAccessoryAction">

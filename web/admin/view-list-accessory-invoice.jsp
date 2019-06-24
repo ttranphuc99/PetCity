@@ -1,11 +1,13 @@
 <%-- 
     Document   : view-list-accessory-invoice
-    Created on : Jun 23, 2019, 10:48:22 AM
+    Created on : Jun 24, 2019, 7:03:42 AM
     Author     : Thien Phuc
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib  uri="/struts-tags" prefix="s" %>
 <%@include file="sider.jsp" %>
+<link rel="stylesheet" href="/PetCity/css/admin-page/accessory-invoice.css">
 <div id="snackbar">
     <s:property value="%{mess}" />
 </div>
@@ -16,7 +18,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Cancel Confirm</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Delete Confirm</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -38,9 +40,11 @@
         <thead>
             <tr>
                 <th class="th-sm text-center col-id">ID</th>
+                <th class="th-sm text-center col-buyer">Buyer</th>
                 <th class="th-sm text-center col-time">Created Time</th>
                 <th class="th-sm text-center col-total">Total Price</th>
                 <th class="th-sm text-center col-status">Status</th>
+                <th class="th-sm text-center col-confirm">Admin Confirm</th>
                 <th class="th-sm text-center">Action</th>
             </tr>
         </thead>
@@ -49,6 +53,9 @@
                 <tr>
                     <td class="align-middle text-center col-id">
                         <s:property value="%{id}" />
+                    </td>
+                    <td class="align-middle text-center col-buyer">
+                        <s:property value="%{buyerUsername}" />
                     </td>
                     <td class="align-middle text-center col-time">
                         <s:property value="%{createdTime}" />
@@ -67,10 +74,13 @@
                             <span class="badge badge-danger">Canceled</span>
                         </s:elseif>
                     </td>
+                    <td class="align-middle text-center col-confirm">
+                        <s:property value="%{adminConfirm}" />
+                    </td>
                     <td class="align-middle text-center">
                         <a class="btn btn-sm btn-outline-info my-1"
                            href='/PetCity/viewAccessoryCartDetail?invoiceID=<s:property value="%{id}" />'
-                           role="button">Detail</a><br>
+                           role="button"><i class="fas fa-check-square"></i></a>
                         <s:if test="%{status == 0}">
                             <button class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal"
                                     onclick='cancelInvoiceAccessory(<s:property value="%{id}"/>)'>Cancel</button>
@@ -108,5 +118,5 @@
     </nav>
 </s:else>
 <script src="/PetCity/js/admin-page/delete-action.js"></script>
-
+<script src="https://kit.fontawesome.com/37932e4a19.js"></script>
 <%@include file="end-sider.jsp" %>

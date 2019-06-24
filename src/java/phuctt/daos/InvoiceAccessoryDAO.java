@@ -108,7 +108,7 @@ public class InvoiceAccessoryDAO implements Serializable {
         return check;
     }
 
-    public List<InvoiceAccessoryDTO> getAllMember(String username, int page) throws SQLException, ClassNotFoundException {
+    public List<InvoiceAccessoryDTO> getAllMember(String username, long page) throws SQLException, ClassNotFoundException {
         List<InvoiceAccessoryDTO> result = null;
         try {
             conn = DBConnection.getConnection();
@@ -151,8 +151,8 @@ public class InvoiceAccessoryDAO implements Serializable {
         return result;
     }
 
-    public int getAllMember(String username) throws SQLException, ClassNotFoundException {
-        int num = 0;
+    public long getAllMember(String username) throws SQLException, ClassNotFoundException {
+        long num = 0;
         try {
             conn = DBConnection.getConnection();
 
@@ -304,5 +304,66 @@ public class InvoiceAccessoryDAO implements Serializable {
             closeConnection();
         }
         return result;
+    }
+    
+    public List<InvoiceAccessoryDTO> adminGetListInvoice(long page) throws SQLException, ClassNotFoundException {
+        List<InvoiceAccessoryDTO> result = null;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "SELECT I.invoiceID as id, createdTime, I.status as stt, sum(D.quantity * D.subPrice) as total, buyerUsername, adminConfirm\n"
+                    + "FROM Invoice_Accessory I, Invoice_Accessory_Detail D\n"
+                    + "WHERE I.invoiceID = D.invoiceID\n"
+                    + "GROUP BY I.invoiceID, createdTime, I.status, buyerUsername, adminConfirm\n"
+                    + "ORDER BY I.invoiceID DESC OFFSET " + ((page - 1) * 5) + " ROWS FETCH NEXT 5 ROWS ONLY";
+            
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            long id;
+            Timestamp createdTime;
+            int status;
+            float total;
+            String buyerUsername, adminConfirm;
+            
+            InvoiceAccessoryDTO dto;
+            result = new ArrayList<>();
+            
+            while (rs.next()) {
+                id = rs.getLong("id");
+                createdTime = rs.getTimestamp("createdTime");
+                status = rs.getInt("stt");
+                total = rs.getFloat("total");
+                buyerUsername = rs.getString("buyerUsername");
+                adminConfirm = rs.getString("adminConfirm");
+                
+                dto = new InvoiceAccessoryDTO(createdTime, buyerUsername, adminConfirm, status);
+                dto.setId(id);
+                dto.setTotal(total);
+                result.add(dto);
+            }
+        } finally {
+            closeConnection();
+        }
+        return result;
+    }
+    
+    public long adminGetListInvoice() throws SQLException, ClassNotFoundException {
+        long num = 0;
+        try {
+            conn = DBConnection.getConnection();
+            String sql = "SELECT count(invoiceID) as num FROM Invoice_Accessory";
+            
+            ps = conn.prepareStatement(sql);
+            
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                num = rs.getLong("num");
+            }
+        } finally {
+            closeConnection();
+        }
+        return num;
     }
 }

@@ -19,7 +19,7 @@ import phuctt.dtos.InvoiceAccessoryDTO;
 public class ViewListAccessoryInvoiceAction {
 
     private String mess;
-    private int page, numOfPage;
+    private long page, numOfPage;
     private List<InvoiceAccessoryDTO> listAccessoryInvoice;
 
     private static final String ADMIN = "admin";
@@ -45,8 +45,8 @@ public class ViewListAccessoryInvoiceAction {
             InvoiceAccessoryDAO dao = new InvoiceAccessoryDAO();
 
             if (role.equalsIgnoreCase("member")) {
-                int recordCount = dao.getAllMember(username);
-                numOfPage = (int) Math.ceil(recordCount * 1.0 / 5);
+                long recordCount = dao.getAllMember(username);
+                numOfPage = (long) Math.ceil(recordCount * 1.0 / 5);
 
                 if (recordCount > 0) {
                     if (recordCount < (page - 1) * 5) {
@@ -58,6 +58,17 @@ public class ViewListAccessoryInvoiceAction {
                 }
                 label = MEMBER;
             } else if (role.equalsIgnoreCase("admin")) {
+                long recordCount = dao.adminGetListInvoice();
+                numOfPage = (long) Math.ceil(recordCount * 1.0 / 5);
+                
+                if (recordCount > 0) {
+                    if (recordCount < (page - 1) * 5) {
+                        page = 1;
+                    }
+                    listAccessoryInvoice = dao.adminGetListInvoice(page);
+                } else {
+                    listAccessoryInvoice = new ArrayList<>();
+                }
                 label = ADMIN;
             }
         } catch (Exception e) {
@@ -75,19 +86,19 @@ public class ViewListAccessoryInvoiceAction {
         this.mess = mess;
     }
 
-    public int getPage() {
+    public long getPage() {
         return page;
     }
 
-    public void setPage(int page) {
+    public void setPage(long page) {
         this.page = page;
     }
 
-    public int getNumOfPage() {
+    public long getNumOfPage() {
         return numOfPage;
     }
 
-    public void setNumOfPage(int numOfPage) {
+    public void setNumOfPage(long numOfPage) {
         this.numOfPage = numOfPage;
     }
 

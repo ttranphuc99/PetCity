@@ -1,0 +1,13 @@
+.col-id {
+    width: 5%;
+}
+
+.col-status {
+    width: 8%;
+}
+
+.col-buyer, .col-confirm, .col-time, .col-total {
+    width: 15%;
+}
+
+ 
