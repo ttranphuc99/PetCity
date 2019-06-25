@@ -81,7 +81,7 @@
                 <div class="col-2"><a href="#" role="button" class="nav-link">SHOP FOR DOG</a></div>
                 <div class="col-2"><a href="#" role="button" class="nav-link">SHOP FOR CAT</a></div>
                 <div class="col-2"><a href="#" role="button" class="nav-link">SHOP FOR HAMSTER</a></div>
-                <div class="col-2"><a href="#" role="button" class="nav-link">SERVICE</a></div>
+                <div class="col-2"><a href="/PetCity/loadListService" role="button" class="nav-link">SERVICE</a></div>
                 <div class="col-2"></div>
             </div>
         </nav>

@@ -292,4 +292,69 @@ public class ServiceDAO implements Serializable {
         }
         return dto;
     }
+    
+    public int loadServiceToPage(int typeID) throws SQLException, ClassNotFoundException {
+        int num = 0;
+        try {
+            conn = DBConnection.getConnection();
+            String sql = "SELECT count(serviceID) as num FROM Service WHERE forType = ? AND isDelete = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, typeID);
+            ps.setBoolean(2, false);
+            
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                num = rs.getInt("num");
+            }
+        } finally {
+            closeConnection();
+        }
+        return num;
+    }
+    
+    public List<ServiceDTO> loadServiceToPage(int typeID, int page) throws SQLException, ClassNotFoundException {
+        List<ServiceDTO> result = null;
+        try {
+            conn = DBConnection.getConnection();
+            String sql = "SELECT serviceID, name, duration, price, image, description "
+                    + "FROM Service "
+                    + "WHERE forType = ? AND isDelete = ? "
+                    + "ORDER BY serviceID DESC OFFSET " + ((page - 1) * 5) + " ROWS FETCH NEXT 5 ROWS ONLY";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, typeID);
+            ps.setBoolean(2, false);
+            
+            rs = ps.executeQuery();
+            
+            int serviceID;
+            String name, image, description;
+            float duration, price;
+            ServiceDTO dto;
+            result = new ArrayList<>();
+            
+            while (rs.next()) {
+                serviceID = rs.getInt("serviceID");
+                name = rs.getString("name");
+                duration = rs.getFloat("duration");
+                price = rs.getFloat("price");
+                image = rs.getString("image");
+                description = rs.getString("description");
+                
+                dto = new ServiceDTO();
+                dto.setId(serviceID);
+                dto.setName(name);
+                dto.setImage(image);
+                dto.setDuration(duration);
+                dto.setPrice(price);
+                dto.setDescription(description);
+                
+                result.add(dto);
+            }
+        } finally {
+            closeConnection();
+        }
+        return result;
+    }
 }

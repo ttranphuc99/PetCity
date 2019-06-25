@@ -1,0 +1,20 @@
+.img-service {
+    width: 100%;
+}
+
+.wrap-service {
+    margin: 20px 0;
+    padding: 10px;
+    border: 2px dotted #B39CD0;
+    border-radius: 10px;
+}
+
+.service-name {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.service-price {
+    font-weight: bold;
+    color: red;
+}

@@ -282,5 +282,17 @@
         <action name="adminViewAccessoryInvoiceDetail" class="phuctt.actions.admin.AdminViewAccessoryInvoiceDetailAction">
             <result name="success">admin/view-detail-accessory-invoice.jsp</result>
         </action>
+        
+        <action name="loadListService" class="phuctt.actions.guest.LoadListServiceAction">
+            <result name="success">publicPage/service.jsp</result>
+        </action>
+        
+        <action name="bookService" class="phuctt.actions.member.BookServiceAction">
+            <result name="success">member/book-service.jsp</result>
+            <result name="fail" type="redirectAction">
+                <param name="actionName">loadListService</param>
+                <param name="mess">${mess}</param>
+            </result>
+        </action>
     </package>
 </struts>
