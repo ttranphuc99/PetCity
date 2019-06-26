@@ -58,8 +58,8 @@ public class AuthFilter implements Filter {
         guest.add("updateAccessoryCart.action");
         guest.add("loadListService");
         guest.add("loadListService.action");
-        guest.add("bookService");
-        guest.add("bookService.action");
+        guest.add("viewServiceDetail");
+        guest.add("viewServiceDetail.action");
         
 
         admin = new ArrayList<>();
@@ -151,8 +151,8 @@ public class AuthFilter implements Filter {
         member.add("viewAccessoryCartDetail.action");
         member.add("loadListService");
         member.add("loadListService.action");
-        member.add("bookService");
-        member.add("bookService.action");
+        member.add("viewServiceDetail");
+        member.add("viewServiceDetail.action");
     }
 
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)

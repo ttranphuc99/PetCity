@@ -6,22 +6,27 @@
 package phuctt.actions.member;
 
 import com.opensymphony.xwork2.ActionContext;
+import java.util.List;
 import java.util.Map;
+import phuctt.daos.PetDAO;
+import phuctt.daos.ServiceDAO;
+import phuctt.dtos.PetDTO;
 import phuctt.dtos.ServiceDTO;
 
 /**
  *
  * @author Thien Phuc
  */
-public class BookServiceAction {
+public class ViewServiceDetailAction {
     private int id;
     private String mess;
     private ServiceDTO dto;
+    private List<PetDTO> listPet;
     
     private static final String SUCCESS = "success";
     private static final String FAIL = "fail";
     
-    public BookServiceAction() {
+    public ViewServiceDetailAction() {
     }
     
     public String execute() {
@@ -33,7 +38,13 @@ public class BookServiceAction {
             if (username == null) {
                 mess = "You must login to book service";
             } else {
+                ServiceDAO dao = new ServiceDAO();
+                dto = dao.findByID(id);
                 
+                PetDAO petDao = new PetDAO();
+                listPet = petDao.getAllPetByUser(username, dto.getType().getId());
+                
+                label = SUCCESS;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -63,6 +74,14 @@ public class BookServiceAction {
 
     public void setDto(ServiceDTO dto) {
         this.dto = dto;
+    }
+
+    public List<PetDTO> getListPet() {
+        return listPet;
+    }
+
+    public void setListPet(List<PetDTO> listPet) {
+        this.listPet = listPet;
     }
     
     

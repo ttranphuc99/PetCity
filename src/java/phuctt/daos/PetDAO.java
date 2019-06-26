@@ -210,4 +210,47 @@ public class PetDAO implements Serializable {
         }
         return dto;
     }
+    
+    public List<PetDTO> getAllPetByUser(String username, int typeID) throws SQLException, ClassNotFoundException {
+        List<PetDTO> result = null;
+        try {
+            conn = DBConnection.getConnection();
+            String sql = "SELECT petID, name, birthyear, typeID, gender FROM Pet "
+                    + "WHERE isDelete = ? AND ownID = ? and typeID = ?";
+
+            ps = conn.prepareStatement(sql);
+            ps.setBoolean(1, false);
+            ps.setString(2, username);
+            ps.setInt(3, typeID);
+
+            rs = ps.executeQuery();
+
+            long id;
+            String name;
+            boolean gender;
+            int birthyear;
+            TypeDTO type;
+            PetDTO dto;
+            result = new ArrayList<>();
+
+            while (rs.next()) {
+                id = rs.getLong("petID");
+                
+                name = rs.getString("name");
+                birthyear = rs.getInt("birthyear");
+                
+                type = (new TypeDAO()).findByID(typeID);
+                
+                gender = rs.getBoolean("gender");
+
+                dto = new PetDTO(name, null, birthyear, type, gender);
+                dto.setId(id);
+                
+                result.add(dto);
+            }
+        } finally {
+            closeConnection();
+        }
+        return result;
+    }
 }

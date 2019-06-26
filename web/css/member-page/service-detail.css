@@ -1,0 +1,25 @@
+.wrapper {
+    padding: 0 25%;
+}
+
+.wrap-img-service {
+    width: 100%;
+}
+
+.img-service {
+    width: 100%;
+}
+
+.label-bold {
+    font-weight: bold;
+}
+
+.price {
+    font-weight: bold;
+    color: red;
+}
+
+.service-name {
+    font-size: 30px;
+    font-weight: bold;
+}

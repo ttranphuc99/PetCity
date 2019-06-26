@@ -287,8 +287,8 @@
             <result name="success">publicPage/service.jsp</result>
         </action>
         
-        <action name="bookService" class="phuctt.actions.member.BookServiceAction">
-            <result name="success">member/book-service.jsp</result>
+        <action name="viewServiceDetail" class="phuctt.actions.member.ViewServiceDetailAction">
+            <result name="success">member/service-detail.jsp</result>
             <result name="fail" type="redirectAction">
                 <param name="actionName">loadListService</param>
                 <param name="mess">${mess}</param>

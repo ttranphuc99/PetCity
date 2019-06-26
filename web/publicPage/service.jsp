@@ -50,7 +50,7 @@
                                     <span class="service-description"><s:property value="%{description}"/></span>
                                 </div>
                                 <div class="row justify-content-center mt-2">
-                                    <a role="button" href="/PetCity/bookService?id=<s:property value="%{id}"/>" class="btn btn-outline-info">Book</a>
+                                    <a role="button" href="/PetCity/viewServiceDetail?id=<s:property value="%{id}"/>" class="btn btn-outline-info">Book</a>
                                 </div>
                             </div>
                         </div>        
@@ -90,7 +90,7 @@
                                     <span class="service-description"><s:property value="%{description}"/></span>
                                 </div>
                                 <div class="row justify-content-center mt-2">
-                                    <a role="button" href="/PetCity/bookService?id=<s:property value="%{id}"/>" class="btn btn-outline-info">Book</a>
+                                    <a role="button" href="/PetCity/viewServiceDetail?id=<s:property value="%{id}"/>" class="btn btn-outline-info">Book</a>
                                 </div>
                             </div>
                         </div>        
@@ -130,7 +130,7 @@
                                     <span class="service-description"><s:property value="%{description}"/></span>
                                 </div>
                                 <div class="row justify-content-center mt-2">
-                                    <a role="button" href="/PetCity/bookService?id=<s:property value="%{id}"/>" class="btn btn-outline-info">Book</a>
+                                    <a role="button" href="/PetCity/viewServiceDetail?id=<s:property value="%{id}"/>" class="btn btn-outline-info">Book</a>
                                 </div>
                             </div>
                         </div>        
