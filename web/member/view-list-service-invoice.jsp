@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="sider.jsp" %>
+<link rel="stylesheet" type="text/css" href="/PetCity/css/member-page/list-service-invoice.css">
 <div id="snackbar">
     <s:property value="%{mess}" />
 </div>
@@ -30,7 +31,7 @@
     </div>
 </div>
 
-<s:if test="%{listAccessoryInvoice.isEmpty}">
+<s:if test="%{listServiceInvoice.isEmpty}">
     <div>No invoice yet!</div>
 </s:if>
 <s:else>
@@ -38,24 +39,31 @@
         <thead>
             <tr>
                 <th class="th-sm text-center col-id">ID</th>
-                <th class="th-sm text-center col-time">Service Name</th>
-                <th class="th-sm text-center col-total">Doing date</th>
-                <th class="th-sm text-center col-status">Pet</th>
-                <th class="th-sm text-center col-status">Price</th>
+                <th class="th-sm text-center col-service">Service Name</th>
+                <th class="th-sm text-center col-date">Doing date</th>
+                <th class="th-sm text-center col-pet">Pet</th>
+                <th class="th-sm text-center col-price">Price</th>
+                <th class="th-sm text-center col-status">Status</th>
                 <th class="th-sm text-center">Action</th>
             </tr>
         </thead>
         <tbody>
-            <s:iterator value="listAccessoryInvoice">
+            <s:iterator value="listServiceInvoice">
                 <tr>
                     <td class="align-middle text-center col-id">
                         <s:property value="%{id}" />
                     </td>
-                    <td class="align-middle text-center col-time">
-                        <s:property value="%{createdTime}" />
+                    <td class="align-middle text-center col-service">
+                        <s:property value="%{service.name}" />
                     </td>
-                    <td class="align-middle text-center col-total">
-                        $<s:property value="%{total}" />
+                    <td class="align-middle text-center col-date">
+                        <s:property value="%{doingDate}" />
+                    </td>
+                    <td class="align-middle text-center col-pet">
+                        <s:property value="%{pet.name}" />
+                    </td>
+                    <td class="align-middle text-center col-price">
+                        $<s:property value="%{price}" />
                     </td>
                     <td class="align-middle text-center col-status">
                         <s:if test="%{status == 0}">
@@ -84,14 +92,14 @@
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-end">
             <li class="page-item">
-                <s:url action="viewListAccessoryInvoice" var="pageUrlFirst" escapeAmp="false">
+                <s:url action="viewListServiceInvoice" var="pageUrlFirst" escapeAmp="false">
                     <s:param name="page" value="1" />
                 </s:url>
                 <a class="page-link" href='<s:property value="#pageUrlFirst"/>'>First</a>
             </li>
             <s:iterator begin="1" end="%{numOfPage}" step="1" status="st">
                 <li class='page-item <s:if test="%{#st.count == page}">active</s:if>'>
-                    <s:url action="viewListAccessoryInvoice" var="pageUrl" escapeAmp="false">
+                    <s:url action="viewListServiceInvoice" var="pageUrl" escapeAmp="false">
                         <s:param name="page" value="%{#st.count}" />
                     </s:url>
                     <a class="page-link" href='<s:property value="#pageUrl"/>'>
@@ -100,7 +108,7 @@
                 </li>
             </s:iterator>
             <li class="page-item">
-                <s:url action="viewListAccessoryInvoice" var="pageUrlFirst" escapeAmp="false">
+                <s:url action="viewListServiceInvoice" var="pageUrlFirst" escapeAmp="false">
                     <s:param name="page" value="%{numOfPage}" />
                 </s:url>
                 <a class="page-link" href='<s:property value="#pageUrlFirst"/>'>Last</a>

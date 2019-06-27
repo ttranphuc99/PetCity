@@ -42,7 +42,7 @@
                             <a href="/PetCity/viewListAccessoryInvoice">Accessory invoices</a>
                         </li>
                         <li>
-                            <a href="#">Service invoices</a>
+                            <a href="/PetCity/viewListServiceInvoice">Service invoices</a>
                         </li>
                     </ul>
                 </li>

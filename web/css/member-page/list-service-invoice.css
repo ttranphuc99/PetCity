@@ -1,0 +1,23 @@
+.col-id {
+    width: 5%;
+}
+
+.col-service {
+    width: 20%;
+}
+
+.col-date {
+    width: 15%;
+}
+
+.col-pet {
+    width: 20%;
+}
+
+.col-price {
+    width: 10%;
+}
+
+.col-status {
+    width: 10%;
+}
