@@ -294,5 +294,13 @@
                 <param name="mess">${mess}</param>
             </result>
         </action>
+        
+        <action name="bookService" class="phuctt.actions.member.BookServiceAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">welcome</param>
+                <param name="mess">${mess}</param>
+            </result>
+            <result name="fail" type="chain">viewServiceDetail</result>
+        </action>
     </package>
 </struts>

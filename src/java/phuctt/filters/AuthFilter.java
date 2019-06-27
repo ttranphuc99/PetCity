@@ -153,6 +153,8 @@ public class AuthFilter implements Filter {
         member.add("loadListService.action");
         member.add("viewServiceDetail");
         member.add("viewServiceDetail.action");
+        member.add("bookService");
+        member.add("bookService.action");
     }
 
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)

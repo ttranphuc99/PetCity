@@ -19,13 +19,13 @@ public class InvoiceServiceDTO implements Serializable {
     private PetDTO pet;
     private StaffDTO staffDoing;
     private ServiceDTO service;
-    private float price, timeStart;
+    private float price, timeStart, duration;
     private int status;
 
     public InvoiceServiceDTO() {
     }
 
-    public InvoiceServiceDTO(Timestamp createTime, String adminConfirm, String buyerUsername, String doingDate, PetDTO pet, StaffDTO staffDoing, ServiceDTO service, float price, float timeStart, int status) {
+    public InvoiceServiceDTO(Timestamp createTime, String adminConfirm, String buyerUsername, String doingDate, PetDTO pet, StaffDTO staffDoing, ServiceDTO service, float price, float timeStart, float duration, int status) {
         this.createTime = createTime;
         this.adminConfirm = adminConfirm;
         this.buyerUsername = buyerUsername;
@@ -35,9 +35,12 @@ public class InvoiceServiceDTO implements Serializable {
         this.service = service;
         this.price = price;
         this.timeStart = timeStart;
+        this.duration = duration;
         this.status = status;
     }
 
+    
+    
     public long getId() {
         return id;
     }
@@ -124,6 +127,14 @@ public class InvoiceServiceDTO implements Serializable {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public float getDuration() {
+        return duration;
+    }
+
+    public void setDuration(float duration) {
+        this.duration = duration;
     }
     
     

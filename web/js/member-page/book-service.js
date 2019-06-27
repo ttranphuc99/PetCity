@@ -20,11 +20,11 @@ function checkTime() {
     weekday[5] = "Friday";
     weekday[6] = "Saturday";
 
-    var day = document.getElementById("date");
+    
     if (time >= curHour+1) {
-        day.innerHTML = weekday[curTime.getDay()] + " - " + curTime.getDate() + "/" + (curTime.getMonth() + 1) + "/" + curTime.getFullYear();
+        document.getElementById("date").value = weekday[curTime.getDay()] + " - " + curTime.getDate() + "/" + (curTime.getMonth() + 1) + "/" + curTime.getFullYear();
     } else {
         curTime = new Date(curTime.getFullYear(), curTime.getMonth(), curTime.getDate() + 1);
-        day.innerHTML = weekday[curTime.getDay()] + " - " + curTime.getDate() + "/" + (curTime.getMonth() + 1) + "/" + curTime.getFullYear();
+        document.getElementById("date").value = weekday[curTime.getDay()] + " - " + curTime.getDate() + "/" + (curTime.getMonth() + 1) + "/" + curTime.getFullYear();
     }
 }
