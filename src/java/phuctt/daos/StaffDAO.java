@@ -222,6 +222,33 @@ public class StaffDAO implements Serializable {
         }
         return dto;
     }
+    
+    public StaffDTO findByID(int id, boolean check) throws SQLException, ClassNotFoundException {
+        StaffDTO dto = null;
+        try {
+            conn = DBConnection.getConnection();
+
+            String sql = "SELECT staffName, image, isAvailable, gender FROM Staff WHERE staffID = ?";
+
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String staffName = rs.getString("staffName");
+                String image = rs.getString("image");
+                boolean available = rs.getBoolean("isAvailable");
+                boolean gender = rs.getBoolean("gender");
+
+                dto = new StaffDTO(staffName, available, gender);
+                dto.setImage(image);
+            }
+        } finally {
+            closeConnection();
+        }
+        return dto;
+    }
 
     public boolean update(StaffDTO dto) throws SQLException, ClassNotFoundException {
         boolean check = false;

@@ -374,7 +374,7 @@ public class InvoiceAccessoryDAO implements Serializable {
 
             if (status == -1) {
                 check = this.cancelInvoice(id);
-                if (check) {
+                if (!check) {
                     String sql = "UPDATE Invoice_Accessory SET adminConfirm = ? WHERE invoiceID = ?";
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, username);

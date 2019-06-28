@@ -5,10 +5,8 @@
  */
 package phuctt.actions.member;
 
-import com.opensymphony.xwork2.ActionContext;
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.Map;
 import phuctt.daos.InvoiceServiceDAO;
 import phuctt.daos.ServiceDAO;
 import phuctt.dtos.InvoiceServiceDTO;
@@ -43,11 +41,8 @@ public class BookServiceAction {
             
             PetDTO pet = new PetDTO();
             pet.setId(petId);
-            
-            Map<String, Object> session = ActionContext.getContext().getSession();
-            String buyerUsername = (String) session.get("USERNAME");
              
-            InvoiceServiceDTO invoice = new InvoiceServiceDTO(createTime, null, buyerUsername, doingDate, pet, null, dto, price, timeStart, duration, 0);
+            InvoiceServiceDTO invoice = new InvoiceServiceDTO(createTime, null, doingDate, pet, null, dto, price, timeStart, duration, 0);
             
             InvoiceServiceDAO dao = new InvoiceServiceDAO();
             

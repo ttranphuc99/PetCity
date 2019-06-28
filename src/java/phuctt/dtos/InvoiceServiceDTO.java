@@ -15,7 +15,7 @@ import java.sql.Timestamp;
 public class InvoiceServiceDTO implements Serializable {
     private long id;
     private Timestamp createTime;
-    private String adminConfirm, buyerUsername, doingDate;
+    private String adminConfirm, doingDate;
     private PetDTO pet;
     private StaffDTO staffDoing;
     private ServiceDTO service;
@@ -25,10 +25,9 @@ public class InvoiceServiceDTO implements Serializable {
     public InvoiceServiceDTO() {
     }
 
-    public InvoiceServiceDTO(Timestamp createTime, String adminConfirm, String buyerUsername, String doingDate, PetDTO pet, StaffDTO staffDoing, ServiceDTO service, float price, float timeStart, float duration, int status) {
+    public InvoiceServiceDTO(Timestamp createTime, String adminConfirm, String doingDate, PetDTO pet, StaffDTO staffDoing, ServiceDTO service, float price, float timeStart, float duration, int status) {
         this.createTime = createTime;
         this.adminConfirm = adminConfirm;
-        this.buyerUsername = buyerUsername;
         this.doingDate = doingDate;
         this.pet = pet;
         this.staffDoing = staffDoing;
@@ -63,14 +62,6 @@ public class InvoiceServiceDTO implements Serializable {
 
     public void setAdminConfirm(String adminConfirm) {
         this.adminConfirm = adminConfirm;
-    }
-
-    public String getBuyerUsername() {
-        return buyerUsername;
-    }
-
-    public void setBuyerUsername(String buyerUsername) {
-        this.buyerUsername = buyerUsername;
     }
 
     public String getDoingDate() {

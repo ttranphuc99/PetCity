@@ -304,7 +304,7 @@
         </action>
         
         <action name="viewListServiceInvoice" class="phuctt.actions.member.ViewListServiceInvoiceAction">
-            <result name="admin"></result>
+            <result name="admin">admin/view-list-service-invoice.jsp</result>
             <result name="member">member/view-list-service-invoice.jsp</result>
             <result name="fail" type="redirectAction">
                 <param name="actionName">welcome</param>

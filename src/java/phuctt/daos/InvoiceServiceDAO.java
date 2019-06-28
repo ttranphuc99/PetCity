@@ -227,12 +227,12 @@ public class InvoiceServiceDAO implements Serializable {
                     + "FROM Invoice_Service I, Pet P, Service S\n"
                     + "WHERE I.petID = P.petID AND P.ownID = ? AND S.serviceID = I.serviceID\n"
                     + "ORDER BY invoiceID DESC OFFSET " + ((page - 1) * 5) + " ROWS FETCH NEXT 5 ROWS ONLY";
-            
+
             ps = conn.prepareStatement(sql);
             ps.setString(1, username);
             System.out.println(ps);
             rs = ps.executeQuery();
-            
+
             long invoiceID;
             float price;
             int status;
@@ -245,30 +245,30 @@ public class InvoiceServiceDAO implements Serializable {
             PetDTO petDto;
             ServiceDTO service;
             InvoiceServiceDTO dto;
-            
+
             result = new ArrayList<>();
-            
+
             while (rs.next()) {
                 invoiceID = rs.getLong("invoiceID");
                 price = rs.getFloat("price");
                 status = rs.getInt("status");
-                
+
                 doingDate = rs.getString("doingDate");
                 timeStart = rs.getFloat("timeStart");
                 doingDate += " - " + checkTime(timeStart);
-                
+
                 petID = rs.getLong("pet");
                 petName = rs.getString("petName");
                 petDto = new PetDTO();
                 petDto.setId(petID);
                 petDto.setName(petName);
-                
+
                 serviceID = rs.getInt("serviceID");
                 serviceName = rs.getString("serviceName");
                 service = new ServiceDTO();
                 service.setId(serviceID);
                 service.setName(serviceName);
-                
+
                 dto = new InvoiceServiceDTO();
                 dto.setId(invoiceID);
                 dto.setPrice(price);
@@ -276,7 +276,7 @@ public class InvoiceServiceDAO implements Serializable {
                 dto.setDoingDate(doingDate);
                 dto.setPet(petDto);
                 dto.setService(service);
-                
+
                 result.add(dto);
             }
         } finally {
@@ -284,15 +284,88 @@ public class InvoiceServiceDAO implements Serializable {
         }
         return result;
     }
-    
+
     private String checkTime(float timeStart) {
         String result = "";
         int floor = (int) Math.floor(timeStart);
-        
+
         if (floor == timeStart) {
             result = floor + ":00";
         } else {
             result = floor + ":30";
+        }
+        return result;
+    }
+
+    public long adminGetListServiceInvoice() throws SQLException, ClassNotFoundException {
+        long num = 0;
+        try {
+            conn = DBConnection.getConnection();
+
+            String sql = "SELECT count(invoiceID) as num FROM Invoice_Service";
+            ps = conn.prepareStatement(sql);
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                num = rs.getLong("num");
+            }
+        } finally {
+            closeConnection();
+        }
+        return num;
+    }
+
+    public List<InvoiceServiceDTO> adminGetListServiceInvoice(long page) throws SQLException, ClassNotFoundException {
+        List<InvoiceServiceDTO> result = null;
+        try {
+            conn = DBConnection.getConnection();
+
+            String sql = "SELECT invoiceID, S.name as serviceName, I.doingDate as doingDate, I.duration as duration, "
+                    + "P.name as petName, staffDoing, status, adminConfirm\n"
+                    + "FROM Invoice_Service I, Service S, Pet P\n"
+                    + "WHERE I.serviceID = S.serviceID AND I.petID = P.petID"
+                    + "ORDER BY invoiceID DESC OFFSET " + ((page - 1) * 5) + " ROWS FETCH NEXT 5 ROWS ONLY";
+            
+            ps = conn.prepareStatement(sql);
+            
+            rs = ps.executeQuery();
+            
+            long invoiceID;
+            String serviceName, doingDate, petName, adminConfirm;
+            int status, staffId;
+            
+            InvoiceServiceDTO dto;
+            result = new ArrayList<>();
+            
+            while (rs.next()) {
+                invoiceID = rs.getLong("invoiceID");
+                serviceName = rs.getString("serviceName");
+                
+                ServiceDTO service = new ServiceDTO();
+                service.setName(serviceName);
+                
+                doingDate = rs.getString("doingDate");
+                doingDate += " - " + checkTime(rs.getFloat("duration"));
+                
+                petName = rs.getString("petName");
+                PetDTO pet = new PetDTO();
+                pet.setName(petName);
+                
+                staffId = rs.getInt("doingStaff");
+                StaffDTO staff = (new StaffDAO()).findByID(staffId);
+                
+                status = rs.getInt("status");
+                adminConfirm = rs.getString("adminConfirm");
+                
+                dto = new InvoiceServiceDTO(null, adminConfirm, doingDate, pet, staff, service, 0, 0, 0, status);
+                dto.setId(invoiceID);
+                
+                result.add(dto);
+            }
+            
+        } finally {
+            closeConnection();
         }
         return result;
     }

@@ -57,17 +57,17 @@ public class ViewListServiceInvoiceAction {
                 }
                 label = MEMBER;
             } else if (role.equalsIgnoreCase("admin")) {
-//                long recordCount = dao.adminGetListInvoice();
-//                numOfPage = (long) Math.ceil(recordCount * 1.0 / 5);
-//                
-//                if (recordCount > 0) {
-//                    if (recordCount < (page - 1) * 5) {
-//                        page = 1;
-//                    }
-//                    listAccessoryInvoice = dao.adminGetListInvoice(page);
-//                } else {
-//                    listAccessoryInvoice = new ArrayList<>();
-//                }
+                long recordCount = dao.adminGetListServiceInvoice();
+                numOfPage = (long) Math.ceil(recordCount * 1.0 / 5);
+                
+                if (recordCount > 0) {
+                    if (recordCount < (page - 1) * 5) {
+                        page = 1;
+                    }
+                    listServiceInvoice = dao.adminGetListServiceInvoice(page);
+                } else {
+                    listServiceInvoice = new ArrayList<>();
+                }
                 label = ADMIN;
             }
         } catch (Exception e) {

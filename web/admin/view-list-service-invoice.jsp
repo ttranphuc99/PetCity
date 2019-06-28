@@ -7,11 +7,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  uri="/struts-tags" prefix="s" %>
 <%@include file="sider.jsp" %>
-<link rel="stylesheet" href="/PetCity/css/admin-page/accessory-invoice.css">
+<link rel="stylesheet" href="/PetCity/css/admin-page/service-invoice.css">
 <div id="snackbar">
     <s:property value="%{mess}" />
 </div>
-<div class="title mb-4">Accessory Invoices</div>
+<div class="title mb-4">Service Invoices</div>
 
 <s:if test="%{listAccessoryInvoice.isEmpty}">
     <div>No invoice yet!</div>
@@ -21,30 +21,34 @@
         <thead>
             <tr>
                 <th class="th-sm text-center col-id">ID</th>
-                <th class="th-sm text-center col-buyer">Buyer</th>
-                <th class="th-sm text-center col-time">Created Time</th>
-                <th class="th-sm text-center col-total">Total Price</th>
+                <th class="th-sm text-center col-service">Service Name</th>
+                <th class="th-sm text-center col-date">Doing date</th>
+                <th class="th-sm text-center col-pet">Pet</th>
+                <th class="th-sm text-center col-staff">Staff Doing</th>
                 <th class="th-sm text-center col-status">Status</th>
                 <th class="th-sm text-center col-confirm">Admin Confirm</th>
                 <th class="th-sm text-center">Action</th>
             </tr>
         </thead>
         <tbody>
-            <s:iterator value="listAccessoryInvoice">
+            <s:iterator value="listServiceInvoice">
                 <tr>
                     <td class="align-middle text-center col-id">
-                        <a href='/PetCity/adminViewAccessoryInvoiceDetail?id=<s:property value="%{id}" />&status=<s:property value="%{status}" />&page=<s:property value="%{page}" />"' class="link">
+                        <a href='/PetCity/adminViewServiceInvoiceDetail?id=<s:property value="%{id}"" />&status=<s:property value="%{status}" />&page=<s:property value="%{page}" />"' class="link">
                             <s:property value="%{id}" />
                         </a>
                     </td>
-                    <td class="align-middle text-center col-buyer">
-                        <s:property value="%{buyerUsername}" />
+                    <td class="align-middle text-center col-service">
+                        <s:property value="%{service.name}" />
                     </td>
-                    <td class="align-middle text-center col-time">
-                        <s:property value="%{createdTime}" />
+                    <td class="align-middle text-center col-date">
+                        <s:property value="%{doingDate}" />
                     </td>
-                    <td class="align-middle text-center col-total">
-                        $<s:property value="%{total}" />
+                    <td class="align-middle text-center col-pet">
+                        $<s:property value="%{pet.name}" />
+                    </td>
+                    <td class="align-middle text-center col-staff">
+                        <s:property value="%{staff.name}" />
                     </td>
                     <td class="align-middle text-center col-status">
                         <s:if test="%{status == 0}">
@@ -82,14 +86,14 @@
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-end">
             <li class="page-item">
-                <s:url action="viewListAccessoryInvoice" var="pageUrlFirst" escapeAmp="false">
+                <s:url action="viewListServiceInvoice" var="pageUrlFirst" escapeAmp="false">
                     <s:param name="page" value="1" />
                 </s:url>
                 <a class="page-link" href='<s:property value="#pageUrlFirst"/>'>First</a>
             </li>
             <s:iterator begin="1" end="%{numOfPage}" step="1" status="st">
                 <li class='page-item <s:if test="%{#st.count == page}">active</s:if>'>
-                    <s:url action="viewListAccessoryInvoice" var="pageUrl" escapeAmp="false">
+                    <s:url action="viewListServiceInvoice" var="pageUrl" escapeAmp="false">
                         <s:param name="page" value="%{#st.count}" />
                     </s:url>
                     <a class="page-link" href='<s:property value="#pageUrl"/>'>
@@ -98,7 +102,7 @@
                 </li>
             </s:iterator>
             <li class="page-item">
-                <s:url action="viewListAccessoryInvoice" var="pageUrlFirst" escapeAmp="false">
+                <s:url action="viewListServiceInvoice" var="pageUrlFirst" escapeAmp="false">
                     <s:param name="page" value="%{numOfPage}" />
                 </s:url>
                 <a class="page-link" href='<s:property value="#pageUrlFirst"/>'>Last</a>
