@@ -300,7 +300,12 @@
                 <param name="actionName">welcome</param>
                 <param name="mess">${mess}</param>
             </result>
-            <result name="fail" type="chain">viewServiceDetail</result>
+            <result name="fail" type="redirectAction">
+                <param name="actionName">viewServiceDetail</param>
+                <param name="mess">${mess}</param>
+                <param name="error">${error}</param>
+                <param name="id">${serviceId}</param>
+            </result>
         </action>
         
         <action name="viewListServiceInvoice" class="phuctt.actions.member.ViewListServiceInvoiceAction">
@@ -309,6 +314,29 @@
             <result name="fail" type="redirectAction">
                 <param name="actionName">welcome</param>
                 <param name="mess">${mess}</param>
+            </result>
+        </action>
+        
+        <action name="viewDetailServiceInvoice" class="phuctt.actions.admin.ViewDetailServiceInvoiceAction">
+            <result name="admin">admin/view-detail-service-invoice.jsp</result>
+            <result name="member"></result>
+            <result name="fail" type="redirectAction">
+                <param name="actionName">welcome</param>
+                <param name="mess">${mess}</param>
+            </result>
+        </action>
+        
+        <action name="updateInvoiceService" class="phuctt.actions.admin.UpdateInvoiceServiceAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">viewListServiceInvoice</param>
+                <param name="mess">${mess}</param>
+                <param name="page">${page}</param>
+            </result>
+            <result name="fail" type="redirectAction">
+                <param name="actionName">viewDetailServiceInvoice</param>
+                <param name="mess">${mess}</param>
+                <param name="page">${page}</param>
+                <param name="id">${id}</param>
             </result>
         </action>
     </package>

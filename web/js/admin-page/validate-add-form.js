@@ -31,6 +31,6 @@ function validate() {
         document.getElementById("snackbar").innerHTML = mess;
         showSnackbar();
     }
-    console.log("Do");
+    
     return check;
 }

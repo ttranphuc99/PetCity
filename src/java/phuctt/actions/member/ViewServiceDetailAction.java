@@ -19,7 +19,7 @@ import phuctt.dtos.ServiceDTO;
  */
 public class ViewServiceDetailAction {
     private int id;
-    private String mess;
+    private String mess, error;
     private ServiceDTO dto;
     private List<PetDTO> listPet;
     
@@ -40,7 +40,7 @@ public class ViewServiceDetailAction {
             } else {
                 ServiceDAO dao = new ServiceDAO();
                 dto = dao.findByID(id);
-                
+                System.out.println(dto);
                 PetDAO petDao = new PetDAO();
                 listPet = petDao.getAllPetByUser(username, dto.getType().getId());
                 
@@ -82,6 +82,14 @@ public class ViewServiceDetailAction {
 
     public void setListPet(List<PetDTO> listPet) {
         this.listPet = listPet;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
     
     

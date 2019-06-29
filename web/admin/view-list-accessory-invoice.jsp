@@ -33,7 +33,7 @@
             <s:iterator value="listAccessoryInvoice">
                 <tr>
                     <td class="align-middle text-center col-id">
-                        <a href='/PetCity/adminViewAccessoryInvoiceDetail?id=<s:property value="%{id}" />&status=<s:property value="%{status}" />&page=<s:property value="%{page}" />"' class="link">
+                        <a href='/PetCity/adminViewAccessoryInvoiceDetail?id=<s:property value="%{id}" />&status=<s:property value="%{status}" />&page=<s:property value="%{page}" />' class="link">
                             <s:property value="%{id}" />
                         </a>
                     </td>

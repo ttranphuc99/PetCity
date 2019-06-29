@@ -34,7 +34,7 @@
             <s:iterator value="listServiceInvoice">
                 <tr>
                     <td class="align-middle text-center col-id">
-                        <a href='/PetCity/adminViewServiceInvoiceDetail?id=<s:property value="%{id}"" />&status=<s:property value="%{status}" />&page=<s:property value="%{page}" />"' class="link">
+                        <a href='/PetCity/viewDetailServiceInvoice?id=<s:property value="%{id}" />&page=<s:property value="%{page}" />' class="link">
                             <s:property value="%{id}" />
                         </a>
                     </td>
@@ -45,17 +45,17 @@
                         <s:property value="%{doingDate}" />
                     </td>
                     <td class="align-middle text-center col-pet">
-                        $<s:property value="%{pet.name}" />
+                        <s:property value="%{pet.name}" />
                     </td>
                     <td class="align-middle text-center col-staff">
-                        <s:property value="%{staff.name}" />
+                        <s:property value="%{staffDoing.name}" />
                     </td>
                     <td class="align-middle text-center col-status">
                         <s:if test="%{status == 0}">
                             <span class="badge badge-warning">Waiting</span>
                         </s:if>
                         <s:elseif test="%{status == 1}">
-                            <span class="badge badge-primary">Done</span>
+                            <span class="badge badge-primary">Confirm</span>
                         </s:elseif>
                         <s:elseif test="%{status == -1}">
                             <span class="badge badge-danger">Canceled</span>
@@ -70,7 +70,7 @@
                             <select name="status" class="custom-select" style="width: 50%">
                                 <option value="-1" <s:if test="%{status == -1}">selected</s:if>>Canceled</option>
                                 <option value="0" <s:if test="%{status == 0}">selected</s:if>>Waiting</option>
-                                <option value="1" <s:if test="%{status == 1}">selected</s:if>>Done</option>
+                                <option value="1" <s:if test="%{status == 1}">selected</s:if>>Confirm</option>
                             </select>
                             <input type="hidden" name="id" value="<s:property value="%{id}" />"/>
                             <input type="hidden" name="page" value="<s:property value="%{page}" />"/>

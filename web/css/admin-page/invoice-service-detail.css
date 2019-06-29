@@ -1,0 +1,13 @@
+.label, .info {
+    display: inline;
+}
+
+.label, label {
+    font-style: italic !important;
+    color: #665E3D;
+    font-weight: bold;
+}
+
+.info {
+    font-size: 20px;
+}

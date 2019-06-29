@@ -10,7 +10,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.sql.Types;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import phuctt.dbs.DBConnection;
 import phuctt.dtos.InvoiceServiceDTO;
@@ -49,13 +52,14 @@ public class InvoiceServiceDAO implements Serializable {
             String sql = "SELECT T.staffID as id\n"
                     + "FROM Service S, Staff T, Staff_Service_Detail D\n"
                     + "WHERE S.serviceID = D.serviceID AND D.staffID = T.staffID AND D.isDelete = ? "
-                    + "AND T.isAvailable = ? AND S.isDelete = ? AND D.isDelete = ?";
+                    + "AND T.isAvailable = ? AND S.isDelete = ? AND D.isDelete = ? AND S.serviceID = ?";
 
             ps = conn.prepareStatement(sql);
             ps.setBoolean(1, false);
             ps.setBoolean(2, true);
             ps.setBoolean(3, false);
             ps.setBoolean(4, false);
+            ps.setInt(5, dto.getService().getId());
 
             rs = ps.executeQuery();
             result = new ArrayList<>();
@@ -66,23 +70,34 @@ public class InvoiceServiceDAO implements Serializable {
             }
             closeConnection();
 
+            HashMap<Integer, StaffDTO> map = new HashMap<>();
+            for (StaffDTO staff : result) {
+                map.put(staff.getId(), staff);
+            }
+
+            result = new ArrayList<>(map.values());
+
             //2. Get all invoice that a staff will do and check
             float timeEnd, timeStart;
             List<InvoiceServiceDTO> listInvoice;
             StaffDTO staffDTO;
             for (int i = 0; i < result.size(); i++) {
                 staffDTO = result.get(i);
-                listInvoice = this.getInvoiceByStaffAndDate(staffDTO.getId(), dto.getDoingDate());
+
+                listInvoice = this.getInvoiceByStaffAndDate(staffDTO.getId(), dto.getDoingDate().split("-")[0].trim());
 
                 for (InvoiceServiceDTO invoiceServiceDTO : listInvoice) {
                     timeEnd = invoiceServiceDTO.getTimeStart() + invoiceServiceDTO.getService().getDuration();
                     timeStart = invoiceServiceDTO.getTimeStart();
 
-                    if (timeEnd > dto.getTimeStart() || timeStart < (dto.getTimeStart() + dto.getService().getDuration())) {
-                        result.remove(i);
+                    if ((timeEnd > dto.getTimeStart() && timeEnd <= (dto.getTimeStart() + dto.getDuration()))
+                            || ((timeStart < (dto.getTimeStart() + dto.getDuration())) && (timeStart >= dto.getTimeStart()))) {
+                        result.set(i, null);
                     }
                 }
             }
+            
+            while (result.remove(null)) {}
 
             //3. check waitting invoice and staff available
             conn = DBConnection.getConnection();
@@ -105,6 +120,85 @@ public class InvoiceServiceDAO implements Serializable {
         return result;
     }
 
+    public List<StaffDTO> adminListStaffAvailableForService(InvoiceServiceDTO dto) throws SQLException, ClassNotFoundException {
+        List<StaffDTO> result = null;
+        try {
+            conn = DBConnection.getConnection();
+
+            //1. Get all staff in serve this service
+            String sql = "SELECT T.staffID as id\n"
+                    + "FROM Service S, Staff T, Staff_Service_Detail D\n"
+                    + "WHERE S.serviceID = D.serviceID AND D.staffID = T.staffID AND D.isDelete = ? "
+                    + "AND T.isAvailable = ? AND S.isDelete = ? AND D.isDelete = ? AND S.serviceID = ?";
+
+            ps = conn.prepareStatement(sql);
+            ps.setBoolean(1, false);
+            ps.setBoolean(2, true);
+            ps.setBoolean(3, false);
+            ps.setBoolean(4, false);
+            ps.setInt(5, dto.getService().getId());
+
+            rs = ps.executeQuery();
+            result = new ArrayList<>();
+            StaffDAO staffDao = new StaffDAO();
+
+            while (rs.next()) {
+                result.add(staffDao.findByID(rs.getInt("id")));
+            }
+            closeConnection();
+
+            HashMap<Integer, StaffDTO> map = new HashMap<>();
+            for (StaffDTO staff : result) {
+                map.put(staff.getId(), staff);
+            }
+
+            result = new ArrayList<>(map.values());
+
+            //2. Get all invoice that a staff will do and check
+            float timeEnd, timeStart;
+            List<InvoiceServiceDTO> listInvoice;
+            StaffDTO staffDTO;
+
+//            System.out.println(result.size());
+            for (int i = 0; i < result.size(); i++) {
+                staffDTO = result.get(i);
+                if (staffDTO == null) continue;
+//                System.out.println(i);
+//                System.out.println("name " + staffDTO.getName());
+                listInvoice = this.getInvoiceByStaffAndDate(staffDTO.getId(), dto.getDoingDate().split("-")[0].trim());
+
+                for (InvoiceServiceDTO invoiceServiceDTO : listInvoice) {
+                    timeEnd = invoiceServiceDTO.getTimeStart() + invoiceServiceDTO.getService().getDuration();
+                    timeStart = invoiceServiceDTO.getTimeStart();
+//                    System.out.println("start " + timeStart);
+//                    System.out.println("end " + timeEnd);
+//                    
+//                    System.out.println("this start " + dto.getTimeStart());
+//                    System.out.println("this end " + (dto.getTimeStart() + dto.getDuration()));
+//                    
+//                    System.out.println("timeEnd > dto.getTimeStart()" + (timeEnd > dto.getTimeStart()));
+//                    System.out.println("timeEnd <= dto.getTimeStart() + dto.getDuration()" + (timeEnd <= dto.getTimeStart() + dto.getDuration()));
+//                    System.out.println("timeStart < (dto.getTimeStart() + dto.getDuration()" + (timeStart < (dto.getTimeStart() + dto.getDuration())));
+//                    System.out.println("timeStart >= dto.getTimeStart()" + (timeStart >= dto.getTimeStart()));
+//                    
+//                    System.out.println((timeEnd > dto.getTimeStart() && timeEnd <= (dto.getTimeStart() + dto.getDuration()))
+//                            || ((timeStart < (dto.getTimeStart() + dto.getDuration())) && (timeStart >= dto.getTimeStart())));
+
+                    if ((timeEnd > dto.getTimeStart() && timeEnd <= (dto.getTimeStart() + dto.getDuration()))
+                            || ((timeStart < (dto.getTimeStart() + dto.getDuration())) && (timeStart >= dto.getTimeStart()))) {
+                        result.set(i, null);
+                    }
+                }
+            }
+            
+            while (result.remove(null)) {}
+
+        } finally {
+            closeConnection();
+        }
+        return result;
+    }
+
     public List<InvoiceServiceDTO> getInvoiceByStaffAndDate(int staffID, String dateDoing) throws SQLException, ClassNotFoundException {
         List<InvoiceServiceDTO> result = null;
         try {
@@ -112,7 +206,7 @@ public class InvoiceServiceDAO implements Serializable {
 
             String sql = "SELECT invoiceID, timeStart, duration, serviceID as id "
                     + "FROM Invoice_Service "
-                    + "WHERE staffDoing = ? AND doingDate LIKE ?";
+                    + "WHERE staffDoing = ? AND doingDate LIKE ? AND status = 1";
 
             ps = conn.prepareStatement(sql);
             ps.setInt(1, staffID);
@@ -230,7 +324,6 @@ public class InvoiceServiceDAO implements Serializable {
 
             ps = conn.prepareStatement(sql);
             ps.setString(1, username);
-            System.out.println(ps);
             rs = ps.executeQuery();
 
             long invoiceID;
@@ -322,51 +415,112 @@ public class InvoiceServiceDAO implements Serializable {
             conn = DBConnection.getConnection();
 
             String sql = "SELECT invoiceID, S.name as serviceName, I.doingDate as doingDate, I.duration as duration, "
-                    + "P.name as petName, staffDoing, status, adminConfirm\n"
+                    + "P.name as petName, staffDoing, status, adminConfirm, timeStart\n"
                     + "FROM Invoice_Service I, Service S, Pet P\n"
-                    + "WHERE I.serviceID = S.serviceID AND I.petID = P.petID"
+                    + "WHERE I.serviceID = S.serviceID AND I.petID = P.petID "
                     + "ORDER BY invoiceID DESC OFFSET " + ((page - 1) * 5) + " ROWS FETCH NEXT 5 ROWS ONLY";
-            
+
             ps = conn.prepareStatement(sql);
-            
+
             rs = ps.executeQuery();
-            
+
             long invoiceID;
             String serviceName, doingDate, petName, adminConfirm;
             int status, staffId;
-            
+
             InvoiceServiceDTO dto;
             result = new ArrayList<>();
-            
+
             while (rs.next()) {
                 invoiceID = rs.getLong("invoiceID");
                 serviceName = rs.getString("serviceName");
-                
+
                 ServiceDTO service = new ServiceDTO();
                 service.setName(serviceName);
-                
+
                 doingDate = rs.getString("doingDate");
-                doingDate += " - " + checkTime(rs.getFloat("duration"));
-                
+                doingDate += " - " + checkTime(rs.getFloat("timeStart"));
+
                 petName = rs.getString("petName");
                 PetDTO pet = new PetDTO();
                 pet.setName(petName);
-                
-                staffId = rs.getInt("doingStaff");
+
+                staffId = rs.getInt("staffDoing");
                 StaffDTO staff = (new StaffDAO()).findByID(staffId);
-                
+
                 status = rs.getInt("status");
                 adminConfirm = rs.getString("adminConfirm");
-                
+
                 dto = new InvoiceServiceDTO(null, adminConfirm, doingDate, pet, staff, service, 0, 0, 0, status);
                 dto.setId(invoiceID);
-                
+
                 result.add(dto);
             }
-            
+
         } finally {
             closeConnection();
         }
         return result;
+    }
+
+    public InvoiceServiceDTO findById(long id) throws SQLException, ClassNotFoundException {
+        InvoiceServiceDTO dto = null;
+        try {
+            conn = DBConnection.getConnection();
+            String sql = "SELECT createTime, adminConfirm, price, status, doingDate, "
+                    + "petID, staffDoing, timeStart, serviceID, duration "
+                    + "FROM Invoice_Service "
+                    + "WHERE invoiceID = ?";
+
+            ps = conn.prepareStatement(sql);
+            ps.setLong(1, id);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Timestamp createTime = rs.getTimestamp("createTime");
+                String adminConfirm = rs.getString("adminConfirm");
+                float price = rs.getFloat("price");
+                int status = rs.getInt("status");
+
+                String doingDate = rs.getString("doingDate");
+                doingDate += " - " + checkTime(rs.getFloat("timeStart"));
+
+                PetDTO pet = (new PetDAO()).findByID(rs.getLong("petID"));
+                StaffDTO staff = (new StaffDAO()).findByID(rs.getInt("staffDoing"), true);
+                ServiceDTO service = (new ServiceDAO()).findByID(rs.getInt("serviceID"));
+
+                float duration = rs.getFloat("duration");
+
+                dto = new InvoiceServiceDTO(createTime, adminConfirm, doingDate, pet, staff, service, price, 0, duration, status);
+                dto.setId(id);
+                dto.setTimeStart(rs.getFloat("timeStart"));
+            }
+        } finally {
+            closeConnection();
+        }
+        return dto;
+    }
+
+    public boolean update(long id, int staff, int status, String adminConfirm) throws SQLException, ClassNotFoundException {
+        boolean check = false;
+        try {
+            conn = DBConnection.getConnection();
+
+            String sql = "UPDATE Invoice_Service SET staffDoing = ?, status = ?, adminConfirm = ? WHERE invoiceID = ?";
+            ps = conn.prepareStatement(sql);
+            if (staff > 0) {
+                ps.setInt(1, staff);
+            } else {
+                ps.setNull(1, Types.INTEGER);
+            }
+            ps.setInt(2, status);
+            ps.setLong(4, id);
+            ps.setString(3, adminConfirm);
+
+            check = ps.executeUpdate() > 0;
+        } finally {
+            closeConnection();
+        }
+        return check;
     }
 }

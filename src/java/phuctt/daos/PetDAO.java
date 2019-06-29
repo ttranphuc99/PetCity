@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import phuctt.dbs.DBConnection;
+import phuctt.dtos.AccountDTO;
 import phuctt.dtos.PetDTO;
 import phuctt.dtos.TypeDTO;
 
@@ -191,7 +192,7 @@ public class PetDAO implements Serializable {
         try {
             conn = DBConnection.getConnection();
             
-            String sql = "SELECT name, birthyear, typeID, gender FROM Pet WHERE petID = ?";
+            String sql = "SELECT name, birthyear, typeID, gender, ownID FROM Pet WHERE petID = ?";
             ps = conn.prepareStatement(sql);
             ps.setLong(1, id);
             rs = ps.executeQuery();
@@ -202,8 +203,12 @@ public class PetDAO implements Serializable {
                 TypeDTO type = (new TypeDAO()).findByID(rs.getInt("typeID"));
                 boolean gender = rs.getBoolean("gender");
                 
-                dto = new PetDTO(name, null, birthYear, type, gender);
+                String ownID = rs.getString("ownID");
+                AccountDTO account = (new AccountDAO()).getAccountByID(ownID, true);
+                
+                dto = new PetDTO(name, account, birthYear, type, gender);
                 dto.setId(id);
+                
             }
         } finally {
             closeConnection();

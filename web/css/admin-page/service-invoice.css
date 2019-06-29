@@ -1,0 +1,37 @@
+.col-id {
+    width: 5%;
+}
+
+.col-service {
+    width: 15%;
+}
+
+.col-date {
+    width: 15%;
+}
+
+.col-pet {
+    width: 10%;
+}
+
+.col-staff {
+    width: 13%;
+}
+
+.col-status {
+    width: 10%;
+}
+
+.col-confirm {
+    width: 13%;
+}
+
+.link {
+    color: blue;
+}
+
+.link:hover {
+    text-decoration: underline;
+    color: blue;
+    font-weight: bold;
+}

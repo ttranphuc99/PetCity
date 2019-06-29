@@ -99,6 +99,30 @@ public class AccountDAO implements Serializable {
         return dto;
     }
     
+    public AccountDTO getAccountByID(String username, boolean check) throws SQLException, ClassNotFoundException {
+        AccountDTO dto = null;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "SELECT fullname, address, phone, gender FROM Account WHERE username = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                String fullname = rs.getString("fullname");
+                String address = rs.getString("address");
+                String phone = rs.getString("phone");
+                boolean gender = rs.getBoolean("gender");
+                
+                dto = new AccountDTO(username, "", fullname, address, phone, "", false, gender);
+            }
+        } finally {
+            closeConnection();
+        }
+        return dto;
+    }
+    
     public boolean update(AccountDTO dto) throws ClassNotFoundException, SQLException {
         boolean check = false;
         try {

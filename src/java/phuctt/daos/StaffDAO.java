@@ -216,6 +216,7 @@ public class StaffDAO implements Serializable {
 
                 dto = new StaffDTO(staffName, available, gender);
                 dto.setImage(image);
+                dto.setId(id);
             }
         } finally {
             closeConnection();
@@ -243,6 +244,7 @@ public class StaffDAO implements Serializable {
 
                 dto = new StaffDTO(staffName, available, gender);
                 dto.setImage(image);
+                dto.setId(id);
             }
         } finally {
             closeConnection();

@@ -75,7 +75,11 @@
                 <label class="label-bold">Day:</label>
                 <input type="text" name="doingDate" class="form-control" id="date" readonly>
             </div>
-
+            <div class="row">
+                <font color="red">
+                <s:property value="%{error}"/>
+                </font>
+            </div>
             <div class="row my-3 justify-content-center">
                 <input type="hidden" name="serviceId" value='<s:property value="%{dto.id}"/>'>
                 <input type="submit" class="btn btn-primary" value="Book">
