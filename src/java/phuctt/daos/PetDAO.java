@@ -258,4 +258,75 @@ public class PetDAO implements Serializable {
         }
         return result;
     }
+    
+    public int searchName(String search) throws SQLException, ClassNotFoundException {
+        int num = 0;
+        try {
+            conn = DBConnection.getConnection();
+
+            String sql = "SELECT count(petID) as num FROM Pet WHERE name LIKE ? AND isDelete = ?";
+
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, "%" + search + "%");
+            ps.setBoolean(2, false);
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                num = rs.getInt("num");
+            }
+        } finally {
+            closeConnection();
+        }
+        return num;
+    }
+    
+    public List<PetDTO> searchName(String search, int page) throws SQLException, ClassNotFoundException {
+        List<PetDTO> result = null;
+        try {
+            conn = DBConnection.getConnection();
+            String sql = "SELECT petID, name, birthyear, typeID, gender, ownID FROM Pet "
+                    + "WHERE name LIKE ? AND isDelete = ? "
+                    + "ORDER BY petID OFFSET " + ((page - 1) * 5) + " ROWS FETCH NEXT 5 ROWS ONLY";
+
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, "%" + search + "%");
+            ps.setBoolean(2, false);
+
+            rs = ps.executeQuery();
+
+            long id;
+            String name;
+            boolean gender;
+            int birthyear, typeID;
+            TypeDTO type;
+            PetDTO dto;
+            result = new ArrayList<>();
+            String ownID;
+            AccountDTO owner;
+
+            while (rs.next()) {
+                id = rs.getLong("petID");
+                
+                name = rs.getString("name");
+                birthyear = rs.getInt("birthyear");
+                
+                typeID = rs.getInt("typeID");
+                type = (new TypeDAO()).findByID(typeID);
+                
+                gender = rs.getBoolean("gender");
+                
+                ownID = rs.getString("ownID");
+                owner = (new AccountDAO()).getAccountByID(ownID, true);
+                
+                dto = new PetDTO(name, owner, birthyear, type, gender);
+                dto.setId(id);
+                
+                result.add(dto);
+            }
+        } finally {
+            closeConnection();
+        }
+        return result;
+    }
 }

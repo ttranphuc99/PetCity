@@ -496,7 +496,7 @@ public class AccessoryDAO implements Serializable {
             
             String sql = "SELECT accessoryID, name, price, image FROM Accessory "
                     + "WHERE forType = ? AND categoryID = ? AND isDelete = ? "
-                    + "ORDER BY accessoryID OFFSET " +((page-1)*top)+ " ROWS FETCH NEXT " +top+ " ROWS ONLY";
+                    + "ORDER BY accessoryID DESC OFFSET " +((page-1)*top)+ " ROWS FETCH NEXT " +top+ " ROWS ONLY";
             
             ps = conn.prepareStatement(sql);
             ps.setInt(1, typeID);

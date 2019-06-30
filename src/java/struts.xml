@@ -359,5 +359,13 @@
         <action name="loadExactlyContent" class="phuctt.actions.guest.LoadExactlyContentAction">
             <result name="success">publicPage/shop-detail.jsp</result>
         </action>
+        
+        <action name="ajaxLoadMoreAccessory" class="phuctt.actions.guest.AjaxLoadMoreAccessoryAction">
+            <result type="json"/>
+        </action>
+        
+        <action name="adminViewListPet" class="phuctt.actions.admin.AdminViewListPetAction">
+            <result name="success">admin/view-list-pet.jsp</result>
+        </action>
     </package>
 </struts>

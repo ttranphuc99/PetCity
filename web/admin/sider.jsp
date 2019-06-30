@@ -91,6 +91,9 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="/PetCity/adminViewListPet">View List Pet</a>
+                    </li>
+                    <li>
                         <a href="#view-invoice" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">View Invoice</a>
                         <ul class="collapse list-unstyled" id="view-invoice">
                             <li>

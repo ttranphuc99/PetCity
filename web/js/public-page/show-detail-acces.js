@@ -6,7 +6,8 @@ function loadAccessory(id) {
         }
     }
 
-    xhttp.open("GET", "http://localhost:8084/PetCity/loadAccessoryDetail?id=" + id, true);
+    var host = window.location.host;
+    xhttp.open("GET", "http://" +host+ "/PetCity/loadAccessoryDetail?id=" + id, true);
     xhttp.send();
 }
 

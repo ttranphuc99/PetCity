@@ -244,10 +244,11 @@ public class InvoiceServiceDAO implements Serializable {
             conn = DBConnection.getConnection();
             String sql = "SELECT timeStart as start, duration\n"
                     + "FROM Invoice_Service\n"
-                    + "WHERE doingDate LIKE ? AND petID = ?";
+                    + "WHERE doingDate LIKE ? AND petID = ? AND status != ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, "%" + dto.getDoingDate() + "%");
             ps.setLong(2, dto.getPet().getId());
+            ps.setInt(3, -1);
 
             rs = ps.executeQuery();
 

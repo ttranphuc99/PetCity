@@ -13,23 +13,24 @@ import phuctt.dtos.AccessoryDTO;
  *
  * @author Thien Phuc
  */
-public class LoadExactlyContentAction {
-    private int forType, categoryID, numOfPage, page;
+public class AjaxLoadMoreAccessoryAction {
+    private int forType, categoryID, page;
     private List<AccessoryDTO> list;
+    private boolean more;
     
-    public LoadExactlyContentAction() {
-        page = 1;
+    public AjaxLoadMoreAccessoryAction() {
     }
     
     public String execute() {
         try {
             AccessoryDAO dao = new AccessoryDAO();
             
-            list = dao.loadTopMostBuy(5, forType, categoryID);
+            list = dao.loadNumTopAccessory(5, forType, categoryID, page);
             
             int recordCount = dao.loadNumTopAccessory(forType, categoryID);
-            numOfPage = (int) Math.ceil(recordCount*1.0 / 5);
+            int numOfPage = (int) Math.ceil(recordCount*1.0 / 5);
             
+            more = page < numOfPage;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -52,12 +53,12 @@ public class LoadExactlyContentAction {
         this.categoryID = categoryID;
     }
 
-    public int getNumOfPage() {
-        return numOfPage;
+    public int getPage() {
+        return page;
     }
 
-    public void setNumOfPage(int numOfPage) {
-        this.numOfPage = numOfPage;
+    public void setPage(int page) {
+        this.page = page;
     }
 
     public List<AccessoryDTO> getList() {
@@ -68,12 +69,13 @@ public class LoadExactlyContentAction {
         this.list = list;
     }
 
-    public int getPage() {
-        return page;
+    public boolean isMore() {
+        return more;
     }
 
-    public void setPage(int page) {
-        this.page = page;
+    public void setMore(boolean more) {
+        this.more = more;
     }
+    
     
 }

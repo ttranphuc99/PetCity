@@ -20,16 +20,37 @@
                 <div class="col-2">
                     <div class="wrap-type-sider my-2">
                         <div class="card">
-                            <div class="card-title type-title">Service For Dog</div>
-                            <div class="card-img-bottom">
-                                <img src="/PetCity/img/home-page/82673973.jpg" class="img-type"/>
+                            <div class="row wrap-category">
+                                <div class="col-12">
+                                    <a class="stretched-link" href="/PetCity/loadListService?type=1">Dog</a>
+                                </div>
+                            </div>
+
+                            <div class="row wrap-category">
+                                <div class="col-12">
+                                    <a class="stretched-link" href="/PetCity/loadListService?type=2">Cat</a>                                    
+                                </div>
+                            </div>
+
+                            <div class="row wrap-category">
+                                <div class="col-12">
+                                    <a class="stretched-link" href="/PetCity/loadListService?type=3">Hamster</a>    
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-10">
-                    <s:iterator value="listDog">
+                    <div class="row wrap-content-row my-2">
+                        <div class="content-sub-title">
+                            <s:if test="%{type == 1}">Dog</s:if>
+                            <s:elseif test="%{type == 2}">Cat</s:elseif>
+                            <s:elseif test="%{type == 3}">Hamster</s:elseif>
+                            </div>
+                        </div>
+
+                    <s:iterator value="list">
                         <div class="row wrap-service">
                             <div class="col-6 align-self-center">
                                 <img class="img-service" src="/PetCity/img/file/service/<s:property value="%{image}"/>">
@@ -42,86 +63,6 @@
                                     <span class="service-duration">
                                         <s:property value="%{duration}"/> hour
                                     </span>
-                                </div>
-                                <div class="row">
-                                    $<span class="service-price"><s:property value="%{price}"/></span>
-                                </div>
-                                <div class="row">
-                                    <span class="service-description"><s:property value="%{description}"/></span>
-                                </div>
-                                <div class="row justify-content-center mt-2">
-                                    <a role="button" href="/PetCity/viewServiceDetail?id=<s:property value="%{id}"/>" class="btn btn-outline-info">Book</a>
-                                </div>
-                            </div>
-                        </div>        
-                    </s:iterator>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-2">
-                    <div class="wrap-type-sider my-2">
-                        <div class="card">
-                            <div class="card-title type-title">Service For Cat</div>
-                            <div class="card-img-bottom">
-                                <img src="/PetCity/img/home-page/592685456.jpg" class="img-type"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-10">
-                    <s:iterator value="listCat">
-                        <div class="row wrap-service">
-                            <div class="col-6 align-self-center">
-                                <img class="img-service" src="/PetCity/img/file/service/<s:property value="%{image}"/>">
-                            </div>
-                            <div class="col-6">
-                                <div class="row">
-                                    <span class="service-name"><s:property value="%{name}"/></span>
-                                </div>
-                                <div class="row">
-                                    <span class="service-duration"><s:property value="%{duration}"/> hour</span>
-                                </div>
-                                <div class="row">
-                                    $<span class="service-price"><s:property value="%{price}"/></span>
-                                </div>
-                                <div class="row">
-                                    <span class="service-description"><s:property value="%{description}"/></span>
-                                </div>
-                                <div class="row justify-content-center mt-2">
-                                    <a role="button" href="/PetCity/viewServiceDetail?id=<s:property value="%{id}"/>" class="btn btn-outline-info">Book</a>
-                                </div>
-                            </div>
-                        </div>        
-                    </s:iterator>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-2">
-                    <div class="wrap-type-sider my-2">
-                        <div class="card">
-                            <div class="card-title type-title">Service For Hamster</div>
-                            <div class="card-img-bottom">
-                                <img src="/PetCity/img/home-page/1060.jpg" class="img-type"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-10">
-                    <s:iterator value="listHamster">
-                        <div class="row wrap-service">
-                            <div class="col-6 align-self-center">
-                                <img class="img-service" src="/PetCity/img/file/service/<s:property value="%{image}"/>">
-                            </div>
-                            <div class="col-6">
-                                <div class="row">
-                                    <span class="service-name"><s:property value="%{name}"/></span>
-                                </div>
-                                <div class="row">
-                                    <span class="service-duration"><s:property value="%{duration}"/> hour</span>
                                 </div>
                                 <div class="row">
                                     $<span class="service-price"><s:property value="%{price}"/></span>

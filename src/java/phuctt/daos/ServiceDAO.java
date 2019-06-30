@@ -293,34 +293,13 @@ public class ServiceDAO implements Serializable {
         return dto;
     }
     
-    public int loadServiceToPage(int typeID) throws SQLException, ClassNotFoundException {
-        int num = 0;
-        try {
-            conn = DBConnection.getConnection();
-            String sql = "SELECT count(serviceID) as num FROM Service WHERE forType = ? AND isDelete = ?";
-            ps = conn.prepareStatement(sql);
-            ps.setInt(1, typeID);
-            ps.setBoolean(2, false);
-            
-            rs = ps.executeQuery();
-            
-            if (rs.next()) {
-                num = rs.getInt("num");
-            }
-        } finally {
-            closeConnection();
-        }
-        return num;
-    }
-    
-    public List<ServiceDTO> loadServiceToPage(int typeID, int page) throws SQLException, ClassNotFoundException {
+    public List<ServiceDTO> loadServiceToPage(int typeID) throws SQLException, ClassNotFoundException {
         List<ServiceDTO> result = null;
         try {
             conn = DBConnection.getConnection();
             String sql = "SELECT serviceID, name, duration, price, image, description "
                     + "FROM Service "
-                    + "WHERE forType = ? AND isDelete = ? "
-                    + "ORDER BY serviceID DESC OFFSET " + ((page - 1) * 5) + " ROWS FETCH NEXT 5 ROWS ONLY";
+                    + "WHERE forType = ? AND isDelete = ? ";
             
             ps = conn.prepareStatement(sql);
             ps.setInt(1, typeID);

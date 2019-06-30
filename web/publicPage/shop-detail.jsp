@@ -19,41 +19,44 @@
                 <div class="col-2">
                     <div class="wrap-type-sider my-2">
                         <div class="card">
-                            <div class="row">
+                            <div class="row wrap-category">
                                 <div class="col-12">
-                                    <a class="stretched-link" href="">Food</a>
+                                    <a class="stretched-link" href="/PetCity/loadExactlyContent?categoryID=1&forType=<s:property value="%{forType}"/>">Food</a>
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row wrap-category">
                                 <div class="col-12">
-                                    <a class="stretched-link" href="">Clothes</a>                                    
+                                    <a class="stretched-link" href="/PetCity/loadExactlyContent?categoryID=2&forType=<s:property value="%{forType}"/>">Clothes</a>                                    
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row wrap-category">
                                 <div class="col-12">
-                                    <a class="stretched-link" href="">Toys</a>    
+                                    <a class="stretched-link" href="/PetCity/loadExactlyContent?categoryID=3&forType=<s:property value="%{forType}"/>">Toys</a>    
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row wrap-category">
                                 <div class="col-12">
-                                    <a class="stretched-link" href="">Comestics</a>
+                                    <a class="stretched-link" href="/PetCity/loadExactlyContent?categoryID=4&forType=<s:property value="%{forType}"/>">Comestics</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-10">
+                <div class="col-10"> 
                     <div class="row wrap-content-row my-2">
                         <div class="content-sub-title">
-                            <a href="#" class="stretched-link">Food</a>
+                            <s:if test="%{categoryID == 1}">Food</s:if>
+                            <s:elseif test="%{categoryID == 2}">Clothes</s:elseif>
+                            <s:elseif test="%{categoryID == 3}">Toys</s:elseif>
+                            <s:elseif test="%{categoryID == 4}">Comestics</s:elseif>
                         </div>
                     </div>
 
-                    <div class="row my-2 justify-content-center">
+                    <div class="row my-2 justify-content-center" id="wrap-accessory-list">
                         <s:iterator value="list">
                             <div class="wrap-accessories card justify-content-center mx-2">
                                 <div class="wrap-accessory-img card-img-top">
@@ -76,6 +79,15 @@
                             </div>
                         </s:iterator>
                     </div>
+
+                    <s:if test="%{page < numOfPage}">
+                    <div class="row my-2 justify-content-center">
+                        <button class="btn btn-info" id="view-more" 
+                                onclick="loadMore(<s:property value="%{forType}"/>, <s:property value="%{categoryID}"/>, <s:property value="%{page+1}"/>)">
+                            View More...
+                        </button>
+                    </div>
+                    </s:if>
                 </div>
             </div>
         </div>
@@ -148,4 +160,5 @@
 </div>
 
 <script src="/PetCity/js/public-page/show-detail-acces.js"></script>
+<script src="/PetCity/js/public-page/load-more-accessory.js"></script>
 <%@include file="footer.jsp" %>
