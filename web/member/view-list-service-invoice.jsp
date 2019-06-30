@@ -13,7 +13,7 @@
 <div class="title mb-4">Service Invoices</div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -63,7 +63,8 @@
                         <s:property value="%{pet.name}" />
                     </td>
                     <td class="align-middle text-center col-price">
-                        $<s:property value="%{price}" />
+                        $
+                        <s:property value="%{price}" />
                     </td>
                     <td class="align-middle text-center col-status">
                         <s:if test="%{status == 0}">
@@ -78,11 +79,13 @@
                     </td>
                     <td class="align-middle text-center">
                         <a class="btn btn-sm btn-outline-info my-1"
-                           href='/PetCity/viewAccessoryCartDetail?invoiceID=<s:property value="%{id}" />'
-                           role="button">Detail</a><br>
-                        <s:if test="%{status == 0}">
-                            <button class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal"
-                                    onclick='cancelInvoiceAccessory(<s:property value="%{id}"/>)'>Cancel</button>
+                            href='/PetCity/viewDetailServiceInvoice?id=<s:property value="%{id}" />&page=<s:property value="%{page}" />'
+                            role="button">Detail</a><br>
+                        <s:if test="%{status != -1}">
+                            <button class="btn btn-sm btn-outline-danger" data-toggle="modal"
+                                data-target="#exampleModal" onclick='cancelInvoice(<s:property value="%{id}"/>)'>
+                                Cancel Invoice
+                            </button>
                         </s:if>
                     </td>
                 </tr>

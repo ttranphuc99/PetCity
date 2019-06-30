@@ -13,6 +13,26 @@
 </div>
 <div class="title mb-4">Service Invoices</div>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Confirm</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a role="button" class="btn btn-danger" id="deleteBtnAction" href="javascript(0);">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <s:if test="%{listAccessoryInvoice.isEmpty}">
     <div>No invoice yet!</div>
 </s:if>
@@ -66,17 +86,10 @@
                     </td>
                     <td class="align-middle text-center">
                         <s:if test="%{status != -1}">
-                        <form method="POST" action="/PetCity/updateStatusAccessoryInvoice">
-                            <select name="status" class="custom-select" style="width: 50%">
-                                <option value="-1" <s:if test="%{status == -1}">selected</s:if>>Canceled</option>
-                                <option value="0" <s:if test="%{status == 0}">selected</s:if>>Waiting</option>
-                                <option value="1" <s:if test="%{status == 1}">selected</s:if>>Confirm</option>
-                            </select>
-                            <input type="hidden" name="id" value="<s:property value="%{id}" />"/>
-                            <input type="hidden" name="page" value="<s:property value="%{page}" />"/>
-                                
-                           <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fas fa-check"></i></button>   
-                        </form>
+                        <button class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal"
+                            onclick='cancelInvoice(<s:property value="%{id}"/>)'>
+                            Cancel Invoice
+                        </button>
                         </s:if>
                     </td>
                 </tr>
@@ -110,5 +123,5 @@
         </ul>
     </nav>
 </s:else>
-<script src="https://kit.fontawesome.com/37932e4a19.js"></script>
+<script src="/PetCity/js/admin-page/delete-action.js"></script>
 <%@include file="end-sider.jsp" %>

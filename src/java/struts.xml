@@ -319,7 +319,7 @@
         
         <action name="viewDetailServiceInvoice" class="phuctt.actions.admin.ViewDetailServiceInvoiceAction">
             <result name="admin">admin/view-detail-service-invoice.jsp</result>
-            <result name="member"></result>
+            <result name="member">member/view-invoice-service-detail.jsp</result>
             <result name="fail" type="redirectAction">
                 <param name="actionName">welcome</param>
                 <param name="mess">${mess}</param>
@@ -338,6 +338,26 @@
                 <param name="page">${page}</param>
                 <param name="id">${id}</param>
             </result>
+        </action>
+        
+        <action name="cancelInvoiceService" class="phuctt.actions.admin.CancelInvoiceServiceAction">
+            <result name="admin" type="redirectAction">
+                <param name="actionName">viewListServiceInvoice</param>
+                <param name="mess">${mess}</param>
+                <param name="page">${page}</param>
+            </result>
+            <result name="member" type="redirectAction">
+                <param name="actionName">viewListServiceInvoice</param>
+                <param name="mess">${mess}</param>
+            </result>
+            <result name="fail" type="redirectAction">
+                <param name="actionName">welcome</param>
+                <param name="mess">${mess}</param>
+            </result>
+        </action>
+        
+        <action name="loadExactlyContent" class="phuctt.actions.guest.LoadExactlyContentAction">
+            <result name="success">publicPage/shop-detail.jsp</result>
         </action>
     </package>
 </struts>

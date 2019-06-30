@@ -60,7 +60,8 @@ public class AuthFilter implements Filter {
         guest.add("loadListService.action");
         guest.add("viewServiceDetail");
         guest.add("viewServiceDetail.action");
-        
+        guest.add("loadExactlyContent");
+        guest.add("loadExactlyContent.action");
 
         admin = new ArrayList<>();
         admin.add("addAccessory");
@@ -115,6 +116,8 @@ public class AuthFilter implements Filter {
         admin.add("viewDetailServiceInvoice.action");
         admin.add("updateInvoiceService");
         admin.add("updateInvoiceService.action");
+        admin.add("cancelInvoiceService");
+        admin.add("cancelInvoiceService.action");
 
         member = new ArrayList<>();
         member.add("logout");
@@ -165,6 +168,10 @@ public class AuthFilter implements Filter {
         member.add("viewListServiceInvoice.action");
         member.add("viewDetailServiceInvoice");
         member.add("viewDetailServiceInvoice.action");
+        member.add("cancelInvoiceService");
+        member.add("cancelInvoiceService.action");
+        member.add("loadExactlyContent");
+        member.add("loadExactlyContent.action");
     }
 
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)

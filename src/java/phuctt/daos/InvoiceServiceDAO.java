@@ -523,4 +523,42 @@ public class InvoiceServiceDAO implements Serializable {
         }
         return check;
     }
+    
+    public boolean adminCancel(long id, String username) throws SQLException, ClassNotFoundException {
+        boolean check = false;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "UPDATE Invoice_Service SET status = ?, adminConfirm = ?, staffDoing = ? WHERE invoiceID = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, -1);
+            ps.setString(2, username);
+            ps.setNull(3, Types.INTEGER);
+            ps.setLong(4, id);
+            
+            check = ps.executeUpdate() > 0;
+        } finally {
+            closeConnection();
+        }
+        return check;
+    }
+    
+    public boolean memberCancel(long id) throws SQLException, ClassNotFoundException {
+        boolean check = false;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "UPDATE Invoice_Service SET status = ?, adminConfirm = ?, staffDoing = ? WHERE invoiceID = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, -1);
+            ps.setNull(2, Types.VARCHAR);
+            ps.setNull(3, Types.INTEGER);
+            ps.setLong(4, id);
+            
+            check = ps.executeUpdate() > 0;
+        } finally {
+            closeConnection();
+        }
+        return check;
+    }
 }

@@ -463,4 +463,72 @@ public class AccessoryDAO implements Serializable {
         }
         return result;
     }
+    
+    public int loadNumTopAccessory(int typeID, int categoryID) throws SQLException, ClassNotFoundException {
+        int num = 0;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "SELECT count(accessoryID) as num "
+                    + "FROM Accessory "
+                    + "WHERE forType = ? AND categoryID = ? AND isDelete = ? ";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, typeID);
+            ps.setInt(2, categoryID);
+            ps.setBoolean(3, false);
+            
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                num = rs.getInt("num");
+            }
+        } finally {
+            closeConnection();
+        }
+        return num;
+    }
+    
+    public List<AccessoryDTO> loadNumTopAccessory(int top, int typeID, int categoryID, int page) throws SQLException, ClassNotFoundException {
+        List<AccessoryDTO> result = null;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "SELECT accessoryID, name, price, image FROM Accessory "
+                    + "WHERE forType = ? AND categoryID = ? AND isDelete = ? "
+                    + "ORDER BY accessoryID OFFSET " +((page-1)*top)+ " ROWS FETCH NEXT " +top+ " ROWS ONLY";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, typeID);
+            ps.setInt(2, categoryID);
+            ps.setBoolean(3, false);
+            
+            rs = ps.executeQuery();
+            
+            String name, image;
+            long id;
+            float price;
+            AccessoryDTO dto = null;
+            
+            result = new ArrayList<>();
+            
+            while (rs.next()) {
+                name = rs.getString("name");
+                image = rs.getString("image");
+                id = rs.getLong("accessoryID");
+                price = rs.getFloat("price");
+                
+                dto = new AccessoryDTO();
+                dto.setName(name);
+                dto.setImage(image);
+                dto.setId(id);
+                dto.setPrice(price);
+                
+                result.add(dto);
+            }
+        } finally {
+            closeConnection();
+        }
+        return result;
+    }
 }
