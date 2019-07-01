@@ -19,7 +19,7 @@ public class SearchNameAccessoryAction {
     private String search, mess, action;
     private List<AccessoryDTO> result;
     private int page, numOfPage;
-    
+
     private static final String JSON = "json";
     private static final String PAGE = "page";
 
@@ -29,6 +29,7 @@ public class SearchNameAccessoryAction {
     }
 
     public String execute() {
+        String label = JSON;
         try {
             AccessoryDAO dao = new AccessoryDAO();
 
@@ -40,17 +41,22 @@ public class SearchNameAccessoryAction {
                     page = 1;
                 }
                 result = dao.searchName(search, page);
+
+                if (action.equalsIgnoreCase("page")) {
+                    if (page == 1) {
+                        page++;
+                        result.addAll(dao.searchName(search, page));
+                    }
+                    label = PAGE;
+                }
             } else {
                 result = new ArrayList<>();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        if (action.equalsIgnoreCase("page")) {
-            return PAGE;
-        }
-        return JSON;
+
+        return label;
     }
 
     public String getSearch() {

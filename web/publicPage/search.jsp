@@ -40,11 +40,11 @@
                             </div>
                         </s:iterator>
                     </div>
-
+                    
                     <s:if test="%{page < numOfPage}">
                     <div class="row my-2 justify-content-center">
-                        <button class="btn btn-info" id="view-more" 
-                                onclick="loadMore(<s:property value="%{forType}"/>, <s:property value="%{categoryID}"/>, <s:property value="%{page+1}"/>)">
+                        <button class="btn btn-sm btn-info" id="view-more" 
+                                onclick="searchMore('<s:property value="%{search}"/>',<s:property value="%{page+1}"/>)">
                             View More...
                         </button>
                     </div>
@@ -121,5 +121,4 @@
 </div>
 
 <script src="/PetCity/js/public-page/show-detail-acces.js"></script>
-<script src="/PetCity/js/public-page/load-more-accessory.js"></script>
 <%@include file="footer.jsp" %>

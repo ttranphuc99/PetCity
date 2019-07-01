@@ -30,7 +30,7 @@
                 <div class="col-6" style="margin-top: 10px">
                     <div>
                         <div class="row">
-                            <div class="form-group has-danger col-10 mx-0 px-0 autocomplete">
+                            <div class="form-group has-danger col-12 mx-0 px-0 autocomplete">
                                 <input type="text" id="txtSearch-suggestion" name="txtSearch" class="form-control form-control-danger" placeholder="Search..."
                                        required minlength=3 oninput="searchAccessory()" onfocusin="searchAccessory()" onfocusout="clearSuggestion()"
                                        value="<s:property value="%{search}"/>">
@@ -51,9 +51,6 @@
                                     </div> -->
                                 </div>
 
-                            </div>
-                            <div class="col-2 mx-0 px-0">
-                                <input type="button" class="btn btn-primary" name="action" value="Search">
                             </div>
                         </div>
                     </div>
