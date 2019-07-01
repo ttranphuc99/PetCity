@@ -9,6 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Pet City</title>
         <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/header-footer.css">
+        <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/suggestion.css">
         <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/snackbar.css">
         <link rel="stylesheet" type="text/css" href="/PetCity/css/bootstrap/bootstrap.css">
         <script src="/PetCity/js/bootstrap/jquery-1.9.1.min.js"></script>
@@ -27,17 +28,35 @@
 
                 <!-- search -->
                 <div class="col-6" style="margin-top: 10px">
-                    <form action="">
+                    <div>
                         <div class="row">
-                            <div class="form-group has-danger col-10 mx-0 px-0">
-                                <input type="text" name="txtSearch" class="form-control form-control-danger" placeholder="Search..."
-                                       required>
+                            <div class="form-group has-danger col-10 mx-0 px-0 autocomplete">
+                                <input type="text" id="txtSearch-suggestion" name="txtSearch" class="form-control form-control-danger" placeholder="Search..."
+                                       required minlength=3 oninput="searchAccessory()" onfocusin="searchAccessory()" onfocusout="clearSuggestion()"
+                                       value="<s:property value="%{search}"/>">
+                                <div class="autocomplete-items" id="suggestion">
+                                    <!-- <div class="row align-items-center">
+                                        <div class="col-3">
+                                            <img class="suggestion-img" src="/PetCity/img/file/accessory/1.jpg"/>
+                                        </div>
+                                        <div class="col-4">
+                                            Puppy food nutrition 1.5kg Smartheart
+                                        </div>
+                                        <div class="col-2 suggestion-price">
+                                            $10.5
+                                        </div>
+                                        <div class="col-3">
+                                            <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="loadAccessory(1)">View detail</button>
+                                        </div>
+                                    </div> -->
+                                </div>
+
                             </div>
                             <div class="col-2 mx-0 px-0">
-                                <input type="submit" class="btn btn-primary" name="action" value="Search">
+                                <input type="button" class="btn btn-primary" name="action" value="Search">
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
 
                 <!-- login + cart -->
@@ -85,3 +104,4 @@
                 <div class="col-2"></div>
             </div>
         </nav>
+        <script src="/PetCity/js/public-page/suggestion.js"></script>

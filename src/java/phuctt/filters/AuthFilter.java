@@ -64,6 +64,8 @@ public class AuthFilter implements Filter {
         guest.add("loadExactlyContent.action");
         guest.add("ajaxLoadMoreAccessory");
         guest.add("ajaxLoadMoreAccessory.action");
+        guest.add("searchNameAccessory");
+        guest.add("searchNameAccessory.action");
 
         admin = new ArrayList<>();
         admin.add("addAccessory");
@@ -178,6 +180,8 @@ public class AuthFilter implements Filter {
         member.add("loadExactlyContent.action");
         member.add("ajaxLoadMoreAccessory");
         member.add("ajaxLoadMoreAccessory.action");
+        member.add("searchNameAccessory");
+        member.add("searchNameAccessory.action");
     }
 
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
