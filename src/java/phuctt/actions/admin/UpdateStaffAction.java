@@ -12,6 +12,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import phuctt.daos.StaffDAO;
 import phuctt.dtos.StaffDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -61,7 +62,7 @@ public class UpdateStaffAction implements ServletRequestAware {
             }
             
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at UpdateStaffAction : " + e.getMessage());
             mess = "error";
         }
         return label;

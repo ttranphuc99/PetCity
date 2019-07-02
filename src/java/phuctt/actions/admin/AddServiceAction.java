@@ -16,6 +16,7 @@ import phuctt.daos.ServiceDAO;
 import phuctt.dtos.ServiceDTO;
 import phuctt.dtos.StaffDTO;
 import phuctt.dtos.TypeDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -81,7 +82,7 @@ public class AddServiceAction implements ServletRequestAware {
             }
         } catch (Exception e) {
             mess = "Error";
-            e.printStackTrace();
+            Logger.log("ERROR at AddServiceAction : " + e.getMessage());
         }
         return label;
     }

@@ -7,21 +7,28 @@ package phuctt.actions.guest;
 
 import com.opensymphony.xwork2.ActionContext;
 import java.util.Map;
+import phuctt.log.Logger;
 
 /**
  *
  * @author Thien Phuc
  */
 public class LogoutAction {
+
     private String mess;
+
     public LogoutAction() {
     }
-    
-    public String execute() throws Exception {
-        Map session = ActionContext.getContext().getSession();
-        if (session != null) {
-            session.clear();
-            mess = "Logout successfully!";
+
+    public String execute() {
+        try {
+            Map session = ActionContext.getContext().getSession();
+            if (session != null) {
+                session.clear();
+                mess = "Logout successfully!";
+            }
+        } catch (Exception e) {
+            Logger.log("ERROR at LogoutAction : " + e.getMessage());
         }
         return "success";
     }
@@ -33,5 +40,5 @@ public class LogoutAction {
     public void setMess(String mess) {
         this.mess = mess;
     }
-    
+
 }

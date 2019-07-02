@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import phuctt.daos.InvoiceAccessoryDAO;
 import phuctt.dtos.InvoiceAccessoryDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -72,7 +73,7 @@ public class ViewListAccessoryInvoiceAction {
                 label = ADMIN;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at ViewListAccessoryInvoiceAction : " + e.getMessage());
             mess = "Error";
         }
         return label;

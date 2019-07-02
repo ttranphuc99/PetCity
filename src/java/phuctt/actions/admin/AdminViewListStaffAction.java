@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import phuctt.daos.StaffDAO;
 import phuctt.dtos.StaffDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -43,7 +44,7 @@ public class AdminViewListStaffAction {
                 listStaff = new ArrayList<>();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at AdminViewListStaffAction : " + e.getMessage());
             mess = "Error";
         }
         return label;

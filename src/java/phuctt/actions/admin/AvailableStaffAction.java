@@ -6,6 +6,7 @@
 package phuctt.actions.admin;
 
 import phuctt.daos.StaffDAO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -30,7 +31,7 @@ public class AvailableStaffAction {
                 mess = "Set failed";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at AvailableStaffAction : " + e.getMessage());
             mess = "Error";
         }
         return label;

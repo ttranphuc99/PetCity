@@ -7,6 +7,7 @@ package phuctt.actions.admin;
 
 import phuctt.daos.AccountDAO;
 import phuctt.dtos.AccountDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -38,7 +39,7 @@ public class AdminEditProfileAction {
                 mess = "Update Failed!";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at AdminEditProfileAction : " + e.getMessage());
         }
         return label;
     }

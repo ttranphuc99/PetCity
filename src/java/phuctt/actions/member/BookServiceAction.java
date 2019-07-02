@@ -12,6 +12,7 @@ import phuctt.daos.ServiceDAO;
 import phuctt.dtos.InvoiceServiceDTO;
 import phuctt.dtos.PetDTO;
 import phuctt.dtos.ServiceDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -63,7 +64,7 @@ public class BookServiceAction {
                 mess = "Book service fail";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at BookServiceAction : " + e.getMessage());
             mess = "Error";
         }
         return label;

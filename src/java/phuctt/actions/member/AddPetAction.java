@@ -11,6 +11,7 @@ import phuctt.daos.PetDAO;
 import phuctt.dtos.AccountDTO;
 import phuctt.dtos.PetDTO;
 import phuctt.dtos.TypeDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -48,7 +49,7 @@ public class AddPetAction {
                 mess = "Add pet failed!";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at AddPetAction : " + e.getMessage());
             mess = "Error";
         }
         return label;

@@ -8,6 +8,7 @@ package phuctt.actions.member;
 import com.opensymphony.xwork2.ActionContext;
 import java.util.Map;
 import phuctt.daos.InvoiceAccessoryDAO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -39,7 +40,7 @@ public class CancelInvoiceAccessoryAction {
                 mess = "You don't have right to cancel this invoice";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at CancelInvoiceAccessoryAction : " + e.getMessage());
             mess = "Error";
         }
         return label;

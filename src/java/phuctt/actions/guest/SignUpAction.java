@@ -7,6 +7,7 @@ package phuctt.actions.guest;
 
 import phuctt.daos.AccountDAO;
 import phuctt.dtos.AccountDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -47,7 +48,7 @@ public class SignUpAction {
             if (e.getMessage().contains("duplicate")) {
                 mess = "Username is existed!";
             } else {
-                e.printStackTrace();
+                Logger.log("ERROR at SignUpAction : " + e.getMessage());
             }
         }
         return label;

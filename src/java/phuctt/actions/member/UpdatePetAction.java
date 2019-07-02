@@ -10,6 +10,7 @@ import phuctt.daos.PetDAO;
 import phuctt.daos.TypeDAO;
 import phuctt.dtos.PetDTO;
 import phuctt.dtos.TypeDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -48,7 +49,7 @@ public class UpdatePetAction {
                 mess = "Update fail";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at UpdatePetAction : " + e.getMessage());
             mess = "Error";
         }
         return label;

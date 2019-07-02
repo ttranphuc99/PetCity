@@ -11,6 +11,7 @@ import java.util.Map;
 import phuctt.daos.InvoiceServiceDAO;
 import phuctt.dtos.InvoiceServiceDTO;
 import phuctt.dtos.StaffDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -72,7 +73,7 @@ public class UpdateInvoiceServiceAction {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at UpdateInvoiceServiceAction : " + e.getMessage());
             mess = "Error";
         }
         return label;

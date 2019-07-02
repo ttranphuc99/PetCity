@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import phuctt.daos.PetDAO;
 import phuctt.dtos.PetDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -43,7 +44,7 @@ public class AdminViewListPetAction {
                 mess = "Not found";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at AdminViewListPetAction : " + e.getMessage());
         }
         return "success";
     }

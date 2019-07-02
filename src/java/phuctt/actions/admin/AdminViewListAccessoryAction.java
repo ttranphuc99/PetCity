@@ -13,6 +13,7 @@ import phuctt.daos.TypeDAO;
 import phuctt.dtos.AccessoryDTO;
 import phuctt.dtos.CategoryDTO;
 import phuctt.dtos.TypeDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -96,7 +97,7 @@ public class AdminViewListAccessoryAction {
             TypeDAO typeDao = new TypeDAO();
             listType = typeDao.searchByLikeName("");
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at AdminViewListAccessoryAction : " + e.getMessage());
             mess = "Error";
         }
         return label;

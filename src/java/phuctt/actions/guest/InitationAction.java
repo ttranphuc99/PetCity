@@ -11,6 +11,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import org.apache.commons.io.FileUtils;
+import phuctt.log.Logger;
 
 /**
  * Web application lifecycle listener.
@@ -28,7 +29,7 @@ public class InitationAction implements ServletContextListener {
         try {
             FileUtils.copyDirectory(source, target);
         } catch (IOException ex) {
-            ex.printStackTrace();
+            Logger.log("ERROR at InitationAction : " + ex.getMessage());
         }
     }
 

@@ -11,6 +11,7 @@ import java.util.Map;
 import phuctt.daos.AccessoryDAO;
 import phuctt.dtos.AccessoryDTO;
 import phuctt.dtos.CartDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -74,7 +75,7 @@ public class UpdateAccessoryCartAction {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at UpdateAccessoryCartAction : " + e.getMessage());
             mess = "Error";
         }
         return label;

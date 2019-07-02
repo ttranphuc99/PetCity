@@ -6,6 +6,7 @@
 package phuctt.actions.admin;
 
 import phuctt.daos.AccountDAO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -38,7 +39,7 @@ public class ChangePasswordAction {
                 mess = "Wrong old password!";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at ChangePasswordAction : " + e.getMessage());
         }
         return label;
     }

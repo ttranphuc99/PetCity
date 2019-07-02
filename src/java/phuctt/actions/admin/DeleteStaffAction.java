@@ -6,6 +6,7 @@
 package phuctt.actions.admin;
 
 import phuctt.daos.StaffDAO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -29,7 +30,7 @@ public class DeleteStaffAction {
                 mess = " Delete fail";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at DeleteStaffAction : " + e.getMessage());
             mess = "error";
         }
         return label;

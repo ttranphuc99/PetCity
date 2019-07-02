@@ -7,6 +7,7 @@ package phuctt.actions.admin;
 
 import phuctt.daos.StaffDAO;
 import phuctt.dtos.StaffDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -37,7 +38,7 @@ public class AdminViewDetailStaffAction {
                 mess = "Error found";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at AdminViewDetailStaffAction : " + e.getMessage());
             mess = "Error";
         }
         return label;

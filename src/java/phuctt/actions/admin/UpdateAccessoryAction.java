@@ -14,6 +14,7 @@ import phuctt.daos.AccessoryDAO;
 import phuctt.dtos.AccessoryDTO;
 import phuctt.dtos.CategoryDTO;
 import phuctt.dtos.TypeDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -67,7 +68,7 @@ public class UpdateAccessoryAction implements ServletRequestAware {
             }
         } catch (Exception e) {
             mess = "Error";
-            e.printStackTrace();
+            Logger.log("ERROR at UpdateAccessoryAction : " + e.getMessage());
         }
         return label;
     }

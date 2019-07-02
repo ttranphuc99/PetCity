@@ -6,6 +6,7 @@
 package phuctt.actions.admin;
 
 import phuctt.daos.AccountDAO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -28,7 +29,7 @@ public class ActiveUserAction {
                 mess = "Active failed";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("Error at ActiveUserAction: " + e.getMessage());
             mess = "Error";
         }
         return label;

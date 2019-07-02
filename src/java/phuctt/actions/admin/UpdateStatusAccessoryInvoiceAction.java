@@ -8,6 +8,7 @@ package phuctt.actions.admin;
 import com.opensymphony.xwork2.ActionContext;
 import java.util.Map;
 import phuctt.daos.InvoiceAccessoryDAO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -34,7 +35,7 @@ public class UpdateStatusAccessoryInvoiceAction {
                 mess = "Update status for Invoice ID: " +id+ " failed";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at UpdateStatusAccessoryInvoiceAction : " + e.getMessage());
             mess = "Error";
         }
         return "success";

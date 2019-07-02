@@ -8,6 +8,7 @@ package phuctt.actions.guest;
 import java.util.List;
 import phuctt.daos.AccessoryDAO;
 import phuctt.dtos.AccessoryDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -32,7 +33,7 @@ public class AjaxLoadMoreAccessoryAction {
             
             more = page < numOfPage;
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at AjaxLoadMoreAccessoryAction : " + e.getMessage());
         }
         return "success";
     }

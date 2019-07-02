@@ -10,6 +10,7 @@ import phuctt.daos.CategoryDAO;
 import phuctt.daos.TypeDAO;
 import phuctt.dtos.CategoryDTO;
 import phuctt.dtos.TypeDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -35,7 +36,7 @@ public class LoadCategoryTypeAction {
             label = locationPlace;
         } catch (Exception e) {
             mess = "Error DB";
-            e.printStackTrace();
+            Logger.log("ERROR at LoadCategoryTypeAction : " + e.getMessage());
         }
         return label;
     }

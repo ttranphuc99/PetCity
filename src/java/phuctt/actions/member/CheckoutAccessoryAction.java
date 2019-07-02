@@ -14,6 +14,7 @@ import phuctt.daos.AccountDAO;
 import phuctt.daos.InvoiceAccessoryDAO;
 import phuctt.dtos.AccessoryDTO;
 import phuctt.dtos.AccountDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -71,7 +72,7 @@ public class CheckoutAccessoryAction {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at CheckoutAccessoryAction : " + e.getMessage());
             mess = "Error";
         }
         return label;

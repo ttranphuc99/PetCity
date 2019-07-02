@@ -8,6 +8,7 @@ package phuctt.actions.guest;
 import com.opensymphony.xwork2.ActionContext;
 import java.util.Map;
 import phuctt.daos.AccountDAO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -48,7 +49,7 @@ public class LoginAction {
                 mess = "Invalid username or password";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at LoginAction : " + e.getMessage());
         } finally {
             return label;
         }

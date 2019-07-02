@@ -8,6 +8,7 @@ package phuctt.actions.admin;
 import java.util.List;
 import phuctt.daos.InvoiceAccessoryDAO;
 import phuctt.dtos.AccessoryDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -34,7 +35,7 @@ public class AdminViewAccessoryInvoiceDetailAction {
                 total += accessoryDTO.getPrice() * accessoryDTO.getQuantity();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at AdminViewAccessoryInvoiceDetailAction : " + e.getMessage());
         }
         return "success";
     }

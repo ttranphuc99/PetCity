@@ -7,6 +7,7 @@ package phuctt.actions.admin;
 
 import phuctt.daos.AccountDAO;
 import phuctt.dtos.AccountDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -31,7 +32,7 @@ public class AdminViewProfileAction {
             if (dto != null) label = SUCCESS;
             
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at AdminViewProfileAction : " + e.getMessage());
         }
         return label;
     }

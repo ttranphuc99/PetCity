@@ -10,6 +10,7 @@ import java.util.Map;
 import phuctt.daos.AccessoryDAO;
 import phuctt.dtos.AccessoryDTO;
 import phuctt.dtos.CartDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -77,7 +78,7 @@ public class AddAccessoryToCartAction {
             }
             quantityInCart = cart.getTotalQuantity();
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at AddAccessoryToCartAction : " + e.getMessage());
             success = false;
             mess = "Add to cart failed";
         }

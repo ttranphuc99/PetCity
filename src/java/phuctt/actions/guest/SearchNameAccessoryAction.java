@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import phuctt.daos.AccessoryDAO;
 import phuctt.dtos.AccessoryDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -53,7 +54,7 @@ public class SearchNameAccessoryAction {
                 result = new ArrayList<>();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at SearchNameAccessoryAction : " + e.getMessage());
         }
 
         return label;

@@ -12,6 +12,7 @@ import phuctt.daos.PetDAO;
 import phuctt.daos.ServiceDAO;
 import phuctt.dtos.PetDTO;
 import phuctt.dtos.ServiceDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -47,7 +48,7 @@ public class ViewServiceDetailAction {
                 label = SUCCESS;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at ViewServiceDetailAction : " + e.getMessage());
         }
         return label;
     }

@@ -12,6 +12,7 @@ import phuctt.daos.PetDAO;
 import phuctt.daos.TypeDAO;
 import phuctt.dtos.PetDTO;
 import phuctt.dtos.TypeDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -49,7 +50,7 @@ public class ViewPetDetailAction {
                 mess = "You don't have right to access this Pet";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at ViewPetDetailAction : " + e.getMessage());
             mess = "Error";
         }
         return label;

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import phuctt.daos.ServiceDAO;
 import phuctt.dtos.ServiceDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -43,7 +44,7 @@ public class AdminViewListServiceAction {
                 listService = new ArrayList<>();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at AdminViewListServiceAction : " + e.getMessage());
             mess = "Error";
         }
         return label;

@@ -16,6 +16,7 @@ import phuctt.daos.ServiceDAO;
 import phuctt.dtos.ServiceDTO;
 import phuctt.dtos.StaffDTO;
 import phuctt.dtos.TypeDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -83,7 +84,7 @@ public class UpdateServiceAction implements ServletRequestAware {
                 mess = "Update fail";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at UpdateServiceAction : " + e.getMessage());
             mess = "Error";
         }
         return label;

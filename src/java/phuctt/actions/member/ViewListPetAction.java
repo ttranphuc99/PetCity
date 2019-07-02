@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import phuctt.daos.PetDAO;
 import phuctt.dtos.PetDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -49,7 +50,7 @@ public class ViewListPetAction {
                 mess = "Not found";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at ViewListPetAction : " + e.getMessage());
         }
         return "success";
     }

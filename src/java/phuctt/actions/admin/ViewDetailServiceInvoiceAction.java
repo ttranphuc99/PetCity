@@ -11,6 +11,7 @@ import java.util.Map;
 import phuctt.daos.InvoiceServiceDAO;
 import phuctt.dtos.InvoiceServiceDTO;
 import phuctt.dtos.StaffDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -51,7 +52,7 @@ public class ViewDetailServiceInvoiceAction {
                 mess = "Not found!";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at ViewDetailServiceInvoiceAction : " + e.getMessage());
         }
         return label;
     }

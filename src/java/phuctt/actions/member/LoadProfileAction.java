@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.ActionContext;
 import java.util.Map;
 import phuctt.daos.AccountDAO;
 import phuctt.dtos.AccountDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -32,7 +33,7 @@ public class LoadProfileAction {
             AccountDAO dao = new AccountDAO();
             dto = dao.getAccountByID(username);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at LoadProfileAction : " + e.getMessage());
         }
         return "success";
     }

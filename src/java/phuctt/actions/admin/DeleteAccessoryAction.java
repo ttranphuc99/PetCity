@@ -6,6 +6,7 @@
 package phuctt.actions.admin;
 
 import phuctt.daos.AccessoryDAO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -28,7 +29,7 @@ public class DeleteAccessoryAction {
                 mess = "delete fail";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at DeleteAccessoryAction : " + e.getMessage());
             mess = "Error";
         }
         return label;

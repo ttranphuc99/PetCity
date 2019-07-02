@@ -8,6 +8,7 @@ package phuctt.actions.guest;
 import com.opensymphony.xwork2.ActionContext;
 import java.util.Map;
 import phuctt.dtos.CartDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -29,7 +30,7 @@ public class RemoveAccessoryCartAction {
             cart.removeFromCart(id);
             mess = "Remove successfully!";
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at RemoveAccessoryCartAction : " + e.getMessage());
             mess = "Error";
         }
         return label;

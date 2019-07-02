@@ -8,6 +8,7 @@ package phuctt.actions.member;
 import com.opensymphony.xwork2.ActionContext;
 import java.util.Map;
 import phuctt.daos.PetDAO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -37,7 +38,7 @@ public class DeletePetAction {
                 mess = "You don't have access to delete this pet";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at DeletePetAction : " + e.getMessage());
             mess = "Error";
         }
         return "success";

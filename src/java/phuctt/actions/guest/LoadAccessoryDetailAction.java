@@ -7,6 +7,7 @@ package phuctt.actions.guest;
 
 import phuctt.daos.AccessoryDAO;
 import phuctt.dtos.AccessoryDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -34,7 +35,7 @@ public class LoadAccessoryDetailAction {
             category = dto.getCategory().getName();
             type = dto.getType().getName();
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at LoadAccessoryDetailAction : " + e.getMessage());
         }
         return "success";
     }

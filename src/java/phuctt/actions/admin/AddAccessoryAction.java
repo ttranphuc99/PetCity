@@ -14,6 +14,7 @@ import phuctt.daos.AccessoryDAO;
 import phuctt.dtos.AccessoryDTO;
 import phuctt.dtos.CategoryDTO;
 import phuctt.dtos.TypeDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -64,7 +65,7 @@ public class AddAccessoryAction implements ServletRequestAware {
                 mess = "Duplicate ID!";
             } else {
                 mess = "Error";
-                e.printStackTrace();
+                Logger.log("Error at AddAccessoryAction : " + e.getMessage());
             }
         }
         return label;

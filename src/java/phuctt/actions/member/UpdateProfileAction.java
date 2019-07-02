@@ -7,6 +7,7 @@ package phuctt.actions.member;
 
 import phuctt.daos.AccountDAO;
 import phuctt.dtos.AccountDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -30,7 +31,7 @@ public class UpdateProfileAction {
                 mess = "Update failed!";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at UpdateProfileAction : " + e.getMessage());
             mess = "Error";
         }
         return "success";

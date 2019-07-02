@@ -6,6 +6,7 @@
 package phuctt.actions.admin;
 
 import phuctt.daos.ServiceDAO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -29,7 +30,7 @@ public class DeleteServiceAction {
                 mess = "Delete fail";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at DeleteServiceAction : " + e.getMessage());
             mess = "error";
         }
         return label;

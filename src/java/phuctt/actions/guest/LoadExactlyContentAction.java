@@ -8,6 +8,7 @@ package phuctt.actions.guest;
 import java.util.List;
 import phuctt.daos.AccessoryDAO;
 import phuctt.dtos.AccessoryDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -31,7 +32,7 @@ public class LoadExactlyContentAction {
             numOfPage = (int) Math.ceil(recordCount*1.0 / 5);
             
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at LoadExactlyContentAction : " + e.getMessage());
         }
         return "success";
     }

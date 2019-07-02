@@ -8,6 +8,7 @@ package phuctt.actions.admin;
 import com.opensymphony.xwork2.ActionContext;
 import java.util.Map;
 import phuctt.daos.InvoiceServiceDAO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -49,7 +50,7 @@ public class CancelInvoiceServiceAction {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at CancelInvoiceServiceAction : " + e.getMessage());
             mess = "Error";
         }
         return label;

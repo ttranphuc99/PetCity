@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import phuctt.daos.InvoiceAccessoryDAO;
 import phuctt.dtos.AccessoryDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -46,7 +47,7 @@ public class ViewAccessoryCartDetailAction {
                 mess = "You don't have right to view this invoice";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at ViewAccessoryCartDetailAction : " + e.getMessage());
             mess = "Error";
         }
         return label;

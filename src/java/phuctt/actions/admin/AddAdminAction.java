@@ -7,6 +7,7 @@ package phuctt.actions.admin;
 
 import phuctt.daos.AccountDAO;
 import phuctt.dtos.AccountDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -47,7 +48,7 @@ public class AddAdminAction {
             if (e.getMessage().contains("duplicate")) {
                 mess = "Username is existed!";
             } else {
-                e.printStackTrace();
+                Logger.log("ERROR at AddAdminAction : " + e.getMessage());
             }
         }
         return label;

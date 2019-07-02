@@ -8,6 +8,7 @@ package phuctt.actions.guest;
 import java.util.List;
 import phuctt.daos.ServiceDAO;
 import phuctt.dtos.ServiceDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -28,7 +29,7 @@ public class LoadListServiceAction {
             ServiceDAO dao = new ServiceDAO();
             list = dao.loadServiceToPage(type);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at LoadListServiceAction : " + e.getMessage());
         }
         return "success";
     }

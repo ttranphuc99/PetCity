@@ -8,6 +8,7 @@ package phuctt.actions.guest;
 import java.util.List;
 import phuctt.daos.AccessoryDAO;
 import phuctt.dtos.AccessoryDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -43,7 +44,7 @@ public class WelcomeAction {
             listHamsterComestic = dao.loadTopMostBuy(5, 3, 4);
             
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at WelcomeAction : " + e.getMessage());
         }
         return "success";
     }

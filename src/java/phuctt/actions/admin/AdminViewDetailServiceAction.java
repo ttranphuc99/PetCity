@@ -13,6 +13,7 @@ import phuctt.daos.TypeDAO;
 import phuctt.dtos.ServiceDTO;
 import phuctt.dtos.StaffDTO;
 import phuctt.dtos.TypeDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -56,7 +57,7 @@ public class AdminViewDetailServiceAction {
                 mess = " Not found!";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.log("ERROR at AdminViewDetailServiceAction : " + e.getMessage());
             mess = "error";
         }
         return label;

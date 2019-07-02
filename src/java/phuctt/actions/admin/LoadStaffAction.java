@@ -8,6 +8,7 @@ package phuctt.actions.admin;
 import java.util.List;
 import phuctt.daos.StaffDAO;
 import phuctt.dtos.StaffDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -30,7 +31,7 @@ public class LoadStaffAction {
             label = locationPlace;
         } catch (Exception e) {
             mess = "Error DB";
-            e.printStackTrace();
+            Logger.log("ERROR at LoadStaffAction : " + e.getMessage());
         }
         return label;
     }
