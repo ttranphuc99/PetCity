@@ -12,7 +12,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.sql.Types;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import phuctt.dbs.DBConnection;
@@ -96,8 +99,9 @@ public class InvoiceServiceDAO implements Serializable {
                     }
                 }
             }
-            
-            while (result.remove(null)) {}
+
+            while (result.remove(null)) {
+            }
 
             //3. check waitting invoice and staff available
             conn = DBConnection.getConnection();
@@ -162,7 +166,9 @@ public class InvoiceServiceDAO implements Serializable {
 //            System.out.println(result.size());
             for (int i = 0; i < result.size(); i++) {
                 staffDTO = result.get(i);
-                if (staffDTO == null) continue;
+                if (staffDTO == null) {
+                    continue;
+                }
 //                System.out.println(i);
 //                System.out.println("name " + staffDTO.getName());
                 listInvoice = this.getInvoiceByStaffAndDate(staffDTO.getId(), dto.getDoingDate().split("-")[0].trim());
@@ -190,8 +196,9 @@ public class InvoiceServiceDAO implements Serializable {
                     }
                 }
             }
-            
-            while (result.remove(null)) {}
+
+            while (result.remove(null)) {
+            }
 
         } finally {
             closeConnection();
@@ -447,7 +454,7 @@ public class InvoiceServiceDAO implements Serializable {
                 pet.setName(petName);
 
                 staffId = rs.getInt("staffDoing");
-                StaffDTO staff = (new StaffDAO()).findByID(staffId);
+                StaffDTO staff = (new StaffDAO()).findByID(staffId, true);
 
                 status = rs.getInt("status");
                 adminConfirm = rs.getString("adminConfirm");
@@ -524,39 +531,97 @@ public class InvoiceServiceDAO implements Serializable {
         }
         return check;
     }
-    
+
     public boolean adminCancel(long id, String username) throws SQLException, ClassNotFoundException {
         boolean check = false;
         try {
             conn = DBConnection.getConnection();
-            
+
             String sql = "UPDATE Invoice_Service SET status = ?, adminConfirm = ?, staffDoing = ? WHERE invoiceID = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, -1);
             ps.setString(2, username);
             ps.setNull(3, Types.INTEGER);
             ps.setLong(4, id);
-            
+
             check = ps.executeUpdate() > 0;
         } finally {
             closeConnection();
         }
         return check;
     }
-    
+
     public boolean memberCancel(long id) throws SQLException, ClassNotFoundException {
         boolean check = false;
         try {
             conn = DBConnection.getConnection();
-            
+
             String sql = "UPDATE Invoice_Service SET status = ?, adminConfirm = ?, staffDoing = ? WHERE invoiceID = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, -1);
             ps.setNull(2, Types.VARCHAR);
             ps.setNull(3, Types.INTEGER);
             ps.setLong(4, id);
-            
+
             check = ps.executeUpdate() > 0;
+        } finally {
+            closeConnection();
+        }
+        return check;
+    }
+
+    public boolean isStaffCanBeDelete(int staffID) throws SQLException, ClassNotFoundException {
+        boolean check = true;
+        try {
+            conn = DBConnection.getConnection();
+
+            String sql = "SELECT invoiceID\n"
+                    + "FROM Invoice_Service\n"
+                    + "WHERE staffDoing = ? AND doingDate LIKE ? AND status = ? AND timeStart > ?";
+
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, staffID);
+            ps.setInt(3, 1);
+
+            DateFormat sdf = new SimpleDateFormat("HH:mm");
+            Calendar cal = Calendar.getInstance();
+
+            //get current date and time
+            float timeStart;
+            String time = sdf.format(cal.getTime());
+            String[] subTime = time.split(":");
+            timeStart = Float.parseFloat(subTime[0]);
+
+            timeStart += Float.parseFloat(subTime[1]) / 60;
+
+            String doingDate;
+            sdf = new SimpleDateFormat("d/M/yyyy");
+            doingDate = sdf.format(cal.getTime());
+
+            ps.setString(2, "%" +doingDate+ "%");
+            ps.setFloat(4, timeStart);
+
+            rs = ps.executeQuery();
+
+            check = !rs.next();
+            System.out.println("check1 : " + check);
+
+            sql = "SELECT invoiceID\n"
+                    + "FROM Invoice_Service\n"
+                    + "WHERE staffDoing = ? AND doingDate LIKE ? AND status = ?";
+
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, staffID);
+            ps.setInt(3, 1);
+
+            cal.add(Calendar.DATE, 1);
+            doingDate = sdf.format(cal.getTime());
+
+            ps.setString(2, "%" +doingDate+ "%");
+
+            rs = ps.executeQuery();
+
+            check &= !rs.next();
         } finally {
             closeConnection();
         }

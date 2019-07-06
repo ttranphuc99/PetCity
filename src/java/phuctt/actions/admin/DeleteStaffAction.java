@@ -5,6 +5,7 @@
  */
 package phuctt.actions.admin;
 
+import phuctt.daos.InvoiceServiceDAO;
 import phuctt.daos.StaffDAO;
 import phuctt.log.Logger;
 
@@ -13,22 +14,29 @@ import phuctt.log.Logger;
  * @author Thien Phuc
  */
 public class DeleteStaffAction {
+
     private int id;
     private String mess;
-    
+
     public DeleteStaffAction() {
     }
-    
+
     public String execute() {
         String label = "success";
         try {
-            StaffDAO dao = new StaffDAO();
-            
-            if (dao.delete(id)) {
-                mess = "Delete staff ID: " + id + " successfully";
+            InvoiceServiceDAO invoice = new InvoiceServiceDAO();
+            if (invoice.isStaffCanBeDelete(id)) {
+                StaffDAO dao = new StaffDAO();
+
+                if (dao.delete(id)) {
+                    mess = "Delete staff ID: " + id + " successfully";
+                } else {
+                    mess = " Delete fail";
+                }
             } else {
-                mess = " Delete fail";
+                mess = "Staff is doing service, cannot delete now!";
             }
+
         } catch (Exception e) {
             Logger.log("ERROR at DeleteStaffAction : " + e.getMessage());
             mess = "error";
@@ -51,5 +59,5 @@ public class DeleteStaffAction {
     public void setMess(String mess) {
         this.mess = mess;
     }
-    
+
 }

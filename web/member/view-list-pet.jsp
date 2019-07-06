@@ -61,7 +61,7 @@
     <table id="dtBasicExample" class="table table-striped table-bordered table-sm mt-4" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th class="th-sm text-center col-num">No.</th>
+                <th class="th-sm text-center col-num">Pet ID</th>
                 <th class="th-sm text-center col-name">Name</th>
                 <th class="th-sm text-center col-type">Type</th>
                 <th class="th-sm text-center col-birthyear">BirthYear</th>
@@ -70,10 +70,10 @@
             </tr>
         </thead>
         <tbody>
-            <s:iterator value="listPet" status="st">
+            <s:iterator value="listPet">
                 <tr>
-                    <td class="align-middle col-num">
-                        <s:property value="%{#st.count}" />
+                    <td class="align-middle text-center col-num">
+                        <s:property value="%{id}" />
                     </td>
                     <td class="align-middle col-name">
                         <s:property value="%{name}" />
