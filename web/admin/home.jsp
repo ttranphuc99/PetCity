@@ -9,7 +9,7 @@
 <div class="title mb-2">Dashboard</div>
 
 <!-- Service -->
-<div class="row my-5">
+<div class="row mb-5">
     <div class="col-12 wrap-row">
         <div class="row box-title">Services:</div>
 
@@ -22,15 +22,15 @@
 
                     <div class="col-9">
                         <div class="row">
-                            <div class="col-12">Available Services</div>
+                            <div class="col-12 box-label">Available Services</div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{totalService}"/></div>
+                            <div class="col-12 box-info"><s:property value="%{totalService}"/></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"></div>
+                            <div class="col-12 box-percent"></div>
                         </div>
                     </div>
                 </div>
@@ -44,15 +44,15 @@
 
                     <div class="col-9">
                         <div class="row">
-                            <div class="col-12">Total Invoices</div>
+                            <div class="col-12 box-label">Total Invoices</div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{totalServiceInvoice}"/></div>
+                            <div class="col-12 box-info"><s:property value="%{totalServiceInvoice}"/></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"></div>
+                            <div class="col-12 box-percent"></div>
                         </div>
                     </div>
                 </div>
@@ -66,15 +66,17 @@
 
                     <div class="col-9">
                         <div class="row">
-                            <div class="col-12">Confirm Invoices</div>
+                            <div class="col-12 box-label">Confirm Invoices</div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{confirmServiceInvoice}"/></div>
+                            <div class="col-12 box-info"><s:property value="%{confirmServiceInvoice}"/></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{confirmServiceInvoice*100.0 / totalServiceInvoice}"/>%</div>
+                            <div class="col-12 box-percent">
+                                <s:number name="%{confirmServiceInvoice*1.0 / totalServiceInvoice}" minimumFractionDigits="2" type="percent"/>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -88,15 +90,17 @@
 
                     <div class="col-9">
                         <div class="row">
-                            <div class="col-12">Canceled Invoices</div>
+                            <div class="col-12 box-label">Canceled Invoices</div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{cancelServiceInvoice}"/></div>
+                            <div class="col-12 box-info"><s:property value="%{cancelServiceInvoice}"/></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{cancelServiceInvoice*100.0 / totalServiceInvoice}"/>%</div>
+                            <div class="col-12 box-percent">
+                                <s:number name="%{cancelServiceInvoice*1.0 / totalServiceInvoice}" minimumFractionDigits="2" type="percent"/>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -119,15 +123,15 @@
 
                     <div class="col-9">
                         <div class="row">
-                            <div class="col-12">Available Accessories</div>
+                            <div class="col-12 box-label">Available Accessories</div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{totalAccessory}"/></div>
+                            <div class="col-12 box-info"><s:property value="%{totalAccessory}"/></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"></div>
+                            <div class="col-12 box-percent"></div>
                         </div>
                     </div>
                 </div>
@@ -141,15 +145,15 @@
 
                     <div class="col-9">
                         <div class="row">
-                            <div class="col-12">Total Invoices</div>
+                            <div class="col-12 box-label">Total Invoices</div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{totalAccessoryInvoice}"/></div>
+                            <div class="col-12 box-info"><s:property value="%{totalAccessoryInvoice}"/></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"></div>
+                            <div class="col-12 box-percent"></div>
                         </div>
                     </div>
                 </div>
@@ -163,15 +167,17 @@
 
                     <div class="col-9">
                         <div class="row">
-                            <div class="col-12">Confirm Invoices</div>
+                            <div class="col-12 box-label">Confirm Invoices</div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{confirmAccessoryInvoice}"/></div>
+                            <div class="col-12 box-info"><s:property value="%{confirmAccessoryInvoice}"/></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{confirmAccessoryInvoice*100.0 / totalAccessoryInvoice}"/>%</div>
+                            <div class="col-12 box-percent">
+                                <s:number name="%{confirmAccessoryInvoice*1.0 / totalAccessoryInvoice}" minimumFractionDigits="2" type="percent"/>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -185,15 +191,17 @@
 
                     <div class="col-9">
                         <div class="row">
-                            <div class="col-12">Canceled Invoices</div>
+                            <div class="col-12 box-label">Canceled Invoices</div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{cancelAccessoryInvoice}"/></div>
+                            <div class="col-12 box-info"><s:property value="%{cancelAccessoryInvoice}"/></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{cancelAccessoryInvoice*100.0 / totalAccessoryInvoice}"/>%</div>
+                            <div class="col-12 box-percent">
+                                <s:number name="%{cancelAccessoryInvoice*1.0 / totalAccessoryInvoice}" minimumFractionDigits="2" type="percent"/>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -216,15 +224,15 @@
 
                     <div class="col-9">
                         <div class="row">
-                            <div class="col-12">Total Pet</div>
+                            <div class="col-12 box-label">Total Pet</div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{totalPet}"/></div>
+                            <div class="col-12 box-info"><s:property value="%{totalPet}"/></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"></div>
+                            <div class="col-12 box-percent"></div>
                         </div>
                     </div>
                 </div>
@@ -238,15 +246,17 @@
 
                     <div class="col-9">
                         <div class="row">
-                            <div class="col-12">Total Dogs</div>
+                            <div class="col-12 box-label">Total Dogs</div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{totalDog}"/></div>
+                            <div class="col-12 box-info"><s:property value="%{totalDog}"/></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{totalDog*100.0 / totalPet}"/>%</div>
+                            <div class="col-12 box-percent">
+                                <s:number name="%{totalDog*1.0 / totalPet}" minimumFractionDigits="2" type="percent"/>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -260,15 +270,17 @@
 
                     <div class="col-9">
                         <div class="row">
-                            <div class="col-12">Total Cats</div>
+                            <div class="col-12 box-label">Total Cats</div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{totalCat}"/></div>
+                            <div class="col-12 box-info"><s:property value="%{totalCat}"/></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{totalCat*100.0 / totalPet}"/>%</div>
+                            <div class="col-12 box-percent">
+                                <s:number name="%{totalCat*1.0 / totalPet}" minimumFractionDigits="2" type="percent"/>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -282,18 +294,16 @@
 
                     <div class="col-9">
                         <div class="row">
-                            <div class="col-12">Total Hamsters</div>
+                            <div class="col-12 box-label">Total Hamsters</div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{totalHamster}"/></div>
+                            <div class="col-12 box-info"><s:property value="%{totalHamster}"/></div>
                         </div>
 
                         <div class="row">
-                            
-                            <div class="col-12">
-                                <s:property value="{0,{totalHamster},#,###0.00}"/>
-                                <s:property value="%{totalHamster*100.0 / totalPet}"/>%
+                            <div class="col-12 box-percent">
+                                <s:number name="%{totalHamster*1.0 / totalPet}" minimumFractionDigits="2" type="percent"/>
                             </div>
                         </div>
                     </div>
@@ -317,15 +327,15 @@
 
                     <div class="col-9">
                         <div class="row">
-                            <div class="col-12">Total Members</div>
+                            <div class="col-12 box-label">Total Members</div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{totalMem}"/></div>
+                            <div class="col-12 box-info"><s:property value="%{totalMem}"/></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"></div>
+                            <div class="col-12 box-percent"></div>
                         </div>
                     </div>
                 </div>
@@ -339,15 +349,15 @@
 
                     <div class="col-9">
                         <div class="row">
-                            <div class="col-12">Total Admin:</div>
+                            <div class="col-12 box-label">Total Admin:</div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{totalAd}"/></div>
+                            <div class="col-12 box-info"><s:property value="%{totalAd}"/></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"></div>
+                            <div class="col-12 box-percent"></div>
                         </div>
                     </div>
                 </div>
@@ -368,15 +378,15 @@
 
                     <div class="col-9">
                         <div class="row">
-                            <div class="col-12">Total Staff</div>
+                            <div class="col-12 box-label">Total Staff</div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{totalStaff}"/></div>
+                            <div class="col-12 box-info"><s:property value="%{totalStaff}"/></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"></div>
+                            <div class="col-12 box-percent"></div>
                         </div>
                     </div>
                 </div>
@@ -390,15 +400,17 @@
 
                     <div class="col-9">
                         <div class="row">
-                            <div class="col-12">Available Staff</div>
+                            <div class="col-12 box-label">Available Staff</div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{availableStaff}"/></div>
+                            <div class="col-12 box-info"><s:property value="%{availableStaff}"/></div>
                         </div>
 
                         <div class="row">
-                            <div class="col-12"><s:property value="%{availableStaff*100.0 / totalStaff}"/>%</div>
+                            <div class="col-12 box-percent">
+                                <s:number name="%{availableStaff*1.0 / totalStaff}" minimumFractionDigits="2" type="percent"/>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -188,7 +188,7 @@ public class ServiceDAO implements Serializable {
                 ps.setBoolean(1, true);
                 ps.setInt(2, id);
 
-                check = ps.executeUpdate() > 0;
+                check = ps.executeUpdate() >= 0;
                 
                 if (check) {
                     conn.commit();

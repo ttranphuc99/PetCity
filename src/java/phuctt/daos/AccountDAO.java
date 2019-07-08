@@ -250,7 +250,7 @@ public class AccountDAO implements Serializable {
                 ps.setBoolean(1, true);
                 ps.setString(2, username);
 
-                check = ps.executeUpdate() > 0;
+                check = ps.executeUpdate() >= 0;
                 
                 if (check) {
                     conn.commit();
@@ -282,7 +282,7 @@ public class AccountDAO implements Serializable {
                 ps.setBoolean(1, false);
                 ps.setString(2, username);
 
-                check = ps.executeUpdate() > 0;
+                check = ps.executeUpdate() >= 0;
                 
                 if (check) {
                     conn.commit();

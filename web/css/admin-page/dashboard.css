@@ -38,6 +38,21 @@ i {
 
 .box-title {
     font-weight: bold;
-    font-size: 25px;
+    font-size: 20px;
     margin: 15px 0;
+}
+
+.box-label {
+    font-size: 14px;
+    color: #B4A7B7;
+}
+
+.box-info {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.box-percent {
+    font-size: 14px;
+    color: #B4A7B7;
 }
