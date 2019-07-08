@@ -7,8 +7,15 @@
     <package name="default" extends="struts-default,json-default" namespace="/">
         <action name="login" class="phuctt.actions.guest.LoginAction">
             <result name="fail">publicPage/login.jsp</result>
-            <result name="admin">admin/home.jsp</result>
+            <result name="admin" type="redirectAction">
+                <param name="actionName">loadDashboardAction</param>
+                <param name="mess">${mess}</param>
+            </result>
             <result name="member" type="chain">loadProfile</result>
+        </action>
+        
+        <action name="loadDashboard" class="phuctt.actions.admin.LoadDashboardAction">
+            <result name="success">admin/home.jsp</result>
         </action>
         
         <action name="logout" class="phuctt.actions.guest.LogoutAction">
@@ -30,11 +37,17 @@
         
         <action name="adminEditProfile" class="phuctt.actions.admin.AdminEditProfileAction">
             <result name="success" type="chain">adminViewProfile</result>
-            <result name="fail">admin/home.jsp</result>
+            <result name="fail" type="redirectAction">
+                <param name="actionName">loadDashboardAction</param>
+                <param name="mess">${mess}</param>
+            </result>
         </action>
         
         <action name="changePassword" class="phuctt.actions.admin.ChangePasswordAction">
-            <result name="success">admin/home.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">loadDashboardAction</param>
+                <param name="mess">${mess}</param>
+            </result>
             <result name="fail">admin/change-password.jsp</result>
         </action>
         
@@ -47,12 +60,18 @@
             <result name="accessory">admin/add-accessory.jsp</result>
             <result name="service" type="chain">loadStaff</result>
             <result name="pet">member/add-pet.jsp</result>
-            <result name="fail">admin/home.jsp</result>
+            <result name="fail" type="redirectAction">
+                <param name="actionName">loadDashboardAction</param>
+                <param name="mess">${mess}</param>
+            </result>
         </action>
         
         <action name="loadStaff" class="phuctt.actions.admin.LoadStaffAction">
             <result name="service">admin/add-service.jsp</result>
-            <result name="fail">admin/home.jsp</result>
+            <result name="fail" type="redirectAction">
+                <param name="actionName">loadDashboardAction</param>
+                <param name="mess">${mess}</param>
+            </result>
         </action>
         
         <action name="addAccessory" class="phuctt.actions.admin.AddAccessoryAction">
@@ -75,7 +94,10 @@
                 <param name="allowedTypes">image/png,image/jpeg,image/jpg</param>
             </interceptor-ref>
             <interceptor-ref name="basicStack"></interceptor-ref>
-            <result name="success">admin/home.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">adminViewListStaff</param>
+                <param name="mess">${mess}</param>
+            </result>
             <result name="fail">admin/add-staff.jsp</result>
         </action>
         
@@ -85,7 +107,10 @@
                 <param name="allowedTypes">image/png,image/jpeg,image/jpg</param>
             </interceptor-ref>
             <interceptor-ref name="basicStack"></interceptor-ref>
-            <result name="success">admin/home.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">adminViewListService</param>
+                <param name="mess">${mess}</param>
+            </result>
             <result name="fail" type="redirectAction">
                 <param name="actionName">loadCategoryType</param>
                 <param name="locationPlace">service</param>

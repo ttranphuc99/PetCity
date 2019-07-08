@@ -26,7 +26,7 @@ public class AdminViewListAccessoryAction {
     private List<AccessoryDTO> listAccessory;
     private List<CategoryDTO> listCategory;
     private List<TypeDTO> listType;
-    private int numOfPage;
+    private long numOfPage;
 
     public AdminViewListAccessoryAction() {
         type = -1;
@@ -78,8 +78,8 @@ public class AdminViewListAccessoryAction {
                     listAccessory = new ArrayList<>();
                 }
             } else {
-                int recordCount = dao.searchName(searchName);
-                numOfPage = (int) Math.ceil(recordCount*1.0 / 5);
+                long recordCount = dao.searchName(searchName);
+                numOfPage = (long) Math.ceil(recordCount*1.0 / 5);
                 
                 if (recordCount > 0) {
                     if (recordCount < (page - 1) * 5) {
@@ -151,11 +151,11 @@ public class AdminViewListAccessoryAction {
         this.searchName = searchName;
     }
 
-    public int getNumOfPage() {
+    public long getNumOfPage() {
         return numOfPage;
     }
 
-    public void setNumOfPage(int numOfPage) {
+    public void setNumOfPage(long numOfPage) {
         this.numOfPage = numOfPage;
     }
 

@@ -259,8 +259,8 @@ public class PetDAO implements Serializable {
         return result;
     }
     
-    public int searchName(String search) throws SQLException, ClassNotFoundException {
-        int num = 0;
+    public long searchName(String search) throws SQLException, ClassNotFoundException {
+        long num = 0;
         try {
             conn = DBConnection.getConnection();
 
@@ -273,7 +273,7 @@ public class PetDAO implements Serializable {
             rs = ps.executeQuery();
 
             if (rs.next()) {
-                num = rs.getInt("num");
+                num = rs.getLong("num");
             }
         } finally {
             closeConnection();
@@ -328,5 +328,26 @@ public class PetDAO implements Serializable {
             closeConnection();
         }
         return result;
+    }
+    
+    public long getTotalType(int type) throws SQLException, ClassNotFoundException {
+        long num = 0;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "SELECT count(petID) as num FROM Pet WHERE typeID = ? AND isDelete = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, type);
+            ps.setBoolean(2, false);
+            
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                num = rs.getLong("num");
+            }
+        } finally {
+            closeConnection();
+        }
+        return num;
     }
 }

@@ -16,7 +16,8 @@ import phuctt.log.Logger;
  * @author Thien Phuc
  */
 public class AdminViewListPetAction {
-    private int page, numOfPage;
+    private int page;
+    private long numOfPage;
     private List<PetDTO> list;
     private String name, mess;
     
@@ -31,8 +32,8 @@ public class AdminViewListPetAction {
             
             PetDAO dao = new PetDAO();
             
-            int recordCount = dao.searchName(name);
-            numOfPage = (int) Math.ceil(recordCount * 1.0 / 5);
+            long recordCount = dao.searchName(name);
+            numOfPage = (long) Math.ceil(recordCount * 1.0 / 5);
 
             if (recordCount > 0) {
                 if (recordCount < (page - 1) * 5) {
@@ -57,11 +58,11 @@ public class AdminViewListPetAction {
         this.page = page;
     }
 
-    public int getNumOfPage() {
+    public long getNumOfPage() {
         return numOfPage;
     }
 
-    public void setNumOfPage(int numOfPage) {
+    public void setNumOfPage(long numOfPage) {
         this.numOfPage = numOfPage;
     }
 

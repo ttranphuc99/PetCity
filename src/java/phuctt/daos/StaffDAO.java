@@ -303,4 +303,26 @@ public class StaffDAO implements Serializable {
         }
         return check;
     }
+    
+    public int getTotalAvailableStaff() throws SQLException, ClassNotFoundException {
+        int num = 0;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "SELECT count(staffID) as num FROM Staff WHERE isAvailable = ? AND isDelete = ?";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setBoolean(1, true);
+            ps.setBoolean(2, false);
+            
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                num = rs.getInt("num");
+            }
+        } finally {
+            closeConnection();
+        }
+        return num;
+    }
 }

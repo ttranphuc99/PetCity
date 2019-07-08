@@ -30,7 +30,7 @@
 
                 <ul class="list-unstyled components">
                     <li>
-                        <a href="/PetCity/admin/home.jsp">Dashboard</a>
+                        <a href="/PetCity/loadDashboard">Dashboard</a>
                     </li>
                     <li>
                         <a href="#view-profile" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">View Profile</a>

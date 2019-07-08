@@ -19,7 +19,8 @@ public class SearchNameAccessoryAction {
 
     private String search, mess, action;
     private List<AccessoryDTO> result;
-    private int page, numOfPage;
+    private int page;
+    private long numOfPage;
 
     private static final String JSON = "json";
     private static final String PAGE = "page";
@@ -34,8 +35,8 @@ public class SearchNameAccessoryAction {
         try {
             AccessoryDAO dao = new AccessoryDAO();
 
-            int recordCount = dao.searchName(search);
-            numOfPage = (int) Math.ceil(recordCount * 1.0 / 5);
+            long recordCount = dao.searchName(search);
+            numOfPage = (long) Math.ceil(recordCount * 1.0 / 5);
 
             if (recordCount > 0) {
                 if (recordCount < (page - 1) * 5) {
@@ -92,11 +93,11 @@ public class SearchNameAccessoryAction {
         this.page = page;
     }
 
-    public int getNumOfPage() {
+    public long getNumOfPage() {
         return numOfPage;
     }
 
-    public void setNumOfPage(int numOfPage) {
+    public void setNumOfPage(long numOfPage) {
         this.numOfPage = numOfPage;
     }
 

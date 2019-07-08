@@ -627,4 +627,43 @@ public class InvoiceServiceDAO implements Serializable {
         }
         return check;
     }
+    
+    public long getTotalInvoice() throws SQLException, ClassNotFoundException {
+        long num = 0;
+        try {
+            conn = DBConnection.getConnection();
+            String sql = "SELECT count(invoiceID) as num FROM Invoice_Service";
+            
+            ps = conn.prepareStatement(sql);
+            
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                num = rs.getLong("num");
+            }
+        } finally {
+            closeConnection();
+        }
+        return num;
+    }
+    
+    public long getTotalInvoice(int status) throws SQLException, ClassNotFoundException {
+        long num = 0;
+        try {
+            conn = DBConnection.getConnection();
+            String sql = "SELECT count(invoiceID) as num FROM Invoice_Service WHERE status = ?";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, status);
+            
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                num = rs.getLong("num");
+            }
+        } finally {
+            closeConnection();
+        }
+        return num;
+    }
 }

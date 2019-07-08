@@ -10,7 +10,8 @@ window.onload = function () {
         }
     }
 
-    xhttp.open("GET", "http://localhost:8084/PetCity/addAccessoryToCart?id=-1", true);
+    var host = window.location.host;
+    xhttp.open("GET", "http://" +host+ "/PetCity/addAccessoryToCart?id=-1", true);
     xhttp.send();
 }
 

@@ -356,8 +356,8 @@ public class AccessoryDAO implements Serializable {
         return result;
     }
     
-    public int searchName(String name) throws SQLException, ClassNotFoundException {
-        int num = 0;
+    public long searchName(String name) throws SQLException, ClassNotFoundException {
+        long num = 0;
         try {
             conn = DBConnection.getConnection();
             
@@ -371,7 +371,7 @@ public class AccessoryDAO implements Serializable {
             rs = ps.executeQuery();
             
             if (rs.next()) {
-                num = rs.getInt("num");
+                num = rs.getLong("num");
             }
         } finally {
             closeConnection();

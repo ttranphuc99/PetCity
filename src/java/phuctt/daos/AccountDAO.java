@@ -293,4 +293,25 @@ public class AccountDAO implements Serializable {
         }
         return check;
     }
+    
+    public long getTotalRole(String role) throws SQLException, ClassNotFoundException {
+        long num = 0;
+        try {
+            conn = DBConnection.getConnection();
+            
+            String sql = "SELECT count(username) as num FROM Account WHERE role = ? AND isDelete = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, role);
+            ps.setBoolean(2, false);
+            
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                num = rs.getLong("num");
+            }
+        } finally {
+            closeConnection();
+        }
+        return num;
+    }
 }
