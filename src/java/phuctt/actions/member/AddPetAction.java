@@ -7,6 +7,7 @@ package phuctt.actions.member;
 
 import com.opensymphony.xwork2.ActionContext;
 import java.util.Map;
+import phuctt.daos.AccountDAO;
 import phuctt.daos.PetDAO;
 import phuctt.dtos.AccountDTO;
 import phuctt.dtos.PetDTO;
@@ -18,35 +19,40 @@ import phuctt.log.Logger;
  * @author Thien Phuc
  */
 public class AddPetAction {
+
     private String name, gender, mess;
     private int type, birthYear;
-    
+
     private static final String SUCCESS = "success";
     private static final String FAIL = "fail";
-    
+
     public AddPetAction() {
     }
-    
+
     public String execute() {
         String label = FAIL;
         try {
             Map<String, Object> session = ActionContext.getContext().getSession();
             String username = (String) session.get("USERNAME");
-            
-            AccountDTO owner = new AccountDTO();
-            owner.setUsername(username);
-            
-            TypeDTO typeDto = new TypeDTO();
-            typeDto.setId(type);
-            
-            PetDTO dto = new PetDTO(name, owner, birthYear, typeDto, gender.equalsIgnoreCase("male"));
-            
-            PetDAO dao = new PetDAO();
-            if (dao.insert(dto)) {
-                label = SUCCESS;
-                mess = "Add pet successfully!";
+
+            AccountDTO owner = (new AccountDAO()).getAccountByID(username);
+
+            if (owner != null) {
+
+                TypeDTO typeDto = new TypeDTO();
+                typeDto.setId(type);
+
+                PetDTO dto = new PetDTO(name, owner, birthYear, typeDto, gender.equalsIgnoreCase("male"));
+
+                PetDAO dao = new PetDAO();
+                if (dao.insert(dto)) {
+                    label = SUCCESS;
+                    mess = "Add pet successfully!";
+                } else {
+                    mess = "Add pet failed!";
+                }
             } else {
-                mess = "Add pet failed!";
+                mess = "Your account is having error! Cannot interact with our system";
             }
         } catch (Exception e) {
             Logger.log("ERROR at AddPetAction : " + e.getMessage());
@@ -94,5 +100,5 @@ public class AddPetAction {
     public void setMess(String mess) {
         this.mess = mess;
     }
-    
+
 }

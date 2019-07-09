@@ -5,12 +5,14 @@
  */
 package phuctt.filters;
 
+import com.opensymphony.xwork2.ActionContext;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -20,6 +22,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import phuctt.daos.AccountDAO;
+import phuctt.dtos.AccountDTO;
+import phuctt.log.Logger;
 
 /**
  *
@@ -262,9 +267,9 @@ public class AuthFilter implements Filter {
         } else {
             int index = uri.lastIndexOf("/");
             String resource = uri.substring(index + 1);
-            System.out.println("uri: " + uri);
-            System.out.println("resource: " + resource);
-            System.out.println(admin.contains(resource));
+//            System.out.println("uri: " + uri);
+//            System.out.println("resource: " + resource);
+//            System.out.println(admin.contains(resource));
 
             HttpSession session = req.getSession(false);
 
@@ -290,7 +295,23 @@ public class AuthFilter implements Filter {
                             if (resource.equals("login.jsp") || resource.equals("signup.jsp")) {
                                 res.sendRedirect("/PetCity/");
                             } else {
-                                chain.doFilter(request, response);
+                                if (resource.equals("logout") || resource.equals("logout.do")) {
+                                    chain.doFilter(request, response);
+                                } else {
+                                    String username = (String) session.getAttribute("USERNAME");
+
+                                    try {
+                                        AccountDTO account = (new AccountDAO()).getAccountByID(username);
+
+                                        if (account != null) {
+                                            chain.doFilter(request, response);
+                                        } else {
+                                            res.sendRedirect("/PetCity/logout");
+                                        }
+                                    } catch (Exception e) {
+                                        Logger.log("Error at Filter : " + e.getMessage());
+                                    }
+                                }
                             }
                         } else {
                             res.sendRedirect("/PetCity/");

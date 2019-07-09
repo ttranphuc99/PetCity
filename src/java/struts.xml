@@ -235,6 +235,10 @@
                 <param name="mess">${mess}</param>
                 <param name="name">${name}</param>
             </result>
+            <result name="fail" type="redirectAction">
+                <param name="actionName">viewListPet</param>
+                <param name="mess">${mess}</param>
+            </result>
         </action>
         
         <action name="viewListPet" class="phuctt.actions.member.ViewListPetAction">

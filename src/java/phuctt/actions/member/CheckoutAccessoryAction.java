@@ -21,55 +21,57 @@ import phuctt.log.Logger;
  * @author Thien Phuc
  */
 public class CheckoutAccessoryAction {
-    
+
     private String mess;
     private List<Long> id;
     private List<Integer> quantity;
-    
+
     private static final String SUCCESS = "success";
     private static final String FAIL = "fail";
     private static final String ERROR = "error";
-    
+
     public CheckoutAccessoryAction() {
     }
-    
+
     public String execute() {
         String label = ERROR;
         try {
-            System.out.println(id);
-            System.out.println(quantity);
-            
             Map<String, Object> session = ActionContext.getContext().getSession();
-            
+
             String username = (String) session.get("USERNAME");
-            
+
             AccountDTO account = (new AccountDAO()).getAccountByID(username);
-            String address = account.getAddress();
-            String phone = account.getPhone();
-            
-            if (address == null || phone == null || address.trim().isEmpty() || phone.trim().isEmpty()) {
-                label = FAIL;
-                mess = "You must update address and phone number to checkout";
-            } else {
-                List<AccessoryDTO> list = new ArrayList<>();
-                AccessoryDTO dto;
-                AccessoryDAO dao = new AccessoryDAO();
-                
-                for (int i = 0; i < id.size(); i++) {
-                    dto = dao.findById(id.get(i));
-                    dto.setQuantity(quantity.get(i));
-                    list.add(dto);
-                }
-                
-                InvoiceAccessoryDAO invoiceDAO = new InvoiceAccessoryDAO();
-                
-                if (invoiceDAO.insert(list, username)) {
-                    label = SUCCESS;
-                    mess = "Checkout successfully";
-                    session.remove("CART");
+
+            if (account != null) {
+                String address = account.getAddress();
+                String phone = account.getPhone();
+
+                if (address == null || phone == null || address.trim().isEmpty() || phone.trim().isEmpty()) {
+                    label = FAIL;
+                    mess = "You must update address and phone number to checkout";
                 } else {
-                    mess = "Checkout fail";
+                    List<AccessoryDTO> list = new ArrayList<>();
+                    AccessoryDTO dto;
+                    AccessoryDAO dao = new AccessoryDAO();
+
+                    for (int i = 0; i < id.size(); i++) {
+                        dto = dao.findById(id.get(i));
+                        dto.setQuantity(quantity.get(i));
+                        list.add(dto);
+                    }
+
+                    InvoiceAccessoryDAO invoiceDAO = new InvoiceAccessoryDAO();
+
+                    if (invoiceDAO.insert(list, username)) {
+                        label = SUCCESS;
+                        mess = "Checkout successfully";
+                        session.remove("CART");
+                    } else {
+                        mess = "Checkout fail";
+                    }
                 }
+            } else {
+                mess = "Your account is having error! Cannot interact with our system";
             }
         } catch (Exception e) {
             Logger.log("ERROR at CheckoutAccessoryAction : " + e.getMessage());
@@ -101,7 +103,5 @@ public class CheckoutAccessoryAction {
     public void setQuantity(List<Integer> quantity) {
         this.quantity = quantity;
     }
-    
-    
-    
+
 }

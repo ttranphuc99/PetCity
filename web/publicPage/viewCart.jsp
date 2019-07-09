@@ -52,7 +52,7 @@
                             </td>
                             <td class="col-sub-price text-center align-middle">
                                 $
-                                <s:property value="price*quantity" />
+                                <s:number name="%{price*quantity}" minimumFractionDigits="2"/>
                             </td>
                             <td class="align-middle text-center">
                                 <a href="/PetCity/removeAccessoryCart?id=<s:property value="%{id}"/>" class="btn btn-sm btn-outline-info" role="button">
