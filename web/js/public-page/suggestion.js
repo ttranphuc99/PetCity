@@ -2,7 +2,7 @@ function searchAccessory() {
     $("#suggestion").empty();
     var search = $("#txtSearch-suggestion").val();
 
-    if (search.trim().length > 2) {
+    if (search.trim().length > 1) {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
