@@ -11,6 +11,7 @@
         <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/header-footer.css">
         <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/suggestion.css">
         <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/snackbar.css">
+        <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/index.css">
         <link rel="stylesheet" type="text/css" href="/PetCity/css/bootstrap/bootstrap.css">
         <script src="/PetCity/js/bootstrap/jquery-1.9.1.min.js"></script>
         <script src="/PetCity/js/bootstrap/popper.min.js"></script>

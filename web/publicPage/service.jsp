@@ -81,6 +81,4 @@
         </div>
     </div>
 </div>
-
-<script src="/PetCity/js/public-page/show-detail-acces.js"></script>
 <%@include file="footer.jsp" %>

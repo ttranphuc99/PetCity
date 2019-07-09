@@ -81,7 +81,7 @@
                         <a class="btn btn-sm btn-outline-info my-1"
                             href='/PetCity/viewDetailServiceInvoice?id=<s:property value="%{id}" />&page=<s:property value="%{page}" />'
                             role="button">Detail</a><br>
-                        <s:if test="%{status != -1}">
+                        <s:if test="%{status == 0}">
                             <button class="btn btn-sm btn-outline-danger" data-toggle="modal"
                                 data-target="#exampleModal" onclick='cancelInvoice(<s:property value="%{id}"/>)'>
                                 Cancel Invoice

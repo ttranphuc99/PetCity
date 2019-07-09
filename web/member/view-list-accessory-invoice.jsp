@@ -73,7 +73,7 @@
                            role="button">Detail</a><br>
                         <s:if test="%{status == 0}">
                             <button class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal"
-                                    onclick='cancelInvoiceAccessory(<s:property value="%{id}"/>)'>Cancel</button>
+                                    onclick='cancelInvoice(<s:property value="%{id}"/>)'>Cancel</button>
                         </s:if>
                     </td>
                 </tr>
