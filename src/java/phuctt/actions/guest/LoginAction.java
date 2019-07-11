@@ -50,9 +50,9 @@ public class LoginAction {
             }
         } catch (Exception e) {
             Logger.log("ERROR at LoginAction : " + e.getMessage());
-        } finally {
-            return label;
         }
+        return label;
+
     }
 
     public String getUsername() {

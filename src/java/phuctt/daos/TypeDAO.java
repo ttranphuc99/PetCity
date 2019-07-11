@@ -30,7 +30,7 @@ public class TypeDAO implements Serializable {
         if (conn != null) conn.close();
     }
     
-    public List<TypeDTO> searchByLikeName(String search) throws SQLException {
+    public List<TypeDTO> searchByLikeName(String search) throws SQLException, ClassNotFoundException {
         List<TypeDTO> result = null;
         try {
             conn = DBConnection.getConnection();
@@ -57,8 +57,8 @@ public class TypeDAO implements Serializable {
             }
         } finally {
             closeConnection();
-            return result;
         }
+        return result;
     }
     
     public TypeDTO findByID(int id) throws SQLException, ClassNotFoundException {

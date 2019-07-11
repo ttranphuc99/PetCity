@@ -44,7 +44,6 @@ public class SignUpAction {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
             if (e.getMessage().contains("duplicate")) {
                 mess = "Username is existed!";
             } else {

@@ -16,7 +16,7 @@ import java.sql.SQLException;
  */
 public class DBConnection implements Serializable {
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
-        Connection conn = null;
+        Connection conn;
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1456;databaseName=PresentationPRJ321", "sa", "19091999+");
         return conn;

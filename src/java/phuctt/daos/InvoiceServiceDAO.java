@@ -387,7 +387,7 @@ public class InvoiceServiceDAO implements Serializable {
     }
 
     private String checkTime(float timeStart) {
-        String result = "";
+        String result;
         int floor = (int) Math.floor(timeStart);
 
         if (floor == timeStart) {

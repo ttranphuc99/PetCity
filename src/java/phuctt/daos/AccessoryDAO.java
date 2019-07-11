@@ -440,7 +440,7 @@ public class AccessoryDAO implements Serializable {
             String name, image;
             long id;
             float price;
-            AccessoryDTO dto = null;
+            AccessoryDTO dto;
             
             result = new ArrayList<>();
             
@@ -508,7 +508,7 @@ public class AccessoryDAO implements Serializable {
             String name, image;
             long id;
             float price;
-            AccessoryDTO dto = null;
+            AccessoryDTO dto;
             
             result = new ArrayList<>();
             

@@ -144,8 +144,8 @@ public class ServiceDAO implements Serializable {
             int id;
             String name, image;
             float duration, price;
-            TypeDTO type = null;
-            ServiceDTO dto = null;
+            TypeDTO type;
+            ServiceDTO dto;
 
             result = new ArrayList<>();
 

@@ -50,7 +50,7 @@ public class AddServiceAction implements ServletRequestAware {
             ServiceDAO dao = new ServiceDAO();
             
             List<StaffDTO> listStaff = new ArrayList<>();
-            StaffDTO staffDTO = null;
+            StaffDTO staffDTO;
             for (int staffID : staff) {
                 staffDTO = new StaffDTO();
                 staffDTO.setId(staffID);
