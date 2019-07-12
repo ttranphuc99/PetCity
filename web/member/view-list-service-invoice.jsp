@@ -71,7 +71,7 @@
                             <span class="badge badge-warning">Waiting</span>
                         </s:if>
                         <s:elseif test="%{status == 1}">
-                            <span class="badge badge-primary">Done</span>
+                            <span class="badge badge-primary">Confirm</span>
                         </s:elseif>
                         <s:elseif test="%{status == -1}">
                             <span class="badge badge-danger">Canceled</span>

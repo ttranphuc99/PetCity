@@ -46,7 +46,7 @@
                     </td>
                     <td class="col-sub-price text-center align-middle">
                         $
-                        <s:property value="price*quantity" />
+                        <s:number name="%{price*quantity}" minimumFractionDigits="2"/>
                     </td>
                 </tr>
             </s:iterator>

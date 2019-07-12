@@ -34,6 +34,7 @@ public class ViewDetailServiceInvoiceAction {
     public String execute() {
         String label = FAIL;
         try {
+            System.out.println(page);
             InvoiceServiceDAO dao = new InvoiceServiceDAO();
             
             dto = dao.findById(id);

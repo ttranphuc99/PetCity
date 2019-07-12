@@ -133,7 +133,7 @@
                     Cancel Invoice
                 </button>
             </s:if>
-            <a href="/PetCity/viewListServiceInvoice?page=<s:property value=" %{page}" />" class="ml-2 btn
+            <a href="/PetCity/viewListServiceInvoice?page=<s:property value="%{page}" />" class="ml-2 btn
                btn-secondary" role="button">Back</a>
         </div>
     </div>
