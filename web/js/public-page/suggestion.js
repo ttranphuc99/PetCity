@@ -11,7 +11,7 @@ function searchAccessory() {
         }
 
         var host = window.location.host;
-        xhttp.open("GET", "http://" +host+ "/searchNameAccessory?search=" + search, true);
+        xhttp.open("GET", "https://" +host+ "/searchNameAccessory?search=" + search, true);
         xhttp.send();
     }
 }
@@ -70,7 +70,7 @@ function searchMore(search, page) {
     }
 
     var host = window.location.host;
-    xhttp.open("GET", "http://" +host+ "/searchNameAccessory?search=" + search + "&page=" + page, true);
+    xhttp.open("GET", "https://" +host+ "/searchNameAccessory?search=" + search + "&page=" + page, true);
     xhttp.send();
 }
 

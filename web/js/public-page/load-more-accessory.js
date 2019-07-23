@@ -10,7 +10,7 @@ function loadMore(type, category, page) {
     }
 
     var host = window.location.host;
-    xhttp.open("GET", "http://" +host+ "/ajaxLoadMoreAccessory?forType=" +type+ "&categoryID=" +category+ "&page=" +page, true);
+    xhttp.open("GET", "https://" +host+ "/ajaxLoadMoreAccessory?forType=" +type+ "&categoryID=" +category+ "&page=" +page, true);
     xhttp.send();
 }
 

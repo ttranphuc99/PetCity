@@ -7,7 +7,7 @@ function loadAccessory(id) {
     }
 
     var host = window.location.host;
-    xhttp.open("GET", "http://" +host+ "/loadAccessoryDetail?id=" + id, true);
+    xhttp.open("GET", "https://" +host+ "/loadAccessoryDetail?id=" + id, true);
     xhttp.send();
 }
 

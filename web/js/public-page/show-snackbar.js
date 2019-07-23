@@ -11,7 +11,7 @@ window.onload = function () {
     }
 
     var host = window.location.host;
-    xhttp.open("GET", "http://" +host+ "/addAccessoryToCart?id=-1", true);
+    xhttp.open("GET", "https://" +host+ "/addAccessoryToCart?id=-1", true);
     xhttp.send();
 }
 
