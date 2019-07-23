@@ -276,7 +276,7 @@ public class AuthFilter implements Filter {
                 if (guest.contains(resource) || uri.contains("publicPage")) {
                     chain.doFilter(request, response);
                 } else {
-                    res.sendRedirect("/PetCity/");
+                    res.sendRedirect("/");
                 }
             } else {
                 String role = (String) session.getAttribute("ROLE");
@@ -286,12 +286,12 @@ public class AuthFilter implements Filter {
                         if (admin.contains(resource) || uri.contains("admin")) {
                             chain.doFilter(request, response);
                         } else {
-                            res.sendRedirect("/PetCity/loadDashboard");
+                            res.sendRedirect("/loadDashboard");
                         }
                     } else if (role.equals("member")) {
                         if (member.contains(resource) || uri.contains("member") || uri.contains("publicPage")) {
                             if (resource.equals("login.jsp") || resource.equals("signup.jsp")) {
-                                res.sendRedirect("/PetCity/");
+                                res.sendRedirect("/");
                             } else {
                                 if (resource.equals("logout") || resource.equals("logout.do")) {
                                     chain.doFilter(request, response);
@@ -304,7 +304,7 @@ public class AuthFilter implements Filter {
                                         if (account != null) {
                                             chain.doFilter(request, response);
                                         } else {
-                                            res.sendRedirect("/PetCity/logout");
+                                            res.sendRedirect("/logout");
                                         }
                                     } catch (Exception e) {
                                         Logger.log("Error at Filter : " + e.getMessage());
@@ -312,13 +312,13 @@ public class AuthFilter implements Filter {
                                 }
                             }
                         } else {
-                            res.sendRedirect("/PetCity/");
+                            res.sendRedirect("/");
                         }
                     } else {
-                        res.sendRedirect("/PetCity/");
+                        res.sendRedirect("/");
                     }
                 } else {
-                    res.sendRedirect("/PetCity/");
+                    res.sendRedirect("/");
                 }
             }
         }

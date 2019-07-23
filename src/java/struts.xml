@@ -14,7 +14,7 @@
             <result name="member" type="chain">loadProfile</result>
         </action>
         
-        <action name="loadDashboard" class="phuctt.actions.admin.LoadDashboardAction">
+        <action name="loadDashboardAction" class="phuctt.actions.admin.LoadDashboardAction">
             <result name="success">admin/home.jsp</result>
         </action>
         
