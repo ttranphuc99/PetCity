@@ -10,7 +10,7 @@ function loadMore(type, category, page) {
     }
 
     var host = window.location.host;
-    xhttp.open("GET", "http://" +host+ "/PetCity/ajaxLoadMoreAccessory?forType=" +type+ "&categoryID=" +category+ "&page=" +page, true);
+    xhttp.open("GET", "http://" +host+ "/ajaxLoadMoreAccessory?forType=" +type+ "&categoryID=" +category+ "&page=" +page, true);
     xhttp.send();
 }
 
@@ -35,7 +35,7 @@ function renderAccessory(obj) {
     var ele = 
     '<div class="wrap-accessories card justify-content-center mx-2">' +
         '<div class="wrap-accessory-img card-img-top">' +
-            '<img src="/PetCity/img/file/accessory/' +obj.image+ '" class="accessory-img">' +
+            '<img src="/img/file/accessory/' +obj.image+ '" class="accessory-img">' +
         '</div>' +
         '<div class="card-body">' +
             '<div class="card-text accessory-name text-center">' +obj.name+ '</div>' +

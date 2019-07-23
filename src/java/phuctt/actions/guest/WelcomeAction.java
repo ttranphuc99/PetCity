@@ -25,6 +25,7 @@ public class WelcomeAction {
     }
 
     public String execute() {
+        String label = "success";
         try {
             AccessoryDAO dao = new AccessoryDAO();
             
@@ -44,9 +45,10 @@ public class WelcomeAction {
             listHamsterComestic = dao.loadTopMostBuy(5, 3, 4);
             
         } catch (Exception e) {
+            label = "failed";
             Logger.log("ERROR at WelcomeAction : " + e.getMessage());
         }
-        return "success";
+        return label;
     }
     
     public String getMess() {

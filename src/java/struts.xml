@@ -124,6 +124,7 @@
         
         <action name="welcome" class="phuctt.actions.guest.WelcomeAction">
             <result name="success">publicPage/index.jsp</result>
+            <result name="failed">/error.jsp</result>
         </action>
         
         <action name="adminViewDetailAccessory" class="phuctt.actions.admin.AdminViewDetailAccessoryAction">

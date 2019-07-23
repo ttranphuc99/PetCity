@@ -7,7 +7,7 @@ function loadAccessory(id) {
     }
 
     var host = window.location.host;
-    xhttp.open("GET", "http://" +host+ "/PetCity/loadAccessoryDetail?id=" + id, true);
+    xhttp.open("GET", "http://" +host+ "/loadAccessoryDetail?id=" + id, true);
     xhttp.send();
 }
 
@@ -32,5 +32,5 @@ function showAccessory(jsonData) {
     priceEle.innerHTML = "$ " + obj.price;
     id.innerHTML = obj.id;
 
-    img.src = "/PetCity/img/file/accessory/" + obj.image;
+    img.src = "/img/file/accessory/" + obj.image;
 }

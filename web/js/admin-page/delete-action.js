@@ -3,7 +3,7 @@ function deleteAccessory(id, name) {
     modal.innerHTML = "Do you want to delete accessory ID: " + id + ", Name: " + name;
 
     var actionBtn = document.getElementById("deleteBtnAction");
-    actionBtn.href = "/PetCity/deleteAccessory?id=" + id;
+    actionBtn.href = "/deleteAccessory?id=" + id;
 }
 
 function deleteUser(username, name, role) {
@@ -11,7 +11,7 @@ function deleteUser(username, name, role) {
     modal.innerHTML = "Do you want to delete Username: " + username + ", Name: " + name;
 
     var actionBtn = document.getElementById("deleteBtnAction");
-    actionBtn.href = "/PetCity/banUser?id=" + username + "&role=" +role;
+    actionBtn.href = "/banUser?id=" + username + "&role=" +role;
 }
 
 function deleteStaff(id, name) {
@@ -19,7 +19,7 @@ function deleteStaff(id, name) {
     modal.innerHTML = "Do you want to delete staff ID: " + id + ", Name: " + name;
 
     var actionBtn = document.getElementById("deleteBtnAction");
-    actionBtn.href = "/PetCity/deleteStaff?id=" + id;
+    actionBtn.href = "/deleteStaff?id=" + id;
 }
 
 function deleteService(id, name) {
@@ -27,7 +27,7 @@ function deleteService(id, name) {
     modal.innerHTML = "Do you want to delete service ID: " + id + ", Name: " + name;
 
     var actionBtn = document.getElementById("deleteBtnAction");
-    actionBtn.href = "/PetCity/deleteService?id=" + id;
+    actionBtn.href = "/deleteService?id=" + id;
 }
 
 function deletePet(id, name) {
@@ -35,7 +35,7 @@ function deletePet(id, name) {
     modal.innerHTML = "Do you want to delete Pet's name: " + name;
 
     var actionBtn = document.getElementById("deleteBtnAction");
-    actionBtn.href = "/PetCity/deletePet?id=" + id;
+    actionBtn.href = "/deletePet?id=" + id;
 }
 
 function cancelInvoice(id) {
@@ -43,5 +43,5 @@ function cancelInvoice(id) {
     modal.innerHTML = "Do you want to cancel Invoice ID: " + id;
 
     var actionBtn = document.getElementById("deleteBtnAction");
-    actionBtn.href = "/PetCity/cancelInvoiceService?id=" + id;
+    actionBtn.href = "/cancelInvoiceService?id=" + id;
 }

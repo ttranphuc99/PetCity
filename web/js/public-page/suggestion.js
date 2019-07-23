@@ -11,7 +11,7 @@ function searchAccessory() {
         }
 
         var host = window.location.host;
-        xhttp.open("GET", "http://" +host+ "/PetCity/searchNameAccessory?search=" + search, true);
+        xhttp.open("GET", "http://" +host+ "/searchNameAccessory?search=" + search, true);
         xhttp.send();
     }
 }
@@ -35,7 +35,7 @@ function renderSuggestion(json) {
             var ele = 
             '<div class="row align-items-center">' +
                 '<div class="col-12">' +
-                    '<a href="/PetCity/searchNameAccessory?search=' +obj.search+ '&action=page" >View More...</a>' +
+                    '<a href="/searchNameAccessory?search=' +obj.search+ '&action=page" >View More...</a>' +
                 '</div>' +
             '</div>';
 
@@ -48,7 +48,7 @@ function buildElementSuggestion(obj) {
     var ele = 
     '<div class="row align-items-center">' +
         '<div class="col-3">' +
-            '<img class="suggestion-img" src="/PetCity/img/file/accessory/' +obj.image+ '"/>' +
+            '<img class="suggestion-img" src="/img/file/accessory/' +obj.image+ '"/>' +
         '</div>' +
         '<div class="col-4">' +obj.name+ '</div>' +
         '<div class="col-2 suggestion-price">$' +obj.price+ '</div>' +
@@ -70,7 +70,7 @@ function searchMore(search, page) {
     }
 
     var host = window.location.host;
-    xhttp.open("GET", "http://" +host+ "/PetCity/searchNameAccessory?search=" + search + "&page=" + page, true);
+    xhttp.open("GET", "http://" +host+ "/searchNameAccessory?search=" + search + "&page=" + page, true);
     xhttp.send();
 }
 
@@ -95,7 +95,7 @@ function renderAccessory(obj) {
     var ele = 
     '<div class="wrap-accessories card justify-content-center mx-2">' +
         '<div class="wrap-accessory-img card-img-top">' +
-            '<img src="/PetCity/img/file/accessory/' +obj.image+ '" class="accessory-img">' +
+            '<img src="/img/file/accessory/' +obj.image+ '" class="accessory-img">' +
         '</div>' +
         '<div class="card-body">' +
             '<div class="card-text accessory-name text-center">' +obj.name+ '</div>' +

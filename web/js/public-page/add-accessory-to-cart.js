@@ -13,7 +13,7 @@ function addAccessory() {
         }
 
         var host = window.location.host;
-        xhttp.open("GET", "http://" +host+ "/PetCity/addAccessoryToCart?id=" + id, true);
+        xhttp.open("GET", "http://" +host+ "/addAccessoryToCart?id=" + id, true);
         xhttp.send();
     }
 }
