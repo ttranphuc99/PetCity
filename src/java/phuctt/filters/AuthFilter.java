@@ -127,8 +127,8 @@ public class AuthFilter implements Filter {
         admin.add("cancelInvoiceService.action");
         admin.add("adminViewListPet");
         admin.add("adminViewListPet.action");
-        admin.add("loadDashboard");
-        admin.add("loadDashboard.action");
+        admin.add("loadDashboardAction");
+        admin.add("loadDashboardAction.action");
 
         member = new ArrayList<>();
         member.add("logout");
@@ -286,7 +286,7 @@ public class AuthFilter implements Filter {
                         if (admin.contains(resource) || uri.contains("admin")) {
                             chain.doFilter(request, response);
                         } else {
-                            res.sendRedirect("/loadDashboard");
+                            res.sendRedirect("/loadDashboardAction");
                         }
                     } else if (role.equals("member")) {
                         if (member.contains(resource) || uri.contains("member") || uri.contains("publicPage")) {
