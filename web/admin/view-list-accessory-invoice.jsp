@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  uri="/struts-tags" prefix="s" %>
 <%@include file="sider.jsp" %>
-<link rel="stylesheet" href="/PetCity/css/admin-page/accessory-invoice.css">
+<link rel="stylesheet" href="/css/admin-page/accessory-invoice.css">
 <div id="snackbar">
     <s:property value="%{mess}" />
 </div>
@@ -33,7 +33,7 @@
             <s:iterator value="listAccessoryInvoice">
                 <tr>
                     <td class="align-middle text-center col-id">
-                        <a href='/PetCity/adminViewAccessoryInvoiceDetail?id=<s:property value="%{id}" />&status=<s:property value="%{status}" />&page=<s:property value="%{page}" />' class="link">
+                        <a href='/adminViewAccessoryInvoiceDetail?id=<s:property value="%{id}" />&status=<s:property value="%{status}" />&page=<s:property value="%{page}" />' class="link">
                             <s:property value="%{id}" />
                         </a>
                     </td>
@@ -62,7 +62,7 @@
                     </td>
                     <td class="align-middle text-center">
                         <s:if test="%{status != -1}">
-                        <form method="POST" action="/PetCity/updateStatusAccessoryInvoice">
+                        <form method="POST" action="/updateStatusAccessoryInvoice">
                             <select name="status" class="custom-select" style="width: 50%">
                                 <option value="-1" <s:if test="%{status == -1}">selected</s:if>>Canceled</option>
                                 <option value="0" <s:if test="%{status == 0}">selected</s:if>>Waiting</option>

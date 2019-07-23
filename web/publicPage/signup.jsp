@@ -9,12 +9,12 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Pet City - Sign Up</title>
 
-        <link rel="stylesheet" href="/PetCity/css/public-page/signup.css">
-        <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/snackbar.css">
-        <link rel="stylesheet" type="text/css" href="/PetCity/css/bootstrap/bootstrap.css">
-        <script src="/PetCity/js/bootstrap/jquery-1.9.1.min.js"></script>
-        <script src="/PetCity/js/bootstrap/popper.min.js"></script>
-        <script src="/PetCity/js/bootstrap/bootstrap.js"></script>
+        <link rel="stylesheet" href="/css/public-page/signup.css">
+        <link rel="stylesheet" type="text/css" href="/css/public-page/snackbar.css">
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap/bootstrap.css">
+        <script src="/js/bootstrap/jquery-1.9.1.min.js"></script>
+        <script src="/js/bootstrap/popper.min.js"></script>
+        <script src="/js/bootstrap/bootstrap.js"></script>
     </head>
 
     <body>
@@ -23,7 +23,7 @@
                 <div class="label my-3">Sign Up</div>
                 <div id="snackbar"><s:property value="%{mess}"/></div>
 
-                <form action="/PetCity/signup" method="POST">
+                <form action="/signup" method="POST">
                     <div class="form-group">
                         <label for="txtUsername">Username:</label>
                         <input type="text" class="form-control" id="txtUsername" name="username" value='<s:property value="%{username}"/>'
@@ -62,13 +62,13 @@
                     </div>
 
                     <div class="text-center">
-                        <a href="/PetCity/welcome" class="nav-link">Back to Home</a>
+                        <a href="/welcome" class="nav-link">Back to Home</a>
                     </div>
                 </form>
             </div>
         </div>
-        <script src="/PetCity/js/public-page/show-snackbar.js"></script>
-        <script src="/PetCity/js/public-page/validate-signup.js"></script>
+        <script src="/js/public-page/show-snackbar.js"></script>
+        <script src="/js/public-page/validate-signup.js"></script>
     </body>
 
 </html>

@@ -10,7 +10,7 @@
 <div class="title mb-4">Staff</div>
 
 <div class="container-fluid">
-    <form action="/PetCity/updateStaff" method="POST" enctype="multipart/form-data" onsubmit="return validate();">
+    <form action="/updateStaff" method="POST" enctype="multipart/form-data" onsubmit="return validate();">
         <input type="hidden" value="<s:property value="%{dto.id}"/>" name="id"/>
         <input type="hidden" value="<s:property value="%{dto.image}"/>" name="imgName"/>
         
@@ -52,7 +52,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="justify-content-center">
-                    <img src='/PetCity/img/file/staff/<s:property value="%{dto.image}"/>' style="max-width: 200px"/>
+                    <img src='/img/file/staff/<s:property value="%{dto.image}"/>' style="max-width: 200px"/>
                 </div>
             </div>
         </div>
@@ -70,6 +70,6 @@
             <input type="submit" class="btn btn-success w-25 font-label" name="action" value="Update">
         </div>
     </form>
-    <script src="/PetCity/js/admin-page/validate-add-form.js"></script>
+    <script src="/js/admin-page/validate-add-form.js"></script>
 </div>
 <%@include file="end-sider.jsp" %>

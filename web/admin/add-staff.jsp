@@ -9,7 +9,7 @@
 <div class="title mb-4">Add new staff</div>
 
 <div class="container-fluid">
-    <form action="/PetCity/addStaff" method="POST" enctype="multipart/form-data" onsubmit="return validate();">
+    <form action="/addStaff" method="POST" enctype="multipart/form-data" onsubmit="return validate();">
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
@@ -54,6 +54,6 @@
             <input type="submit" class="btn btn-success w-25 font-label" name="action" value="Add">
         </div>
     </form>
-    <script src="/PetCity/js/admin-page/validate-add-form.js"></script>
+    <script src="/js/admin-page/validate-add-form.js"></script>
 </div>
 <%@include file="end-sider.jsp" %>

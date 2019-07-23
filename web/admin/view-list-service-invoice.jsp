@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  uri="/struts-tags" prefix="s" %>
 <%@include file="sider.jsp" %>
-<link rel="stylesheet" href="/PetCity/css/admin-page/service-invoice.css">
+<link rel="stylesheet" href="/css/admin-page/service-invoice.css">
 <div id="snackbar">
     <s:property value="%{mess}" />
 </div>
@@ -54,7 +54,7 @@
             <s:iterator value="listServiceInvoice">
                 <tr>
                     <td class="align-middle text-center col-id">
-                        <a href='/PetCity/viewDetailServiceInvoice?id=<s:property value="%{id}" />&page=<s:property value="%{page}" />' class="link">
+                        <a href='/viewDetailServiceInvoice?id=<s:property value="%{id}" />&page=<s:property value="%{page}" />' class="link">
                             <s:property value="%{id}" />
                         </a>
                     </td>
@@ -123,5 +123,5 @@
         </ul>
     </nav>
 </s:else>
-<script src="/PetCity/js/admin-page/delete-action.js"></script>
+<script src="/js/admin-page/delete-action.js"></script>
 <%@include file="end-sider.jsp" %>

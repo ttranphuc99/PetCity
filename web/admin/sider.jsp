@@ -10,13 +10,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
         <title>Pet City - Admin Page</title>
-        <link rel="stylesheet" type="text/css" href="/PetCity/css/bootstrap/bootstrap.css">
-        <link rel="stylesheet" href="/PetCity/css/admin-page/sider.css">
-        <link rel="stylesheet" href="/PetCity/css/admin-page/content.css">
-        <link rel="stylesheet" href="/PetCity/css/public-page/snackbar.css">
-        <script src="/PetCity/js/bootstrap/jquery-1.9.1.min.js"></script>
-        <script src="/PetCity/js/bootstrap/popper.min.js"></script>
-        <script src="/PetCity/js/bootstrap/bootstrap.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap/bootstrap.css">
+        <link rel="stylesheet" href="/css/admin-page/sider.css">
+        <link rel="stylesheet" href="/css/admin-page/content.css">
+        <link rel="stylesheet" href="/css/public-page/snackbar.css">
+        <script src="/js/bootstrap/jquery-1.9.1.min.js"></script>
+        <script src="/js/bootstrap/popper.min.js"></script>
+        <script src="/js/bootstrap/bootstrap.js"></script>
     </head>
 
     <body>
@@ -25,21 +25,21 @@
             <nav id="sidebar">
                 <div class="sidebar-header">
                     <h5>Welcome, <s:property value="%{#session.FULLNAME}"/></h5>
-                    <a href="/PetCity/logout" class="btn btn-danger" role="button">Logout</a>
+                    <a href="/logout" class="btn btn-danger" role="button">Logout</a>
                 </div>
 
                 <ul class="list-unstyled components">
                     <li>
-                        <a href="/PetCity/loadDashboard">Dashboard</a>
+                        <a href="/loadDashboard">Dashboard</a>
                     </li>
                     <li>
                         <a href="#view-profile" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">View Profile</a>
                         <ul class="collapse list-unstyled" id="view-profile">
                             <li>
-                                <a href="/PetCity/adminViewProfile?username=<s:property value='%{#session.USERNAME}'/>" >Edit profile</a>
+                                <a href="/adminViewProfile?username=<s:property value='%{#session.USERNAME}'/>" >Edit profile</a>
                             </li>
                             <li>
-                                <a href="/PetCity/admin/change-password.jsp">Change password</a>
+                                <a href="/admin/change-password.jsp">Change password</a>
                             </li>
                         </ul>
                     </li>
@@ -47,13 +47,13 @@
                         <a href="#manage-user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage User</a>
                         <ul class="collapse list-unstyled" id="manage-user">
                             <li>
-                                <a href="/PetCity/adminViewListUser?page=1">View list member</a>
+                                <a href="/adminViewListUser?page=1">View list member</a>
                             </li>
                             <li>
-                                <a href="/PetCity/adminViewListAdmin?page=1">View list admin</a>
+                                <a href="/adminViewListAdmin?page=1">View list admin</a>
                             </li>
                             <li>
-                                <a href="/PetCity/admin/add-admin.jsp">Add new admin</a>
+                                <a href="/admin/add-admin.jsp">Add new admin</a>
                             </li>
                         </ul>
                     </li>
@@ -61,10 +61,10 @@
                         <a href="#manage-accessory" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage Accessory</a>
                         <ul class="collapse list-unstyled" id="manage-accessory">
                             <li>
-                                <a href="/PetCity/adminViewListAccessory?page=1">View list accessory</a>
+                                <a href="/adminViewListAccessory?page=1">View list accessory</a>
                             </li>
                             <li>
-                                <a href="/PetCity/loadCategoryType?locationPlace=accessory">Add new accessory</a>
+                                <a href="/loadCategoryType?locationPlace=accessory">Add new accessory</a>
                             </li>
                         </ul>
                     </li>
@@ -72,10 +72,10 @@
                         <a href="#manage-service" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage Service</a>
                         <ul class="collapse list-unstyled" id="manage-service">
                             <li>
-                                <a href="/PetCity/adminViewListService?page=1">View list service</a>
+                                <a href="/adminViewListService?page=1">View list service</a>
                             </li>
                             <li>
-                                <a href="/PetCity/loadCategoryType?locationPlace=service">Add new service</a>
+                                <a href="/loadCategoryType?locationPlace=service">Add new service</a>
                             </li>
                         </ul>
                     </li>
@@ -83,24 +83,24 @@
                         <a href="#manage-staff" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage Staff</a>
                         <ul class="collapse list-unstyled" id="manage-staff">
                             <li>
-                                <a href="/PetCity/adminViewListStaff?page=1">View list staff</a>
+                                <a href="/adminViewListStaff?page=1">View list staff</a>
                             </li>
                             <li>
-                                <a href="/PetCity/admin/add-staff.jsp">Add new staff</a>
+                                <a href="/admin/add-staff.jsp">Add new staff</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="/PetCity/adminViewListPet">View List Pet</a>
+                        <a href="/adminViewListPet">View List Pet</a>
                     </li>
                     <li>
                         <a href="#view-invoice" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">View Invoice</a>
                         <ul class="collapse list-unstyled" id="view-invoice">
                             <li>
-                                <a href="/PetCity/viewListAccessoryInvoice">Accessory invoices</a>
+                                <a href="/viewListAccessoryInvoice">Accessory invoices</a>
                             </li>
                             <li>
-                                <a href="/PetCity/viewListServiceInvoice">Service invoices</a>
+                                <a href="/viewListServiceInvoice">Service invoices</a>
                             </li>
                         </ul>
                     </li>

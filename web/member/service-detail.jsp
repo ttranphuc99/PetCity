@@ -7,14 +7,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  uri="/struts-tags" prefix="s" %>
 <%@include file="/publicPage/header.jsp" %>
-<link rel="stylesheet" type="text/css" href="/PetCity/css/member-page/service-detail.css">
+<link rel="stylesheet" type="text/css" href="/css/member-page/service-detail.css">
 <div id="snackbar">
     <s:property value="%{mess}" />
 </div>
 
 <div class="wrapper my-3">
     <div class="wrap-img-service">
-        <img src="/PetCity/img/file/service/<s:property value="%{dto.image}"/>" class="img-service">
+        <img src="/img/file/service/<s:property value="%{dto.image}"/>" class="img-service">
     </div>
 
     <div class="container my-4">
@@ -36,7 +36,7 @@
             <p><s:property value="%{dto.description}"/></p>
         </div>
 
-        <form method="POST" action="/PetCity/bookService">
+        <form method="POST" action="/bookService">
             <div class="row my-3">
                 <label class="label-bold">Your Pet:</label>
                 <select name="petId" class="custom-select" required>
@@ -87,5 +87,5 @@
         </form>
     </div>
 </div>
-<script src="/PetCity/js/member-page/book-service.js"></script>
+<script src="/js/member-page/book-service.js"></script>
 <%@include file="/publicPage/footer.jsp" %>

@@ -10,7 +10,7 @@
 <div class="title mb-4">Add a admin</div>
 
 <div class="container-fluid">
-    <form action="/PetCity/addAdmin" method="POST">
+    <form action="/addAdmin" method="POST">
         <div class="form-group">
             <label for="username">Username:</label>
             <input type="text" name="username" id="username" class="form-control" value="<s:property value='%{username}'/>"
@@ -50,6 +50,6 @@
             <input type="submit" class="btn btn-success w-25 font-label" name="action" value="Add admin">
         </div>
     </form>
-    <script src="/PetCity/js/public-page/validate-signup.js"></script>
+    <script src="/js/public-page/validate-signup.js"></script>
 </div>
 <%@include file="end-sider.jsp" %>

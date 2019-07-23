@@ -8,7 +8,7 @@
 <div class="title">Edit profile</div>
 
 <div class="container-fluid">
-    <form action="/PetCity/adminEditProfile" method="POST">
+    <form action="/adminEditProfile" method="POST">
         <div class="form-group">
             <label for="username">Username:</label>
             <input type="text" id="username" class="form-control" name="username" value="<s:property value='%{dto.username}'/>" readonly>

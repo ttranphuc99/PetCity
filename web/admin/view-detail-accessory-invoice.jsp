@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  uri="/struts-tags" prefix="s" %>
 <%@include file="sider.jsp" %>
-<link rel="stylesheet" type="text/css" href="/PetCity/css/member-page/invoice-accessory-detail.css">
+<link rel="stylesheet" type="text/css" href="/css/member-page/invoice-accessory-detail.css">
 <div class="title ">Accessory Invoice Detail</div>
 
 <div class="container-fluid px-2">
@@ -23,14 +23,14 @@
             </tr>
         </thead>
         <tbody>
-        <form action="/PetCity/updateAccessoryCart" method="POST">
+        <form action="/updateAccessoryCart" method="POST">
             <s:iterator status="st" value="%{listAccessory}">
                 <tr>
                     <td class="col-no text-center align-middle">
                         <s:property value="%{#st.count}"/>
                     </td>
                     <td class="col-img text-center align-middle">
-                        <img class="img-accessory" src='/PetCity/img/file/accessory/<s:property value="%{image}"/>'>
+                        <img class="img-accessory" src='/img/file/accessory/<s:property value="%{image}"/>'>
                     </td>
                     <td class="col-name align-middle">
                         <s:property value="%{name}" />
@@ -61,7 +61,7 @@
             </div>
             <div class="col-6">
                 <s:if test="%{status != -1}">
-                    <form method="POST" action="/PetCity/updateStatusAccessoryInvoice">
+                    <form method="POST" action="/updateStatusAccessoryInvoice">
                         <select name="status" class="custom-select" style="width: 50%">
                             <option value="-1" <s:if test="%{status == -1}">selected</s:if>>Canceled</option>
                             <option value="0" <s:if test="%{status == 0}">selected</s:if>>Waiting</option>
@@ -78,7 +78,7 @@
         </tbody>
     </table>
     <div class="">
-        <a class="btn btn-primary" role="button" href="/PetCity/viewListAccessoryInvoice?page=<s:property value="%{page}"/>">Back</a>
+        <a class="btn btn-primary" role="button" href="/viewListAccessoryInvoice?page=<s:property value="%{page}"/>">Back</a>
     </div>
 </div>
 

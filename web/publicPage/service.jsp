@@ -7,12 +7,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@include file="header.jsp" %>
-<link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/index.css">
-<link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/service.css">
+<link rel="stylesheet" type="text/css" href="/css/public-page/index.css">
+<link rel="stylesheet" type="text/css" href="/css/public-page/service.css">
 <div id="snackbar">
     <s:property value="%{mess}" />
 </div>
-<img src="/PetCity/img/header-footer/banner_839ab468.png" style="width: 100%;"/>
+<img src="/img/header-footer/banner_839ab468.png" style="width: 100%;"/>
 <div class="content">
     <div class="container-fluid" style="padding: 0 10%;">
         <div class="wrap-type">
@@ -22,19 +22,19 @@
                         <div class="card">
                             <div class="row wrap-category">
                                 <div class="col-12">
-                                    <a class="stretched-link" href="/PetCity/loadListService?type=1">Dog</a>
+                                    <a class="stretched-link" href="/loadListService?type=1">Dog</a>
                                 </div>
                             </div>
 
                             <div class="row wrap-category">
                                 <div class="col-12">
-                                    <a class="stretched-link" href="/PetCity/loadListService?type=2">Cat</a>                                    
+                                    <a class="stretched-link" href="/loadListService?type=2">Cat</a>                                    
                                 </div>
                             </div>
 
                             <div class="row wrap-category">
                                 <div class="col-12">
-                                    <a class="stretched-link" href="/PetCity/loadListService?type=3">Hamster</a>    
+                                    <a class="stretched-link" href="/loadListService?type=3">Hamster</a>    
                                 </div>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                     <s:iterator value="list">
                         <div class="row wrap-service">
                             <div class="col-6 align-self-center">
-                                <img class="img-service" src="/PetCity/img/file/service/<s:property value="%{image}"/>">
+                                <img class="img-service" src="/img/file/service/<s:property value="%{image}"/>">
                             </div>
                             <div class="col-6">
                                 <div class="row">
@@ -71,7 +71,7 @@
                                     <span class="service-description"><s:property value="%{description}"/></span>
                                 </div>
                                 <div class="row justify-content-center mt-2">
-                                    <a role="button" href="/PetCity/viewServiceDetail?id=<s:property value="%{id}"/>" class="btn btn-outline-info">Book</a>
+                                    <a role="button" href="/viewServiceDetail?id=<s:property value="%{id}"/>" class="btn btn-outline-info">Book</a>
                                 </div>
                             </div>
                         </div>        

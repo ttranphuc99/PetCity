@@ -7,11 +7,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  uri="/struts-tags" prefix="s" %>
 <%@include file="sider.jsp" %>
-<link rel="stylesheet" type="text/css" href="/PetCity/css/admin-page/invoice-service-detail.css">
+<link rel="stylesheet" type="text/css" href="/css/admin-page/invoice-service-detail.css">
 <div class="title mb-3">Service Invoice Detail</div>
 
 <div class="container-fluid px-2">
-    <form action="/PetCity/updateInvoiceService" method="POST" onsubmit="return validate();">
+    <form action="/updateInvoiceService" method="POST" onsubmit="return validate();">
         <div class="row my-3">
             <div class="col-6">
                 <div class="label">ID:</div>
@@ -141,10 +141,10 @@
             <div class="col-12 text-center">
                 <input type="hidden" name="page" value="<s:property value="%{page}"/>"/>
                 <input type="submit" value="Update" class="btn btn-success mr-2">
-                <a href="/PetCity/viewListServiceInvoice?page=<s:property value="%{page}"/>" class="ml-2 btn btn-secondary" role="button">Back</a>
+                <a href="/viewListServiceInvoice?page=<s:property value="%{page}"/>" class="ml-2 btn btn-secondary" role="button">Back</a>
             </div>
         </div>
     </form>
 </div>
-<script src="/PetCity/js/admin-page/validate-update-service.js"></script>
+<script src="/js/admin-page/validate-update-service.js"></script>
 <%@include file="end-sider.jsp" %>

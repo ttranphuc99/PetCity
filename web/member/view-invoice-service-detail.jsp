@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="sider.jsp" %>
-<link rel="stylesheet" type="text/css" href="/PetCity/css/admin-page/invoice-service-detail.css">
+<link rel="stylesheet" type="text/css" href="/css/admin-page/invoice-service-detail.css">
 <div id="snackbar">
     <s:property value="%{mess}" />
 </div>
@@ -79,7 +79,7 @@
             <div class="label">Staff Image:</div>
             <div class="info">
                 <s:if test="%{dto.staffDoing.image != null}">
-                    <img src='/PetCity/img/file/staff/<s:property value="%{dto.staffDoing.image}"/>' class="img-staff" />
+                    <img src='/img/file/staff/<s:property value="%{dto.staffDoing.image}"/>' class="img-staff" />
                 </s:if>
             </div>
         </div>
@@ -133,10 +133,10 @@
                     Cancel Invoice
                 </button>
             </s:if>
-            <a href="/PetCity/viewListServiceInvoice?page=<s:property value="%{page}" />" class="ml-2 btn
+            <a href="/viewListServiceInvoice?page=<s:property value="%{page}" />" class="ml-2 btn
                btn-secondary" role="button">Back</a>
         </div>
     </div>
 </div>
-<script src="/PetCity/js/admin-page/delete-action.js"></script>
+<script src="/js/admin-page/delete-action.js"></script>
 <%@include file="end-sider.jsp" %>

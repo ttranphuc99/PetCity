@@ -69,7 +69,7 @@
                     </td>
                     <td class="align-middle text-center">
                         <a class="btn btn-sm btn-outline-info my-1"
-                           href='/PetCity/viewAccessoryCartDetail?invoiceID=<s:property value="%{id}" />'
+                           href='/viewAccessoryCartDetail?invoiceID=<s:property value="%{id}" />'
                            role="button">Detail</a><br>
                         <s:if test="%{status == 0}">
                             <button class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal"
@@ -107,6 +107,6 @@
         </ul>
     </nav>
 </s:else>
-<script src="/PetCity/js/admin-page/delete-action.js"></script>
+<script src="/js/admin-page/delete-action.js"></script>
 
 <%@include file="end-sider.jsp" %>

@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="sider.jsp" %>
-<link rel="stylesheet" type="text/css" href="/PetCity/css/member-page/invoice-accessory-detail.css">
+<link rel="stylesheet" type="text/css" href="/css/member-page/invoice-accessory-detail.css">
 <div id="snackbar">
     <s:property value="%{mess}" />
 </div>
@@ -25,14 +25,14 @@
             </tr>
         </thead>
         <tbody>
-        <form action="/PetCity/updateAccessoryCart" method="POST">
+        <form action="/updateAccessoryCart" method="POST">
             <s:iterator status="st" value="%{listAccessory}">
                 <tr>
                     <td class="col-no text-center align-middle">
                         <s:property value="%{#st.count}"/>
                     </td>
                     <td class="col-img text-center align-middle">
-                        <img class="img-accessory" src='/PetCity/img/file/accessory/<s:property value="%{image}"/>'>
+                        <img class="img-accessory" src='/img/file/accessory/<s:property value="%{image}"/>'>
                     </td>
                     <td class="col-name align-middle">
                         <s:property value="%{name}" />

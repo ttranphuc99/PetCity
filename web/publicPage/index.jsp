@@ -7,11 +7,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@include file="header.jsp" %>
-<link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/index.css">
+<link rel="stylesheet" type="text/css" href="/css/public-page/index.css">
 <div id="snackbar">
     <s:property value="%{mess}" />
 </div>
-<img src="/PetCity/img/header-footer/banner_839ab468.png" style="width: 100%;"/>
+<img src="/img/header-footer/banner_839ab468.png" style="width: 100%;"/>
 <div class="content">
     <div class="container-fluid" style="padding: 0 10%;">
         <div class="wrap-type">
@@ -20,10 +20,10 @@
                     <div class="wrap-type-sider my-2">
                         <div class="card">
                             <div class="card-title type-title">
-                                <a href="/PetCity/loadExactlyContent?categoryID=1&forType=1" class="stretched-link">Shop For Dog</a>
+                                <a href="/loadExactlyContent?categoryID=1&forType=1" class="stretched-link">Shop For Dog</a>
                             </div>
                             <div class="card-img-bottom">
-                                <img src="/PetCity/img/home-page/82673973.jpg" class="img-type"/>
+                                <img src="/img/home-page/82673973.jpg" class="img-type"/>
                             </div>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                 <div class="col-10">
                     <div class="row wrap-content-row my-2">
                         <div class="content-sub-title">
-                            <a href="/PetCity/loadExactlyContent?categoryID=1&forType=1" class="stretched-link">Food</a>
+                            <a href="/loadExactlyContent?categoryID=1&forType=1" class="stretched-link">Food</a>
                         </div>
                     </div>
 
@@ -40,7 +40,7 @@
                         <s:iterator value="listDogFood">
                             <div class="wrap-accessories card justify-content-center mx-2">
                                 <div class="wrap-accessory-img card-img-top">
-                                    <img src="/PetCity/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
+                                    <img src="/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
                                 </div>
 
                                 <div class="card-body">
@@ -62,7 +62,7 @@
 
                     <div class="row wrap-content-row my-2">
                         <div class="content-sub-title">
-                            <a href="/PetCity/loadExactlyContent?categoryID=2&forType=1" class="stretched-link">Clothes</a>
+                            <a href="/loadExactlyContent?categoryID=2&forType=1" class="stretched-link">Clothes</a>
                         </div>
                     </div>
 
@@ -70,7 +70,7 @@
                         <s:iterator value="listDogClothes">
                             <div class="wrap-accessories card justify-content-center mx-2">
                                 <div class="wrap-accessory-img card-img-top">
-                                    <img src="/PetCity/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
+                                    <img src="/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
                                 </div>
 
                                 <div class="card-body">
@@ -92,7 +92,7 @@
 
                     <div class="row wrap-content-row my-2">
                         <div class="content-sub-title">
-                            <a href="/PetCity/loadExactlyContent?categoryID=3&forType=1" class="stretched-link">Toys</a>
+                            <a href="/loadExactlyContent?categoryID=3&forType=1" class="stretched-link">Toys</a>
                         </div>
                     </div>
 
@@ -100,7 +100,7 @@
                         <s:iterator value="listDogToys">
                             <div class="wrap-accessories card justify-content-center mx-2">
                                 <div class="wrap-accessory-img card-img-top">
-                                    <img src="/PetCity/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
+                                    <img src="/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
                                 </div>
 
                                 <div class="card-body">
@@ -122,7 +122,7 @@
 
                     <div class="row wrap-content-row my-2">
                         <div class="content-sub-title">
-                            <a href="/PetCity/loadExactlyContent?categoryID=4&forType=1" class="stretched-link">Comestics</a>
+                            <a href="/loadExactlyContent?categoryID=4&forType=1" class="stretched-link">Comestics</a>
                         </div>
                     </div>
 
@@ -130,7 +130,7 @@
                         <s:iterator value="listDogComestic">
                             <div class="wrap-accessories card justify-content-center mx-2">
                                 <div class="wrap-accessory-img card-img-top">
-                                    <img src="/PetCity/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
+                                    <img src="/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
                                 </div>
 
                                 <div class="card-body">
@@ -157,10 +157,10 @@
                     <div class="wrap-type-sider my-2">
                         <div class="card">
                             <div class="card-title type-title">
-                                <a href="/PetCity/loadExactlyContent?categoryID=1&forType=2" class="stretched-link">Shop For Cat</a>
+                                <a href="/loadExactlyContent?categoryID=1&forType=2" class="stretched-link">Shop For Cat</a>
                             </div>
                             <div class="card-img-bottom">
-                                <img src="/PetCity/img/home-page/592685456.jpg" class="img-type"/>
+                                <img src="/img/home-page/592685456.jpg" class="img-type"/>
                             </div>
                         </div>
                     </div>
@@ -169,7 +169,7 @@
                 <div class="col-10">
                     <div class="row wrap-content-row my-2">
                         <div class="content-sub-title">
-                            <a href="/PetCity/loadExactlyContent?categoryID=1&forType=2" class="stretched-link">Food</a>
+                            <a href="/loadExactlyContent?categoryID=1&forType=2" class="stretched-link">Food</a>
                         </div>
                     </div>
 
@@ -177,7 +177,7 @@
                         <s:iterator value="listCatFood">
                             <div class="wrap-accessories card justify-content-center mx-2">
                                 <div class="wrap-accessory-img card-img-top">
-                                    <img src="/PetCity/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
+                                    <img src="/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
                                 </div>
 
                                 <div class="card-body">
@@ -199,7 +199,7 @@
 
                     <div class="row wrap-content-row my-2">
                         <div class="content-sub-title">
-                            <a href="/PetCity/loadExactlyContent?categoryID=2&forType=2" class="stretched-link">Clothes</a>
+                            <a href="/loadExactlyContent?categoryID=2&forType=2" class="stretched-link">Clothes</a>
                         </div>
                     </div>
 
@@ -207,7 +207,7 @@
                         <s:iterator value="listCatClothes">
                             <div class="wrap-accessories card justify-content-center mx-2">
                                 <div class="wrap-accessory-img card-img-top">
-                                    <img src="/PetCity/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
+                                    <img src="/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
                                 </div>
 
                                 <div class="card-body">
@@ -229,7 +229,7 @@
 
                     <div class="row wrap-content-row my-2">
                         <div class="content-sub-title">
-                            <a href="/PetCity/loadExactlyContent?categoryID=3&forType=2" class="stretched-link">Toys</a>
+                            <a href="/loadExactlyContent?categoryID=3&forType=2" class="stretched-link">Toys</a>
                         </div>
                     </div>
 
@@ -237,7 +237,7 @@
                         <s:iterator value="listCatToys">
                             <div class="wrap-accessories card justify-content-center mx-2">
                                 <div class="wrap-accessory-img card-img-top">
-                                    <img src="/PetCity/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
+                                    <img src="/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
                                 </div>
 
                                 <div class="card-body">
@@ -259,7 +259,7 @@
 
                     <div class="row wrap-content-row my-2">
                         <div class="content-sub-title">
-                            <a href="/PetCity/loadExactlyContent?categoryID=4&forType=2" class="stretched-link">Comestics</a>
+                            <a href="/loadExactlyContent?categoryID=4&forType=2" class="stretched-link">Comestics</a>
                         </div>
                     </div>
 
@@ -267,7 +267,7 @@
                         <s:iterator value="listCatComestic">
                             <div class="wrap-accessories card justify-content-center mx-2">
                                 <div class="wrap-accessory-img card-img-top">
-                                    <img src="/PetCity/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
+                                    <img src="/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
                                 </div>
 
                                 <div class="card-body">
@@ -294,10 +294,10 @@
                     <div class="wrap-type-sider my-2">
                         <div class="card">
                             <div class="card-title type-title">
-                                <a href="/PetCity/loadExactlyContent?categoryID=1&forType=3" class="stretched-link">Shop For Hamster</a>
+                                <a href="/loadExactlyContent?categoryID=1&forType=3" class="stretched-link">Shop For Hamster</a>
                             </div>
                             <div class="card-img-bottom">
-                                <img src="/PetCity/img/home-page/1060.jpg" class="img-type"/>
+                                <img src="/img/home-page/1060.jpg" class="img-type"/>
                             </div>
                         </div>
                     </div>
@@ -306,7 +306,7 @@
                 <div class="col-10">
                     <div class="row wrap-content-row my-2">
                         <div class="content-sub-title">
-                            <a href="/PetCity/loadExactlyContent?categoryID=1&forType=3" class="stretched-link">Food</a>
+                            <a href="/loadExactlyContent?categoryID=1&forType=3" class="stretched-link">Food</a>
                         </div>
                     </div>
 
@@ -314,7 +314,7 @@
                         <s:iterator value="listHamsterFood">
                             <div class="wrap-accessories card justify-content-center mx-2">
                                 <div class="wrap-accessory-img card-img-top">
-                                    <img src="/PetCity/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
+                                    <img src="/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
                                 </div>
 
                                 <div class="card-body">
@@ -336,7 +336,7 @@
 
                     <div class="row wrap-content-row my-2">
                         <div class="content-sub-title">
-                            <a href="/PetCity/loadExactlyContent?categoryID=2&forType=3" class="stretched-link">Clothes</a>
+                            <a href="/loadExactlyContent?categoryID=2&forType=3" class="stretched-link">Clothes</a>
                         </div>
                     </div>
 
@@ -344,7 +344,7 @@
                         <s:iterator value="listHamsterClothes">
                             <div class="wrap-accessories card justify-content-center mx-2">
                                 <div class="wrap-accessory-img card-img-top">
-                                    <img src="/PetCity/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
+                                    <img src="/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
                                 </div>
 
                                 <div class="card-body">
@@ -366,7 +366,7 @@
 
                     <div class="row wrap-content-row my-2">
                         <div class="content-sub-title">
-                            <a href="/PetCity/loadExactlyContent?categoryID=3&forType=3" class="stretched-link">Toys</a>
+                            <a href="/loadExactlyContent?categoryID=3&forType=3" class="stretched-link">Toys</a>
                         </div>
                     </div>
 
@@ -374,7 +374,7 @@
                         <s:iterator value="listHamsterToys">
                             <div class="wrap-accessories card justify-content-center mx-2">
                                 <div class="wrap-accessory-img card-img-top">
-                                    <img src="/PetCity/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
+                                    <img src="/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
                                 </div>
 
                                 <div class="card-body">
@@ -396,7 +396,7 @@
 
                     <div class="row wrap-content-row my-2">
                         <div class="content-sub-title">
-                            <a href="/PetCity/loadExactlyContent?categoryID=4&forType=3" class="stretched-link">Comestics</a>
+                            <a href="/loadExactlyContent?categoryID=4&forType=3" class="stretched-link">Comestics</a>
                         </div>
                     </div>
 
@@ -404,7 +404,7 @@
                         <s:iterator value="listHamsterComestic">
                             <div class="wrap-accessories card justify-content-center mx-2">
                                 <div class="wrap-accessory-img card-img-top">
-                                    <img src="/PetCity/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
+                                    <img src="/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
                                 </div>
 
                                 <div class="card-body">

@@ -21,16 +21,16 @@ import phuctt.log.Logger;
 public class InitationAction implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        ServletContext sc = sce.getServletContext();
-        String dir = sc.getRealPath("") + "img\\file";
-        File source = new File("D:/file");
-        File target = new File(dir);
-
-        try {
-            FileUtils.copyDirectory(source, target);
-        } catch (IOException ex) {
-            Logger.log("ERROR at InitationAction : " + ex.getMessage());
-        }
+//        ServletContext sc = sce.getServletContext();
+//        String dir = sc.getRealPath("") + "img\\file";
+//        File source = new File("D:/file");
+//        File target = new File(dir);
+//
+//        try {
+//            FileUtils.copyDirectory(source, target);
+//        } catch (IOException ex) {
+//            Logger.log("ERROR at InitationAction : " + ex.getMessage());
+//        }
     }
 
     @Override

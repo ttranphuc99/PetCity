@@ -6,11 +6,11 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="sider.jsp" %>
-<link rel="stylesheet" href="/PetCity/css/admin-page/add-service.css">
+<link rel="stylesheet" href="/css/admin-page/add-service.css">
 <div class="title mb-4">Add new service</div>
 
 <div class="container-fluid">
-    <form action="/PetCity/addService" method="POST" enctype="multipart/form-data" onsubmit="return validate();">
+    <form action="/addService" method="POST" enctype="multipart/form-data" onsubmit="return validate();">
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
@@ -96,6 +96,6 @@
             <input type="submit" class="btn btn-success w-25 font-label" name="action" value="Add">
         </div>
     </form>
-    <script src="/PetCity/js/admin-page/validate-add-form.js"></script>
+    <script src="/js/admin-page/validate-add-form.js"></script>
 </div>
 <%@include file="end-sider.jsp" %>

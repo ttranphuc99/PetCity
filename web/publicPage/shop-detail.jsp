@@ -7,11 +7,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@include file="header.jsp" %>
-<link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/index.css">
+<link rel="stylesheet" type="text/css" href="/css/public-page/index.css">
 <div id="snackbar">
     <s:property value="%{mess}" />
 </div>
-<img src="/PetCity/img/header-footer/banner_839ab468.png" style="width: 100%;"/>
+<img src="/img/header-footer/banner_839ab468.png" style="width: 100%;"/>
 <div class="content">
     <div class="container-fluid" style="padding: 0 10%;">
         <div class="wrap-type">
@@ -21,25 +21,25 @@
                         <div class="card">
                             <div class="row wrap-category">
                                 <div class="col-12">
-                                    <a class="stretched-link" href="/PetCity/loadExactlyContent?categoryID=1&forType=<s:property value="%{forType}"/>">Food</a>
+                                    <a class="stretched-link" href="/loadExactlyContent?categoryID=1&forType=<s:property value="%{forType}"/>">Food</a>
                                 </div>
                             </div>
 
                             <div class="row wrap-category">
                                 <div class="col-12">
-                                    <a class="stretched-link" href="/PetCity/loadExactlyContent?categoryID=2&forType=<s:property value="%{forType}"/>">Clothes</a>                                    
+                                    <a class="stretched-link" href="/loadExactlyContent?categoryID=2&forType=<s:property value="%{forType}"/>">Clothes</a>                                    
                                 </div>
                             </div>
 
                             <div class="row wrap-category">
                                 <div class="col-12">
-                                    <a class="stretched-link" href="/PetCity/loadExactlyContent?categoryID=3&forType=<s:property value="%{forType}"/>">Toys</a>    
+                                    <a class="stretched-link" href="/loadExactlyContent?categoryID=3&forType=<s:property value="%{forType}"/>">Toys</a>    
                                 </div>
                             </div>
 
                             <div class="row wrap-category">
                                 <div class="col-12">
-                                    <a class="stretched-link" href="/PetCity/loadExactlyContent?categoryID=4&forType=<s:property value="%{forType}"/>">Comestics</a>
+                                    <a class="stretched-link" href="/loadExactlyContent?categoryID=4&forType=<s:property value="%{forType}"/>">Comestics</a>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                         <s:iterator value="list">
                             <div class="wrap-accessories card justify-content-center mx-2">
                                 <div class="wrap-accessory-img card-img-top">
-                                    <img src="/PetCity/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
+                                    <img src="/img/file/accessory/<s:property value="%{image}"/>" class="accessory-img">
                                 </div>
 
                                 <div class="card-body">
@@ -94,5 +94,5 @@
     </div>
 </div>
 
-<script src="/PetCity/js/public-page/load-more-accessory.js"></script>
+<script src="/js/public-page/load-more-accessory.js"></script>
 <%@include file="footer.jsp" %>

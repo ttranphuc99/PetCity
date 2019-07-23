@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  uri="/struts-tags" prefix="s" %>
 <%@include file="sider.jsp" %>
-<link rel="stylesheet" href="/PetCity/css/admin-page/list-admin.css">
+<link rel="stylesheet" href="/css/admin-page/list-admin.css">
 <div class="title mb-4">View list admin</div>
 
 <!-- Modal -->
@@ -134,5 +134,5 @@
         </ul>
     </nav>
 </s:else>
-<script src="/PetCity/js/admin-page/delete-action.js"></script>
+<script src="/js/admin-page/delete-action.js"></script>
 <%@include file="end-sider.jsp" %>

@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="sider.jsp" %>
-<link rel="stylesheet" href="/PetCity/css/admin-page/staff.css">
+<link rel="stylesheet" href="/css/admin-page/staff.css">
 
 <div id="snackbar">
     <s:property value="%{mess}" />
@@ -15,7 +15,7 @@
 <div class="title mb-4">View List Pet</div>
 
 <div class="container-fluid">
-    <form action="/PetCity/adminViewListPet" method="POST">
+    <form action="/adminViewListPet" method="POST">
         <div class="row">
             <div class="col-10">
                 <div class="form-group">

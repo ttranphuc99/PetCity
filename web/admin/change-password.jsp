@@ -8,7 +8,7 @@
 <div class="title">Change password</div>
 
 <div class="container-fluid">
-    <form action="/PetCity/changePassword" method="POST">
+    <form action="/changePassword" method="POST">
         <input type="hidden" name="username" value="<s:property value="%{#session.USERNAME}"/>">
         
         <div class="form-group">
@@ -31,5 +31,5 @@
         </div>
     </form>
 </div>
-<script src="/PetCity/js/public-page/validate-signup.js"></script>
+<script src="/js/public-page/validate-signup.js"></script>
 <%@include file="end-sider.jsp" %>

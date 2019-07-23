@@ -16,7 +16,7 @@
                     <span style="display: none;" id="accessoryDetailID">-1</span>
                     <div class="row">
                         <div class="col-6 justify-content-center align-items-center">
-                            <img src="/PetCity/img/file/accessory/3.jpg" class="accessory-img-modal" id="accessoryImg">
+                            <img src="/img/file/accessory/3.jpg" class="accessory-img-modal" id="accessoryImg">
                         </div>
 
                         <div class="col-6">
@@ -73,7 +73,7 @@
     </div>
 </div>
 
-<script src="/PetCity/js/public-page/show-detail-acces.js"></script>
+<script src="/js/public-page/show-detail-acces.js"></script>
 
 <footer>
     <div class="text-center">
@@ -81,7 +81,7 @@
         <p>Re-developed by Thien Phuc - FPT University</p>
     </div>
 </footer>
-<script src="/PetCity/js/public-page/show-snackbar.js"></script>
+<script src="/js/public-page/show-snackbar.js"></script>
 </body>
 
 </html>

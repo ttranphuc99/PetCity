@@ -5,7 +5,7 @@
 --%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@include file="sider.jsp" %>
-<link rel="stylesheet" href="/PetCity/css/admin-page/dashboard.css">
+<link rel="stylesheet" href="/css/admin-page/dashboard.css">
 <div class="title mb-2">Dashboard</div>
 
 <!-- Service -->

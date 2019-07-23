@@ -7,11 +7,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  uri="/struts-tags" prefix="s" %>
 <%@include file="sider.jsp" %>
-<link rel="stylesheet" href="/PetCity/css/admin-page/add-service.css">
+<link rel="stylesheet" href="/css/admin-page/add-service.css">
 <div class="title mb-4">Service</div>
 
 <div class="container-fluid">
-    <form action="/PetCity/updateService" method="POST" enctype="multipart/form-data" onsubmit="return validate();">
+    <form action="/updateService" method="POST" enctype="multipart/form-data" onsubmit="return validate();">
         <input type="hidden" value="<s:property value="%{dto.id}"/>" name="id"/>
         <input type="hidden" value="<s:property value="%{dto.image}"/>" name="imgName"/>
         
@@ -72,7 +72,7 @@
        <div class="row">
             <div class="col-12">
                 <div class="form-group">
-                    <img class="img-accessory" src='/PetCity/img/file/service/<s:property value="%{dto.image}"/>' style="max-width: 75vw">
+                    <img class="img-accessory" src='/img/file/service/<s:property value="%{dto.image}"/>' style="max-width: 75vw">
                 </div>
             </div>
         </div>
@@ -112,6 +112,6 @@
             <input type="submit" class="btn btn-success w-25 font-label" name="action" value="Update">
         </div>
     </form>
-    <script src="/PetCity/js/admin-page/validate-add-form.js"></script>
+    <script src="/js/admin-page/validate-add-form.js"></script>
 </div>
 <%@include file="end-sider.jsp" %>

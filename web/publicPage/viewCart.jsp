@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@include file="header.jsp" %>
-<link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/cart.css">
+<link rel="stylesheet" type="text/css" href="/css/public-page/cart.css">
 <div id="snackbar">
     <s:property value="%{mess}" />
 </div>
@@ -27,14 +27,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                <form action="/PetCity/updateAccessoryCart" method="POST">
+                <form action="/updateAccessoryCart" method="POST">
                     <s:iterator status="st" value="%{#session.CART.list}">
                         <tr>
                             <td class="col-no text-center align-middle">
                                 <s:property value="%{#st.count}"/>
                             </td>
                             <td class="col-img text-center align-middle">
-                                <img class="img-accessory" src='/PetCity/img/file/accessory/<s:property value="%{image}"/>'>
+                                <img class="img-accessory" src='/img/file/accessory/<s:property value="%{image}"/>'>
                             </td>
                             <td class="col-name align-middle">
                                 <s:property value="%{name}" />
@@ -55,7 +55,7 @@
                                 <s:number name="%{price*quantity}" minimumFractionDigits="2"/>
                             </td>
                             <td class="align-middle text-center">
-                                <a href="/PetCity/removeAccessoryCart?id=<s:property value="%{id}"/>" class="btn btn-sm btn-outline-info" role="button">
+                                <a href="/removeAccessoryCart?id=<s:property value="%{id}"/>" class="btn btn-sm btn-outline-info" role="button">
                                     Remove
                                 </a>
                             </td>

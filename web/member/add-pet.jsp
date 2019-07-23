@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="sider.jsp" %>
-<link rel="stylesheet" href="/PetCity/css/member-page/edit-profile.css">
+<link rel="stylesheet" href="/css/member-page/edit-profile.css">
 <div id="snackbar">
     <s:property value="%{mess}" />
 </div> 
@@ -14,7 +14,7 @@
 <div class="title mb-4">Add New Pet</div>
 
 <div class="container-fluid">
-    <form action="/PetCity/addPet" method="POST" enctype="multipart/form-data" onsubmit="return validate();">
+    <form action="/addPet" method="POST" enctype="multipart/form-data" onsubmit="return validate();">
         <div class="row">
             <div class="col-6">
                 <div class="form-group">

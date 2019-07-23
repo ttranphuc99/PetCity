@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="sider.jsp" %>
-<link rel="stylesheet" href="/PetCity/css/admin-page/staff.css">
+<link rel="stylesheet" href="/css/admin-page/staff.css">
 
 <div id="snackbar">
     <s:property value="%{mess}" />
@@ -35,7 +35,7 @@
 </div>
 
 <div class="container-fluid">
-    <form action="/PetCity/viewListPet" method="POST">
+    <form action="/viewListPet" method="POST">
         <div class="row">
             <div class="col-10">
                 <div class="form-group">
@@ -90,7 +90,7 @@
                     </td>
                     <td class="align-middle text-center">
                         <a class="btn btn-sm btn-outline-info my-1"
-                            href='/PetCity/viewPetDetail?id=<s:property value="%{id}"/>'
+                            href='/viewPetDetail?id=<s:property value="%{id}"/>'
                             role="button">Detail</a><br>
                         <button class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal"
                             onclick='deletePet(<s:property value="%{id}"/>, "<s:property value="%{name}"/>")'>Delete</button>
@@ -129,6 +129,6 @@
         </ul>
     </nav>
 </s:else>
-<script src="/PetCity/js/admin-page/delete-action.js"></script>
+<script src="/js/admin-page/delete-action.js"></script>
 
 <%@include file="end-sider.jsp" %>

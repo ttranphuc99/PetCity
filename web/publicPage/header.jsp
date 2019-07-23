@@ -8,15 +8,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Pet City</title>
-        <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/header-footer.css">
-        <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/suggestion.css">
-        <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/snackbar.css">
-        <link rel="stylesheet" type="text/css" href="/PetCity/css/public-page/index.css">
-        <link rel="stylesheet" type="text/css" href="/PetCity/css/bootstrap/bootstrap.css">
-        <script src="/PetCity/js/bootstrap/jquery-1.9.1.min.js"></script>
-        <script src="/PetCity/js/bootstrap/popper.min.js"></script>
-        <script src="/PetCity/js/bootstrap/bootstrap.js"></script>
-        <script src="/PetCity/js/public-page/add-accessory-to-cart.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/public-page/header-footer.css">
+        <link rel="stylesheet" type="text/css" href="/css/public-page/suggestion.css">
+        <link rel="stylesheet" type="text/css" href="/css/public-page/snackbar.css">
+        <link rel="stylesheet" type="text/css" href="/css/public-page/index.css">
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap/bootstrap.css">
+        <script src="/js/bootstrap/jquery-1.9.1.min.js"></script>
+        <script src="/js/bootstrap/popper.min.js"></script>
+        <script src="/js/bootstrap/bootstrap.js"></script>
+        <script src="/js/public-page/add-accessory-to-cart.js"></script>
     </head>
 
     <body>
@@ -24,7 +24,7 @@
             <div class="row mx-5 my-4 text-center align-items-center">
                 <!-- logo -->
                 <div class="col-3">
-                    <a href="/PetCity/"><img class="header-logo" src="/PetCity/img/header-footer/petcity.png"></a>                    
+                    <a href="/"><img class="header-logo" src="/img/header-footer/petcity.png"></a>                    
                 </div>
 
                 <!-- search -->
@@ -38,7 +38,7 @@
                                 <div class="autocomplete-items" id="suggestion">
                                     <!-- <div class="row align-items-center">
                                         <div class="col-3">
-                                            <img class="suggestion-img" src="/PetCity/img/file/accessory/1.jpg"/>
+                                            <img class="suggestion-img" src="/img/file/accessory/1.jpg"/>
                                         </div>
                                         <div class="col-4">
                                             Puppy food nutrition 1.5kg Smartheart
@@ -63,17 +63,17 @@
                         <!-- login btn -->
                         <div class="col-8">
                             <s:if test="%{#session.USERNAME != null}">
-                                <a href="/PetCity/loadProfile" class="nav-link">Hello, <s:property value="%{#session.FULLNAME}"/></a>
-                                <a href="/PetCity/logout" class="btn btn-danger" role="button">Logout</a>
+                                <a href="/loadProfile" class="nav-link">Hello, <s:property value="%{#session.FULLNAME}"/></a>
+                                <a href="/logout" class="btn btn-danger" role="button">Logout</a>
                             </s:if>
                             <s:else>
-                                <a href="/PetCity/publicPage/login.jsp" class="btn btn-danger" role="button">Login</a>
+                                <a href="/publicPage/login.jsp" class="btn btn-danger" role="button">Login</a>
                             </s:else>
                         </div>
 
                         <!-- cart -->
                         <div class="col-4 wrap-cart">
-                            <a href="/PetCity/publicPage/viewCart.jsp" class="nav-link">
+                            <a href="/publicPage/viewCart.jsp" class="nav-link">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="icon-quantity"><span id="quantityCart">0</span></div>
@@ -82,7 +82,7 @@
 
                                 <div class="row">
                                     <div class="col-12">
-                                        <img src="/PetCity/img/header-footer/red-shopping-cart-hi.png" class="img-cart">
+                                        <img src="/img/header-footer/red-shopping-cart-hi.png" class="img-cart">
                                     </div>
                                 </div>
                             </a>
@@ -95,11 +95,11 @@
         <nav>
             <div class="row text-center align-items-center w-100">
                 <div class="col-2"></div>
-                <div class="col-2"><a href="/PetCity/loadExactlyContent?categoryID=1&forType=1" role="button" class="nav-link">SHOP FOR DOG</a></div>
-                <div class="col-2"><a href="/PetCity/loadExactlyContent?categoryID=1&forType=2" role="button" class="nav-link">SHOP FOR CAT</a></div>
-                <div class="col-2"><a href="/PetCity/loadExactlyContent?categoryID=1&forType=3" role="button" class="nav-link">SHOP FOR HAMSTER</a></div>
-                <div class="col-2"><a href="/PetCity/loadListService?type=1" role="button" class="nav-link">SERVICE</a></div>
+                <div class="col-2"><a href="/loadExactlyContent?categoryID=1&forType=1" role="button" class="nav-link">SHOP FOR DOG</a></div>
+                <div class="col-2"><a href="/loadExactlyContent?categoryID=1&forType=2" role="button" class="nav-link">SHOP FOR CAT</a></div>
+                <div class="col-2"><a href="/loadExactlyContent?categoryID=1&forType=3" role="button" class="nav-link">SHOP FOR HAMSTER</a></div>
+                <div class="col-2"><a href="/loadListService?type=1" role="button" class="nav-link">SERVICE</a></div>
                 <div class="col-2"></div>
             </div>
         </nav>
-        <script src="/PetCity/js/public-page/suggestion.js"></script>
+        <script src="/js/public-page/suggestion.js"></script>

@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  uri="/struts-tags" prefix="s" %>
 <%@include file="sider.jsp" %>
-<link rel="stylesheet" href="/PetCity/css/admin-page/staff.css">
+<link rel="stylesheet" href="/css/admin-page/staff.css">
 <div class="title mb-4">View list staff</div>
 
 <!-- Modal -->
@@ -75,7 +75,7 @@
                         <s:property value="%{name}" />
                     </td>
                     <td class="align-middle text-center col-img">
-                        <img class="img-accessory" src='/PetCity/img/file/staff/<s:property value="%{image}"/>'>
+                        <img class="img-accessory" src='/img/file/staff/<s:property value="%{image}"/>'>
                     </td>
                     <td class="align-middle text-center col-gender">
                         <s:if test="%{gender}">Male</s:if>
@@ -86,7 +86,7 @@
                         <s:else><span class="badge badge-primary">Available</span></s:else>
                     </td>
                     <td class="align-middle text-center">
-                        <a href="/PetCity/adminViewDetailStaff?id=<s:property value="%{id}"/>" class="btn btn-sm btn-outline-info mb-2" role="button">
+                        <a href="/adminViewDetailStaff?id=<s:property value="%{id}"/>" class="btn btn-sm btn-outline-info mb-2" role="button">
                         Detail
                         </a>
                         <br>
@@ -141,5 +141,5 @@
         </ul>
     </nav>
 </s:else>
-<script src="/PetCity/js/admin-page/delete-action.js"></script>
+<script src="/js/admin-page/delete-action.js"></script>
 <%@include file="end-sider.jsp" %>

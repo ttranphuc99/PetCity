@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  uri="/struts-tags" prefix="s" %>
 <%@include file="sider.jsp" %>
-<link rel="stylesheet" href="/PetCity/css/admin-page/accessory.css">
+<link rel="stylesheet" href="/css/admin-page/accessory.css">
 <div class="title mb-4">View list accessory</div>
 
 <!-- Modal -->
@@ -105,7 +105,7 @@
                         <s:property value="%{name}" />
                     </td>
                     <td class="align-middle text-center col-img">
-                        <img class="img-accessory" src='/PetCity/img/file/accessory/<s:property value="%{image}"/>'>
+                        <img class="img-accessory" src='/img/file/accessory/<s:property value="%{image}"/>'>
                     </td>
                     <td class="align-middle text-center col-cate">
                         <s:property value="%{category.name}" />
@@ -122,7 +122,7 @@
                     </td>
                     <td class="align-middle text-center">
                         <a class="btn btn-sm btn-outline-info my-1"
-                            href='/PetCity/adminViewDetailAccessory?id=<s:property value="%{id}"/>'
+                            href='/adminViewDetailAccessory?id=<s:property value="%{id}"/>'
                             role="button">Detail</a><br>
                         <button class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#exampleModal"
                             onclick='deleteAccessory(<s:property value="%{id}"/>, "<s:property value="%{name}"/>")'>Delete</button>
@@ -167,5 +167,5 @@
         </ul>
     </nav>
 </s:else>
-<script src="/PetCity/js/admin-page/delete-action.js"></script>
+<script src="/js/admin-page/delete-action.js"></script>
 <%@include file="end-sider.jsp" %>

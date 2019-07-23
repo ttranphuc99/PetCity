@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="sider.jsp" %>
-<link rel="stylesheet" type="text/css" href="/PetCity/css/member-page/list-service-invoice.css">
+<link rel="stylesheet" type="text/css" href="/css/member-page/list-service-invoice.css">
 <div id="snackbar">
     <s:property value="%{mess}" />
 </div>
@@ -79,7 +79,7 @@
                     </td>
                     <td class="align-middle text-center">
                         <a class="btn btn-sm btn-outline-info my-1"
-                            href='/PetCity/viewDetailServiceInvoice?id=<s:property value="%{id}" />&page=<s:property value="%{page}" />'
+                            href='/viewDetailServiceInvoice?id=<s:property value="%{id}" />&page=<s:property value="%{page}" />'
                             role="button">Detail</a><br>
                         <s:if test="%{status == 0}">
                             <button class="btn btn-sm btn-outline-danger" data-toggle="modal"
@@ -119,6 +119,6 @@
         </ul>
     </nav>
 </s:else>
-<script src="/PetCity/js/admin-page/delete-action.js"></script>
+<script src="/js/admin-page/delete-action.js"></script>
 
 <%@include file="end-sider.jsp" %>

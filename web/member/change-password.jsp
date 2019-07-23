@@ -6,14 +6,14 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="sider.jsp" %>
-<link rel="stylesheet" href="/PetCity/css/member-page/edit-profile.css">
+<link rel="stylesheet" href="/css/member-page/edit-profile.css">
 <div id="snackbar">
     <s:property value="%{mess}" />
 </div>
 <div class="title">Change password</div>
 
 <div class="container-fluid">
-    <form action="/PetCity/memberChangePassword" method="POST">
+    <form action="/memberChangePassword" method="POST">
         <input type="hidden" name="username" value="<s:property value="%{#session.USERNAME}"/>">
         
         <div class="form-group">
@@ -36,5 +36,5 @@
         </div>
     </form>
 </div>
-<script src="/PetCity/js/public-page/validate-signup.js"></script>
+<script src="/js/public-page/validate-signup.js"></script>
 <%@include file="end-sider.jsp" %>
